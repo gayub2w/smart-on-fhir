@@ -21,6 +21,10 @@
                       }
                     }
                   });
+       // Search for conditions added today
+var todaysDiagnoses = smart.api.search({type: 'Condition', query: {dateRecorded: '2014-05-01'}});
+ 
+Console.log(todaysDiagnoses);        
 
         $.when(pt, obv).fail(onError);
 
