@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" hidden>
   <head>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
     <title>Example-SMART-App</title>
@@ -35,18 +36,6 @@
 	<h2>Recommendations</h2>
 		<script>
 		
-			function callback(data){
-				//console.log(data);
-			
-			}
-			
-			$.ajax({
-				url: "http://easi-pro.org:3001/Patient", // live FHIR server
-				type: "GET",
-				success: function(data){
-					callback(data);
-				}
-			});
 			
 			
 			
