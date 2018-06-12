@@ -30,48 +30,7 @@
   <button type="button" onclick="alert('Test!')">Order</button>
  
 </div>
-<h2>Recommendations</h2>
-	<script>
-  	var settings = {
-			  "async": true,
-			  "crossDomain": true,
-			  "url": "http://18.236.89.117:9098/cds-hook-api/api/v1/cds-services/pro-recommend",
-			  "method": "POST",
-			  "headers": {
-				"content-type": "application/json",
-				"cache-control": "no-cache",
-				"postman-token": "ec06ed36-df7c-d53f-9ac7-d116278b1478"
-			  },
-			  "processData": false,
-			  "data": "{  \n   \"hook\":\"patient-view\",\n   \"hookInstance\":\"92cf02d6-05d4-4fa3-b795-1b4cfa696959\",\n   \"fhirServer\":\"https://sapphire-demo.meliorix.com/cip-fhir3/baseDstu3\",\n   \"user\":\"Practitioner/COREPRACTITIONER1\",\n   \"patient\":\"SMART-1288992\",\n   \"context\":{\n   \t\t\"patientId\":\"SMART-1288992\"\n   }\n}"
-			}
 
-			$.ajax(settings).done(function (response) {
-			  //console.log(response);
-			  
-			  jQuery(response).each(function(i, item){
-								
-								console.log(item.cards)
-								jQuery(item.cards).each(function(j, item){
-											console.log(item.summary);
-											console.log(item.detail);
-											var $t1 = item.summary;
-											var $t2 = item.detail;
-											
-											$("BODY").append("<b>"+$t1+"</b>");
-											$("BODY").append("</br>");$("BODY").append("</br>");
-											$("BODY").append($t2);
-											$("BODY").append("</br>");$("BODY").append("</br>");$("BODY").append("</br>");
-											
-											//document.getElementById("demo").innerHTML = item.summary + "</br>" + item.detail;
-								})
-								//console.log(item.cards[i])
-							})
-			  
-			 //document.getElementById("demo").innerHTML = response[0];
-			});
-			
-	</script>
   
     <!-- Required JS files to enable this page to embed within an MPage -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
