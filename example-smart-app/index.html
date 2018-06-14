@@ -53,7 +53,46 @@
 	<h2>Recommendations</h2>
 		<script>
 		
+			var Server = "https://www.assessmentcenter.net/ac_api";
+				var FormOID = "96FE494D-F176-4EFB-A473-2AB406610626";  // Sample form -- replace with your FormOID
+
+				var promisUID="001";
+				
+				function callback1(data){
+				console.log(data);
 			
+			}
+			
+				
+				
+					$.ajax({
+						url: Server + "/2014-01/Forms/.json",
+						cache: false,
+						type: "POST",
+						data: "",
+						dataType: "json",
+
+						beforeSend: function(xhr) {
+						 var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
+						 var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
+						
+						 var base64 = btoa(Reg + ":" + Token);
+						xhr.setRequestHeader("Authorization", "Basic " + base64);
+						},
+
+							success: function(data) { 
+							
+								console.log(data);
+								callback1(data);
+								console.log("am here");						
+								
+							},
+						
+							error: function(jqXHR, textStatus, errorThrown) {
+								document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+							}
+						});
+					
 			
 			
 			var settings = {
