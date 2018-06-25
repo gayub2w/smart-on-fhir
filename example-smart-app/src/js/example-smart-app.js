@@ -11,12 +11,14 @@
         var practitioner = smart.practitioner;
         var pc = practitioner.read();
         console.log(pc);
+        console.log(smart.tokenResponse);
       }
       }
     
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
+        console.log(smart.tokenResponse);
         var patient = smart.patient;
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
