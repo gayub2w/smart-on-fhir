@@ -22,7 +22,12 @@
                     }
                   });
        // Search for conditions added today
-     
+     function onReady(smart)  {
+      if (smart.hasOwnProperty('practitioner')) {
+        var practitioner = smart.practitioner;
+        var pc = practitioner.read();
+        console.log(pc);
+      });
 
         $.when(pt, obv).fail(onError);
 
