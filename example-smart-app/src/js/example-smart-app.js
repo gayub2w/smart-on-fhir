@@ -14,7 +14,7 @@
       var practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
       console.log(practitioner_id);
-       
+       document.getElementById("prac_id").innerHTML=practitioner_id;
       
        var base64Url = token.split('.')[1];
        var base64 = base64Url.replace('-', '+').replace('_', '/');
