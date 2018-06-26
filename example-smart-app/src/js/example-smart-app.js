@@ -9,6 +9,7 @@
    
 
     function onReady(smart)  {
+      console.log("Am here"+smart.tokenResponse);
       if (smart.hasOwnProperty('patient')) {
         console.log(smart.tokenResponse);
         var patient = smart.patient;
