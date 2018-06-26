@@ -6,15 +6,7 @@
       console.log('Loading error', arguments);
       ret.reject();
     }
-     function onReady(smart)  {
-      if (smart.hasOwnProperty('practitioner')) {
-        var practitioner = smart.practitioner;
-        var pc = practitioner.read();
-        console.log(pc);
-        console.log(smart.tokenResponse);
-      }
-      }
-    
+   
 
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
