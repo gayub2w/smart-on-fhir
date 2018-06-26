@@ -10,6 +10,12 @@
 
     function onReady(smart)  {
       console.log(smart.tokenResponse);
+      
+      var practitioner_id = smart.tokenResponse.user;
+      var jwt_id = smart.tokenResponse.id_token;
+      console.log(practitioner_id);
+       console.log(jwt_id);
+      
       if (smart.hasOwnProperty('patient')) {
         console.log(smart.tokenResponse);
         var patient = smart.patient;
