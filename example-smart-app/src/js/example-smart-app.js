@@ -12,9 +12,16 @@
       console.log(smart.tokenResponse);
       
       var practitioner_id = smart.tokenResponse.user;
-      var jwt_id = smart.tokenResponse.id_token;
+      var token = smart.tokenResponse.id_token;
       console.log(practitioner_id);
-       console.log(jwt_id);
+       
+      
+       var base64Url = token.split('.')[1];
+       var base64 = base64Url.replace('-', '+').replace('_', '/');
+       console.log(JSON.parse(window.atob(base64)));
+       var pract_name=(JSON.parse(window.atob(base64))).name;
+       console.log(pract_name);
+        
       
       if (smart.hasOwnProperty('patient')) {
         console.log(smart.tokenResponse);
