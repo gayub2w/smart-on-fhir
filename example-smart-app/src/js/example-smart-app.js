@@ -15,6 +15,10 @@
       var token = smart.tokenResponse.id_token;
       console.log(practitioner_id);
       
+      document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById("pract_id").innerHTML(practitioner_id);
+      });
+      
       
        var base64Url = token.split('.')[1];
        var base64 = base64Url.replace('-', '+').replace('_', '/');
