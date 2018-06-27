@@ -14,9 +14,9 @@
       var practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
       console.log(practitioner_id);
-      
+      document.getElementById("pract_id").innerHTML=practitioner_id;
       document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById("pract_id").innerHTML(practitioner_id);
+      document.getElementById("pract_id").innerHTML=practitioner_id;
       });
       
       
