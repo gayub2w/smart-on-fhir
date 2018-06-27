@@ -40,15 +40,26 @@
 .button3 {border-radius: 4px;width: 100px; }
 .button4 {border-radius: 4px;}
 .button5 {border-radius: 50%;}
+		  
+		  select:required:invalid {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+	
 </style>	
   </head>
   <body>
-	<h3 style="margin-left:0.5em;" >Practitioner Info</h3>
+	<h3  >Practitioner Info</h3>
 	<p style="margin-left:0.5em;" id='pract_id' ></p></t>
 	<p style="margin-left:0.5em;" id='pract_name' ></p>
 	  
     <div id='holder' >
-      <h3 style="margin-left:0.5em;" >Patient Info</h3>
+      <h3 >Patient Info</h3>
       <table>
 	<tr>
           <th>First Name:</th>
@@ -66,19 +77,20 @@
       </table>
 	    </div>
 	<h2 style="margin-left:0.5em;">Order</h2>
-<p style="margin-left:1em;">Select an instrument from the drop-down list:</p>
+	</br>
 
 <div style="position:relative;width:200px;height:25px;border:0;padding:0;margin:0;">
-  <select id="selectform" style="position:absolute;top:0px;left:0px;width:400px; height:25px;line-height:20px;margin-left:1em;padding:0;"
-          onchange="document.getElementById('displayValue').value=this.options[this.selectedIndex].text; document.getElementById('idValue').value=this.options[this.selectedIndex].value;">
-    <option></option>
-   
+		<select id="selectform"  style="position:absolute;top:0px;left:0px;width:400px; height:25px;line-height:20px;margin-left:1em;padding:0;">
+		<option value="" disabled selected >Please choose an instrument...</option>
+		
+		
+	   
 
-  </select>
- </br>
-</br>
-  <button class="button button3" style="margin-left:1em;" type="button" onclick="alert('Test!')">Order</button>
-</div>
+		</select>
+		</br>
+		</br>
+		<button class="button button3" style="margin-left:1em;" type="button" onclick="order_func()">Order</button>
+	</div>
 
  
     </br>
