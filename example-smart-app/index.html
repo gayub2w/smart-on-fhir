@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" hidden>
   <head>
+	  
+	  	   <!-- Application-level javascript-->
+    <script src='./src/js/example-smart-app.js'></script>
 	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
@@ -40,8 +43,7 @@
 </style>	
   </head>
   <body>
-	   <!-- Application-level javascript-->
-    <script src='./src/js/example-smart-app.js'></script>
+
 	
 	  
     <div id='holder' >
@@ -57,7 +59,9 @@
         </tr>
 	      <tr>
           <th>Practitioner:</th>
-          <td id='pract_id'></td>
+          <td id='pract_id'><script type="text/javascript">
+        document.write(prac_id)
+      </script></td>
         </tr>
         <tr>
           <th>ID</th>
