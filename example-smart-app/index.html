@@ -104,6 +104,19 @@ option {
 <div id="content">
 </div>
 		<script>
+			
+			function order_func() {
+			
+			var e = document.getElementById("selectform");
+			var sformoid = e.options[e.selectedIndex].value;
+			var sformname = e.options[e.selectedIndex].text;
+			alert("FormOID : " + sformoid);
+			alert("FormName : " + sformname);
+			}
+			
+			
+			
+			
 			var Server = "https://www.assessmentcenter.net/ac_api";
 				var FormOID = "96FE494D-F176-4EFB-A473-2AB406610626";  // Sample form -- replace with your FormOID
 
