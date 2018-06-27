@@ -15,6 +15,7 @@
       var token = smart.tokenResponse.id_token;
       console.log(practitioner_id);
       document.getElementById("pract_id").innerHTML=practitioner_id;
+     
       document.addEventListener('DOMContentLoaded', function() {
       document.getElementById("pract_id").innerHTML=practitioner_id;
       });
@@ -25,7 +26,7 @@
        console.log(JSON.parse(window.atob(base64)));
        var pract_name=(JSON.parse(window.atob(base64))).name;
        console.log(pract_name);
-        
+       document.getElementById("pract_name").innerHTML=pract_name;
       
       if (smart.hasOwnProperty('patient')) {
         console.log(smart.tokenResponse);
