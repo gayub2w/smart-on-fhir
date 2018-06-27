@@ -40,6 +40,10 @@
 </style>	
   </head>
   <body>
+	   <!-- Application-level javascript-->
+    <script src='./src/js/example-smart-app.js'></script>
+	 alert(prac_id); 
+	  
     <div id='holder' >
       <h2>Patient Info</h2>
       <table>
@@ -53,7 +57,7 @@
         </tr>
 	      <tr>
           <th>Practitioner:</th>
-          <td id='pract_id'></td>
+          <td id='pract_id'>prac_id</td>
         </tr>
         <tr>
           <th>ID</th>
@@ -160,8 +164,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
     <script src='./lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
 
-    <!-- Application-level javascript-->
-    <script src='./src/js/example-smart-app.js'></script>
+   
 
     <!-- FHIR Client JS Library -->
     <script src='./lib/js/fhir-client-v0.1.12.js'></script>
