@@ -6,12 +6,13 @@
       console.log('Loading error', arguments);
       ret.reject();
     }
-   
+   var practitioner_id;
+    var pract_name;
 
     function onReady(smart)  {
       console.log(smart.tokenResponse);
       
-      var practitioner_id = smart.tokenResponse.user;
+      practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
       console.log(practitioner_id);
       document.getElementById("pract_id").innerHTML="<b>ID: </b>" + practitioner_id;
@@ -24,7 +25,7 @@
        var base64Url = token.split('.')[1];
        var base64 = base64Url.replace('-', '+').replace('_', '/');
        console.log(JSON.parse(window.atob(base64)));
-       var pract_name=(JSON.parse(window.atob(base64))).name;
+       pract_name=(JSON.parse(window.atob(base64))).name;
        console.log(pract_name);
        document.getElementById("pract_name").innerHTML="<b>Name:  </b>" +pract_name;
       
