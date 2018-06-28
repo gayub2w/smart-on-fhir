@@ -1,3 +1,6 @@
+ var practitioner_id="";
+    var pract_name="";
+
 (function(window){
   window.extractData = function() {
     var ret = $.Deferred();
@@ -6,8 +9,7 @@
       console.log('Loading error', arguments);
       ret.reject();
     }
-   var practitioner_id;
-    var pract_name;
+  
 
     function onReady(smart)  {
       console.log(smart.tokenResponse);
