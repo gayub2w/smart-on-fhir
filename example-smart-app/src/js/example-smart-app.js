@@ -1,4 +1,6 @@
- var practitioner_id="";
+  //Global variables  
+
+    var practitioner_id="";
     var pract_name="";
 
 (function(window){
