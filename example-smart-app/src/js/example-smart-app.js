@@ -38,8 +38,8 @@
        var base64Url1 = access_token.split('.')[1];
        var base641 = base64Url1.replace('-', '+').replace('_', '/');
        console.log(JSON.parse(window.atob(base641)));
-       persona=(JSON.parse(window.atob(base641))).user.persona;
-       console.log(persona);
+       //persona=(JSON.parse(window.atob(base641))).user.persona;
+       //console.log(persona);
       
       
       if (smart.hasOwnProperty('patient')) {
