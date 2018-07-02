@@ -16,7 +16,7 @@
   
 
     function onReady(smart)  {
-      //console.log(smart.tokenResponse);
+      console.log(smart.tokenResponse);
       
       practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
@@ -42,11 +42,11 @@
        var myobj =JSON.parse(window.atob(base641));
       for (x in myobj) {
         ckperson[x]=myobj[x];
-      console.log(myobj[x]);
+      //console.log(myobj[x]);
       }
        //persona=(JSON.parse(window.atob(base641))).temp;
        //console.log(persona);
-      console.log(ckperson);
+      //console.log(ckperson);
       
       
       if (smart.hasOwnProperty('patient')) {
