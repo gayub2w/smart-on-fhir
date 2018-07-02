@@ -38,7 +38,10 @@
        var base64Url1 = access_token.split('.')[1];
        var base641 = base64Url1.replace('-', '+').replace('_', '/');
        console.log(JSON.parse(window.atob(base641)));
-       var temp ="urn.cerner.authorization.claims.version.1";
+       var myobj =JSON.parse(window.atob(base641));
+      for (x in myObj) {
+      console.log(myObj[x]);
+      }
        persona=(JSON.parse(window.atob(base641))).temp;
        console.log(persona);
       
