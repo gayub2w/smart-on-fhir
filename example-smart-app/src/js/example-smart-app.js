@@ -39,7 +39,7 @@
        var base641 = base64Url1.replace('-', '+').replace('_', '/');
        console.log(JSON.parse(window.atob(base641)));
        var temp ="urn:cerner:authorization:claims:version:1";
-       persona=(JSON.parse(window.atob(base641))).temp.user.persona;
+       persona=(JSON.parse(window.atob(base641))).temp;
        console.log(persona);
       
       
