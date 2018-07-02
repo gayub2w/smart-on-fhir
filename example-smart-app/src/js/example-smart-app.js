@@ -2,7 +2,8 @@
 
     var practitioner_id="";
     var pract_name="";
-
+    var persona="";
+ 
 (function(window){
   window.extractData = function() {
     var ret = $.Deferred();
@@ -18,6 +19,7 @@
       
       practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
+      var access_token= smart.tokenResponse.access_token;
       console.log(practitioner_id);
       document.getElementById("pract_id").innerHTML="<b>ID: </b>" + practitioner_id;
      
@@ -32,6 +34,13 @@
        pract_name=(JSON.parse(window.atob(base64))).name;
        console.log(pract_name);
        document.getElementById("pract_name").innerHTML="<b>Name:  </b>" +pract_name;
+      
+       var base64Url1 = access_token.split('.')[1];
+       var base641 = base64Url1.replace('-', '+').replace('_', '/');
+       console.log(JSON.parse(window.atob(base641)));
+       persona=(JSON.parse(window.atob(base641))).user.persona;
+       console.log(persona);
+      
       
       if (smart.hasOwnProperty('patient')) {
         console.log(smart.tokenResponse);
