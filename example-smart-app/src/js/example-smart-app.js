@@ -39,8 +39,8 @@
        var base641 = base64Url1.replace('-', '+').replace('_', '/');
        console.log(JSON.parse(window.atob(base641)));
        var myobj =JSON.parse(window.atob(base641));
-      for (x in myObj) {
-      console.log(myObj[x]);
+      for (x in myobj) {
+      console.log(myobj[x]);
       }
        persona=(JSON.parse(window.atob(base641))).temp;
        console.log(persona);
