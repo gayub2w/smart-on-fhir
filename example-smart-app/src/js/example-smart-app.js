@@ -46,7 +46,7 @@
       }
        //persona=(JSON.parse(window.atob(base641))).temp;
        //console.log(persona);
-      //console.log(ckperson);
+      console.log(ckperson["user"]);
       
       
       if (smart.hasOwnProperty('patient')) {
