@@ -3,6 +3,7 @@
     var practitioner_id="";
     var pract_name="";
     var persona="";
+    var ckperson=[];
  
 (function(window){
   window.extractData = function() {
@@ -40,10 +41,12 @@
        console.log(JSON.parse(window.atob(base641)));
        var myobj =JSON.parse(window.atob(base641));
       for (x in myobj) {
+        ckperson[x]=myobj[x];
       console.log(myobj[x]);
       }
-       persona=(JSON.parse(window.atob(base641))).temp;
-       console.log(persona);
+       //persona=(JSON.parse(window.atob(base641))).temp;
+       //console.log(persona);
+      console.log(ckperson);
       
       
       if (smart.hasOwnProperty('patient')) {
