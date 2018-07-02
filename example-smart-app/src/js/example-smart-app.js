@@ -15,7 +15,7 @@
   
 
     function onReady(smart)  {
-      console.log(smart.tokenResponse);
+      //console.log(smart.tokenResponse);
       
       practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
@@ -30,7 +30,7 @@
       
        var base64Url = token.split('.')[1];
        var base64 = base64Url.replace('-', '+').replace('_', '/');
-       console.log(JSON.parse(window.atob(base64)));
+       //console.log(JSON.parse(window.atob(base64)));
        pract_name=(JSON.parse(window.atob(base64))).name;
        console.log(pract_name);
        document.getElementById("pract_name").innerHTML="<b>Name:  </b>" +pract_name;
@@ -38,13 +38,13 @@
        var base64Url1 = access_token.split('.')[1];
        var base641 = base64Url1.replace('-', '+').replace('_', '/');
        console.log(JSON.parse(window.atob(base641)));
-      var temp ="urn:cerner:authorization:claims:version:1";
+       var temp ="urn:cerner:authorization:claims:version:1";
        persona=(JSON.parse(window.atob(base641))).temp.user.persona;
        console.log(persona);
       
       
       if (smart.hasOwnProperty('patient')) {
-        console.log(smart.tokenResponse);
+        //console.log(smart.tokenResponse);
         var patient = smart.patient;
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
