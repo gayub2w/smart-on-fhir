@@ -101,22 +101,22 @@ option {
 			//alert("PractName : " + pract_name);
 				
 				
-				var settings1 = {
+		var settings1 = {
   "async": true,
   "crossDomain": true,
-  "url": "https://18.236.89.117:9098/cds-hook-api/api/resource/post",
+  "url": "https://54.202.74.232:80/cds-hook-api/api/resource/post",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
     "Cache-Control": "no-cache",
-    "Postman-Token": "b46bdacd-716d-46a4-b74c-662b16f59148"
+    "Postman-Token": "8774ece4-79a0-4fa0-9b46-0bb063c18627"
   },
   "processData": false,
   "data": "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"requested\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \"61952-8\",\n\t\t\t\"display\": \"PROMIS Bank v1.0 - Depression\"\n\t\t}],\n\t\t\"text\": \"PROMIS Bank v1.0 - Depression\"\n\t},\n\t\"occurrenceDateTime\": \"2018-05-28T17:34:25\",\n\t\"subject\": {\n\t\t\"reference\": \"Patient/USC-1288992\"\n\t},\n\t\"performer\": {\n\t\t\"reference\": \"Patient/USC-1288992\"\n\t},\n\t\"reasonCodeableConcept\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"35489007\",\n\t\t\t\"display\": \"Depressive disorder (disorder)\"\n\t\t}]\n\t}\n}"
 }
-
 $.ajax(settings1).done(function (response) {
   console.log(response);
+	console.log("am here");
 });
 
 			}
