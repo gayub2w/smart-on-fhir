@@ -3,45 +3,43 @@
   <head>
 	  
 	  	   <!-- Application-level javascript-->
-    <script src='./src/js/example-smart-app.js'></script>
+    	<script src='./src/js/example-smart-app.js'></script>
 	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
-    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	 <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
-	  
-	  
-    <title><span id='lname'></span>, <span id='fname'></title>
+    	<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <title>SMART APP</title>
  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel='stylesheet' type='text/css' href='./src/css/example-smart-app.css'>
-    <link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel='stylesheet' type='text/css' href='./src/css/example-smart-app.css'>
+        <link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
 	  
-	  <style>
+<style>
 .button {
-    background-color: #0079BE; 
-    border: none;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-	font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
+				background-color: #0079BE; 
+				border: none;
+				color: white;
+				padding: 5px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 14px;
+				margin: 8px 2px;
+				cursor: pointer;
+				}
 
-.button1 {border-radius: 2px;}
-.button2 {border-radius: 4px;}
-.button3 {border-radius: 4px;width: 100px; }
-.button4 {border-radius: 4px;}
-.button5 {border-radius: 50%;}
-		  
-		  select:required:invalid {
+		.button1 {border-radius: 2px;}
+		.button2 {border-radius: 4px;}
+		.button3 {border-radius: 4px;width: 100px; }
+		.button4 {border-radius: 4px;}
+		.button5 {border-radius: 50%;}
+		
+select:required:invalid {
   color: gray;
 }
 option[value=""][disabled] {
@@ -50,58 +48,284 @@ option[value=""][disabled] {
 option {
   color: black;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+    background: linear-gradient(to bottom, #2F99D5 0%, #1169A8 100%);
+    padding: 20px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+	
+}
+
+.icon-bar {
+    width: 100%;
+	height: 5%;
+    background-color: #0C5273;
+	color : #FFFFFF;
+	font-size: 14px;
+    overflow: auto;
+}
+
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: left;
+    width: 20%;
+    background: #ccc;
+	 height: 100%; /* Full height */
+
+	   overflow: auto;
+	 max-height: 100%;
+      overflow-y: auto;
+   
+}
+
+/* Style the list inside the menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+article {
+    float: left;
+    width: 80%;
+    background-color: #f1f1f1;
+	 overflow: auto;
+	  height: 100%; /* Full height */
+
+   
+}
+
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: 100%;
+    }
+}
+table#t01 {border-collapse: collapse; }
+table#t01 th {
+    background-color: #283B4A;
+  color: white;
+
+}
+
+table#t01 tr {
+    background-color: #48545D;
+  color: white;
+ 
+
+}
+table#t01 #protab {
+ background-color: #095071;
+  color: white;
+}
+
+table#t02 {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+table#t02 th {
+    background-color: #939CA6;
+	margin-left:0.5em;
+}
+
+
+table#t02 td,th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+	background-color: white;
+	margin-left:0.5em;
+}
+
+#v1 {
+    border-left: 1px solid black;
+    height: 100%;
+	margin-left:1em;
+   
+}
 	
 </style>	
   </head>
   <body>
-	  <h4  >Patient:  <b style="margin-left:7em;">ID: </b><span id='id'></span><b style="margin-left:5em;">Name: </b><span id='lname'></span>, <span id='fname'></span><b style="margin-left:5em;">Age: </b><span id='age'></span><b style="margin-left:5em;">Sex: </b><span id='gender'></span><b style="margin-left:5em;">D.O.B: </b><span id='birthdate'></span></h4>
 	
-	  <h4  >Practitioner: <span id='pract_id' style="margin-left:5em;"></span><span id='pract_name' style="margin-left:5em;"></span></h4>
+ 
+	<header>
 	
-    <div id='holder' >
-   
-	    </div>
-	<h2 style="margin-left:0.5em;">Order</h2>
-	</br>
+	
+    	<h4  >Patient:  <b style="margin-left:7em;">ID: </b><span id='id'></span><b style="margin-left:5em;">Name: </b><span id='lname'></span>, <span id='fname'></span><b style="margin-left:5em;">Age: </b><span id='age'></span><b style="margin-left:5em;">Sex: </b><span id='gender'></span><b style="margin-left:5em;">D.O.B: </b><span id='birthdate'></span></h4>
+	
+	<h4  >Practitioner: <span id='pract_id' style="margin-left:5em;"></span><span id='pract_name' style="margin-left:5em;"></span></h4>
+	
+</header>
+	
 
-<div style="position:relative;width:200px;height:25px;border:0;padding:0;margin:0;">
+ <section>
+  <nav>  
+  
+<table id="t01"class="table">
+    <thead>
+      <tr>
+        <th>Menu - All <i style=" font-size: 7px; left: 18em; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+		<tr>
+        <td>Ambulatory Summary</td>
+      </tr>
+      <tr>
+        <td>Inpatient Summaries</td>
+      </tr>
+      <tr>
+        <td>Operative Summaries</td>
+      </tr>
+      <tr>
+        <td>Demographics</td>
+      </tr>
+	  <tr>
+        <td>Results Review</td>
+      </tr>
+      <tr>
+        <td>Allergies</td>
+      </tr>
+      <tr>
+        <td>Orders</td>
+      </tr>
+	  <tr id="protab">
+        <td><b>Order PRO</b></td>
+      </tr>
+	  <tr>
+        <td>Medication List</td>
+      </tr>
+      <tr>
+        <td>Reports/Documents</td>
+      </tr>
+      <tr>
+        <td>MAR Summary</td>
+      </tr>
+	  <tr>
+        <td>Form Browser</td>
+      </tr>
+      <tr>
+        <td>Pending Studies</td>
+      </tr>
+      <tr>
+        <td>Problem And Diagnoses</td>
+      </tr>
+	  <tr>
+        <td>Immunizations</td>
+      </tr>
+      <tr>
+        <td>Reference Text</td>
+      </tr>
+      <tr>
+        <td>Patient Schedule</td>
+      </tr>
+	  <tr>
+        <td>Appointments</td>
+      </tr>
+      <tr>
+        <td>Access Center and Pre-Arrival</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  </nav>
+ 
+  <article>
+  <div class="icon-bar">
+			<span>&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-left"></i><span>&nbsp;&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-right "></i>&nbsp;&nbsp; <i style=" font-size: 7px; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i><span id="v1"></span>&nbsp;&nbsp; <i class="glyphicon glyphicon-home white"></i> <span style="margin-left:0.5em; font-color:#FFFFFF; font-size:20px;"> Order PRO</span><img border="0" style="margin-bottom:0.2em;margin-left:40em;" src="C:\Users\priv.gnagaraj\Desktop\My_Projects\Web\pixel-full-screen.png"  />&nbsp;Fullscreen&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-print white"></i>&nbsp;  Print&nbsp; &nbsp; <i class="glyphicon glyphicon-refresh white"></i><span> &nbsp;2 minutes ago &nbsp; </span>
+			</div>
+  <h3 style="margin-left:0.5em;">Order PRO</h3>
+	
+
+	<div style="position:relative;width:200px;height:25px;border:0;padding:0;margin:0;">
 		<select id="selectform"  style="position:absolute;top:0px;left:0px;width:400px; height:25px;line-height:20px;margin-left:1em;padding:0;">
 		<option value="" disabled selected >Please choose an instrument...</option>
-		
-		
-	   
+		 
 
 		</select>
 		</br>
 		</br>
 		<button class="button button3" style="margin-left:1em;" type="button" onclick="order_func()">Order</button>
 	</div>
-
- 
     </br>
 	</br>
     </br>
+	
+	<h3 style="margin-left:0.5em;">Order Status</h3>
 
-<h2 style="margin-left:0.5em;">Recommendations</h2>
+<table id="t02">
+  <tr>
+    <th>PROs Ordered</th>
+    <th>Status</th>
+    <th>Results</th>
+  </tr>
+  <tr>
+    <td>PRO for Anxiety</td>
+    <td>Ordered</td>
+    <td> -- </td>
+  </tr>
+  <tr>
+    <td>PRO for Fatigue</td>
+    <td>Completed</td>
+    <td> Click to see results</td>
+  </tr>
+  </table>
 
-
-
-<div id="content">
-</div>
-		<script>
+  </br>
 			
+
+	<h3 style="margin-left:0.5em;">Recommended PRO for Smart, Wilma</h3>
+	<div id="content">
+	</div>
+	
+		<script>
+		
+		// Code to decode the JSON web token and get the first and last name of the physician
+		
+			var token = "eyJraWQiOiIyMDE4LTA3LTAxVDE3OjUxOjQzLjQ2NC5lYyIsInR5cCI6IkpXVCIsImFsZyI6IkVTMjU2In0.eyJzdWIiOiJwb3J0YWwiLCJ1cm46Y29tOmNlcm5lcjphdXRob3JpemF0aW9uOmNsYWltcyI6eyJ2ZXIiOiIxLjAiLCJlbmNvdW50ZXIiOiI0Mjc5OTA2IiwidG50IjoiMGI4YTAxMTEtZThlNi00YzI2LWE5MWMtNTA2OWNiYzZiMWNhIiwiYXpzIjoicGF0aWVudFwvUGF0aWVudC5yZWFkIHBhdGllbnRcL09ic2VydmF0aW9uLnJlYWQgbGF1bmNoIG9ubGluZV9hY2Nlc3Mgb3BlbmlkIHByb2ZpbGUiLCJ1c2VyIjoiNDQ2NDAwNyIsInBhdGllbnQiOiI0Njk2MDA3In0sImF6cCI6IjkyZWEwZjA1LWE3ZTYtNDNlOS1hZGE0LTE2NzkxYzMxOWRhYSIsImlzcyI6Imh0dHBzOlwvXC9hdXRob3JpemF0aW9uLnNhbmRib3hjZXJuZXIuY29tXC8iLCJleHAiOjE1MzA1NzM3OTEsImlhdCI6MTUzMDU3MzE5MSwianRpIjoiYWVlNTEwMjctMTRiMC00MWFkLWEzOGQtNmYxMjdiMjlmZjM0IiwidXJuOmNlcm5lcjphdXRob3JpemF0aW9uOmNsYWltczp2ZXJzaW9uOjEiOnsidmVyIjoiMS4wIiwicHJvZmlsZXMiOnsibWlsbGVubml1bS12MSI6eyJwZXJzb25uZWwiOiI0NDY0MDA3IiwiZW5jb3VudGVyIjoiNDI3OTkwNiJ9LCJzbWFydC12MSI6eyJwYXRpZW50cyI6WyI0Njk2MDA3Il0sImF6cyI6InBhdGllbnRcL1BhdGllbnQucmVhZCBwYXRpZW50XC9PYnNlcnZhdGlvbi5yZWFkIGxhdW5jaCBvbmxpbmVfYWNjZXNzIG9wZW5pZCBwcm9maWxlIn19LCJjbGllbnQiOnsibmFtZSI6Ik15UHJvdmlkZXJBcHAiLCJpZCI6IjkyZWEwZjA1LWE3ZTYtNDNlOS1hZGE0LTE2NzkxYzMxOWRhYSJ9LCJ1c2VyIjp7InByaW5jaXBhbCI6InBvcnRhbCIsInBlcnNvbmEiOiJwcm92aWRlciIsImlkc3AiOiIwYjhhMDExMS1lOGU2LTRjMjYtYTkxYy01MDY5Y2JjNmIxY2EiLCJwcmluY2lwYWxVcmkiOiJodHRwczpcL1wvbWlsbGVubmlhLnNhbmRib3hjZXJuZXIuY29tXC9pbnN0YW5jZVwvMGI4YTAxMTEtZThlNi00YzI2LWE5MWMtNTA2OWNiYzZiMWNhXC9wcmluY2lwYWxcLzAwMDAuMDAwMC4wMDQ0LjFEODciLCJpZHNwVXJpIjoiaHR0cHM6XC9cL21pbGxlbm5pYS5zYW5kYm94Y2VybmVyLmNvbVwvYWNjb3VudHNcL2ZoaXJwbGF5LnRlbXBfcmhvLmNlcm5lcmFzcC5jb21cLzBiOGEwMTExLWU4ZTYtNGMyNi1hOTFjLTUwNjljYmM2YjFjYVwvbG9naW4ifSwidGVuYW50IjoiMGI4YTAxMTEtZThlNi00YzI2LWE5MWMtNTA2OWNiYzZiMWNhIn19.8axJpv7YWXy3dMCDcsvXFUIaQxqxdMFU2dlqi7eVZvjqtecnwTaFs5y0OmYanCY_N8TuGrSSRedH52qOx4RTvg";      
+			var base64Url = token.split('.')[1];
+            var base64 = base64Url.replace('-', '+').replace('_', '/');
+            console.log(JSON.parse(window.atob(base64)));
+
+			var mytemp = JSON.parse(window.atob(base64));
+			var temp11="urn:cerner:authorization:claims:version:1";
+			var temp12=mytemp[temp11];
+			
+			var temp13=temp12.user;
+			console.log(temp13.persona);
+		
+		
+		
 			function order_func() {
 			
-		var e = document.getElementById("selectform");
+			var e = document.getElementById("selectform");
 			var sformoid = e.options[e.selectedIndex].value;
 			var sformname = e.options[e.selectedIndex].text;
 			alert("FormOID : " + sformoid);
-			alert("FormName : " + sformname);
-			//alert("PractID :  " + practitioner_id);
-			//alert("PractName : " + pract_name);
-				
-				
-		var settings1 = {
+			alert("FormName : " + sformname);	
+
+					var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
+								console.log(date1+"+00:00");
+							
+							
+							//var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"requested\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"reference\": \"Patient/USC-1288992\"\n\t},\n\t\"performer\": {\n\t\t\"reference\": \"Practitioner/USC-1288992\"\n\t},\n\t\"reasonCodeableConcept\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"35489007\",\n\t\t\t\"display\": \"Depressive disorder (disorder)\"\n\t\t}]\n\t}\n}"
+
+					var settings1 = {
   "async": true,
   "crossDomain": true,
   "url": "https://54.202.74.232:80/cds-hook-api/api/resource/post",
@@ -114,27 +338,28 @@ option {
   "processData": false,
   "data": "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"requested\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \"61952-8\",\n\t\t\t\"display\": \"PROMIS Bank v1.0 - Depression\"\n\t\t}],\n\t\t\"text\": \"PROMIS Bank v1.0 - Depression\"\n\t},\n\t\"occurrenceDateTime\": \"2018-05-28T17:34:25\",\n\t\"subject\": {\n\t\t\"reference\": \"Patient/USC-1288992\"\n\t},\n\t\"performer\": {\n\t\t\"reference\": \"Patient/USC-1288992\"\n\t},\n\t\"reasonCodeableConcept\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"35489007\",\n\t\t\t\"display\": \"Depressive disorder (disorder)\"\n\t\t}]\n\t}\n}"
 }
-$.ajax(settings1).done(function (response) {
-  console.log(response);
-	console.log("am here");
-});
-
+							
+					$.ajax(settings1).done(function (response) {
+					 console.log("amhere");
+					  console.log(response);
+					});
+										
 			}
-			
-			
-			
-			var Server = "https://www.assessmentcenter.net/ac_api";
+		
+					
+		
+				var form_oid=[];
+				var form_name=[];
+				var Server = "https://www.assessmentcenter.net/ac_api";
 				var FormOID = "96FE494D-F176-4EFB-A473-2AB406610626";  // Sample form -- replace with your FormOID
 
 				var promisUID="001";
 				
 				function callback1(data){
-				console.log(data);
+				//console.log(data);
 			
-			}
-			
-		
-		function listForms() {
+					}
+				function listForms() {
 					$.ajax({
 						url: Server + "/2014-01/Forms/.json",
 						cache: false,
@@ -163,10 +388,13 @@ $.ajax(settings1).done(function (response) {
 
 								//console.log("all forms"+forms);
 								for (var i=0; i < forms.length; i++) {
+									form_oid[i]=forms[i].OID;
+									form_name[i]=forms[i].Name;
 									var opt = forms[i].Name;
+									var val = forms[i].OID;
 									var el = document.createElement("option");
 									el.textContent = opt;
-									el.value = opt;
+									el.value = val;
 									select.appendChild(el);
 								
 									//console.log(forms[i].OID + " : " + forms[i].Name + "");
@@ -183,8 +411,40 @@ $.ajax(settings1).done(function (response) {
 						});
 				}	
 			
+				function formDetails(FormOID) {
+								$.ajax({
+									url: Server + "/2014-01/Forms/" + FormOID + ".json",
+									cache: false,
+									type: "POST",
+									data: "",
+									dataType: "json",
+
+									beforeSend: function(xhr) {
+													var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
+													var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
+													
+													var base64 = btoa(Reg + ":" + Token);
+													xhr.setRequestHeader("Authorization", "Basic " + base64);
+									},
+
+									success: function(data) {
+												//console.log(data);			
+												
+												
+												
+									},
+								
+									error: function(jqXHR, textStatus, errorThrown) {
+										alert(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+									}
+								})
+							}
+							
+	
 			
-			var settings = {
+	
+				
+var settings = {
   "async": true,
   "crossDomain": true,
   "url": "https://54.202.74.232:80/cds-hook-api/api/v1/cds-services/pro-recommend",
@@ -192,13 +452,14 @@ $.ajax(settings1).done(function (response) {
   "headers": {
     "Content-Type": "application/json",
     "Cache-Control": "no-cache",
-    "Postman-Token": "db1d281f-f979-4d31-8562-75c6252fabed"
+    "Postman-Token": "35410d6a-12f4-4145-9655-db99cdaa0e90"
   },
   "processData": false,
-  "data": "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/COREPRACTITIONER1\",\n   \"patient\": \"SMART-1288992\",\n   \"context\" : {\n       \"patientId\" : \"SMART-1288992\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \"male\",\n         \"birthDate\" : \"1925-12-23\",\n         \"id\" : \"SMART-1288992\",\n         \"active\" : true\n      }\n   }\n}"
+  "data": "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/4464007\",\n   \"patient\": \"SMART-4342009\",\n   \"context\" : {\n       \"patientId\" : \"SMART-4342009\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \"female\",\n         \"birthDate\" : \"1925-12-23\",\n         \"id\" : \"SMART-4342009\",\n         \"active\" : true\n      }\n   }\n}"
 }
-			
-			
+
+
+
 			$.ajax(settings).done(function (response) {
 			  //console.log(response);
 			  
@@ -223,7 +484,7 @@ $.ajax(settings1).done(function (response) {
 											//console.log($t6);
 											})
 											
-											$("BODY").append("<div class='panel panel-default'>	<div id='rec' class='panel-body'><b style='color:#0079BE;font-size: 16px;'>"+$t1 + "</b></br>"+ "<I style='font-size: 12px;'>Source: <span style='color:blue;font-size: 12px;'>"+$t3 + "</span></I></br></br>"+$t2+"</br><button class='button button4' type='button' onclick='alert('Test!')'>"+ $t4+"</button></br><a href='"+$t6+"'>"+$t5+"</a></div> </div>")
+											$("article").append("<div class='panel panel-default'>	<div id='rec' class='panel-body'><b style='color:#0079BE;font-size: 16px;'>"+$t1 + "</b></br>"+ "<I style='font-size: 12px;'>Source: <span style='color:blue;font-size: 12px;'>"+$t3 + "</span></I></br></br>"+$t2+"</br><button class='button button4' type='button' onclick='alert('Test!')'>"+ $t4+"</button></br><a href='"+$t6+"'>"+$t5+"</a></div> </div>")
 																					
 											$("rec").append("<b>"+$t1+"</b>");
 											$("rec").append("</br>");$("rec").append("</br>");
@@ -239,14 +500,23 @@ $.ajax(settings1).done(function (response) {
 			});
 			
 			
+		
 			
 			
-			
-			
-			
-			listForms();
-			
-		</script>	
+
+//console.log(form_oid);	
+listForms();
+formDetails(FormOID);
+
+</script>		
+  
+  
+  
+  
+  
+  </article>
+</section>
+	
 
   
     <!-- Required JS files to enable this page to embed within an MPage -->
