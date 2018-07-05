@@ -22,11 +22,9 @@
       var token = smart.tokenResponse.id_token;
       var access_token= smart.tokenResponse.access_token;
       console.log(practitioner_id);
-      document.getElementById("pract_id").innerHTML="<b>ID: </b>" + practitioner_id;
+      //document.getElementById("pract_id").innerHTML="<b>ID: </b>" + practitioner_id;
      
-      document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById("pract_id").innerHTML=practitioner_id;
-      });
+     
       
       
        var base64Url = token.split('.')[1];
@@ -194,6 +192,8 @@
     $('#loading').hide();
     $('#fname').html(p.fname);
     $('#lname').html(p.lname);
+    $('#fname1').html(p.fname);
+    $('#lname1').html(p.lname);
     $('#id').html(p.id);
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
