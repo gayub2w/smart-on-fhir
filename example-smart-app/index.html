@@ -60,7 +60,7 @@ body {
 /* Style the header */
 header {
     background: linear-gradient(to bottom, #2F99D5 0%, #1169A8 100%);
-    padding : 20px;
+ 
     text-align: left;
     font-size: 35px;
     color: white;
@@ -155,18 +155,52 @@ table#t02 td,th {
 	margin-left:1em;
    
 }
-	
+	/* Create four equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 25%;
+	text-align: left;
+    
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 </style>	
   </head>
   <body>
 	
  
 <header>
+	<div class="row">
+  <div class="column" >
+    
+    <h4>Some text..</h4>
+	<h4>Some text..</h4>
+	<h4>Some text..</h4>
+  </div>
+  <div class="column" >
+    
+    <h4>Some text..</h4>
+	<h4>Some text..</h4>
+	<h4>Some text..</h4>
+  </div>
+  <div class="column" >
+
+    <h4>Some text..</h4>
+	<h4>Some text..</h4>
+	<h4>Some text..</h4>
+  </div>
+  <div class="column">
+    
+    <h4>Some text..</h4>
+	<h4>Some text..</h4>
+	<h4>Some text..</h4>
+  </div>
 	
-	
-	<h4> <b><span id='lname'></span>, <span id='fname'></span></b><span style="margin-left:13em;">Age: </span><span id='age'></span><span style="margin-left:15em;">Sex: </span><span id='gender'></span><span style="margin-left:15em;">**Allergies**</span></h4>
-	<h4>LOC:USC-GI;200;Q <b style="margin-left:10em;">D.O.B: </b><span id='birthdate'></span><span style="margin-left:15em;">MyUSC Chart:Invite Sent</span></h4>
-	<h4>Observation[Admit Dt:8/3/2018 6:07 Disch Dt: No - Di.. <span id='pract_name' style="margin-left:7em;"></span><span style="margin-left:15em;">Blood Trans Acceptable to pt?Yes</span></h4>
 	
 </header>
 	
