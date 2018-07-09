@@ -45,7 +45,11 @@
 			console.log("am here" + temp13.persona);
       persona = temp13.persona; 
       
-      
+      if(persona === 'provider') {
+  $('#doctor-view').show();
+} else if(persona === 'patient') {
+  $('#patient-view').show();
+}
       
       
       
