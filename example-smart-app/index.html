@@ -217,7 +217,7 @@ table#t02 td,th {
 </header>
 	
 
- <section>
+ <section hidden id = "doctor-view">
   <nav>  
   
 <table id="t01"class="table">
@@ -338,21 +338,7 @@ table#t02 td,th {
 	
 		<script>
 		
-		// Code to decode the JSON web token and get the first and last name of the physician
-		
-			var token = "eyJraWQiOiIyMDE4LTA3LTAxVDE3OjUxOjQzLjQ2NC5lYyIsInR5cCI6IkpXVCIsImFsZyI6IkVTMjU2In0.eyJzdWIiOiJwb3J0YWwiLCJ1cm46Y29tOmNlcm5lcjphdXRob3JpemF0aW9uOmNsYWltcyI6eyJ2ZXIiOiIxLjAiLCJlbmNvdW50ZXIiOiI0Mjc5OTA2IiwidG50IjoiMGI4YTAxMTEtZThlNi00YzI2LWE5MWMtNTA2OWNiYzZiMWNhIiwiYXpzIjoicGF0aWVudFwvUGF0aWVudC5yZWFkIHBhdGllbnRcL09ic2VydmF0aW9uLnJlYWQgbGF1bmNoIG9ubGluZV9hY2Nlc3Mgb3BlbmlkIHByb2ZpbGUiLCJ1c2VyIjoiNDQ2NDAwNyIsInBhdGllbnQiOiI0Njk2MDA3In0sImF6cCI6IjkyZWEwZjA1LWE3ZTYtNDNlOS1hZGE0LTE2NzkxYzMxOWRhYSIsImlzcyI6Imh0dHBzOlwvXC9hdXRob3JpemF0aW9uLnNhbmRib3hjZXJuZXIuY29tXC8iLCJleHAiOjE1MzA1NzM3OTEsImlhdCI6MTUzMDU3MzE5MSwianRpIjoiYWVlNTEwMjctMTRiMC00MWFkLWEzOGQtNmYxMjdiMjlmZjM0IiwidXJuOmNlcm5lcjphdXRob3JpemF0aW9uOmNsYWltczp2ZXJzaW9uOjEiOnsidmVyIjoiMS4wIiwicHJvZmlsZXMiOnsibWlsbGVubml1bS12MSI6eyJwZXJzb25uZWwiOiI0NDY0MDA3IiwiZW5jb3VudGVyIjoiNDI3OTkwNiJ9LCJzbWFydC12MSI6eyJwYXRpZW50cyI6WyI0Njk2MDA3Il0sImF6cyI6InBhdGllbnRcL1BhdGllbnQucmVhZCBwYXRpZW50XC9PYnNlcnZhdGlvbi5yZWFkIGxhdW5jaCBvbmxpbmVfYWNjZXNzIG9wZW5pZCBwcm9maWxlIn19LCJjbGllbnQiOnsibmFtZSI6Ik15UHJvdmlkZXJBcHAiLCJpZCI6IjkyZWEwZjA1LWE3ZTYtNDNlOS1hZGE0LTE2NzkxYzMxOWRhYSJ9LCJ1c2VyIjp7InByaW5jaXBhbCI6InBvcnRhbCIsInBlcnNvbmEiOiJwcm92aWRlciIsImlkc3AiOiIwYjhhMDExMS1lOGU2LTRjMjYtYTkxYy01MDY5Y2JjNmIxY2EiLCJwcmluY2lwYWxVcmkiOiJodHRwczpcL1wvbWlsbGVubmlhLnNhbmRib3hjZXJuZXIuY29tXC9pbnN0YW5jZVwvMGI4YTAxMTEtZThlNi00YzI2LWE5MWMtNTA2OWNiYzZiMWNhXC9wcmluY2lwYWxcLzAwMDAuMDAwMC4wMDQ0LjFEODciLCJpZHNwVXJpIjoiaHR0cHM6XC9cL21pbGxlbm5pYS5zYW5kYm94Y2VybmVyLmNvbVwvYWNjb3VudHNcL2ZoaXJwbGF5LnRlbXBfcmhvLmNlcm5lcmFzcC5jb21cLzBiOGEwMTExLWU4ZTYtNGMyNi1hOTFjLTUwNjljYmM2YjFjYVwvbG9naW4ifSwidGVuYW50IjoiMGI4YTAxMTEtZThlNi00YzI2LWE5MWMtNTA2OWNiYzZiMWNhIn19.8axJpv7YWXy3dMCDcsvXFUIaQxqxdMFU2dlqi7eVZvjqtecnwTaFs5y0OmYanCY_N8TuGrSSRedH52qOx4RTvg";      
-			var base64Url = token.split('.')[1];
-            var base64 = base64Url.replace('-', '+').replace('_', '/');
-            console.log(JSON.parse(window.atob(base64)));
-
-			var mytemp = JSON.parse(window.atob(base64));
-			var temp11="urn:cerner:authorization:claims:version:1";
-			var temp12=mytemp[temp11];
 			
-			var temp13=temp12.user;
-			console.log(temp13.persona);
-		
-		
 		
 			function order_func() {
 			
@@ -558,6 +544,11 @@ formDetails(FormOID);
   
   
   </article>
+</section>
+
+<section hidden id="patient-view">
+	<nav> </nav>
+	<article></article>
 </section>
 	
 
