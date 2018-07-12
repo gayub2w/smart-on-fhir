@@ -21,7 +21,7 @@
       practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
       var access_token= smart.tokenResponse.access_token;
-      console.log(practitioner_id);
+      //console.log(practitioner_id);
       //document.getElementById("pract_id").innerHTML="<b>ID: </b>" + practitioner_id;
      
      
@@ -31,7 +31,7 @@
        var base64 = base64Url.replace('-', '+').replace('_', '/');
        //console.log(JSON.parse(window.atob(base64)));
        pract_name=(JSON.parse(window.atob(base64))).name;
-       console.log(pract_name);
+       //console.log(pract_name);
        //document.getElementById("pract_name").innerHTML="Attending:"+pract_name;
       
        var base64Url1 = access_token.split('.')[1];
@@ -42,7 +42,7 @@
 			var temp12=mytemp[temp11];
 			
 			var temp13=temp12.user;
-			console.log("am here" + temp13.persona);
+			console.log("Logged in as : " + temp13.persona);
       persona = temp13.persona; 
       
       if(persona === 'provider') {
