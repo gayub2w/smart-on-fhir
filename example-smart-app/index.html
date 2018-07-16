@@ -473,7 +473,7 @@ table#t02 td,th {
 							}
 							
 	
-			
+var recdata= "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/"+practitioner_id+"\",\n   \"patient\": \""+patient_id+"\",\n   \"context\" : {\n       \"patientId\" : \""+patient_id+"\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \"female\",\n         \"birthDate\" : \"1925-12-23\",\n         \"id\" : \""+patientid+"\",\n         \"active\" : true\n      }\n   }\n}";			
 	
 				
 var settings = {
@@ -487,7 +487,7 @@ var settings = {
     "Postman-Token": "35410d6a-12f4-4145-9655-db99cdaa0e90"
   },
   "processData": false,
-  "data": "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/4464007\",\n   \"patient\": \"SMART-4342009\",\n   \"context\" : {\n       \"patientId\" : \"SMART-4342009\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \"female\",\n         \"birthDate\" : \"1925-12-23\",\n         \"id\" : \"SMART-4342009\",\n         \"active\" : true\n      }\n   }\n}"
+  "data": recdata
 }
 
 
