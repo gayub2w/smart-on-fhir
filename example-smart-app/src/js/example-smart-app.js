@@ -1,8 +1,10 @@
   //Global variables  
 
     var practitioner_id="";
+    var patient_id="";	
     var pract_name="";
     var persona="";
+	
    
  
 (function(window){
@@ -78,6 +80,7 @@
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var id = patient.id;
+	  patient_id = patient.id;
           var dob = new Date(patient.birthDate);
           var day = dob.getDate();
           var monthIndex = dob.getMonth() + 1;
