@@ -95,9 +95,7 @@
 	  dobstr2 = year  + '-' + monthIndex  + '-' + day;
           var fname = '';
           var lname = '';
-		function recdatapid() {
-			return patient_id;
-		}
+		
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
