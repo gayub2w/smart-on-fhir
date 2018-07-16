@@ -341,7 +341,9 @@ table#t02 td,th {
 	
 		<script>
 		
-			
+			console.log("here   "+gender2);
+			console.log("here   "+dobstr2);	
+			console.log("here   "+patient_id);	
 		
 			function order_func() {
 			
@@ -352,7 +354,7 @@ table#t02 td,th {
 			alert("FormName : " + sformname);	
 
 					var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
-								console.log(date1+"+00:00");
+							console.log(date1);
 							console.log(patient_id);
 							console.log(gender2);
 							console.log(dobstr2);	
@@ -374,7 +376,7 @@ table#t02 td,th {
 }
 							
 					$.ajax(settings1).done(function (response) {
-					 console.log("amhere");
+					  console.log("amhere  ");
 					  console.log(response);
 					});
 										
@@ -474,9 +476,7 @@ table#t02 td,th {
 								})
 							}
 							
-console.log(gender2);
-console.log(dobstr2);	
-console.log(patient_id);	
+
 			
 var recdata= "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/"+practitioner_id+"\",\n   \"patient\": \""+patient_id+"\",\n   \"context\" : {\n       \"patientId\" : \""+patient_id+"\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \"female\",\n         \"birthDate\" : \"1925-12-23\",\n         \"id\" : \""+patient_id+"\",\n         \"active\" : true\n      }\n   }\n}";			
 	
