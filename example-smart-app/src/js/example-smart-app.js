@@ -1,9 +1,11 @@
   //Global variables  
 
     var practitioner_id="";
- 
     var pract_name="";
     var persona="";
+    var patient_id="";
+    var dobstr2="";
+    var gender2="";	
    
    
  
