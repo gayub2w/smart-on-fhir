@@ -88,11 +88,16 @@
           var day = dob.getDate();
           var monthIndex = dob.getMonth() + 1;
           var year = dob.getFullYear();
+		
+		
 
           var dobStr = monthIndex + '/' + day + '/' + year;
 	  dobstr2 = year  + '-' + monthIndex  + '-' + day;
           var fname = '';
           var lname = '';
+		function recdatapid() {
+			return patient_id;
+		}
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
