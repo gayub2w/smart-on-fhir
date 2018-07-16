@@ -4,7 +4,8 @@
     var patient_id="";	
     var pract_name="";
     var persona="";
-	
+    var dobstr2="";
+    var gender2="";	
    
  
 (function(window){
@@ -79,6 +80,7 @@
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
+	  gender2 = patient.gender;
           var id = patient.id;
 	  patient_id = patient.id;
           var dob = new Date(patient.birthDate);
@@ -87,6 +89,7 @@
           var year = dob.getFullYear();
 
           var dobStr = monthIndex + '/' + day + '/' + year;
+	  dobstr2 = year  + '-' + monthIndex  + '-' + day;
           var fname = '';
           var lname = '';
 
