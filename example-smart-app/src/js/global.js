@@ -1,4 +1,4 @@
 //Global Varibales
-var patient_id;
-var gender2;
-var dobstr2;
+var patient_id="";
+var gender2="";
+var dobstr2="";
