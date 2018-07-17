@@ -25,7 +25,7 @@
       practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
       var access_token= smart.tokenResponse.access_token;
-      //console.log(practitioner_id);
+      console.log(practitioner_id);
       //document.getElementById("pract_id").innerHTML="<b>ID: </b>" + practitioner_id;
      
      
