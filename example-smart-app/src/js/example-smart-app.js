@@ -3,9 +3,7 @@
     var practitioner_id="";
     var pract_name="";
     var persona="";
-    var patient_id="";
-    var dobstr2="";
-    var gender2="";	
+   	
    
    
  
@@ -21,6 +19,9 @@
 
     function onReady(smart)  {
       console.log(smart.tokenResponse);
+ var patient_id="";
+    var dobstr2="";
+    var gender2="";
       
       practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
