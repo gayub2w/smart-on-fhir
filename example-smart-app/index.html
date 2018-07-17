@@ -369,7 +369,7 @@ table#t02 td,th {
 					var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 							console.log(date1);
 							console.log(window.patient_id);
-				
+							console.log(practitioner_id);
 							console.log(window.gender2);
 							console.log(window.dobstr2);	
 			var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"requested\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"reference\": \"Patient/"+patient_id+"\"\n\t},\n\t\"performer\": {\n\t\t\"reference\": \"Practitioner/"+practitioner_id+"\"\n\t},\n\t\"reasonCodeableConcept\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"35489007\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}]\n\t}\n}";
