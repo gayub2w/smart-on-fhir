@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">	
+<html>
+<head>
+ 
+ 
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+  <title>Stock Search</title>
+ 
+  <style type="text/css">
+   
+  #ResultDisplay {
+	min-width: 310px;
+	max-width: 900px;
+	height: 600px;
+	margin: 0 auto
+}
+	
+	
+	
+  </style>
+  </head>
+  <body>
+  <div id="ResultDisplay">
+  </div>
+  
+  <script>
+  
+  
+Highcharts.chart('ResultDisplay', {
+
+    title: {
+        text: 'Numeric Pain Score'
+    },
+
+    subtitle: {
+        text: ''
+    },
+
+    yAxis: {
+	tickInterval: 2,
+        title: {
+            text: ''
+        },
+		min:0,
+		max:10
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 2010
+        }
+    },
+
+    series: [
+         {
+        name: 'Line1',
+        data: [0,1, 10, 3, 0, 0, 5, 8,0]
+    }, {
+        name: 'Line2',
+        data: [0,2, 5, 8, 2, 7, 0, 0, 2]
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+  </script>
+  </body>
+  
+ </html>
+  
