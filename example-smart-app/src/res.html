@@ -35,7 +35,7 @@
 Highcharts.chart('ResultDisplay', {
 
     title: {
-        text: 'Numeric Pain Score'
+        text: 'Patient Reported Outcomes'
     },
 
     subtitle: {
@@ -45,7 +45,7 @@ Highcharts.chart('ResultDisplay', {
     yAxis: {
 	tickInterval: 2,
         title: {
-            text: ''
+            text: 't-score'
         },
 		min:0,
 		max:10
@@ -67,10 +67,10 @@ Highcharts.chart('ResultDisplay', {
 
     series: [
          {
-        name: 'Line1',
+        name: 'Pain',
         data: [0,1, 10, 3, 0, 0, 5, 8,0]
     }, {
-        name: 'Line2',
+        name: 'Physician Function',
         data: [0,2, 5, 8, 2, 7, 0, 0, 2]
     }],
 
