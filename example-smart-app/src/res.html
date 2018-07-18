@@ -17,7 +17,7 @@
   #ResultDisplay {
 	min-width: 310px;
 	max-width: 900px;
-	height: 600px;
+	height: 500px;
 	margin: 0 auto
 }
 	
@@ -33,29 +33,25 @@
   
   
 Highcharts.chart('ResultDisplay', {
-
     title: {
         text: 'Patient Reported Outcomes'
     },
-
     subtitle: {
         text: ''
     },
-
     yAxis: {
-	tickInterval: 2,
+	tickInterval: 20,
         title: {
             text:'<p style=\" font-sixe: 16px\;\"><b>t-score</b></p>'
         },
 		min:0,
-		max:10
+		max:100
     },
     legend: {
         layout: 'vertical',
         align: 'right',
         verticalAlign: 'middle'
     },
-
     plotOptions: {
         series: {
             label: {
@@ -64,16 +60,16 @@ Highcharts.chart('ResultDisplay', {
             pointStart: 2010
         }
     },
-
     series: [
          {
         name: 'PROMIS Bank v1.1 - Pain Interference',
-        data: [0,1, 10, 3, 0, 0, 5, 8,0]
+        data: [0,15, 10, 30, 30, 0, 0, 8,0]
     }, {
         name: 'PROMIS Bank v2.0 - Physical Function',
-        data: [0,2, 5, 8, 2, 7, 0, 0, 2]
+        data: [0,20, 15, 8, 11, 5, 33, 0, { marker: {
+                    fillColor: '#FF0000'
+            },y:41.9}]
     }],
-
     responsive: {
         rules: [{
             condition: {
@@ -88,7 +84,6 @@ Highcharts.chart('ResultDisplay', {
             }
         }]
     }
-
 });
   </script>
   </body>
