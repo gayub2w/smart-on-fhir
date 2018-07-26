@@ -683,6 +683,9 @@ var assessmentOID = startAssessment(FormOID);
 
         success: function(data) { 
            console.log(data);
+		console.log(data.Theta);
+		   var T_Score = data.Theta * 10 + 50.0;
+		   console.log("T-Score : " + T_Score);
 		   //console.log("results");
         },
 	
