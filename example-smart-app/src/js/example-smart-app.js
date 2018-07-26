@@ -36,7 +36,7 @@
        //console.log(JSON.parse(window.atob(base64)));
        pract_name=(JSON.parse(window.atob(base64))).name;
        //console.log(pract_name);
-      //document.getElementById("pract_name").innerHTML="Attending:"+pract_name;
+      document.getElementById("pract_name").innerHTML="Attending:"+pract_name;
       
        var base64Url1 = access_token.split('.')[1];
        var base641 = base64Url1.replace('-', '+').replace('_', '/');
