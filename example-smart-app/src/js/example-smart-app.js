@@ -51,6 +51,7 @@
       
       if(persona === 'provider') {
   $('#doctor-view').show();
+ $('#doctor-view-head').show();
  	      
 } else if(persona === 'patient') {
   $('#patient-view').show();
