@@ -350,7 +350,18 @@ table#t02 td,th {
 
 <section hidden id="patient-view">
 	<nav> </nav>
-	<article></article>
+	<article>
+	<div id="header">
+	<p> Questionnaire for PROMIS Bank v2.0 - Physical Function</p>
+	</div>
+	
+
+	<div id="Content">
+	</div>
+	
+	</article>
+	
+	
 </section>
 	<script>
 		
@@ -377,24 +388,24 @@ table#t02 td,th {
 
 	
 					var settings1 = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://sapphire-demo.meliorix.com/a2d2/cds-hook-api/api/resource/post/procedure",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-    "Cache-Control": "no-cache",
-    "Postman-Token": "15f84b11-8896-8e3f-e7be-6e11cdd23f43"
-  },
-  "processData": false,
-  "data": prdata
-}
-							
-					$.ajax(settings1).done(function (response) {
-					  //console.log("amhere  ");
-					  console.log(response);
-					});
-										
+					  "async": true,
+					  "crossDomain": true,
+					  "url": "https://sapphire-demo.meliorix.com/a2d2/cds-hook-api/api/resource/post/procedure",
+					  "method": "POST",
+					  "headers": {
+					    "Content-Type": "application/json",
+					    "Cache-Control": "no-cache",
+					    "Postman-Token": "15f84b11-8896-8e3f-e7be-6e11cdd23f43"
+					  },
+					  "processData": false,
+					  "data": prdata
+					}
+
+										$.ajax(settings1).done(function (response) {
+										  //console.log("amhere  ");
+										  console.log(response);
+										});
+
 			}
 		
 					
@@ -462,34 +473,7 @@ table#t02 td,th {
 						});
 				}	
 			
-				function formDetails(FormOID) {
-								$.ajax({
-									url: Server + "/2014-01/Forms/" + FormOID + ".json",
-									cache: false,
-									type: "POST",
-									data: "",
-									dataType: "json",
-
-									beforeSend: function(xhr) {
-													var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
-													var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
-													
-													var base64 = btoa(Reg + ":" + Token);
-													xhr.setRequestHeader("Authorization", "Basic " + base64);
-									},
-
-									success: function(data) {
-												//console.log(data);			
-												
-												
-												
-									},
-								
-									error: function(jqXHR, textStatus, errorThrown) {
-										alert(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
-									}
-								})
-							}
+				
 							
 
 	function prorecommend() {	
@@ -557,13 +541,22 @@ var settings = {
 			
 	}
 			
-			
 
 //console.log(form_oid);	
 listForms();
-formDetails(FormOID);
-
 prorecommend();
+		
+		
+// Flow for patient's app		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 </script>	
 
