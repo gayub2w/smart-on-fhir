@@ -33,7 +33,6 @@
 				margin: 8px 2px;
 				cursor: pointer;
 				}
-
 		.button1 {border-radius: 2px;}
 		.button2 {border-radius: 4px;}
 		.button3 {border-radius: 4px;width: 100px; }
@@ -49,15 +48,12 @@ option[value=""][disabled] {
 option {
   color: black;
 }
-
 * {
     box-sizing: border-box;
 }
-
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
-
 /* Style the header */
 header {
     background: linear-gradient(to bottom, #2F99D5 0%, #1169A8 100%);
@@ -67,7 +63,6 @@ header {
     color: white;
 	
 }
-
 .icon-bar {
     width: 100%;
     height: 10%;
@@ -76,7 +71,6 @@ header {
     font-size: 14px;
     overflow: auto;
 }
-
 	.icon-bar01 {
     width: 100%;
     height: 10%;
@@ -85,27 +79,22 @@ header {
     font-size: 20px;
     overflow: auto;
 }
-
-
 /* Create two columns/boxes that floats next to each other */
 nav {
     float: left;
     width: 20%;
     background: #ccc;
 	 height: 100%; /* Full height */
-
 	   overflow: auto;
 	 max-height: calc(100vh - 9rem);
       overflow-y: auto;
    
 }
-
 /* Style the list inside the menu */
 nav ul {
     list-style-type: none;
     padding: 0;
 }
-
 article {
    float: left;
     width: 80%;
@@ -115,8 +104,6 @@ article {
 	max-height: calc(100vh - 9rem);
 	
 }
-
-
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
     nav, article {
@@ -128,20 +115,16 @@ table#t01 {border-collapse: collapse; }
 table#t01 th {
     background-color: #283B4A;
   color: white;
-
 }
-
 table#t01 tr {
     background-color: #48545D;
   color: white;
  
-
 }
 table#t01 #protab {
  background-color: #095071;
   color: white;
 }
-
 table#t02 {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -151,8 +134,6 @@ table#t02 th {
     background-color: #939CA6;
 	margin-left:0.5em;
 }
-
-
 table#t02 td,th {
     border: 1px solid #dddddd;
     text-align: left;
@@ -160,7 +141,6 @@ table#t02 td,th {
 	background-color: white;
 	margin-left:0.5em;
 }
-
 #v1 {
     border-left: 1px solid black;
     height: 100%;
@@ -174,7 +154,6 @@ table#t02 td,th {
 	text-align: left;
     
 }
-
 /* Clear floats after the columns */
 .row:after {
     content: "";
@@ -350,18 +329,7 @@ table#t02 td,th {
 
 <section hidden id="patient-view">
 	<nav> </nav>
-	<article>
-	<div id="header">
-	<p> Questionnaire for PROMIS Bank v2.0 - Physical Function</p>
-	</div>
-	
-
-	<div id="Content">
-	</div>
-	
-	</article>
-	
-	
+	<article></article>
 </section>
 	<script>
 		
@@ -377,7 +345,6 @@ table#t02 td,th {
 			var sformname = e.options[e.selectedIndex].text;
 			alert("FormOID : " + sformoid);
 			alert("FormName : " + sformname);	
-
 					var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 							console.log(date1);
 							console.log(window.patient_id);
@@ -385,27 +352,26 @@ table#t02 td,th {
 							//console.log(window.gender2);
 							//console.log(window.dobstr2);	
 			var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"reference\": \"Patient/"+patient_id+"\"\n\t},\n\t\"performer\": {\n\t\t\"reference\": \"Patient/"+patient_id+"\"\n\t},\n\t\"reasonCode\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"35489007\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}]\n\t}\n}";
-
 	
 					var settings1 = {
-					  "async": true,
-					  "crossDomain": true,
-					  "url": "https://sapphire-demo.meliorix.com/a2d2/cds-hook-api/api/resource/post/procedure",
-					  "method": "POST",
-					  "headers": {
-					    "Content-Type": "application/json",
-					    "Cache-Control": "no-cache",
-					    "Postman-Token": "15f84b11-8896-8e3f-e7be-6e11cdd23f43"
-					  },
-					  "processData": false,
-					  "data": prdata
-					}
-
-										$.ajax(settings1).done(function (response) {
-										  //console.log("amhere  ");
-										  console.log(response);
-										});
-
+  "async": true,
+  "crossDomain": true,
+  "url": "https://sapphire-demo.meliorix.com/a2d2/cds-hook-api/api/resource/post/procedure",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "15f84b11-8896-8e3f-e7be-6e11cdd23f43"
+  },
+  "processData": false,
+  "data": prdata
+}
+							
+					$.ajax(settings1).done(function (response) {
+					  //console.log("amhere  ");
+					  console.log(response);
+					});
+										
 			}
 		
 					
@@ -414,7 +380,6 @@ table#t02 td,th {
 				var form_name=[];
 				var Server = "https://www.assessmentcenter.net/ac_api";
 				var FormOID = "96FE494D-F176-4EFB-A473-2AB406610626";  // Sample form -- replace with your FormOID
-
 				var promisUID="001";
 				
 				function callback1(data){
@@ -428,7 +393,6 @@ table#t02 td,th {
 						type: "POST",
 						data: "",
 						dataType: "json",
-
 						beforeSend: function(xhr) {
 						 var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
 						 var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
@@ -436,7 +400,6 @@ table#t02 td,th {
 						 var base64 = btoa(Reg + ":" + Token);
 						xhr.setRequestHeader("Authorization", "Basic " + base64);
 						},
-
 							success: function(data) { 
 							
 								console.log(data);
@@ -447,7 +410,6 @@ table#t02 td,th {
 								
 								var select = document.getElementById("selectform"); 
 								
-
 								//console.log("all forms"+forms);
 								for (var i=0; i < forms.length; i++) {
 									form_oid[i]=forms[i].OID;
@@ -473,9 +435,33 @@ table#t02 td,th {
 						});
 				}	
 			
-				
+				function formDetails(FormOID) {
+								$.ajax({
+									url: Server + "/2014-01/Forms/" + FormOID + ".json",
+									cache: false,
+									type: "POST",
+									data: "",
+									dataType: "json",
+									beforeSend: function(xhr) {
+													var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
+													var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
+													
+													var base64 = btoa(Reg + ":" + Token);
+													xhr.setRequestHeader("Authorization", "Basic " + base64);
+									},
+									success: function(data) {
+												//console.log(data);			
+												
+												
+												
+									},
+								
+									error: function(jqXHR, textStatus, errorThrown) {
+										alert(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+									}
+								})
+							}
 							
-
 	function prorecommend() {	
 		patient_id="";
 		gender2="";
@@ -496,9 +482,6 @@ var settings = {
   "processData": false,
   "data": recdata
 }
-
-
-
 			$.ajax(settings).done(function (response) {
 			  //console.log(response);
 			  
@@ -537,27 +520,14 @@ var settings = {
 			  
 			 //document.getElementById("demo").innerHTML = response[0];
 			});
-
 			
 	}
 			
-
+			
 //console.log(form_oid);	
 listForms();
+formDetails(FormOID);
 prorecommend();
-		
-		
-// Flow for patient's app		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
 </script>	
 
   
@@ -580,7 +550,6 @@ prorecommend();
         function(p) {
           drawVisualization(p);
         },
-
         //Display 'Failed to call FHIR Service' if extractData failed
         function() {
           $('#loading').hide();
