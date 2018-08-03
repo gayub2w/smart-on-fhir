@@ -375,7 +375,7 @@ table#t02 td,th {
   </article>
 </section>
 
-<section hidden id="patient-view"  class="container">
+<section hidden id="patient-view" >
 	
 	<header id="pat-header" class="container">
 		</br>
@@ -811,7 +811,7 @@ var assessmentOID = startAssessment(FormOID);
                                         screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + "Save" + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'"+data.Items[i].Elements[j].Map[k].ItemResponseOID +"') />" + "</div>";
                                         break;
                                     case "TEXT":
-                                        screen = screen + "<div style=\'height: 50px\' ><input type=\'text\'  id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Description + "\' />" + "</div>";
+                                        screen = screen + "<div style=\'height: 50px\' ><input type=\'text\'  id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Description + "\' />" + "</br></div>";
                                         screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + "btnSave" + "\' name=\'" + "btnSave" + "\' value=\'" + "Save" + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'" + data.Items[i].Elements[j].Map[k].ItemResponseOID+"') />" + "</div>";
                                         break;
                                     default:
@@ -819,7 +819,7 @@ var assessmentOID = startAssessment(FormOID);
                                         Response = data.Items[i].Elements[j].Map[k].Value;
                                         if (data.Items[i].Elements[j].Map[k].DataType == "bitwise") {
                                             HasBitWiseValues = true;
-                                            screen = screen + "<div style=\'height: 20px\' ><input type=\'checkbox\' id=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' name=\'" + data.Items[i].FormItemOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Value + "\' onclick=addResponse(this) />" + data.Items[i].Elements[j].Map[k].Description + "</div>";
+                                            screen = screen + "<div style=\'height: 20px\' ><input type=\'checkbox\' id=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' name=\'" + data.Items[i].FormItemOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Value + "\' onclick=addResponse(this) />" + data.Items[i].Elements[j].Map[k].Description + "</br></div>";
                                         } else {
                                             screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Description + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'"+data.Items[i].Elements[j].Map[k].ItemResponseOID+"') />" + "</div>";
                                         }
@@ -834,27 +834,27 @@ var assessmentOID = startAssessment(FormOID);
                 }
             } else {
                 /* Stem (e.g., "Thinking about how your illness...") */
-                screen += "<div style=\'height: 50px; text-align: bottom\'>" + data.Items[0].Elements[0].Description + "</div>";
+                screen += "<div style=\'height: 50px; text-align: bottom\'>" + data.Items[0].Elements[0].Description + "</br></div>";
 
                 /* Question */
-                screen += "<div style=\'height: 40px; font-style: italic\'>" + data.Items[0].Elements[1].Description + "</div>";
+                screen += "<div style=\'height: 40px; font-style: italic\'>" + data.Items[0].Elements[1].Description + "</br></div>";
 
                 screen += "<table>";
 
                 /* "How true was this before/since your illness?" */
                 screen += "<tr>";
-                screen += "<td width=\'50%\'><div style=\'height: 20px\'>" + data.Items[1].Elements[1].Description + "</div></td>";
+                screen += "<td width=\'50%\'><div style=\'height: 20px\'>" + data.Items[1].Elements[1].Description + "</br></div></td>";
                 screen += "<td width=\'10px\'></td>";
-                screen += "<td><div style=\'height: 20px\'>" + data.Items[2].Elements[1].Description + "</div></td>";
+                screen += "<td><div style=\'height: 20px\'>" + data.Items[2].Elements[1].Description + "</br></div></td>";
                 screen += "</tr>";
 
                 /* Answers */
                 theQuestion = data.Items[0].FormItemOID;
                 for (var i = 0; i < 5; i++) {
                     screen += "<tr>";
-                    screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[1].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[1].Elements[2].Map[i].Value + "\' value=\'" + data.Items[1].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</div>";
+                    screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[1].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[1].Elements[2].Map[i].Value + "\' value=\'" + data.Items[1].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</br></div>";
                     screen += "<td width=\'10px\'></td>";
-                    screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[2].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[2].Elements[2].Map[i].Value + "\' value=\'" + data.Items[2].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</div>";
+                    screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[2].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[2].Elements[2].Map[i].Value + "\' value=\'" + data.Items[2].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</br></div>";
                     screen += "</tr>"
                 }
                 screen += "<tr><td colspan=\'3\' style=\'height: 70px; text-align: center; vertical-align: bottom\'><div><input type=\'button\' class='btn-submit' id=\'btnSave\' name=\'btnSave\' value=\'Save\' onclick=getResponseSave()></div></td></tr>";
