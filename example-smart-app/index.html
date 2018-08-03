@@ -844,14 +844,14 @@ var assessmentOID = startAssessment(FormOID);
                 /* "How true was this before/since your illness?" */
                 screen += "<tr>";
                 screen += "<td width=\'50%\'><div style=\'height: 20px\'>" + data.Items[1].Elements[1].Description + "</br></div></td>";
-                screen += "<td width=\'10px\'></td>";
+                screen += "<td width=\'30px\'></td>";
                 screen += "<td><div style=\'height: 20px\'>" + data.Items[2].Elements[1].Description + "</br></div></td>";
                 screen += "</tr>";
 
                 /* Answers */
                 theQuestion = data.Items[0].FormItemOID;
                 for (var i = 0; i < 5; i++) {
-                    screen += "<tr>";
+                    screen += "</br><tr></tr><tr>";
                     screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[1].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[1].Elements[2].Map[i].Value + "\' value=\'" + data.Items[1].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</br></div>";
                     screen += "<td width=\'10px\'></td>";
                     screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[2].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[2].Elements[2].Map[i].Value + "\' value=\'" + data.Items[2].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</br></div>";
