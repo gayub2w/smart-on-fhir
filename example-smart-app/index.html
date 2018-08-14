@@ -25,53 +25,45 @@
 </style>	
   </head>
   <body>
-	
  
 <header hidden id = "doctor-view-head">
-	<div class="row">
+  <div class="row">
   <div class="column" >
-    
     	<h4 style="margin-left:1.5em;"><b><span id='lname'></span>, <span id='fname'></span></b></h4>
 	<h4 style="margin-left:1.5em;">LOC:USC-GI;200;Q </h4>
 	<h4 style="margin-left:1.5em;">Observation[Admit Dt:8/3/2018 6:07..</h4>
   </div>
+	  
   <div class="column" >
-    
         <h4><span>Age: </span><span id='age'></h4>
 	<h4><b>D.O.B: </b><span id='birthdate'></span></h4>
 	<h4><span id='pract_name'></span></h4>
-
   </div>
+	  
   <div class="column" >
-
-	 <h4><span >Sex: </span><span id='gender'></span></h4>
-	  <h4><span>MyUSC Chart:Invite Sent</span></h4>
+	<h4><span >Sex: </span><span id='gender'></span></h4>
+	<h4><span>MyUSC Chart:Invite Sent</span></h4>
 	<h4>Blood Trans Acceptable to pt?Yes</h4>
   </div>
+	  
   <div class="column">
-    
         <h4>**Allergies**</h4>
-	
-	
-	
   </div>
 	
-	
 </header>
-		
 
-	
 
  <section hidden id = "doctor-view">
-  <nav>  
+	 
+ <nav>  
   
-<table id="t01"class="table">
+ <table id="t01"class="table">
     
  <div class="icon-bar01">
-			<span  style="margin-left:0.7em;" >Menu - All</span><i style=" font-size: 7px; left: 18em; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i>
-</div>
+	<span  style="margin-left:0.7em;" >Menu - All</span><i style=" font-size: 7px; left: 18em; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i>
+ </div>
     <tbody>
-		<tr>
+	<tr>
         <td>Ambulatory Summary</td>
       </tr>
       <tr>
@@ -135,276 +127,228 @@
  
   <article id="docview-article">
   <div class="icon-bar">
-			<span>&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-left"></i><span>&nbsp;&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-right "></i>&nbsp;&nbsp; <i style=" font-size: 7px; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i><span id="v1"></span>&nbsp;&nbsp; <i class="glyphicon glyphicon-home white"></i> <span style="margin-left:0.5em; font-color:#FFFFFF; font-size:20px;"> Order PRO</span><img border="0" style="margin-bottom:0.2em;margin-left:40em;" src="./src/images/pixel-full-screen.png"  />&nbsp;Fullscreen&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-print white"></i>&nbsp;  Print&nbsp; &nbsp; <i class="glyphicon glyphicon-refresh white"></i><span> &nbsp;2 minutes ago &nbsp; </span>
-			</div>
+	<span>&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-left"></i><span>&nbsp;&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-right "></i>&nbsp;&nbsp; <i style=" font-size: 7px; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i><span id="v1"></span>&nbsp;&nbsp; <i class="glyphicon glyphicon-home white"></i> <span style="margin-left:0.5em; font-color:#FFFFFF; font-size:20px;"> Order PRO</span><img border="0" style="margin-bottom:0.2em;margin-left:40em;" src="./src/images/pixel-full-screen.png"  />&nbsp;Fullscreen&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-print white"></i>&nbsp;  Print&nbsp; &nbsp; <i class="glyphicon glyphicon-refresh white"></i><span> &nbsp;2 minutes ago &nbsp; </span>
+  </div>
   <h3 style="margin-left:0.5em;">Order PRO</h3>
-	
-
 	<div style="position:relative;width:200px;height:25px;border:0;padding:0;margin:0;">
 		<select id="selectform"  style="position:absolute;top:0px;left:0px;width:400px; height:25px;line-height:20px;margin-left:1em;padding:0;">
 		<option value="" disabled selected >Please choose an instrument...</option>
-		 
-
 		</select>
 		</br>
 		</br>
 		<button class="button button3" style="margin-left:1em;" type="button" onclick="order_func()">Order</button>
 	</div>
     </br>
-	</br>
+    </br>
     </br>
 	
-	<h3 style="margin-left:0.5em;">Order Status</h3>
+<h3 style="margin-left:0.5em;">Order Status</h3>
 
 <table id="t02">
   <tr>
-	  <th>Event Date Time</th>	  
+    <th>Event Date Time</th>	  
     <th>PROs Ordered</th>
     <th>Status</th>
     <th>Results</th>
-	  <th>Ref Range</th>
+    <th>Ref Range</th>
   </tr>
   <tr>
-	  <td> 2018-07-18 </td>
+    <td> 2018-07-18 </td>
     <td>PROMIS Bank v2.0 - Emotional Support</td>
     <td>Ordered</td>
     <td> -- </td>
-	  <td> </td>
+    <td> </td>
   </tr>
   <tr>
-	  <td> 2018-07-06 </td>
+    <td> 2018-07-06 </td>
     <td>PROMIS Bank v2.0 - Physical Function</td>
     <td>Completed</td>
-	  <td> <a target="_blank" href="./src/res.html">PROMIS T-SCORE 41.9</a></td>
-	  <td> 1 - 100 </td>
+    <td> <a target="_blank" href="./src/res.html">PROMIS T-SCORE 41.9</a></td>
+    <td> 1 - 100 </td>
   </tr>
   </table>
-
   </br>
-			
-
 	<h3 style="margin-left:0.5em;">Recommended PRO for <b><span id='lname1'></span>, <span id='fname1'></span></b></h3>
 	<div id="content">
-	  </div>  
+  </div>  
   </article>
 </section>
 
 <section hidden id="patient-view" >
 	
 	<header id="pat-header" class="container">
-		</br>
+	</br>
 	<P style="margin-left:1em; text-align: left; font-size: 28px;">PROs available for Wilma Smart</P></br>
 	</header>
 
-
-
 	<div id ="PROname" class="container">
 	</br>
-</br>
+        </br>
 	<p style="margin-left:1em; text-align: left; font-size: 18px;" > PROMIS Bank v2.0 - Physical Function <button class="button button6" style="margin-left:1em;" type="button" onclick="displayQ(); this.disabled=true; ">Start Assessment</button></P>
-   
 	</br>
-	
 
 	<div hidden id="header1" class="container">
 	<p style="margin-left:5em;"><b>Questionnaire for PROMIS Bank v2.0 - Physical Function</b></p>
 	</div>
-	
-	
-
 	<div hidden id="Content" class="container">
-	</div>
-	
-	
+	</div>	
 </section>
-	<script>
-		
-			
-	
-					
+
+<script>	
 		
 		
 			function order_func() {
-			
 			var e = document.getElementById("selectform");
 			var sformoid = e.options[e.selectedIndex].value;
 			var sformname = e.options[e.selectedIndex].text;
 			alert("FormOID : " + sformoid);
 			alert("FormName : " + sformname);	
-					var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
-							console.log(date1);
-							console.log(window.patient_id);
-							//console.log(practitioner_id);
-							//console.log(window.gender2);
-							//console.log(window.dobstr2);	
+			var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
+					console.log(date1);
+					console.log(window.patient_id);
+					//console.log(practitioner_id);
+					//console.log(window.gender2);
+					//console.log(window.dobstr2);	
 			var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"reference\": \"Patient/"+patient_id+"\"\n\t},\n\t\"performer\": {\n\t\t\"reference\": \"Patient/"+patient_id+"\"\n\t},\n\t\"reasonCode\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"35489007\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}]\n\t}\n}";
 	
-					var settings1 = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://sapphire-demo.meliorix.com/cds-hook-api/api/resource/post/procedure",	
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-    "Cache-Control": "no-cache",
-    "Postman-Token": "15f84b11-8896-8e3f-e7be-6e11cdd23f43"
-  },
-  "processData": false,
-  "data": prdata
-}
-							
-					$.ajax(settings1).done(function (response) {
-					  //console.log("amhere  ");
-					  console.log(response);
-					});
+			var settings1 = {
+					  "async": true,
+					  "crossDomain": true,
+					  "url": "https://sapphire-demo.meliorix.com/cds-hook-api/api/resource/post/procedure",	
+					  "method": "POST",
+					  "headers": {
+					    "Content-Type": "application/json",
+					    "Cache-Control": "no-cache",
+					    "Postman-Token": "15f84b11-8896-8e3f-e7be-6e11cdd23f43"
+					  },
+					  "processData": false,
+					  "data": prdata
+					}
+
+			$.ajax(settings1).done(function (response) {
+			  //console.log("amhere  ");
+			  console.log(response);
+			});
 										
 			}
 		
 					
 		
-				var form_oid=[];
-				var form_name=[];
-				var Server = "https://www.assessmentcenter.net/ac_api";
-				var FormOID = "96FE494D-F176-4EFB-A473-2AB406610626";  // Sample form -- replace with your FormOID
-				var promisUID="001";
+			var form_oid=[];
+			var form_name=[];
+			var Server = "https://www.assessmentcenter.net/ac_api";
+			var FormOID = "96FE494D-F176-4EFB-A473-2AB406610626";  // Sample form -- replace with your FormOID
+			var promisUID="001";
 				
-				function callback1(data){
-				//console.log(data);
-			
-					}
-				function listForms() {
-					$.ajax({
-						url: Server + "/2014-01/Forms/.json",
-						cache: false,
-						type: "POST",
-						data: "",
-						dataType: "json",
-						beforeSend: function(xhr) {
-						 var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
-						 var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
-						
-						 var base64 = btoa(Reg + ":" + Token);
-						xhr.setRequestHeader("Authorization", "Basic " + base64);
+			function callback1(data){
+			//console.log(data);
+
+				}
+			function listForms() {
+				$.ajax({
+					url: Server + "/2014-01/Forms/.json",
+					cache: false,
+					type: "POST",
+					data: "",
+					dataType: "json",
+					beforeSend: function(xhr) {
+					var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
+					var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
+
+					var base64 = btoa(Reg + ":" + Token);
+					xhr.setRequestHeader("Authorization", "Basic " + base64);
+					},
+						success: function(data) { 
+
+							console.log(data);
+							//callback1(data);
+							//console.log("am here");	
+							var container = document.getElementById("Content");
+							var forms = data.Form;
+
+							var select = document.getElementById("selectform"); 
+
+							//console.log("all forms"+forms);
+							for (var i=0; i < forms.length; i++) {
+								form_oid[i]=forms[i].OID;
+								form_name[i]=forms[i].Name;
+								var opt = forms[i].Name;
+								var val = forms[i].OID;
+								var el = document.createElement("option");
+								el.textContent = opt;
+								el.value = val;
+								select.appendChild(el);
+
+								//console.log(forms[i].OID + " : " + forms[i].Name + "");
+								//var myform = document.createElement("div");
+								//myform.innerHTML = forms[i].OID + " : " + forms[i].Name + "";
+								//container.appendChild(myform);
+							}
+
 						},
-							success: function(data) { 
-							
-								console.log(data);
-								//callback1(data);
-								//console.log("am here");	
-								var container = document.getElementById("Content");
-								var forms = data.Form;
-								
-								var select = document.getElementById("selectform"); 
-								
-								//console.log("all forms"+forms);
-								for (var i=0; i < forms.length; i++) {
-									form_oid[i]=forms[i].OID;
-									form_name[i]=forms[i].Name;
-									var opt = forms[i].Name;
-									var val = forms[i].OID;
-									var el = document.createElement("option");
-									el.textContent = opt;
-									el.value = val;
-									select.appendChild(el);
-								
-									//console.log(forms[i].OID + " : " + forms[i].Name + "");
-									//var myform = document.createElement("div");
-									//myform.innerHTML = forms[i].OID + " : " + forms[i].Name + "";
-									//container.appendChild(myform);
-								}
-								
-							},
-						
-							error: function(jqXHR, textStatus, errorThrown) {
-								document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
-							}
-						});
-				}	
+
+						error: function(jqXHR, textStatus, errorThrown) {
+							document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+						}
+					});
+			}	
 			
-				function formDetails(FormOID) {
-								$.ajax({
-									url: Server + "/2014-01/Forms/" + FormOID + ".json",
-									cache: false,
-									type: "POST",
-									data: "",
-									dataType: "json",
-									beforeSend: function(xhr) {
-													var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
-													var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
-													
-													var base64 = btoa(Reg + ":" + Token);
-													xhr.setRequestHeader("Authorization", "Basic " + base64);
-									},
-									success: function(data) {
-												//console.log(data);			
-												
-												
-												
-									},
-								
-									error: function(jqXHR, textStatus, errorThrown) {
-										alert(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
-									}
-								})
-							}
-							
-	function prorecommend() {	
-		patient_id="";
-		gender2="";
-		dobstr2="";
-		//console.log("pls"+practitioner_id);
-	var recdata= "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/"+practitioner_id+"\",\n   \"patient\": \""+patient_id+"\",\n   \"context\" : {\n       \"patientId\" : \""+patient_id+"\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \""+gender2+"\",\n         \"birthDate\" : \""+dobstr2+"\",\n         \"id\" : \""+patient_id+"\",\n         \"active\" : true\n      }\n   }\n}";			
 		
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://sapphire-demo.meliorix.com/cds-hook-api/api/v1/cds-services/pro-recommend",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-    "Cache-Control": "no-cache",
-    "Postman-Token": "35410d6a-12f4-4145-9655-db99cdaa0e90"
-  },
-  "processData": false,
-  "data": recdata
-}
+							
+		function prorecommend() {	
+			patient_id="";
+			gender2="";
+			dobstr2="";
+			//console.log("pls"+practitioner_id);
+			var recdata= "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/"+practitioner_id+"\",\n   \"patient\": \""+patient_id+"\",\n   \"context\" : {\n       \"patientId\" : \""+patient_id+"\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \""+gender2+"\",\n         \"birthDate\" : \""+dobstr2+"\",\n         \"id\" : \""+patient_id+"\",\n         \"active\" : true\n      }\n   }\n}";			
+
+			var settings = {
+			  "async": true,
+			  "crossDomain": true,
+			  "url": "https://sapphire-demo.meliorix.com/cds-hook-api/api/v1/cds-services/pro-recommend",
+			  "method": "POST",
+			  "headers": {
+			    "Content-Type": "application/json",
+			    "Cache-Control": "no-cache",
+			    "Postman-Token": "35410d6a-12f4-4145-9655-db99cdaa0e90"
+			  },
+			  "processData": false,
+			  "data": recdata
+			}
 			$.ajax(settings).done(function (response) {
-			  //console.log(response);
-			  
-			  jQuery(response).each(function(i, item){
-								
-								console.log(item.cards)
-								jQuery(item.cards).each(function(j, item){
-											//console.log(item.summary);
-											//console.log(item.detail);
-											var $t1 = item.summary;
-											var $t2 = item.detail;
-											var $t3 = item.source.label;
-											var $t4;
-											jQuery(item.suggestions).each(function(k, item){
-											$t4 = item.label;
-											//console.log($t4);
-											})
-											jQuery(item.links).each(function(l, item){
-											$t5 = item.label;
-											$t6 = item.url;
-											//console.log($t5);
-											//console.log($t6);
-											})
-											
-											$("#docview-article").append("<div class='panel panel-default'>	<div id='rec' class='panel-body'><b style='color:#0079BE;font-size: 16px;'>"+$t1 + "</b></br>"+ "<I style='font-size: 12px;'>Source: <span style='color:blue;font-size: 12px;'>"+$t3 + "</span></I></br></br>"+$t2+"</br><button class='button button4' type='button' onclick='alert('Test!')'>"+ $t4+"</button></br><a href='"+$t6+"'>"+$t5+"</a></div> </div>")
-																					
-											$("rec").append("<b>"+$t1+"</b>");
-											$("rec").append("</br>");$("rec").append("</br>");
-											$("rec").append($t2);
-											$("rec").append("</br>");$("rec").append("</br>");$("rec").append("</br>");
-											
-											//document.getElementById("demo").innerHTML = item.summary + "</br>" + item.detail;
-								})
-								//console.log(item.cards[i])
+			  	//console.log(response);
+
+				jQuery(response).each(function(i, item){
+
+				console.log(item.cards)
+				jQuery(item.cards).each(function(j, item){
+							//console.log(item.summary);
+							//console.log(item.detail);
+							var $t1 = item.summary;
+							var $t2 = item.detail;
+							var $t3 = item.source.label;
+							var $t4;
+							jQuery(item.suggestions).each(function(k, item){
+							$t4 = item.label;
+							//console.log($t4);
 							})
-			  
-			 //document.getElementById("demo").innerHTML = response[0];
+							jQuery(item.links).each(function(l, item){
+							$t5 = item.label;
+							$t6 = item.url;
+							//console.log($t5);
+							//console.log($t6);
+							})
+							$("#docview-article").append("<div class='panel panel-default'>	<div id='rec' class='panel-body'><b style='color:#0079BE;font-size: 16px;'>"+$t1 + "</b></br>"+ "<I style='font-size: 12px;'>Source: <span style='color:blue;font-size: 12px;'>"+$t3 + "</span></I></br></br>"+$t2+"</br><button class='button button4' type='button' onclick='alert('Test!')'>"+ $t4+"</button></br><a href='"+$t6+"'>"+$t5+"</a></div> </div>")
+							$("rec").append("<b>"+$t1+"</b>");
+							$("rec").append("</br>");$("rec").append("</br>");
+							$("rec").append($t2);
+							$("rec").append("</br>");$("rec").append("</br>");$("rec").append("</br>");
+
+							//document.getElementById("demo").innerHTML = item.summary + "</br>" + item.detail;
+				})
+				//console.log(item.cards[i])
+			})
+			  			 //document.getElementById("demo").innerHTML = response[0];
 			});
 			
 	}
@@ -417,9 +361,9 @@ prorecommend();
 		
 		
 // Flow for the patient app
-		function displayQ(){
+function displayQ(){
 	
-  $('#header1').show();
+ $('#header1').show();
  $('#Content').show();
  	      
 }
