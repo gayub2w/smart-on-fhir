@@ -442,6 +442,7 @@ prorecommend();
 					
 					console.log(r);
 					console.log("fin");
+					displayList();
 					
 				}
 		
@@ -497,7 +498,7 @@ prorecommend();
 				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/getTasksOwned",
 				  "method": "GET",
 				  "headers": {
-					"userId": "4342008",
+					"userId": patID,
 					"Cache-Control": "no-cache",
 					"Postman-Token": "bd1cfc8b-da36-4f74-ac1c-289fde061b9c"
 				  }
@@ -809,7 +810,7 @@ prorecommend();
 								
 			
 										
-		displayList();						
+		//displayList();						
 	// APIs to administer the assessmentcenter forms
 					
 		function callasmt(FormOID){
