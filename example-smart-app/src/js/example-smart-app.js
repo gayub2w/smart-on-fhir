@@ -25,6 +25,7 @@
       patID=smart.tokenResponse.patient;
 		MyVars.patid= smart.tokenResponse.patient;
 		console.log(patID);
+		displayList();
 		B(smart.tokenResponse.patient);
 	    }
       practitioner_id = smart.tokenResponse.user;
