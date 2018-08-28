@@ -439,7 +439,7 @@ prorecommend();
 				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/"+taskId+"/start",
 				  "method": "POST",
 				  "headers": {
-					"userId": "4342008",
+					"userId": patID,
 					"Cache-Control": "no-cache",
 					"Postman-Token": "db0f09f2-afff-45ff-9a20-1d2d05bea38c"
 				  }
@@ -458,13 +458,13 @@ prorecommend();
 				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/"+taskId+"/completeTask",
 				  "method": "POST",
 				  "headers": {
-					"userId": "4342008",
+					"userId": patID,
 					"Content-Type": "application/json",
 					"Cache-Control": "no-cache",
 					"Postman-Token": "3b7630b9-7061-49e1-acb9-9e4eda4bf487"
 				  },
 				  "processData": false,
-				  "data": "{\n  \"patientId\": \"4342008\"\n}"
+				  "data": "{\n  \"patientId\": \""+ patID +"\"\n}"
 				}
 
 				$.ajax(settings).done(function (response) {
