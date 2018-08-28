@@ -278,25 +278,6 @@ table#t02 td,th {
 		
 			
 
-			
-				table#t03 {
-					font-family: arial, sans-serif;
-					border-collapse: collapse;
-					width: 100%;
-				}
-				
-				table#t03 th {
-					background-color: #d3d3d3;
-					margin-left:0.5em;
-				}
-				
-				table#t03 td,th {
-				width:50%;
-					border: 1px solid #dddddd;
-					text-align: left;
-					padding: 8px;
-					background-color: white;
-					margin-left:0.5em;
-				}		
+					
 				
 	
