@@ -163,29 +163,7 @@ table#t02 td,th {
     clear: both;
 }
 	
-#header1
-{		
-	width: 100%;
-	height: 30px;
-	font-size: 22px;
-	text-align: left;
-	text-decoration: none;
-}
-		
-#Content{
-	width: 100%;
-	height: 400px;
-	font-size: 20px;
-	padding :40px;
-	margin-left:5em;
-}
 
-#pat-header{
-	width: 100%;
-	height: 100px;
-	background: linear-gradient(to bottom, #2F99D5 0%, #1169A8 100%);
-	color:white;
-}
 
 .btn-submit {
 	background-color: #0079BE; 
@@ -204,4 +182,121 @@ table#t02 td,th {
 
 .button6 {border-radius: 4px;width: 200px; }
 
+
+
+
+
+		@media screen and (min-width: 601px) {
+			  #question {
+				font-size: 24px;
+			  }
+			  #header1 {
+				font-size: 24px;
+			  }
+			  .btn-submit {
+			  width:500px;
+			  }
+			  
+			  #tabhead {
+				font-size: 24px;
+			  }
+			  #new {
+				font-size: 24px;
+			  }
+			  .row{
+			      font-size: 20px;
+			  }
+			  
+			}
+
+			@media screen and (max-width: 600px) {
+			  #question {
+				font-size: 16px;
+			  }
+			  #header1 {
+				font-size: 16px;
+			  }
+			  .btn-submit {
+			  width:300px;
+			  }
+			  
+			  #tabhead {
+				font-size: 16px;
+			  }
+			  
+			  #new {
+				font-size: 16px;
+			  }
+			  
+			  .row{
+			      font-size: 14px;
+			  }
+			}
+		#header1
+		{
+		
+		width: 100%;
+       		height: 30px;
+		
+	
+		
+		text-align: left;
+		text-decoration: none;
+		
+		}
+		
+		#Content{
+        	width: 100%;
+       		height: 400px;
+		font-size: 20px;
+		padding :40px;
+		
+		}
+		
+		#pat-header{
+		width: 100%;
+        height :100px;
+		background: linear-gradient(to bottom, #2F99D5 0%, #1169A8 100%);
+		color:white;
+		}
+		
+		.btn-submit {
+				background-color: #0079BE; 
+				border: none;
+				color: white;
+				padding: 5px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 20px;
+				margin: 8px 2px;
+				cursor: pointer;
+				
+				height: 40px;
+				}
+				
+		
+			
+
+			
+				table#t03 {
+					font-family: arial, sans-serif;
+					border-collapse: collapse;
+					width: 100%;
+				}
+				
+				table#t03 th {
+					background-color: #d3d3d3;
+					margin-left:0.5em;
+				}
+				
+				table#t03 td,th {
+				width:50%;
+					border: 1px solid #dddddd;
+					text-align: left;
+					padding: 8px;
+					background-color: white;
+					margin-left:0.5em;
+				}		
+				
 	
