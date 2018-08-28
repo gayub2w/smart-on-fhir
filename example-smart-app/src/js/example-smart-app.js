@@ -219,6 +219,8 @@
     $('#lname').html(p.lname);
     $('#fname1').html(p.fname);
     $('#lname1').html(p.lname);
+    $('#firstname').html(p.fname);
+    $('#lastname').html(p.lname);
     $('#id').html(p.id);
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
