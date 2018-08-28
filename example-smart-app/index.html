@@ -190,28 +190,31 @@
 
 <section hidden id="patient-view" >
 	
-	<header id="pat-header" class="container">
-		</br>
-	<P style="margin-left:1em; text-align: left; font-size: 28px;">PROs available for Wilma Smart</P></br>
-	</header>
-
-
-
-	<div id ="PROname" class="container">
-	</br>
-</br>
-	<p style="margin-left:1em; text-align: left; font-size: 18px;" > PROMIS Bank v2.0 - Physical Function <button class="button button6" style="margin-left:1em;" type="button" onclick="displayQ(); this.disabled=true; ">Start Assessment</button></P>
-   
-	</br>
-	
-
-	<div hidden id="header1" class="container">
-	<p style="margin-left:5em;"><b>Questionnaire for PROMIS Bank v2.0 - Physical Function</b></p>
+	<div class="container-fluid">
+		<div class="row">
+			<div id="pat-header" class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 " >
+			</br>
+			<P style="margin-left:1em; text-align: left; font-size: 28px;">Welcome, Wilma Smart !</P></br></br>			
+			</div>
+		</div>	
+		<div id="list">
+				
+		</div>		
 	</div>
-	
-	
 
-	<div hidden id="Content" class="container">
+	<div hidden id="Ques" class="container-fluid">
+		<div  class="row"  style="text-align: left; padding-top: 20px; font-size: 14px;">
+					<div id="header1"  class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					 
+						</br>
+						</br>
+					</div>
+		</div>
+						
+		
+		<div id="Content"  class="row" >
+		</div>
+		
 	</div>
 	
 	
@@ -240,18 +243,18 @@
 				//var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"reference\": \"Patient/4342008\"\n\t},\n\t\"performer\": {\n\t\t\"reference\": \"Patient/4342008\"\n\t},\n\t\"reasonCode\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"35489007\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}]\n\t}\n}";
 
 					var settings1 = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/resource/post/procedure",	
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-    "Cache-Control": "no-cache",
-    "Postman-Token": "15f84b11-8896-8e3f-e7be-6e11cdd23f43"
-  },
-  "processData": false,
-  "data": prdata
-}
+					  "async": true,
+					  "crossDomain": true,
+					  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/resource/post/procedure",	
+					  "method": "POST",
+					  "headers": {
+					    "Content-Type": "application/json",
+					    "Cache-Control": "no-cache",
+					    "Postman-Token": "15f84b11-8896-8e3f-e7be-6e11cdd23f43"
+					  },
+					  "processData": false,
+					  "data": prdata
+					}
 							
 					$.ajax(settings1).done(function (response) {
 					  console.log("amhere  ");
@@ -417,55 +420,171 @@ prorecommend();
 		
 		
 // Flow for the patient app
-		function displayQ(){
-	
-  $('#header1').show();
- $('#Content').show();
- 	      
-}
+		
+		
 		
 		var global_asmtOID;
 		var datefin;
 		var Server = "https://www.assessmentcenter.net/ac_api";
 		var ItemResponseOID = "";   
-		var Response = "";                                             
+		var Response = "";  
+		var assessmentOID;	
+		var FormOID;		
+		//var FormOID ="80C5D4A3-FC1F-4C1B-B07E-10B796CF8105";
+		
+		function startTask(taskId){
+		var settings = {
+				  "async": true,
+				  "crossDomain": true,
+				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/"+taskId+"/start",
+				  "method": "POST",
+				  "headers": {
+					"userId": "4342008",
+					"Cache-Control": "no-cache",
+					"Postman-Token": "db0f09f2-afff-45ff-9a20-1d2d05bea38c"
+				  }
+				}
+
+				$.ajax(settings).done(function (response) {
+				  console.log(response);
+				});		
+		}
+		
+		function completeProcess(taskId){
+		
+						var settings = {
+				  "async": true,
+				  "crossDomain": true,
+				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/"+taskId+"/completeTask",
+				  "method": "POST",
+				  "headers": {
+					"userId": "4342008",
+					"Content-Type": "application/json",
+					"Cache-Control": "no-cache",
+					"Postman-Token": "3b7630b9-7061-49e1-acb9-9e4eda4bf487"
+				  },
+				  "processData": false,
+				  "data": "{\n  \"patientId\": \"4342008\"\n}"
+				}
+
+				$.ajax(settings).done(function (response) {
+				  console.log(response);
+				});
+		}
 		
 		
-		var FormOID ="80C5D4A3-FC1F-4C1B-B07E-10B796CF8105";
 		
 		
-			// APIs to administer the assessmentcenter forms
-					function formDetails(FormOID) {
-											$.ajax({
-												url: Server + "/2014-01/Forms/" + FormOID + ".json",
-												cache: false,
-												type: "POST",
-												data: "",
-												dataType: "json",
-												beforeSend: function(xhr) {
-																var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
-																var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
-																
-																var base64 = btoa(Reg + ":" + Token);
-																xhr.setRequestHeader("Authorization", "Basic " + base64);
-												},
-												success: function(data) {
-															console.log(data);			
-															
-															
-															
-												},
-											
-												error: function(jqXHR, textStatus, errorThrown) {
-													alert(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
-												}
-											})
-										}
-										
-										
-										
-											function startAssessment(FormOID) {
-					var tmp =null;
+		function displayList(){
+		var settings3 = {
+				  "async": false,
+				  "crossDomain": true,
+				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/getTasksOwned",
+				  "method": "GET",
+				  "headers": {
+					"userId": "4342008",
+					"Cache-Control": "no-cache",
+					"Postman-Token": "bd1cfc8b-da36-4f74-ac1c-289fde061b9c"
+				  }
+				}
+
+				$.ajax(settings3).done(function (response) {
+
+				  console.log(response);
+				  var str="";
+				  
+				  str = str+ "<div class=\'row\'>	<div id=\'new\' class=\'col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12\'></br>";
+							str = str+ "<P style=\'margin-left:1em; text-align: left; padding: 10px; \'><b>List of Questionnaires available for you</b></P>	</div></div>";
+								
+							str = str+ "<div id=\'tabhead\' class=\'row\' style=\'text-align: left; font-weight: bold; padding-top: 20px; \'>";
+							str = str+ "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4 \'>Questionnaire</div>";
+							str = str+ "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4 \'>Due Date</div>";
+							str = str+"<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'>Status</div></div>";	
+							
+				  jQuery(response).each(function(i, item){
+							console.log(item);
+							//console.log(item.taskId);
+							//console.log(item.taskInputs);
+							//console.log(item.taskInputs.proIdentifier);
+							//console.log(item.taskInputs.proName);
+							//str = str + JSON.stringify(item, null, 2); // spacing level = 2
+							
+									if (item.taskInputs.proIdentifier!=null){
+							
+							str = str + "<div class=\'row\'  style=\'text-align: left; padding-top: 20px; font-size: 14px;\'>";
+								
+							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+item.taskInputs.proName+"</div>"
+							str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>09/10/2018</div>";
+							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+item.taskId+"\" class=\'button button6\' type=\'button\' onclick=\' callasmt(\""+item.taskInputs.proIdentifier+"\"); displayQ(); startTask(this.id); completeProcess(this.id); this.disabled=true; \'>Start</button></div></div>";
+							}
+						
+							
+				  
+				  });
+				  
+				  document.getElementById("list").innerHTML = str;
+				});
+
+	}
+		
+		
+		
+	
+	function displayQ(){
+	
+		$('#Ques').show();
+		//$('#Content').show();
+
+		window.location.hash = '#Ques'; 
+		
+		document.getElementById('list').style.display = 'none';
+		//document.getElementById('fav').style.display = 'none';
+	}
+	
+	//Important small functions
+	
+	
+	
+	//Everytime the user selects an answer for a question from the options, we call getResponse function to store the response 
+	//Call rec function repeatedly which in turn calls the renderscreen funtion with stored response parameters , until the datefinished variable is not null
+		function getResponse(res1,res2)
+		{
+		//console.log(res1);
+		//console.log(res2);
+		ItemResponseOID = res2;   
+		Response = res1;   
+		rec();
+		}
+		
+		
+		function rec(){
+		if (datefin== '') 
+		{
+		renderScreen(assessmentOID);
+		}
+		}	
+		
+		
+	// Just to hide the PRO list when the Questionnaire is displayed
+		function displist()
+		{
+				//completeProcess();
+				window.location.reload(false);
+				displayList();
+				document.getElementById('Content').style.display = 'none';
+				document.getElementById('header1').style.display = 'none';
+				document.getElementById('list').style.display = 'block';
+		}
+		
+		
+		
+	
+	
+	
+	
+	//Function to call the assessmentcenter starting an Assessement API to get the assessmentOID
+	function startAssessment(FormOID) {
+						var tmp =null;
 						$.ajax({
 							url: Server + "/2014-01/Assessments/" + FormOID + ".json",
 							cache: false,
@@ -473,6 +592,7 @@ prorecommend();
 							type: "POST",
 							data: "UID=01" ,
 							dataType: "json",
+
 							beforeSend: function(xhr) {
 							   var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
 																		var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
@@ -497,183 +617,206 @@ prorecommend();
 							}
 						})
 						return tmp;
+			}
+	
+	
+	
+	//Function to call the assessmentcenter scoring API to return the theta(T-score) json
+	function displayScore(assessmentOID) {
+					//console.log(assessmentOID);
+					$.ajax({
+					url:  "https://www.assessmentcenter.net/ac_api/2014-01/Results/" + assessmentOID + ".json",
+					cache: false,
+					async:false,
+					type: "POST",
+					data: "",
+					dataType: "json",
+
+					beforeSend: function(xhr) {
+																var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
+																var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
+																
+																var base64 = btoa(Reg + ":" + Token);
+																xhr.setRequestHeader("Authorization", "Basic " + base64);
+					},
+
+					success: function(data) { 
+					   console.log(data);
+					   var data1=data.Items;
+					   var data2=data1[0];
+					   
+					 var key;
+
+						for (key in data2) {
+							if (data2.hasOwnProperty(key)) {
+								console.log(key + " = " + data2[key]);
+							}
+						}  
+
+								
+								
+					   console.log(data.Theta);
+					   var T_Score = data.Theta * 10 + 50.0;
+					   console.log("T-Score : " + T_Score);
+					},
+				
+					error: function(jqXHR, textStatus, errorThrown) {
+						alert('displayScore:' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
 					}
-										
-									
-	
-var assessmentOID = startAssessment(FormOID);
-//console.log(assessmentOID +"fin");
-									
-		function displayScore(assessmentOID) {
-		console.log(assessmentOID);
-    $.ajax({
-        url:  "https://www.assessmentcenter.net/ac_api/2014-01/Results/" + assessmentOID + ".json",
-        cache: false,
-		async:false,
-        type: "POST",
-        data: "",
-        dataType: "json",
-        beforeSend: function(xhr) {
-													var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
-													var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
-													
-													var base64 = btoa(Reg + ":" + Token);
-													xhr.setRequestHeader("Authorization", "Basic " + base64);
-        },
-        success: function(data) { 
-           console.log(data);
-		console.log(data.Theta);
-		   var T_Score = data.Theta * 10 + 50.0;
-		   console.log("T-Score : " + T_Score);
-			alert("T-Score : " + T_Score);
-		   //console.log("results");
-        },
-	
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert('displayScore:' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
-        }
-    })
-}								
-									
-									
-									
-									
-		function getResponse(res1,res2)
-		{
-		//console.log(res1);
-		//console.log(res2);
-		ItemResponseOID = res2;   
-		Response = res1;   
-		rec();
+				})
 		}
-		
-		function rec(){
-		if (datefin== '') 
-		{
-		renderScreen(assessmentOID);
-		}
-		}	
-		
+								
+		//						
 		function renderScreen(asmtOID) { 
 		
-		var tmp1 =null;
-		
-		
-		//console.log(ItemResponseOID + "inside");
-		//console.log(Response + "inside");	
-					var postedData ="";
-				if (ItemResponseOID != "") {
-					postedData ="ItemResponseOID=" + ItemResponseOID + "&Response=" + Response ;
-				}		
-				console.log(postedData);
-		
-		
-    $.ajax({
-        url: "https://www.assessmentcenter.net/ac_api/2014-01/Participants/"+asmtOID+".json",
-		
-        cache: false,
-        type: "POST",
-		async:false,
-		data: postedData,
-        dataType: "json",
-		
-        beforeSend: function (xhr) {
-													var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
-													var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
-													
-													var base64 = btoa(Reg + ":" + Token);
-													xhr.setRequestHeader("Authorization", "Basic " + base64);
-        },
-        success: function (data) {
-            console.log(data);
-			//var myobj= JSON.parse(data);
-			//console.log(myobj.Items);
-		    //console.log(myobj.Items.length);
-				tmp1=data.DateFinished;
-			 if (data.DateFinished != '') {
-				displayScore(assessmentOID);
-                document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you";
-                return
-            }
-             var screen = "";
-            var HasBitWiseValues = false;
-            var HasMultipleItems = false;
-            if (data.Items.length > 1) {
-                HasMultipleItems = true;
-            }
-            if (!HasMultipleItems) {
-                for (var i = 0; i < data.Items.length; i++) {
-                    for (var j = 0; j < data.Items[i].Elements.length; j++) {
-                        if (typeof (data.Items[i].Elements[j].Map) == 'undefined') {
-                            screen = screen + "<div style=\'height: 30px\' >" + data.Items[i].Elements[j].Description + "</br></div>"
-                        } else {
-                            for (var k = 0; k < data.Items[i].Elements[j].Map.length; k++) {
-                                switch (data.Items[i].Elements[j].Map[k].Description) {
-                                    case "INFORMATIONAL":
-                                        screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + "Save" + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'"+data.Items[i].Elements[j].Map[k].ItemResponseOID +"') />" + "</div>";
-                                        break;
-                                    case "TEXT":
-                                        screen = screen + "<div style=\'height: 50px\' ><input type=\'text\'  id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Description + "\' />" + "</br></div>";
-                                        screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + "btnSave" + "\' name=\'" + "btnSave" + "\' value=\'" + "Save" + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'" + data.Items[i].Elements[j].Map[k].ItemResponseOID+"') />" + "</div>";
-                                        break;
-                                    default:
-                                        ItemResponseOID = data.Items[i].Elements[j].Map[k].ItemResponseOID;
-                                        Response = data.Items[i].Elements[j].Map[k].Value;
-                                        if (data.Items[i].Elements[j].Map[k].DataType == "bitwise") {
-                                            HasBitWiseValues = true;
-                                            screen = screen + "<div style=\'height: 20px\' ><input type=\'checkbox\' id=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' name=\'" + data.Items[i].FormItemOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Value + "\' onclick=addResponse(this) />" + data.Items[i].Elements[j].Map[k].Description + "</br></div>";
-                                        } else {
-                                            screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Description + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'"+data.Items[i].Elements[j].Map[k].ItemResponseOID+"') />" + "</div>";
-                                        }
-                                }
-                            }
-                            //screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + '00000000-0000-0000-0000-000000000000' + "\' name=\'" + '00000000-0000-0000-0000-000000000000' + "\' value=\'" + 'SKIP' + "\' onclick=getResponse('" + '00000000-0000-0000-0000-000000000000+","+00000000-0000-0000-0000-000000000000' + "') />" + "</div>";
-                        }
-                    }
-                    if (HasBitWiseValues) {
-                        screen = screen + "<div style=\'height: 50px\' ><input type=\'text\'  id=\'" + data.Items[i].FormItemOID + "\' name=\'" + data.Items[i].FormItemOID + "\' value=\'0\' />" + "</div>";
-                    }
-                }
-            } else {
-                /* Stem (e.g., "Thinking about how your illness...") */
-                screen += "<div style=\'height: 50px; text-align: bottom\'>" + data.Items[0].Elements[0].Description + "</br></div>";
-                /* Question */
-                screen += "<div style=\'height: 40px; font-style: italic\'>" + data.Items[0].Elements[1].Description + "</br></div>";
-                screen += "<table>";
-                /* "How true was this before/since your illness?" */
-                screen += "<tr>";
-                screen += "<td width=\'50%\'><div style=\'height: 20px\'>" + data.Items[1].Elements[1].Description + "</br></div></td>";
-                screen += "<td width=\'30px\'></td>";
-                screen += "<td><div style=\'height: 20px\'>" + data.Items[2].Elements[1].Description + "</br></div></td>";
-                screen += "</tr>";
-                /* Answers */
-                theQuestion = data.Items[0].FormItemOID;
-                for (var i = 0; i < 5; i++) {
-                    screen += "</br><tr></tr><tr>";
-                    screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[1].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[1].Elements[2].Map[i].Value + "\' value=\'" + data.Items[1].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</br></div>";
-                    screen += "<td width=\'10px\'></td>";
-                    screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[2].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[2].Elements[2].Map[i].Value + "\' value=\'" + data.Items[2].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</br></div>";
-                    screen += "</tr>"
-                }
-                screen += "<tr><td colspan=\'3\' style=\'height: 70px; text-align: center; vertical-align: bottom\'><div><input type=\'button\' class='btn-submit' id=\'btnSave\' name=\'btnSave\' value=\'Save\' onclick=getResponseSave()></div></td></tr>";
-                screen += "</table>";
-            }
-            document.getElementById("Content").innerHTML = screen;
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert('renderScreen: ' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
-        }
-    })
-		
-	return tmp1;
-	}		
+					var tmp1 =null;
+					
+							var postedData ="";
+							
+							if (ItemResponseOID != "") {
+								postedData ="ItemResponseOID=" + ItemResponseOID + "&Response=" + Response ;
+							}		
+							
+					
+					
+				$.ajax({
+					url: "https://www.assessmentcenter.net/ac_api/2014-01/Participants/"+asmtOID+".json",
+					
+					cache: false,
+					type: "POST",
+					async:false,
+					data: postedData,
+					dataType: "json",
+					
+
+					beforeSend: function (xhr) {
+																var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
+																var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
+																
+																var base64 = btoa(Reg + ":" + Token);
+																xhr.setRequestHeader("Authorization", "Basic " + base64);
+					},
+
+					success: function (data) {
+							tmp1=data.DateFinished;
+						 if (data.DateFinished != '') {
+							displayScore(assessmentOID);
+							document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
+							return
+						}
+
+						 var screen = "";
+						var HasBitWiseValues = false;
+						var HasMultipleItems = false;
+
+						if (data.Items.length > 1) {
+							HasMultipleItems = true;
+						}
+						//var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
+
+
+						if (!HasMultipleItems) {
+							for (var i = 0; i < data.Items.length; i++) {
+								for (var j = 0; j < data.Items[i].Elements.length; j++) {
+									if (typeof (data.Items[i].Elements[j].Map) == 'undefined') {
+										screen = screen + "<div class='row'><div id='question' class='col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12' style=\'height: 30px\' >" + data.Items[i].Elements[j].Description + "</br></div></div></br></br>"
+									} else {
+										for (var k = 0; k < data.Items[i].Elements[j].Map.length; k++) {
+											switch (data.Items[i].Elements[j].Map[k].Description) {
+												case "INFORMATIONAL":
+													screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + "Save" + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'"+data.Items[i].Elements[j].Map[k].ItemResponseOID +"') />" + "</div>";
+													break;
+												case "TEXT":
+													screen = screen + "<div style=\'height: 50px\' ><input type=\'text\'  id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Description + "\' />" + "</div>";
+													screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + "btnSave" + "\' name=\'" + "btnSave" + "\' value=\'" + "Save" + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'" + data.Items[i].Elements[j].Map[k].ItemResponseOID+"') />" + "</div>";
+													break;
+												default:
+													ItemResponseOID = data.Items[i].Elements[j].Map[k].ItemResponseOID;
+													Response = data.Items[i].Elements[j].Map[k].Value;
+													if (data.Items[i].Elements[j].Map[k].DataType == "bitwise") {
+														HasBitWiseValues = true;
+														screen = screen + "<div style=\'height: 20px\' ><input type=\'checkbox\' id=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' name=\'" + data.Items[i].FormItemOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Value + "\' onclick=addResponse(this) />" + data.Items[i].Elements[j].Map[k].Description + "</div>";
+													} else {
+														screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Description + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'"+data.Items[i].Elements[j].Map[k].ItemResponseOID+"') />" + "</div>";
+													}
+											}
+										}
+										//screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + '00000000-0000-0000-0000-000000000000' + "\' name=\'" + '00000000-0000-0000-0000-000000000000' + "\' value=\'" + 'SKIP' + "\' onclick=getResponse('" + '00000000-0000-0000-0000-000000000000+","+00000000-0000-0000-0000-000000000000' + "') />" + "</div>";
+									}
+								}
+								if (HasBitWiseValues) {
+									screen = screen + "<div class='row'><div style=\'height: 50px\' ><input type=\'text\'  id=\'" + data.Items[i].FormItemOID + "\' name=\'" + data.Items[i].FormItemOID + "\' value=\'0\' />" + "</div></div>";
+								}
+							}
+						} else {
+							/* Stem (e.g., "Thinking about how your illness...") */
+							screen += "<div style=\'height: 50px; text-align: bottom\'>" + data.Items[0].Elements[0].Description + "</div>";
+
+							/* Question */
+							screen += "<div style=\'height: 40px; font-style: italic\'>" + data.Items[0].Elements[1].Description + "</div>";
+
+							screen += "<table>";
+
+							/* "How true was this before/since your illness?" */
+							screen += "<tr>";
+							screen += "<td width=\'50%\'><div style=\'height: 20px\'>" + data.Items[1].Elements[1].Description + "</div></td>";
+							screen += "<td width=\'10px\'></td>";
+							screen += "<td><div style=\'height: 20px\'>" + data.Items[2].Elements[1].Description + "</div></td>";
+							screen += "</tr>";
+
+							/* Answers */
+							theQuestion = data.Items[0].FormItemOID;
+							for (var i = 0; i < 5; i++) {
+								screen += "<tr>";
+								screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[1].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[1].Elements[2].Map[i].Value + "\' value=\'" + data.Items[1].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</div>";
+								screen += "<td width=\'10px\'></td>";
+								screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[2].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[2].Elements[2].Map[i].Value + "\' value=\'" + data.Items[2].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</div>";
+								screen += "</tr>"
+							}
+							screen += "<tr><td colspan=\'3\' style=\'height: 70px; text-align: center; vertical-align: bottom\'><div><input type=\'button\' class='btn-submit' id=\'btnSave\' name=\'btnSave\' value=\'Save\' onclick=getResponseSave()></div></td></tr>";
+							screen += "</table>";
+						}
+
+						document.getElementById("Content").innerHTML = screen;
+					},
+
+					error: function (jqXHR, textStatus, errorThrown) {
+						alert('renderScreen: ' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+					}
+				})
+					
+				return tmp1;
+	}							
+								
+								
+
+
+								
 			
+										
+		displayList();						
+	// APIs to administer the assessmentcenter forms
+					
+		function callasmt(FormOID){
+									
+								//console.log(FormOID);
+								
+								assessmentOID = startAssessment(FormOID);
+
+								datefin=renderScreen(assessmentOID);
+				
+								}
+		
+	
+		
+		
+										
+						
 		
 		
 	
 				
-datefin=renderScreen(assessmentOID);
-//console.log(datefin +"temp1fin");
+
 		
 		
 		
