@@ -446,6 +446,18 @@ prorecommend();
 					
 				}
 		
+		
+		
+		function writeProname(proname)
+				{
+					
+					document.getElementById("pro-name").innerHTML = proname;
+					
+					
+				}
+		
+		
+		
 		function startTask(taskId){
 		var settings = {
 				  "async": true,
@@ -531,7 +543,7 @@ prorecommend();
 								
 							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+item.taskInputs.proName+"</div>"
 							str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>09/10/2018</div>";
-							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+item.taskId+"\" class=\'button button6\' type=\'button\' onclick=\' callasmt(\""+item.taskInputs.proIdentifier+"\"); displayQ(); startTask(this.id); completeProcess(this.id); this.disabled=true; \'>Start</button></div></div>";
+							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+item.taskId+"\" value=\""+item.taskInputs.proName+"\" class=\'button button6\' type=\'button\' onclick=\' callasmt(\""+item.taskInputs.proIdentifier+"\"); displayQ(); startTask(this.id); completeProcess(this.id); writeProname(this.value); this.disabled=true; \'>Start</button></div></div>";
 							}
 						
 							
@@ -729,7 +741,8 @@ prorecommend();
 							HasMultipleItems = true;
 						}
 						
-						screen= screen + "<p style='margin-left:1em;'><b>Questionnaire for PROMIS Bank v2.0 - Physical Function</b></p></br>"
+    	
+						screen= screen + "<p style='margin-left:1em;'><b>Questionnaire for <span id='pro-name'></span></b></p></br>"
 						//var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
 
 
