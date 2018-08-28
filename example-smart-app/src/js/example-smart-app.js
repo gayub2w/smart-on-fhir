@@ -3,6 +3,7 @@
     var practitioner_id="";
     var pract_name="";
     var persona="";
+    var patID="";
 
    	
    
@@ -20,8 +21,11 @@
 
     function onReady(smart)  {
       console.log(smart.tokenResponse);
-
-      
+	if (smart.tokenResponse.patient!=null){
+      patID=smart.tokenResponse.patient;
+		console.log(patID);
+		console.log("pls work");
+	    }
       practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
       var access_token= smart.tokenResponse.access_token;
