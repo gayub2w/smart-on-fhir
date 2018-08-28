@@ -1,5 +1,5 @@
   //Global variables  
-
+    var MyVars = {};
     var practitioner_id="";
     var pract_name="";
     var persona="";
@@ -23,6 +23,7 @@
       console.log(smart.tokenResponse);
 	if (smart.tokenResponse.patient!=null){
       patID=smart.tokenResponse.patient;
+		MyVars.patid= smart.tokenResponse.patient;
 		console.log(patID);
 		console.log("pls work");
 	    }
