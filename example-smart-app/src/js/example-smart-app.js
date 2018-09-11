@@ -114,7 +114,9 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-
+		
+           window.pat_fname = fname;
+	   window.pat_lname = lname;
 		
 	document.getElementById("firstname").innerHTML= fname;
 	document.getElementById("lastname").innerHTML= lname;	
