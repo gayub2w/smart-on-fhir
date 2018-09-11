@@ -259,7 +259,6 @@
 					  "processData": false,
 					  "data": prdata
 					}
-
 					$.ajax(settings).done(function (response) {
 					  console.log("pro-test");
 					  console.log(response);
@@ -471,67 +470,52 @@ prorecommend();
 					"Postman-Token": "db0f09f2-afff-45ff-9a20-1d2d05bea38c"
 				  }
 				}
-
 				$.ajax(settings).done(function (response) {
 				  console.log(response);
 				});		
 		}
 		
-		function completeProcess(taskId,proId,proName,patId,patName){
+		function completeProcess(taskId){
 		
-		
-		//console.log(taskId);
-		//console.log(proId);
-		//console.log(proName);
-		//console.log(patId);
-		//console.log(patName);
-		var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 						var settings = {
-						  "async": true,
-						  "crossDomain": true,
-						  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest/"+taskId,
-						  "method": "PUT",
-						  "headers": {
-							"Content-Type": "application/json",
-							"Cache-Control": "no-cache"
-						  },
-						  "processData": false,
-						  "data": "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"id\": \""+taskId+"\",\n\t\"status\": \"completed\",\n\t\"intent\": \"order\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+proId+"\",\n\t\t\t\"display\": \""+proName+"\"\n\t\t}],\n\t\t\"text\": \""+proName+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"display\": \""+patName+"\",\n        \"reference\": \"https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patId+"\"\n\t}\n} \n"
-						}
-
-						$.ajax(settings).done(function (response) {
-						  console.log(response);
-						});
+				  "async": true,
+				  "crossDomain": true,
+				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/"+taskId+"/completeTask",
+				  "method": "POST",
+				  "headers": {
+					"userId": patID,
+					"Content-Type": "application/json",
+					"Cache-Control": "no-cache",
+					"Postman-Token": "3b7630b9-7061-49e1-acb9-9e4eda4bf487"
+				  },
+				  "processData": false,
+				  "data": "{\n  \"patientId\": \""+patID+"\"\n}"
+				}
+				$.ajax(settings).done(function (response) {
+				  console.log(response);
+				});
 		}
 		
 	
 				
 		
-		function addDays(date, days) {
-		  var result = new Date(date);
-		  result.setDate(result.getDate() + days);
-		  return result;
-		}
-				
 		
 		function displayList(){
+			
 		var settings3 = {
-		  "async": true,
-		  "crossDomain": true,
-		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
-		  "method": "GET",
-		  "headers": {
-			"Cache-Control": "no-cache"
-		  }
-		}
-
-		$.ajax(settings3).done(function (response) {
-		  console.log(response);
-		  //var list=[];
-		  //list=response.entry;
-		  console.log(response.entry);
-		  
-		  var str="";
+				  "async": false,
+				  "crossDomain": true,
+				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/getTasksOwned",
+				  "method": "GET",
+				  "headers": {
+					"userId": patID,
+					"Cache-Control": "no-cache",
+					"Postman-Token": "bd1cfc8b-da36-4f74-ac1c-289fde061b9c"
+				  }
+				}
+				$.ajax(settings3).done(function (response) {
+				  console.log(response);
+				  var str="";
 				  
 				  str = str+ "<div class=\'row\'>	<div id=\'new\' class=\'col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12\'></br>";
 							str = str+ "<P style=\'margin-left:1em; text-align: left; padding: 10px; \'><b>List of Questionnaires available for you</b></P>	</div></div>";
@@ -540,42 +524,31 @@ prorecommend();
 							str = str+ "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4 \'>Questionnaire</div>";
 							str = str+ "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4 \'>Due Date</div>";
 							str = str+"<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'>Status</div></div>";	
-		  
-				 jQuery(response.entry).each(function(i, item){
-							console.log(item.resource);
-							var pro_id= item.resource.code.coding[0].code;
-							var pro_name= item.resource.code.coding[0].display;
-							var task_id= item.resource.id;
-							//console.log(item.resource.subject.display);
-							var pat_name= item.resource.subject.display;
-							//console.log(item.resource.subject.reference);
 							
-							console.log(item.resource.occurrenceDateTime);
+				  jQuery(response).each(function(i, item){
+							console.log(item);
+							//console.log(item.taskId);
+							//console.log(item.taskInputs);
+							//console.log(item.taskInputs.proIdentifier);
+							//console.log(item.taskInputs.proName);
+							//str = str + JSON.stringify(item, null, 2); // spacing level = 2
 							
-							var date = new Date(item.resource.occurrenceDateTime);
-							//console.log(date);
-							var date1 = addDays(date, 3);
-							//console.log(date1);
-                           				 var date2=((date1.getMonth() + 1) + '/' + date1.getDate() + '/' +  date1.getFullYear());
-							//console.log(date2);
-							
-							var temp = item.resource.subject.reference;
-							var pat_id= temp.substr(-7);
-														
-							if (task_id!=null){
+									if (item.taskInputs.proIdentifier!=null){
 							
 							str = str + "<div class=\'row\'  style=\'text-align: left; padding-top: 20px; font-size: 14px;\'>";
 								
-							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+pro_name+"</div>"
-							str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>"+date2+"</div>";
-							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' callasmt(\""+pro_id+"\"); displayQ(); completeProcess(\"" + task_id + "\",\"" + pro_id +"\",\"" + pro_name + "\",\"" + pat_id + "\",\"" + pat_name +"\"); this.disabled=true; \'>Start</button></div></div>";
+							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+item.taskInputs.proName+"</div>"
+							str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>09/10/2018</div>";
+							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+item.taskId+"\" value=\""+item.taskInputs.proName+"\" class=\'button button6\' type=\'button\' onclick=\' callasmt(\""+item.taskInputs.proIdentifier+"\"); displayQ(); startTask(this.id); completeProcess(this.id); writeProname(this.value); this.disabled=true; \'>Start</button></div></div>";
 							}
+						
 							
-							
-							});
-							 document.getElementById("list").innerHTML = str;
-		});
-			
+				  
+				  });
+				  
+				  document.getElementById("list").innerHTML = str;
+				});
+	}
 		
 		
 		
@@ -584,7 +557,6 @@ prorecommend();
 	
 		$('#Ques').show();
 		//$('#Content').show();
-
 		window.location.hash = '#Ques'; 
 		
 		document.getElementById('list').style.display = 'none';
@@ -642,7 +614,6 @@ prorecommend();
 							type: "POST",
 							data: "UID=01" ,
 							dataType: "json",
-
 							beforeSend: function(xhr) {
 							   var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
 																		var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
@@ -681,7 +652,6 @@ prorecommend();
 					type: "POST",
 					data: "",
 					dataType: "json",
-
 					beforeSend: function(xhr) {
 																var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
 																var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
@@ -689,20 +659,17 @@ prorecommend();
 																var base64 = btoa(Reg + ":" + Token);
 																xhr.setRequestHeader("Authorization", "Basic " + base64);
 					},
-
 					success: function(data) { 
 					   console.log(data);
 					   var data1=data.Items;
 					   var data2=data1[0];
 					   
 					 var key;
-
 						for (key in data2) {
 							if (data2.hasOwnProperty(key)) {
 								console.log(key + " = " + data2[key]);
 							}
 						}  
-
 								
 								
 					   console.log(data.Theta);
@@ -738,7 +705,6 @@ prorecommend();
 					data: postedData,
 					dataType: "json",
 					
-
 					beforeSend: function (xhr) {
 																var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
 																var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
@@ -746,7 +712,6 @@ prorecommend();
 																var base64 = btoa(Reg + ":" + Token);
 																xhr.setRequestHeader("Authorization", "Basic " + base64);
 					},
-
 					success: function (data) {
 							tmp1=data.DateFinished;
 						 if (data.DateFinished != '') {
@@ -754,11 +719,9 @@ prorecommend();
 							document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 							return
 						}
-
 						 var screen = "";
 						var HasBitWiseValues = false;
 						var HasMultipleItems = false;
-
 						if (data.Items.length > 1) {
 							HasMultipleItems = true;
 						}
@@ -766,8 +729,6 @@ prorecommend();
     	
 						//screen= screen + "<p style='margin-left:1em;'><b>Questionnaire for <span id='pro-name'></span></b></p></br>"
 						//var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
-
-
 						if (!HasMultipleItems) {
 							for (var i = 0; i < data.Items.length; i++) {
 								for (var j = 0; j < data.Items[i].Elements.length; j++) {
@@ -804,19 +765,15 @@ prorecommend();
 						} else {
 							/* Stem (e.g., "Thinking about how your illness...") */
 							screen += "<div style=\'height: 50px; text-align: bottom\'>" + data.Items[0].Elements[0].Description + "</div>";
-
 							/* Question */
 							screen += "<div style=\'height: 40px; font-style: italic\'>" + data.Items[0].Elements[1].Description + "</div>";
-
 							screen += "<table>";
-
 							/* "How true was this before/since your illness?" */
 							screen += "<tr>";
 							screen += "<td width=\'50%\'><div style=\'height: 20px\'>" + data.Items[1].Elements[1].Description + "</div></td>";
 							screen += "<td width=\'10px\'></td>";
 							screen += "<td><div style=\'height: 20px\'>" + data.Items[2].Elements[1].Description + "</div></td>";
 							screen += "</tr>";
-
 							/* Answers */
 							theQuestion = data.Items[0].FormItemOID;
 							for (var i = 0; i < 5; i++) {
@@ -829,10 +786,8 @@ prorecommend();
 							screen += "<tr><td colspan=\'3\' style=\'height: 70px; text-align: center; vertical-align: bottom\'><div><input type=\'button\' class='btn-submit' id=\'btnSave\' name=\'btnSave\' value=\'Save\' onclick=getResponseSave()></div></td></tr>";
 							screen += "</table>";
 						}
-
 						document.getElementById("Content").innerHTML = screen;
 					},
-
 					error: function (jqXHR, textStatus, errorThrown) {
 						alert('renderScreen: ' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
 					}
@@ -842,8 +797,6 @@ prorecommend();
 	}							
 								
 								
-
-
 								
 			
 										
@@ -855,7 +808,6 @@ prorecommend();
 								//console.log(FormOID);
 								
 								assessmentOID = startAssessment(FormOID);
-
 								datefin=renderScreen(assessmentOID);
 				
 								}
@@ -869,7 +821,6 @@ prorecommend();
 		
 	
 				
-
 		
 		
 		
