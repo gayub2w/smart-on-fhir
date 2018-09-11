@@ -117,6 +117,8 @@
 		
            window.pat_fname = fname;
 	   window.pat_lname = lname;
+		console.log(window.pat_fname + "testtt");
+		console.log(window.pat_lname + "testttt");
 		
 	document.getElementById("firstname").innerHTML= fname;
 	document.getElementById("lastname").innerHTML= lname;	
