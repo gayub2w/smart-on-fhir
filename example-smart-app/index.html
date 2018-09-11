@@ -477,50 +477,61 @@ prorecommend();
 				});		
 		}
 		
-		function completeProcess(taskId){
+		function completeProcess(taskId,proId,proName,patId,patName){
 		
+		
+		//console.log(taskId);
+		//console.log(proId);
+		//console.log(proName);
+		//console.log(patId);
+		//console.log(patName);
+		var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 						var settings = {
-				  "async": true,
-				  "crossDomain": true,
-				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/"+taskId+"/completeTask",
-				  "method": "POST",
-				  "headers": {
-					"userId": patID,
-					"Content-Type": "application/json",
-					"Cache-Control": "no-cache",
-					"Postman-Token": "3b7630b9-7061-49e1-acb9-9e4eda4bf487"
-				  },
-				  "processData": false,
-				  "data": "{\n  \"patientId\": \""+patID+"\"\n}"
-				}
+						  "async": true,
+						  "crossDomain": true,
+						  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest/"+taskId,
+						  "method": "PUT",
+						  "headers": {
+							"Content-Type": "application/json",
+							"Cache-Control": "no-cache"
+						  },
+						  "processData": false,
+						  "data": "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"id\": \""+taskId+"\",\n\t\"status\": \"completed\",\n\t\"intent\": \"order\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+proId+"\",\n\t\t\t\"display\": \""+proName+"\"\n\t\t}],\n\t\t\"text\": \""+proName+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"display\": \""+patName+"\",\n        \"reference\": \"https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patId+"\"\n\t}\n} \n"
+						}
 
-				$.ajax(settings).done(function (response) {
-				  console.log(response);
-				});
+						$.ajax(settings).done(function (response) {
+						  console.log(response);
+						});
 		}
 		
 	
 				
 		
+		function addDays(date, days) {
+		  var result = new Date(date);
+		  result.setDate(result.getDate() + days);
+		  return result;
+		}
+				
 		
 		function displayList(){
-			
 		var settings3 = {
-				  "async": false,
-				  "crossDomain": true,
-				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/getTasksOwned",
-				  "method": "GET",
-				  "headers": {
-					"userId": patID,
-					"Cache-Control": "no-cache",
-					"Postman-Token": "bd1cfc8b-da36-4f74-ac1c-289fde061b9c"
-				  }
-				}
+		  "async": true,
+		  "crossDomain": true,
+		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"&intent=order&status=active",
+		  "method": "GET",
+		  "headers": {
+			"Cache-Control": "no-cache"
+		  }
+		}
 
-				$.ajax(settings3).done(function (response) {
-
-				  console.log(response);
-				  var str="";
+		$.ajax(settings3).done(function (response) {
+		  console.log(response);
+		  //var list=[];
+		  //list=response.entry;
+		  console.log(response.entry);
+		  
+		  var str="";
 				  
 				  str = str+ "<div class=\'row\'>	<div id=\'new\' class=\'col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12\'></br>";
 							str = str+ "<P style=\'margin-left:1em; text-align: left; padding: 10px; \'><b>List of Questionnaires available for you</b></P>	</div></div>";
@@ -529,32 +540,42 @@ prorecommend();
 							str = str+ "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4 \'>Questionnaire</div>";
 							str = str+ "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4 \'>Due Date</div>";
 							str = str+"<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'>Status</div></div>";	
+		  
+				 jQuery(response.entry).each(function(i, item){
+							console.log(item.resource);
+							var pro_id= item.resource.code.coding[0].code;
+							var pro_name= item.resource.code.coding[0].display;
+							var task_id= item.resource.id;
+							//console.log(item.resource.subject.display);
+							var pat_name= item.resource.subject.display;
+							//console.log(item.resource.subject.reference);
 							
-				  jQuery(response).each(function(i, item){
-							console.log(item);
-							//console.log(item.taskId);
-							//console.log(item.taskInputs);
-							//console.log(item.taskInputs.proIdentifier);
-							//console.log(item.taskInputs.proName);
-							//str = str + JSON.stringify(item, null, 2); // spacing level = 2
+							console.log(item.resource.occurrenceDateTime);
 							
-									if (item.taskInputs.proIdentifier!=null){
+							var date = new Date(item.resource.occurrenceDateTime);
+							//console.log(date);
+							var date1 = addDays(date, 3);
+							//console.log(date1);
+                           				 var date2=((date1.getMonth() + 1) + '/' + date1.getDate() + '/' +  date1.getFullYear());
+							//console.log(date2);
+							
+							var temp = item.resource.subject.reference;
+							var pat_id= temp.substr(-7);
+														
+							if (task_id!=null){
 							
 							str = str + "<div class=\'row\'  style=\'text-align: left; padding-top: 20px; font-size: 14px;\'>";
 								
-							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+item.taskInputs.proName+"</div>"
-							str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>09/10/2018</div>";
-							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+item.taskId+"\" value=\""+item.taskInputs.proName+"\" class=\'button button6\' type=\'button\' onclick=\' callasmt(\""+item.taskInputs.proIdentifier+"\"); displayQ(); startTask(this.id); completeProcess(this.id); writeProname(this.value); this.disabled=true; \'>Start</button></div></div>";
+							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+pro_name+"</div>"
+							str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>"+date2+"</div>";
+							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' callasmt(\""+pro_id+"\"); displayQ(); completeProcess(\"" + task_id + "\",\"" + pro_id +"\",\"" + pro_name + "\",\"" + pat_id + "\",\"" + pat_name +"\"); this.disabled=true; \'>Start</button></div></div>";
 							}
-						
 							
-				  
-				  });
-				  
-				  document.getElementById("list").innerHTML = str;
-				});
-
-	}
+							
+							});
+							 document.getElementById("list").innerHTML = str;
+		});
+			
 		
 		
 		
