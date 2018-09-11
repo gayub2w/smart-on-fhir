@@ -242,25 +242,25 @@
 							//console.log(practitioner_id);
 							//console.log(window.gender2);
 							//console.log(window.dobstr2);	
-			var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"reference\": \"Patient/"+patient_id+"\"\n\t},\n\t\"performer\": {\n\t\t\"reference\": \"Patient/"+patient_id+"\"\n\t},\n\t\"reasonCode\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"35489007\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}]\n\t}\n}";
-				//var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"reference\": \"Patient/4342008\"\n\t},\n\t\"performer\": {\n\t\t\"reference\": \"Patient/4342008\"\n\t},\n\t\"reasonCode\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"35489007\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}]\n\t}\n}";
-
-					var settings1 = {
+			var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"intent\": \"order\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"display\": \"Jason Argonaut\",\n        \"reference\": \"http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"\"\n\t}\n} \n"
+			    
+	
+					var settings = {
 					  "async": true,
 					  "crossDomain": true,
-					  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/resource/post/procedure",	
+					  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest",
 					  "method": "POST",
 					  "headers": {
 					    "Content-Type": "application/json",
 					    "Cache-Control": "no-cache",
-					    "Postman-Token": "15f84b11-8896-8e3f-e7be-6e11cdd23f43"
+					    "Postman-Token": "668ee0d0-c707-45f5-801b-4fa9bf800b3c"
 					  },
 					  "processData": false,
 					  "data": prdata
 					}
-							
-					$.ajax(settings1).done(function (response) {
-					  console.log("amhere  ");
+
+					$.ajax(settings).done(function (response) {
+					  console.log("pro-test");
 					  console.log(response);
 					});
 										
