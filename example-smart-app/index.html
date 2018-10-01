@@ -221,12 +221,7 @@
 </section>
 	<script>
 		
-		
-			
-			
-		
-		
-		
+		var taskId,proId,proName,patId,patName;		
 		
 		
 			function order_func() {
@@ -530,11 +525,18 @@ prorecommend();
 							str = str+"<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'>Status</div></div>";	
 		  
 				 jQuery(response.entry).each(function(i, item){
-							var pro_id= item.resource.code.coding[0].code;
+							//var pro_id= item.resource.code.coding[0].code;
+							//var pro_name= item.resource.code.coding[0].display;
+							//var task_id= item.resource.id;
+							//var pat_name= item.resource.subject.display;						
+							var date = new Date(item.resource.occurrenceDateTime);
+					 		
+					 		var pro_id= item.resource.code.coding[0].code;
 							var pro_name= item.resource.code.coding[0].display;
 							var task_id= item.resource.id;
 							var pat_name= item.resource.subject.display;						
-							var date = new Date(item.resource.occurrenceDateTime);
+							
+					 
 						
 							var date1 = addDays(date, 3);
 							//console.log(date1);
@@ -543,6 +545,14 @@ prorecommend();
 							
 							var temp = item.resource.subject.reference;
 							var pat_id= temp.substr(-7);
+					 		
+					 		taskId= task_id;
+					 		proId=pro_id;
+					 		proName=pro_name;
+					 		patId=pat_id;
+					 		patName=pat_name;
+					 
+					 
 						
 							
 							if (task_id!=null){
@@ -817,6 +827,8 @@ prorecommend();
 		function callasmt(FormOID){
 									
 								//console.log(FormOID);
+			
+								console.log(taskId + " " + proId + " " + proName + " " + patId + " " + patName);
 								
 								assessmentOID = startAssessment(FormOID);
 								datefin=renderScreen(assessmentOID);
