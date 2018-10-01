@@ -706,7 +706,7 @@ prorecommend();
 								
 		//						
 		function renderScreen(asmtOID) { 
-			console.log(taskId + " " + proId + " " + proName + " " + patId + " " + patName);
+			//console.log(taskId + " " + proId + " " + proName + " " + patId + " " + patName);
 								
 		
 					var tmp1 =null;
@@ -738,7 +738,7 @@ prorecommend();
 					success: function (data) {
 							tmp1=data.DateFinished;
 						 if (data.DateFinished != '') {
-							 Console.log("Inside");
+							 console.log("Inside");
 							 console.log(taskId + " " + proId + " " + proName + " " + patId + " " + patName);
 								
 							displayScore(assessmentOID);
