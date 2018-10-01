@@ -221,7 +221,8 @@
 </section>
 	<script>
 		
-		var taskId,proId,proName,patId,patName;		
+		var taskId,proId,proName,patId,patName;	
+		var tscore;
 		
 		
 			function order_func() {
@@ -491,6 +492,29 @@ prorecommend();
 						});
 		}
 		
+		
+		function postScore(taskId,proId,proName,patId,patName,tscore){
+			var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
+			var settings = {
+			  "async": true,
+			  "crossDomain": true,
+			  "url": "http://hapi.fhir.org/baseDstu3/Observation",
+			  "method": "POST",
+			  "headers": {
+			    "Content-Type": "application/json",
+			    "Cache-Control": "no-cache"
+			  },
+			  "processData": false,
+			  "data": "{\n\t\"resourceType\": \"Observation\",\n\t\"status\": \"final\",\n\t\"code\": {\n    \t\"coding\": [\n    \t\t{\n        \t\t\"system\": \"http://loinc.org\",\n\t\t        \"code\": \"77580-9\",\n\t\t        \"display\": \""+proName+" T-score\"\n    \t\t}\n    \t]\n\t},\n\t\"category\": [{\n    \t\"coding\": [{\n        \t\"system\": \"http://hl7.org/fhir/observation-category\",\n        \t\"code\": \"survey\",\n        \t\"display\": \"Survey\"\n        }]\n    }],\n\t\"subject\": {\n\t\t\"display\": \""+patName+"\",\n        \"reference\": \"https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patId+"\"\n\t},\n\t\"effectiveDateTime\": \""+date1+"\",\n\t\"issued\": \""+date1+"\",\n\t\"performer\": [\n    \t{\n\t\t\t\"display\": \""+patName+"\",\n        \t\"reference\": \"https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patId+"\"\n\t    }\n\t],\n\t\"valueQuantity\": {\n    \t\"value\": "+tscore+"\n     \n\t},\n\n\t\"basedOn\":\t{\n\t\t\"reference\": \"ProcedureRequest/"+taskId+"\"\n\t}\n} \n"
+			}
+
+			$.ajax(settings).done(function (response) {
+			  console.log(response);
+			});
+			
+			
+		}
+		
 	
 		function addDays(date, days) {
 		  var result = new Date(date);
@@ -696,6 +720,8 @@ prorecommend();
 					   console.log(data.Theta);
 					   var T_Score = data.Theta * 10 + 50.0;
 					   console.log("T-Score : " + T_Score);
+						tscore=T_Score;
+					   postScore(taskId,proId,proName,patId,patName,tscore);
 					},
 				
 					error: function(jqXHR, textStatus, errorThrown) {
