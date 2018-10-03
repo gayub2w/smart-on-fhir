@@ -60,6 +60,7 @@
       if(persona === 'provider') {
   $('#doctor-view').show();
  $('#doctor-view-head').show();
+	      orderStatus();
  	      
 } else if(persona === 'patient') {
   $('#patient-view').show();
@@ -94,7 +95,7 @@
           var id = patient.id;
 	  window.patient_id = patient.id;
 		
-		orderStatus();
+		
 		
           var dob = new Date(patient.birthDate);
           var day = dob.getDate();
