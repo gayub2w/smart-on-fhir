@@ -93,6 +93,9 @@
 	  window.gender2 = patient.gender;
           var id = patient.id;
 	  window.patient_id = patient.id;
+		
+		orderStatus();
+		
           var dob = new Date(patient.birthDate);
           var day = dob.getDate();
           var monthIndex = dob.getMonth() + 1;
