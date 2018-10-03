@@ -58,9 +58,10 @@
       persona = temp13.persona; 
       
       if(persona === 'provider') {
+	      orderStatus();
   $('#doctor-view').show();
  $('#doctor-view-head').show();
-	      orderStatus();
+	   
  	      
 } else if(persona === 'patient') {
   $('#patient-view').show();
