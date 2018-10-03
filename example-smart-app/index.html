@@ -400,6 +400,8 @@ var settings = {
 		
 function orderStatus() {
 		  // Pros to be completed
+	console.log(patID);
+	console.log(patient_id);
   		var settings3 = {
 		  "async": true,
 		  "crossDomain": true,
@@ -458,7 +460,7 @@ function orderStatus() {
 			console.log(patID);
 		  //console.log(response.entry);
 			var str="";
-			var result;
+			var result1;
 		  jQuery(response.entry).each(function(i, item){
 						console.log(item.resource.code.text);
 						console.log(item.resource.id);
@@ -479,7 +481,7 @@ function orderStatus() {
 							    jQuery(response.entry).each(function(i, item){
 
 								console.log(item.resource.valueQuantity.value);
-								result = item.resource.valueQuantity.value;
+								result1 = item.resource.valueQuantity.value;
 
 								  });
 							});	
@@ -490,7 +492,7 @@ function orderStatus() {
 			str = str +"<tr><td>" +date1+"</td>";
            		 str = str +"<td>"+proname1 +"</td>";
             		str = str +"<td>Completed</td>";
-			 str = str +"<td>"+result+"</td><td> </td> </tr>";
+			 str = str +"<td>"+result1+"</td><td> </td> </tr>";
 			  
 
 
