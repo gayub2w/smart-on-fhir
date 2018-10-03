@@ -147,7 +147,7 @@
 		</select>
 		</br>
 		</br>
-		<button class="button button3" style="margin-left:1em;" type="button" onclick="order_func()">Order</button>
+		<button class="button button3" style="margin-left:1em;" type="button" onclick="order_func(); orderStatus();">Order</button>
 	</div>
     </br>
 	</br>
@@ -398,14 +398,14 @@ var settings = {
 	
 		
 		
-function orderStatus(patID) {
+function orderStatus() {
 		  // Pros to be completed
 	//console.log(patID +"pls workkkkkk");
 	console.log(patient_id + "pls workkkkkk");
   		var settings31 = {
 		  "async": true,
 		  "crossDomain": true,
-		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
+		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"&intent=order&status=active",
 		  "method": "GET",
 		  "headers": {
 			"Cache-Control": "no-cache"
@@ -446,7 +446,7 @@ function orderStatus(patID) {
 		var settings32 = {
 		  "async": true,
 		  "crossDomain": true,
-		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/4342012&intent=order",
+		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patient_id+"&intent=order",
 		  "method": "GET",
 		  "headers": {
 		    "Cache-Control": "no-cache"
