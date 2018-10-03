@@ -332,7 +332,73 @@
 							}
 					
 		
-	function orderStatus() {
+	
+		
+		
+	function prorecommend() {	
+		patient_id="";
+		gender2="";
+		dobstr2="";
+		//console.log("pls"+practitioner_id);
+	var recdata= "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/"+practitioner_id+"\",\n   \"patient\": \""+patient_id+"\",\n   \"context\" : {\n       \"patientId\" : \""+patient_id+"\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \""+gender2+"\",\n         \"birthDate\" : \""+dobstr2+"\",\n         \"id\" : \""+patient_id+"\",\n         \"active\" : true\n      }\n   }\n}";			
+		
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://sapphire-demo.meliorix.com/cds-hook-api/api/v1/cds-services/pro-recommend",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "35410d6a-12f4-4145-9655-db99cdaa0e90"
+  },
+  "processData": false,
+  "data": recdata
+}
+			$.ajax(settings).done(function (response) {
+			  //console.log(response);
+			  
+			  jQuery(response).each(function(i, item){
+								
+								console.log(item.cards)
+								jQuery(item.cards).each(function(j, item){
+											//console.log(item.summary);
+											//console.log(item.detail);
+											var $t1 = item.summary;
+											var $t2 = item.detail;
+											var $t3 = item.source.label;
+											var $t4;
+											jQuery(item.suggestions).each(function(k, item){
+											$t4 = item.label;
+											//console.log($t4);
+											})
+											jQuery(item.links).each(function(l, item){
+											$t5 = item.label;
+											$t6 = item.url;
+											//console.log($t5);
+											//console.log($t6);
+											})
+											
+											$("#docview-article").append("<div class='panel panel-default'>	<div id='rec' class='panel-body'><b style='color:#0079BE;font-size: 16px;'>"+$t1 + "</b></br>"+ "<I style='font-size: 12px;'>Source: <span style='color:blue;font-size: 12px;'>"+$t3 + "</span></I></br></br>"+$t2+"</br><button class='button button4' type='button' onclick='alert('Test!')'>"+ $t4+"</button></br><a href='"+$t6+"'>"+$t5+"</a></div> </div>")
+																					
+											$("rec").append("<b>"+$t1+"</b>");
+											$("rec").append("</br>");$("rec").append("</br>");
+											$("rec").append($t2);
+											$("rec").append("</br>");$("rec").append("</br>");$("rec").append("</br>");
+											
+											//document.getElementById("demo").innerHTML = item.summary + "</br>" + item.detail;
+								})
+								//console.log(item.cards[i])
+							})
+			  
+			 //document.getElementById("demo").innerHTML = response[0];
+			});
+			
+	}
+	
+		
+		
+		function orderStatus() {
 		  // Pros to be completed
   		var settings3 = {
 		  "async": true,
@@ -435,69 +501,6 @@
 		
 	}
 		
-		
-		
-	function prorecommend() {	
-		patient_id="";
-		gender2="";
-		dobstr2="";
-		//console.log("pls"+practitioner_id);
-	var recdata= "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/"+practitioner_id+"\",\n   \"patient\": \""+patient_id+"\",\n   \"context\" : {\n       \"patientId\" : \""+patient_id+"\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \""+gender2+"\",\n         \"birthDate\" : \""+dobstr2+"\",\n         \"id\" : \""+patient_id+"\",\n         \"active\" : true\n      }\n   }\n}";			
-		
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://sapphire-demo.meliorix.com/cds-hook-api/api/v1/cds-services/pro-recommend",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-    "Cache-Control": "no-cache",
-    "Postman-Token": "35410d6a-12f4-4145-9655-db99cdaa0e90"
-  },
-  "processData": false,
-  "data": recdata
-}
-			$.ajax(settings).done(function (response) {
-			  //console.log(response);
-			  
-			  jQuery(response).each(function(i, item){
-								
-								console.log(item.cards)
-								jQuery(item.cards).each(function(j, item){
-											//console.log(item.summary);
-											//console.log(item.detail);
-											var $t1 = item.summary;
-											var $t2 = item.detail;
-											var $t3 = item.source.label;
-											var $t4;
-											jQuery(item.suggestions).each(function(k, item){
-											$t4 = item.label;
-											//console.log($t4);
-											})
-											jQuery(item.links).each(function(l, item){
-											$t5 = item.label;
-											$t6 = item.url;
-											//console.log($t5);
-											//console.log($t6);
-											})
-											
-											$("#docview-article").append("<div class='panel panel-default'>	<div id='rec' class='panel-body'><b style='color:#0079BE;font-size: 16px;'>"+$t1 + "</b></br>"+ "<I style='font-size: 12px;'>Source: <span style='color:blue;font-size: 12px;'>"+$t3 + "</span></I></br></br>"+$t2+"</br><button class='button button4' type='button' onclick='alert('Test!')'>"+ $t4+"</button></br><a href='"+$t6+"'>"+$t5+"</a></div> </div>")
-																					
-											$("rec").append("<b>"+$t1+"</b>");
-											$("rec").append("</br>");$("rec").append("</br>");
-											$("rec").append($t2);
-											$("rec").append("</br>");$("rec").append("</br>");$("rec").append("</br>");
-											
-											//document.getElementById("demo").innerHTML = item.summary + "</br>" + item.detail;
-								})
-								//console.log(item.cards[i])
-							})
-			  
-			 //document.getElementById("demo").innerHTML = response[0];
-			});
-			
-	}
-			
 			
 //console.log(form_oid);	
 listForms();
