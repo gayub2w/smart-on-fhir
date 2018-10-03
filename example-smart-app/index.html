@@ -381,8 +381,9 @@
            		 str = str +"<td>"+proname1 +"</td>";
             		str = str +"<td>Ordered</td><td> -- </td><td> </td> </tr>";
 			  // newRow = "<td>New row text</td><td>New row 2nd cell</td>"; <-- won't work
-			  var newRow=document.getElementById('t02').insertRow();	
-			newRow.innerHTML = str;				
+			  //var newRow=document.getElementById('t02').insertRow();	
+			//newRow.innerHTML = str;	
+			  document.getElementById('t02').innerHTML += str;
 			});		
 		 
 		 });
