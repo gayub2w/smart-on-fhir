@@ -349,7 +349,85 @@
 									}
 								})
 							}
-							
+					
+		
+	function orderStatus() {
+		  // Pros to be completed
+  		var settings3 = {
+		  "async": true,
+		  "crossDomain": true,
+		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/4342012&intent=order&status=active",
+		  "method": "GET",
+		  "headers": {
+			"Cache-Control": "no-cache"
+		  }
+		}
+		$.ajax(settings3).done(function (response) {
+		  console.log(response);
+		 // console.log(response.entry);
+		  jQuery(response.entry).each(function(i, item){
+				console.log(item.resource.code.text);
+				console.log(item.resource.id);
+				console.log(item.resource.occurrenceDateTime);
+  
+  
+ 			 });
+		 
+		 });
+
+ // Pros completed
+ 
+		var settings = {
+		  "async": true,
+		  "crossDomain": true,
+		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/4342012&intent=order",
+		  "method": "GET",
+		  "headers": {
+		    "Cache-Control": "no-cache"
+		  }
+		}
+
+		$.ajax(settings).done(function (response) {
+		console.log("Completed");
+		  console.log(response);
+
+		  //console.log(response.entry);
+
+		  jQuery(response.entry).each(function(i, item){
+						console.log(item.resource.code.text);
+						console.log(item.resource.id);
+						console.log(item.resource.occurrenceDateTime);
+
+						var settings1 = {
+							  "async": true,
+							  "crossDomain": true,
+							  "url": "http://hapi.fhir.org/baseDstu3/Observation?based-on=ProcedureRequest/"+item.resource.id,
+							  "method": "GET",
+							  "headers": {
+								"Cache-Control": "no-cache"
+							  }
+							}
+
+							$.ajax(settings1).done(function (response) {
+							  //console.log(response);
+							    jQuery(response.entry).each(function(i, item){
+
+												console.log(item.resource.valueQuantity.value);
+
+
+								  });
+							});	
+
+
+					  });
+					});
+
+	
+		
+	}
+		
+		
+		
 	function prorecommend() {	
 		patient_id="";
 		gender2="";
@@ -416,6 +494,7 @@ var settings = {
 listForms();
 formDetails(FormOID);
 prorecommend();
+orderStatus();
 		
 		
 // Flow for the patient app
