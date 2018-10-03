@@ -393,11 +393,12 @@
 
 		  //console.log(response.entry);
 			var str="";
+			var result;
 		  jQuery(response.entry).each(function(i, item){
 						console.log(item.resource.code.text);
 						console.log(item.resource.id);
 						console.log(item.resource.occurrenceDateTime);
-						var result;
+						
 						var settings1 = {
 							  "async": true,
 							  "crossDomain": true,
