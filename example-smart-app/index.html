@@ -343,7 +343,7 @@
   		var settings3 = {
 		  "async": true,
 		  "crossDomain": true,
-		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/4342012&intent=order&status=active",
+		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"&intent=order&status=active",
 		  "method": "GET",
 		  "headers": {
 			"Cache-Control": "no-cache"
@@ -380,7 +380,7 @@
 		var settings = {
 		  "async": true,
 		  "crossDomain": true,
-		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/4342012&intent=order",
+		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patient_id+"&intent=order",
 		  "method": "GET",
 		  "headers": {
 		    "Cache-Control": "no-cache"
