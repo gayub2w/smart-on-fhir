@@ -398,7 +398,7 @@ var settings = {
 	
 		
 		
-		function orderStatus(patient_id) {
+function orderStatus() {
 		  // Pros to be completed
   		var settings3 = {
 		  "async": true,
@@ -412,7 +412,7 @@ var settings = {
 		$.ajax(settings3).done(function (response) {
 		  console.log(response);
 			console.log("am herrrrrrrrrrreeeeeeeeeeee");
-			console.log(patient_id);
+			console.log(patID);
 		 // console.log(response.entry);
 		 var str="";
 			
@@ -455,7 +455,7 @@ var settings = {
 		console.log("Completed");
 		  console.log(response);
 			console.log("and herrrrrrrrrrreeeeeeeeeeee");
-			console.log(patient_id);
+			console.log(patID);
 		  //console.log(response.entry);
 			var str="";
 			var result;
@@ -508,7 +508,7 @@ var settings = {
 listForms();
 formDetails(FormOID);
 prorecommend();
-orderStatus(patID);
+orderStatus();
 
 		
 		
