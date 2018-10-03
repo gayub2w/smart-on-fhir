@@ -398,11 +398,11 @@ var settings = {
 	
 		
 		
-function orderStatus() {
+
 		  // Pros to be completed
 	//console.log(patID);
 	//console.log(patient_id);
-  		var settings3 = {
+  		var settings31 = {
 		  "async": true,
 		  "crossDomain": true,
 		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
@@ -411,7 +411,7 @@ function orderStatus() {
 			"Cache-Control": "no-cache"
 		  }
 		}
-		$.ajax(settings3).done(function (response) {
+		$.ajax(settings31).done(function (response) {
 		  	console.log(response);
 			console.log("am herrrrrrrrrrreeeeeeeeeeee");
 			console.log(patID);
@@ -443,7 +443,7 @@ function orderStatus() {
 
  // Pros completed
  
-		var settings = {
+		var settings32 = {
 		  "async": true,
 		  "crossDomain": true,
 		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/4342012&intent=order",
@@ -453,7 +453,7 @@ function orderStatus() {
 		  }
 		}
 
-		$.ajax(settings).done(function (response) {
+		$.ajax(settings32).done(function (response) {
 		console.log("Completed");
 		  console.log(response);
 			console.log("and herrrrrrrrrrreeeeeeeeeeee");
@@ -503,14 +503,14 @@ function orderStatus() {
 
 	
 		
-	}
+	
 		
 			
 //console.log(form_oid);	
 listForms();
 formDetails(FormOID);
 prorecommend();
-orderStatus();
+
 
 		
 		
