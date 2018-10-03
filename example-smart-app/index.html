@@ -403,7 +403,7 @@ function orderStatus() {
 	//console.log(patID +"pls workkkkkk");
 	console.log(patient_id + "pls workkkkkk");
   		var settings31 = {
-		  "async": true,
+		  "async": false,
 		  "crossDomain": true,
 		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"&intent=order&status=active",
 		  "method": "GET",
@@ -444,7 +444,7 @@ function orderStatus() {
  // Pros completed
  
 		var settings32 = {
-		  "async": true,
+		  "async": false,
 		  "crossDomain": true,
 		  "url": "http://hapi.fhir.org/baseDstu3/ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patient_id+"&intent=order",
 		  "method": "GET",
