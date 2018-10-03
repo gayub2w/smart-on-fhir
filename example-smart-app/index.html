@@ -156,13 +156,7 @@
 <h3 style="margin-left:0.5em;">Order Status</h3>
 
 <table id="t02">
-  <tr>
-	  <th>Event Date Time</th>	  
-    <th>PROs Ordered</th>
-    <th>Status</th>
-    <th>Results</th>
-	  <th>Ref Range</th>
-  </tr>
+  
  
   </table>
 
@@ -353,7 +347,9 @@
 		  console.log(response);
 		 // console.log(response.entry);
 		 var str="";
-			 
+			
+	str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
+           		
 		 
 		 
 		  jQuery(response.entry).each(function(i, item){
