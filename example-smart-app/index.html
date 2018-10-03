@@ -163,20 +163,7 @@
     <th>Results</th>
 	  <th>Ref Range</th>
   </tr>
-  <tr>
-	  <td> 2018-07-18 </td>
-    <td>PROMIS Bank v2.0 - Emotional Support</td>
-    <td>Ordered</td>
-    <td> -- </td>
-	  <td> </td>
-  </tr>
-  <tr>
-	  <td> 2018-07-06 </td>
-    <td>PROMIS Bank v2.0 - Physical Function</td>
-    <td>Completed</td>
-	  <td> <a target="_blank" href="./src/res.html">PROMIS T-SCORE 41.9</a></td>
-	  <td> 1 - 100 </td>
-  </tr>
+ 
   </table>
 
   </br>
@@ -405,12 +392,12 @@
 		  console.log(response);
 
 		  //console.log(response.entry);
-
+			var str="";
 		  jQuery(response.entry).each(function(i, item){
 						console.log(item.resource.code.text);
 						console.log(item.resource.id);
 						console.log(item.resource.occurrenceDateTime);
-
+						var result;
 						var settings1 = {
 							  "async": true,
 							  "crossDomain": true,
@@ -425,15 +412,26 @@
 							  //console.log(response);
 							    jQuery(response.entry).each(function(i, item){
 
-												console.log(item.resource.valueQuantity.value);
-
+								console.log(item.resource.valueQuantity.value);
+								result = item.resource.valueQuantity.value;
 
 								  });
 							});	
+			  
+			  var date1 = item.resource.occurrenceDateTime;
+			  var proname1 = item.resource.code.text;
+				
+			str = str +"<tr><td>" +date1+"</td>";
+           		 str = str +"<td>"+proname1 +"</td>";
+            		str = str +"<td>Completed</td><";
+			 str = str +"<td>result</td><td> </td> </tr>";
+			  
 
 
 					  });
-					});
+			
+			document.getElementById('t02').innerHTML += str;
+			});
 
 	
 		
