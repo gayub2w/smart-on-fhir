@@ -32,6 +32,7 @@
       var token = smart.tokenResponse.id_token;
       var access_token= smart.tokenResponse.access_token;
       console.log(patID);
+	    orderStatus(patID);
       //document.getElementById("pract_id").innerHTML="<b>ID: </b>" + practitioner_id;
      
      
