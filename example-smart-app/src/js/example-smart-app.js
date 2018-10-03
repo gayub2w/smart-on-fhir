@@ -26,7 +26,7 @@
 		MyVars.patid= smart.tokenResponse.patient;
 		console.log(patID);
 		displayList();
-		orderStatus(patID);
+		
 		B(smart.tokenResponse.patient);
 	    }
       practitioner_id = smart.tokenResponse.user;
