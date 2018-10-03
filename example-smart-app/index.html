@@ -152,8 +152,8 @@
     </br>
 	</br>
     </br>
-	
-	<h3 style="margin-left:0.5em;">Order Status</h3>
+
+<h3 style="margin-left:0.5em;">Order Status</h3>
 
 <table id="t02">
   <tr>
@@ -365,12 +365,30 @@
 		$.ajax(settings3).done(function (response) {
 		  console.log(response);
 		 // console.log(response.entry);
+		   var str="";
+		var newRow=document.getElementById('t02').insertRow();		 
+		 
+		 
 		  jQuery(response.entry).each(function(i, item){
 				console.log(item.resource.code.text);
 				console.log(item.resource.id);
 				console.log(item.resource.occurrenceDateTime);
-  
-  
+				
+				var date1 = item.resource.occurrenceDateTime;
+				var proname1 = item.resource.code.text;
+				
+			str = str +"<tr><td>" +date1+"</td>";
+            		str = str +"<td>"+proname1 +"</td>";
+            		str = str +"<td>Ordered</td><td> -- </td><td> </td> </tr>";
+			
+			// newRow = "<td>New row text</td><td>New row 2nd cell</td>"; <-- won't work
+			newRow.innerHTML = str;
+							
+			});
+			
+			
+			
+			
  			 });
 		 
 		 });
