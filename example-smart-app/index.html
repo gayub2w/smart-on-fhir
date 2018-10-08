@@ -429,14 +429,15 @@ function orderStatus() {
 				
 				var date1 = item.resource.occurrenceDateTime;
 				var proname1 = item.resource.code.text;
-				
+			if (proname1.match(/Please/g)!="Please"):
+			{
 			str = str +"<tr><td>" +date1+"</td>";
            		str = str +"<td>"+proname1 +"</td>";
             		str = str +"<td>Ordered</td><td> -- </td><td> </td> </tr>";
 			  // newRow = "<td>New row text</td><td>New row 2nd cell</td>"; <-- won't work
 			  //var newRow=document.getElementById('t02').insertRow();	
 			//newRow.innerHTML = str;	
-			  
+			}
 			});		
 		 document.getElementById('t02').innerHTML += str;
 		 });
