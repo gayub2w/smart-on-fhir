@@ -467,7 +467,7 @@ function orderStatus() {
 						console.log(item.resource.occurrenceDateTime);
 						
 						var settings1 = {
-							  "async": true,
+							  "async": false,
 							  "crossDomain": true,
 							  "url": "http://hapi.fhir.org/baseDstu3/Observation?based-on=ProcedureRequest/"+item.resource.id,
 							  "method": "GET",
