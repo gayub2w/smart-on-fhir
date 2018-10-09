@@ -428,7 +428,14 @@ function orderStatus() {
 				console.log(item.resource.id);
 				console.log(item.resource.occurrenceDateTime);
 				
-				var date1 = item.resource.occurrenceDateTime;
+				//var date1 = item.resource.occurrenceDateTime;
+			  
+			   	var msec = Date.parse(item.resource.occurrenceDateTime);
+			        var d = new Date(msec);
+
+				var date1 = d.toLocaleString("en-US"); 
+			  
+			  
 				var proname1 = item.resource.code.text;
 			if (proname1.match(/Please/g)!="Please")
 			{
@@ -489,7 +496,13 @@ function orderStatus() {
 								  });
 							});	
 			  
-			  var date1 = item.resource.occurrenceDateTime;
+			  //var date1 = item.resource.occurrenceDateTime;
+			  
+			  var msec = Date.parse(item.resource.occurrenceDateTime);
+			        var d = new Date(msec);
+
+				var date1 = d.toLocaleString("en-US"); 
+			  
 			  var proname1 = item.resource.code.text;
 				
 			str = str +"<tr><td>" +date1+"</td>";
