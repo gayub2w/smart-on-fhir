@@ -211,8 +211,8 @@
 			var e = document.getElementById("selectform");
 			var sformoid = e.options[e.selectedIndex].value;
 			var sformname = e.options[e.selectedIndex].text;
-			alert("FormOID : " + sformoid);
-			alert("FormName : " + sformname);	
+			//alert("FormOID : " + sformoid);
+			alert("Pro Ordered : " + sformname);	
 					var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 							console.log(date1);
 							console.log("patid : " + window.patient_id);
@@ -508,7 +508,7 @@ function orderStatus() {
 			str = str +"<tr><td>" +date1+"</td>";
            		 str = str +"<td>"+proname1 +"</td>";
             		str = str +"<td>Completed</td>";
-			 str = str +"<td>"+result1+"</td><td> 0 - 100 </td> </tr>";
+			 str = str +"<td><a target='_blank' href='./src/res.html'> PROMIS T-Score "+result1+"</a></td><td> 0 - 100 </td> </tr>";
 			  
 
 
