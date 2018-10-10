@@ -397,7 +397,8 @@ var settings = {
 	}
 	
 		
-var result1;		
+var res_score1;	
+var res_score2;			
 function orderStatus() {
 		  // Pros to be completed
 	//console.log(patID +"pls workkkkkk");
@@ -482,7 +483,8 @@ function orderStatus() {
 							  //console.log(response);
 							    jQuery(response.entry).each(function(i, item){
 								console.log(item.resource.valueQuantity.value);
-								result1 = item.resource.valueQuantity.value;
+								res_score2 = item.resource.valueQuantity.value;
+								res_score1= res_score2.toPrecision(3);
 								  });
 							});	
 			  
@@ -496,7 +498,7 @@ function orderStatus() {
 			str = str +"<tr><td>" +date1+"</td>";
            		 str = str +"<td>"+proname1 +"</td>";
             		str = str +"<td>Completed</td>";
-			 str = str +"<td>"+result1+"</td><td> 1 - 100</td> </tr>";
+			 str = str +"<td>"+res_score1+"</td><td> 1 - 100</td> </tr>";
 			  
 					  });
 			
