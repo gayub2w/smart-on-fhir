@@ -427,13 +427,17 @@ function orderStatus() {
 				console.log(item.resource.id);
 				console.log(item.resource.occurrenceDateTime);
 				
-				var date1 = item.resource.occurrenceDateTime;
+				var msec = Date.parse(item.resource.occurrenceDateTime);
+			        var d = new Date(msec);
+				var date1 = d.toLocaleString("en-US"); 
+			  
+			  
 				var proname1 = item.resource.code.text;
 			if (proname1.match(/Please/g)!="Please")
 			{
 			str = str +"<tr><td>" +date1+"</td>";
            		str = str +"<td>"+proname1 +"</td>";
-            		str = str +"<td>Ordered</td><td> -- </td><td> </td> </tr>";
+            		str = str +"<td>Ordered</td><td> -- </td><td> -- </td> </tr>";
 			  // newRow = "<td>New row text</td><td>New row 2nd cell</td>"; <-- won't work
 			  //var newRow=document.getElementById('t02').insertRow();	
 			//newRow.innerHTML = str;	
@@ -482,13 +486,17 @@ function orderStatus() {
 								  });
 							});	
 			  
-			  var date1 = item.resource.occurrenceDateTime;
+			   	var msec = Date.parse(item.resource.occurrenceDateTime);
+			        var d = new Date(msec);
+				var date1 = d.toLocaleString("en-US"); 
+			  
+			  
 			  var proname1 = item.resource.code.text;
 				
 			str = str +"<tr><td>" +date1+"</td>";
            		 str = str +"<td>"+proname1 +"</td>";
             		str = str +"<td>Completed</td>";
-			 str = str +"<td>"+result1+"</td><td> </td> </tr>";
+			 str = str +"<td>"+result1+"</td><td> 1 - 100</td> </tr>";
 			  
 					  });
 			
