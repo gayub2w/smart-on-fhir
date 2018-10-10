@@ -136,7 +136,7 @@
   <div class="icon-bar">
 			<span>&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-left"></i><span>&nbsp;&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-right "></i>&nbsp;&nbsp; <i style=" font-size: 7px; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i><span id="v1"></span>&nbsp;&nbsp; <i class="glyphicon glyphicon-home white"></i> <span style="margin-left:0.5em; font-color:#FFFFFF; font-size:20px;"> Order PRO</span><img border="0" style="margin-bottom:0.2em;margin-left:40em;" src="./src/images/pixel-full-screen.png"  />&nbsp;Fullscreen&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-print white"></i>&nbsp;  Print&nbsp; &nbsp; <i class="glyphicon glyphicon-refresh white"></i><span> &nbsp;2 minutes ago &nbsp; </span>
 			</div>
-  <h3 style="margin-left:0.5em;">Order a new PRO</h3>
+  <h3 style="margin-left:0.5em;">Order PRO</h3>
 	
 
 	<div style="position:relative;width:200px;height:25px;border:0;padding:0;margin:0;">
@@ -153,7 +153,7 @@
 	</br>
     </br>
 
-<h3 style="margin-left:0.5em;">Previous Orders</h3>
+<h3 style="margin-left:0.5em;">Order Status</h3>
 
 <table id="t02">
   
@@ -211,8 +211,8 @@
 			var e = document.getElementById("selectform");
 			var sformoid = e.options[e.selectedIndex].value;
 			var sformname = e.options[e.selectedIndex].text;
-			//alert("FormOID : " + sformoid);
-			alert("Pro Ordered : " + sformname);	
+			alert("FormOID : " + sformoid);
+			alert("FormName : " + sformname);	
 					var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 							console.log(date1);
 							console.log("patid : " + window.patient_id);
@@ -240,7 +240,7 @@
 					  console.log("pro-test");
 					  console.log(response);
 					});
-								
+									
 			}
 		
 					
@@ -397,8 +397,7 @@ var settings = {
 	}
 	
 		
-var result1;	
-var result2;
+var result1;		
 function orderStatus() {
 		  // Pros to be completed
 	//console.log(patID +"pls workkkkkk");
@@ -428,20 +427,13 @@ function orderStatus() {
 				console.log(item.resource.id);
 				console.log(item.resource.occurrenceDateTime);
 				
-				//var date1 = item.resource.occurrenceDateTime;
-			  
-			   	var msec = Date.parse(item.resource.occurrenceDateTime);
-			        var d = new Date(msec);
-
-				var date1 = d.toLocaleString("en-US"); 
-			  
-			  
+				var date1 = item.resource.occurrenceDateTime;
 				var proname1 = item.resource.code.text;
 			if (proname1.match(/Please/g)!="Please")
 			{
 			str = str +"<tr><td>" +date1+"</td>";
            		str = str +"<td>"+proname1 +"</td>";
-            		str = str +"<td>Ordered</td><td> -- </td><td> -- </td> </tr>";
+            		str = str +"<td>Ordered</td><td> -- </td><td> </td> </tr>";
 			  // newRow = "<td>New row text</td><td>New row 2nd cell</td>"; <-- won't work
 			  //var newRow=document.getElementById('t02').insertRow();	
 			//newRow.innerHTML = str;	
@@ -449,7 +441,6 @@ function orderStatus() {
 			});		
 		 document.getElementById('t02').innerHTML += str;
 		 });
-
  // Pros completed
  
 		var settings32 = {
@@ -461,7 +452,6 @@ function orderStatus() {
 		    "Cache-Control": "no-cache"
 		  }
 		}
-
 		$.ajax(settings32).done(function (response) {
 		console.log("Completed");
 		  console.log(response);
@@ -484,44 +474,28 @@ function orderStatus() {
 								"Cache-Control": "no-cache"
 							  }
 							}
-
 							$.ajax(settings1).done(function (response) {
 							  //console.log(response);
 							    jQuery(response.entry).each(function(i, item){
-
 								console.log(item.resource.valueQuantity.value);
-								result2 = item.resource.valueQuantity.value;
-								result1 = result2.toPrecision(3);
-
+								result1 = item.resource.valueQuantity.value;
 								  });
 							});	
 			  
-			  //var date1 = item.resource.occurrenceDateTime;
-			  
-			  var msec = Date.parse(item.resource.occurrenceDateTime);
-			        var d = new Date(msec);
-
-				var date1 = d.toLocaleString("en-US"); 
-			  
+			  var date1 = item.resource.occurrenceDateTime;
 			  var proname1 = item.resource.code.text;
 				
 			str = str +"<tr><td>" +date1+"</td>";
            		 str = str +"<td>"+proname1 +"</td>";
             		str = str +"<td>Completed</td>";
-			 str = str +"<td><a target='_blank' href='./src/res.html'> T-Score : "+result1+"</a></td><td> 0 - 100 </td> </tr>";
+			 str = str +"<td>"+result1+"</td><td> </td> </tr>";
 			  
-
-
 					  });
 			
 			document.getElementById('t02').innerHTML += str;
 			});
-
 }
-	
-//function reload() {
-//window.location.reload(true);	
-//}/
+		
 	
 		
 			
@@ -529,8 +503,6 @@ function orderStatus() {
 listForms();
 formDetails(FormOID);
 prorecommend();
-
-
 		
 		
 // Flow for the patient app
@@ -601,7 +573,6 @@ prorecommend();
 						  "processData": false,
 						  "data": "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"id\": \""+taskId+"\",\n\t\"status\": \"completed\",\n\t\"intent\": \"order\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+proId+"\",\n\t\t\t\"display\": \""+proName+"\"\n\t\t}],\n\t\t\"text\": \""+proName+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"display\": \""+patName+"\",\n        \"reference\": \"https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patId+"\"\n\t}\n} \n"
 						}
-
 						$.ajax(settings).done(function (response) {
 						  console.log(response);
 						});
@@ -622,7 +593,6 @@ prorecommend();
 			  "processData": false,
 			  "data": "{\n\t\"resourceType\": \"Observation\",\n\t\"status\": \"final\",\n\t\"code\": {\n    \t\"coding\": [\n    \t\t{\n        \t\t\"system\": \"http://loinc.org\",\n\t\t        \"code\": \"77580-9\",\n\t\t        \"display\": \""+proName+" T-score\"\n    \t\t}\n    \t]\n\t},\n\t\"category\": [{\n    \t\"coding\": [{\n        \t\"system\": \"http://hl7.org/fhir/observation-category\",\n        \t\"code\": \"survey\",\n        \t\"display\": \"Survey\"\n        }]\n    }],\n\t\"subject\": {\n\t\t\"display\": \""+patName+"\",\n        \"reference\": \"https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patId+"\"\n\t},\n\t\"effectiveDateTime\": \""+date1+"\",\n\t\"issued\": \""+date1+"\",\n\t\"performer\": [\n    \t{\n\t\t\t\"display\": \""+patName+"\",\n        \t\"reference\": \"https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patId+"\"\n\t    }\n\t],\n\t\"valueQuantity\": {\n    \t\"value\": "+tscore+"\n     \n\t},\n\n\t\"basedOn\":\t{\n\t\t\"reference\": \"ProcedureRequest/"+taskId+"\"\n\t}\n} \n"
 			}
-
 			$.ajax(settings).done(function (response) {
 			  console.log(response);
 			});
@@ -648,7 +618,6 @@ prorecommend();
 			"Cache-Control": "no-cache"
 		  }
 		}
-
 		$.ajax(settings3).done(function (response) {
 		  //console.log(response);
 		 // console.log(response.entry);
