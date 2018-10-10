@@ -147,7 +147,7 @@
 		</select>
 		</br>
 		</br>
-		<button class="button button3" style="margin-left:1em;" type="button" onclick="order_func();">Order</button>
+		<button class="button button3" style="margin-left:1em;" type="button" onclick="order_func(); reload();">Order</button>
 	</div>
     </br>
 	</br>
@@ -516,9 +516,12 @@ function orderStatus() {
 			
 			document.getElementById('t02').innerHTML += str;
 			});
-window.location.reload(false);
+
 }
-		
+	
+function reload() {
+window.location.reload(true);	
+}
 	
 		
 			
