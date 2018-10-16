@@ -679,7 +679,7 @@ prorecommend();
 								
 							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+pro_name+"</div>"
 							str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>"+date2+"</div>";
-							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' startTask(\""+task_id+"\"); assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); callasmt(\""+pro_id+"\"); writeProname(\""+pro_name+"\"); displayQ(); this.disabled=true; \'>Start</button></div></div>";
+							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' callasmt(\""+pro_id+"\"); writeProname(\""+pro_name+"\"); displayQ(); this.disabled=true; \'>Start</button></div></div>";
 							}
 							
 							
@@ -860,7 +860,7 @@ prorecommend();
 						 if (data.DateFinished != '') {
 							 //console.log("Inside");
 							 //console.log(taskId + " " + proId + " " + proName + " " + patId + " " + patName);
-							completeProcess(taskId,proId,proName,patId,patName);	
+							//completeProcess(taskId,proId,proName,patId,patName);	
 							displayScore(assessmentOID);
 							document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 							return
