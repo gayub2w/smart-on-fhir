@@ -530,13 +530,13 @@ prorecommend();
 		
 		
 		
-			function assignValues(task_Id,pro_Id,pro_Name,pat_Name)
+			function B(r)
 				{
-					taskId = task_Id;
-					proId = pro_Id;
-					proName = pro_Name;
-					patId = pat_id;					
-					patName = pat_Name;
+					
+					console.log(r);
+					console.log("fin");
+					
+					
 				}
 		
 		
@@ -565,7 +565,6 @@ prorecommend();
 				}
 				$.ajax(settings).done(function (response) {
 				  console.log(response);
-				  console.log("start task");	
 				});		
 		}
 		
@@ -665,11 +664,11 @@ prorecommend();
 							var temp = item.resource.subject.reference;
 							var pat_id= temp.substr(-7);
 					 		
-					 		//taskId= task_id;
-					 		//proId=pro_id;
-					 		//proName=pro_name;
-					 		//patId=pat_id;
-					 		//patName=pat_name;
+					 		taskId= task_id;
+					 		proId=pro_id;
+					 		proName=pro_name;
+					 		patId=pat_id;
+					 		patName=pat_name;
 					 
 					 		
 							
@@ -860,7 +859,7 @@ prorecommend();
 						 if (data.DateFinished != '') {
 							 //console.log("Inside");
 							 //console.log(taskId + " " + proId + " " + proName + " " + patId + " " + patName);
-							//completeProcess(taskId,proId,proName,patId,patName);	
+							completeProcess(taskId,proId,proName,patId,patName);	
 							displayScore(assessmentOID);
 							document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 							return
