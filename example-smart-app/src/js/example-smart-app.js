@@ -27,7 +27,7 @@
 		console.log(patID);
 		displayList();
 		
-		B(smart.tokenResponse.patient);
+		
 	    }
       practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
