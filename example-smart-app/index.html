@@ -277,10 +277,7 @@ Highcharts.chart("myWindow.document.getElementById('body')", {
 							console.log(date1);
 							console.log("patid :  " + window.patient_id);
 							console.log("fname : " + window.pat_fname);
-				                        console.log("lname : " + window.pat_lname);
-							//console.log(practitioner_id);
-							//console.log(window.gender2);
-							//console.log(window.dobstr2);	
+				                        console.log("lname : " + window.pat_lname);	
 			var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"intent\": \"order\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"display\": \""+pat_fname+" "+pat_lname+"\",\n        \"reference\": \"http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"\"\n\t}\n} \n"
 			    
 	
@@ -349,11 +346,6 @@ Highcharts.chart("myWindow.document.getElementById('body')", {
 									el.textContent = opt;
 									el.value = val;
 									select.appendChild(el);
-								
-									//console.log(forms[i].OID + " : " + forms[i].Name + "");
-									//var myform = document.createElement("div");
-									//myform.innerHTML = forms[i].OID + " : " + forms[i].Name + "";
-									//container.appendChild(myform);
 								}
 								
 							},
@@ -399,7 +391,6 @@ Highcharts.chart("myWindow.document.getElementById('body')", {
 		patient_id="";
 		gender2="";
 		dobstr2="";
-		//console.log("pls"+practitioner_id);
 	var recdata= "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/"+practitioner_id+"\",\n   \"patient\": \""+patient_id+"\",\n   \"context\" : {\n       \"patientId\" : \""+patient_id+"\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \""+gender2+"\",\n         \"birthDate\" : \""+dobstr2+"\",\n         \"id\" : \""+patient_id+"\",\n         \"active\" : true\n      }\n   }\n}";			
 		
 var settings = {
@@ -422,21 +413,18 @@ var settings = {
 								
 								console.log(item.cards)
 								jQuery(item.cards).each(function(j, item){
-											//console.log(item.summary);
-											//console.log(item.detail);
 											var $t1 = item.summary;
 											var $t2 = item.detail;
 											var $t3 = item.source.label;
 											var $t4;
 											jQuery(item.suggestions).each(function(k, item){
 											$t4 = item.label;
-											//console.log($t4);
+											
 											})
 											jQuery(item.links).each(function(l, item){
 											$t5 = item.label;
 											$t6 = item.url;
-											//console.log($t5);
-											//console.log($t6);
+											
 											})
 											
 											$("#docview-article").append("<div class='panel panel-default'>	<div id='rec' class='panel-body'><b style='color:#0079BE;font-size: 16px;'>"+$t1 + "</b></br>"+ "<I style='font-size: 12px;'>Source: <span style='color:blue;font-size: 12px;'>"+$t3 + "</span></I></br></br>"+$t2+"</br><button class='button button4' type='button' onclick='alert('Test!')'>"+ $t4+"</button></br><a href='"+$t6+"'>"+$t5+"</a></div> </div>")
@@ -446,12 +434,9 @@ var settings = {
 											$("rec").append($t2);
 											$("rec").append("</br>");$("rec").append("</br>");$("rec").append("</br>");
 											
-											//document.getElementById("demo").innerHTML = item.summary + "</br>" + item.detail;
 								})
-								//console.log(item.cards[i])
+								
 							})
-			  
-			 //document.getElementById("demo").innerHTML = response[0];
 			});
 			
 	}
@@ -461,7 +446,6 @@ var res_score1;
 var res_score2;			
 function orderStatus() {
 		  // Pros to be completed
-	//console.log(patID +"pls workkkkkk");
 	console.log(patient_id + "pls workkkkkk");
   		var settings31 = {
 		  "async": false,
@@ -476,7 +460,6 @@ function orderStatus() {
 		  	console.log(response);
 			console.log("am herrrrrrrrrrreeeeeeeeeeee");
 			console.log(patID);
-		 // console.log(response.entry);
 		 var str="";
 			
 	str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
@@ -498,10 +481,7 @@ function orderStatus() {
 			{
 			str = str +"<tr><td>" +date1+"</td>";
            		str = str +"<td>"+proname1 +"</td>";
-            		str = str +"<td>Ordered</td><td> -- </td><td> -- </td> </tr>";
-			  // newRow = "<td>New row text</td><td>New row 2nd cell</td>"; <-- won't work
-			  //var newRow=document.getElementById('t02').insertRow();	
-			//newRow.innerHTML = str;	
+            		str = str +"<td>Ordered</td><td> -- </td><td> -- </td> </tr>";	
 			}
 			});		
 		 document.getElementById('t02').innerHTML += str;
@@ -518,11 +498,8 @@ function orderStatus() {
 		  }
 		}
 		$.ajax(settings32).done(function (response) {
-		console.log("Completed");
-		  console.log(response);
-			//console.log("and herrrrrrrrrrreeeeeeeeeeee");
-			//console.log(patID);
-		  //console.log(response.entry);
+			console.log("Completed");
+		  	console.log(response);
 			var str="";
 			
 		  jQuery(response.entry).each(function(i, item){
@@ -567,9 +544,6 @@ function orderStatus() {
 }
 		
 	
-		
-			
-//console.log(form_oid);	
 listForms();
 formDetails(FormOID);
 prorecommend();
@@ -710,10 +684,7 @@ prorecommend();
 							str = str+"<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'>Status</div></div>";	
 		  
 				 jQuery(response.entry).each(function(i, item){
-							//var pro_id= item.resource.code.coding[0].code;
-							//var pro_name= item.resource.code.coding[0].display;
-							//var task_id= item.resource.id;
-							//var pat_name= item.resource.subject.display;						
+													
 							var date = new Date(item.resource.occurrenceDateTime);
 					 		
 					 		var pro_id= item.resource.code.coding[0].code;
@@ -729,15 +700,7 @@ prorecommend();
 							//console.log(date2);
 							
 							var temp = item.resource.subject.reference;
-							var pat_id= temp.substr(-7);
-					 		
-					 		//taskId= task_id;
-					 		//proId=pro_id;
-					 		//proName=pro_name;
-					 		//patId=pat_id;
-					 		//patName=pat_name;
-					 
-					 		
+							var pat_id= temp.substr(-7); 		
 							
 							if (task_id!=null && pro_name.match(/Please/g)!="Please"){
 							
@@ -761,7 +724,6 @@ prorecommend();
 	function displayQ(){
 	
 		$('#Ques').show();
-		//$('#Content').show();
 		window.location.hash = '#Ques'; 
 		
 		document.getElementById('list').style.display = 'none';
@@ -828,14 +790,10 @@ prorecommend();
 							},
 						
 							success: function(data) {
-							  //console.log(data);
-							  //console.log(data.OID);
+						
 							  global_asmtOID=data.OID;
 							  tmp = data.OID;
-							  //console.log(global_asmtOID + "test1");
-							  
-							 
-							  
+		  
 							},
 						
 							error: function(jqXHR, textStatus, errorThrown) {
@@ -880,7 +838,7 @@ prorecommend();
 					   console.log(data.Theta);
 					   var T_Score = data.Theta * 10 + 50.0;
 					   console.log("T-Score : " + T_Score);
-						tscore=T_Score;
+					   tscore=T_Score;
 					   postScore(taskId,proId,proName,patId,patName,tscore);
 					},
 				
@@ -892,10 +850,7 @@ prorecommend();
 								
 		//						
 		function renderScreen(asmtOID) { 
-			//console.log(taskId + " " + proId + " " + proName + " " + patId + " " + patName);
-								
-		
-					var tmp1 =null;
+			var tmp1 =null;
 					
 							var postedData ="";
 							
@@ -924,9 +879,7 @@ prorecommend();
 					success: function (data) {
 							tmp1=data.DateFinished;
 						 if (data.DateFinished != '') {
-							 //console.log("Inside");
-							 //console.log(taskId + " " + proId + " " + proName + " " + patId + " " + patName);
-							completeProcess(taskId,proId,proName,patId,patName);	
+						completeProcess(taskId,proId,proName,patId,patName);	
 							displayScore(assessmentOID);
 							document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 							return
@@ -939,8 +892,6 @@ prorecommend();
 						}
 						
     	
-						//screen= screen + "<p style='margin-left:1em;'><b>Questionnaire for <span id='pro-name'></span></b></p></br>"
-						//var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=200,top="+(screen.height-400)+",left="+(screen.width-840));
 						if (!HasMultipleItems) {
 							for (var i = 0; i < data.Items.length; i++) {
 								for (var j = 0; j < data.Items[i].Elements.length; j++) {
@@ -1012,14 +963,11 @@ prorecommend();
 								
 			
 										
-		//displayList();						
+	//displayList();						
 	// APIs to administer the assessmentcenter forms
 					
 		function callasmt(FormOID){
 									
-								//console.log(FormOID);
-			
-								//console.log(taskId + " " + proId + " " + proName + " " + patId + " " + patName);
 								
 								assessmentOID = startAssessment(FormOID);
 								datefin=renderScreen(assessmentOID);
