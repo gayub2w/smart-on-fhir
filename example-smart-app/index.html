@@ -215,8 +215,8 @@
 		
 		function chart() {
     			var myWindow = window.open("", "MsgWindow", "width=1400,height=1200");
-    			//document.write("<head><title> Patient Reported Outcomes</title> </head>");
-    			myWindow.document.write("<div id = 'container' > </div>");
+    			myWindow.document.write("<head><title> Patient Reported Outcomes</title> </head>");
+    			document.write("<div id = 'container' > </div>");
 			
  myWindow.document.getElementsByTagName('title').innerHTML = "PRO Graph";
 			console.log(Series1);
