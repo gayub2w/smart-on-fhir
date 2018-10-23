@@ -216,11 +216,11 @@
 		function chart() {
     			var myWindow = window.open("", "MsgWindow", "width=1400,height=1200");
     			myWindow.document.write("<head><title> Patient Reported Outcomes</title> </head>");
-    			document.write("<div id = 'container' > </div>");
+    			//document.write("<div id = 'container' > </div>");
 			
  myWindow.document.getElementsByTagName('title').innerHTML = "PRO Graph";
 			console.log(Series1);
-Highcharts.chart('container', {
+Highcharts.chart(myWindow.document.body, {
     title: {
         text: 'Patient Reported Outcomes'
     },
