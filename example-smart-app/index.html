@@ -534,13 +534,22 @@ function orderStatus() {
 			  
 			  var proname1 = item.resource.code.text;
 			  var score = parseFloat(res_score1);
-		        let temp ={
-			name  : proname1,
-			data : [score] };
+		        	for(i=0;i<Series1.length;i++)
+				    {
+						if (proname1 == Series1[i].name){
+						   Series1[i].data.push(score);
+				    		}
+					    	else
+						{
+							let temp ={
+							name  : proname1,
+							data : [score] };
 
-			Series1.push(temp);
+						Series1.push(temp);
+							
+						}
 
-				
+				    }
 			str = str +"<tr><td>" +date1+"</td>";
            		 str = str +"<td>"+proname1 +"</td>";
             		str = str +"<td>Completed</td>";
