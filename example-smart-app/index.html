@@ -541,7 +541,8 @@ function orderStatus() {
 				    {
 						if (proname1 == Series1[i].name){
 						   Series1[i].data.push(score);
-							flag="Y";						
+							flag="Y";	
+						}
 				    }
 					    
 				if flag !="Y"
@@ -549,10 +550,11 @@ function orderStatus() {
 					let temp ={
 					name  : proname1,
 					data : [score] };
+					
 					Series1.push(temp);
 				}
 
-				    
+				 flag="";   
 			  
 			str = str +"<tr><td>" +date1+"</td>";
            		 str = str +"<td>"+proname1 +"</td>";
