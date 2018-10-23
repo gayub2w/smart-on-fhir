@@ -208,6 +208,8 @@
 		var tscore;
 		
  var Series1 = [{name: 'PROMIS Bank v1.0 - Pain Interference',data: [10.6]}];
+		
+		
 
 		
 		
@@ -215,7 +217,7 @@
     			var myWindow = window.open("", "MsgWindow", "width=1400,height=1200");
     			//document.write("<head><title> Patient Reported Outcomes</title> </head>");
  myWindow.document.getElementsByTagName('title').innerHTML = "PRO Graph";
-			
+			console.log(Series1);
 Highcharts.chart(myWindow.document.body, {
     title: {
         text: 'Patient Reported Outcomes'
