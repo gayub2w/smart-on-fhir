@@ -226,7 +226,7 @@ Highcharts.chart(myWindow.document.body, {
         text: ''
     },
     yAxis: {
-	tickInterval: 20,
+	tickInterval: 5,
         title: {
             text:'<p style=\" font-sixe: 16px\;\"><b>t-score</b></p>'
         },
@@ -250,8 +250,7 @@ Highcharts.chart(myWindow.document.body, {
     responsive: {
         rules: [{
             condition: {
-                maxWidth: 1200,
-		maxHeight: 1000
+                maxWidth: 900
             },
             chartOptions: {
                 legend: {
