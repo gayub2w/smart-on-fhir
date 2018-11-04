@@ -203,7 +203,7 @@
 	
 </section>
 	<script>
-		
+		var baseurl="https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/";
 		var taskId,proId,proName,patId,patName;	
 		var tscore;
 		
@@ -289,7 +289,7 @@ Highcharts.chart(myWindow.document.body, {
 					var settings = {
 					  "async": true,
 					  "crossDomain": true,
-					  "url": "https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/ProcedureRequest",
+					  "url": baseurl+"ProcedureRequest",
 					  "method": "POST",
 					  "headers": {
 					    "Content-Type": "application/json",
@@ -451,11 +451,11 @@ var res_score1;
 var res_score2;			
 function orderStatus() {
 		  // Pros to be completed
-	console.log(patient_id + "pls workkkkkk");
+	
   		var settings31 = {
 		  "async": false,
-		  "crossDomain": false,
-		  "url": "https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
+		  "crossDomain": true,
+		  "url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
 		  "method": "GET",
 		  "headers": {
 			"Cache-Control": "no-cache"
@@ -463,7 +463,7 @@ function orderStatus() {
 		}
 		$.ajax(settings31).done(function (response) {
 		  	console.log(response);
-			console.log("am herrrrrrrrrrreeeeeeeeeeee");
+			
 			console.log(patID);
 		 var str="";
 			
@@ -495,8 +495,8 @@ function orderStatus() {
  
 		var settings32 = {
 		  "async": false,
-		  "crossDomain": false,
-		  "url": "https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patID+"&intent=order",
+		  "crossDomain": true,
+		  "url": baseurl+"ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patID+"&intent=order",
 		  "method": "GET",
 		  "headers": {
 		    "Cache-Control": "no-cache"
@@ -515,7 +515,7 @@ function orderStatus() {
 						var settings1 = {
 							  "async": false,
 							  "crossDomain": true,
-							  "url": "https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/Observation?based-on=ProcedureRequest/"+item.resource.id,
+							  "url": baseurl+"Observation?based-on=ProcedureRequest/"+item.resource.id,
 							  "method": "GET",
 							  "headers": {
 								"Cache-Control": "no-cache"
@@ -642,7 +642,7 @@ prorecommend();
 						var settings = {
 						  "async": true,
 						  "crossDomain": true,
-						  "url": "https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/ProcedureRequest/"+taskId,
+						  "url": baseurl+"ProcedureRequest/"+taskId,
 						  "method": "PUT",
 						  "headers": {
 							"Content-Type": "application/json",
@@ -662,7 +662,7 @@ prorecommend();
 			var settings = {
 			  "async": true,
 			  "crossDomain": true,
-			  "url": "https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/Observation",
+			  "url": baseurl+"Observation",
 			  "method": "POST",
 			  "headers": {
 			    "Content-Type": "application/json",
@@ -690,7 +690,7 @@ prorecommend();
 		var settings3 = {
 		  "async": true,
 		  "crossDomain": true,
-		  "url": "https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
+		  "url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
 		  "method": "GET",
 		  "headers": {
 			"Cache-Control": "no-cache"
