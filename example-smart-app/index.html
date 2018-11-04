@@ -454,8 +454,8 @@ function orderStatus() {
 	console.log(patient_id + "pls workkkkkk");
   		var settings31 = {
 		  "async": false,
-		  "crossDomain": true,
-		  "url": "https://vonk.fire.ly/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
+		  "crossDomain": false,
+		  "url": "https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
 		  "method": "GET",
 		  "headers": {
 			"Cache-Control": "no-cache"
@@ -495,8 +495,8 @@ function orderStatus() {
  
 		var settings32 = {
 		  "async": false,
-		  "crossDomain": true,
-		  "url": "https://test.fhir.org/r3/ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patID+"&intent=order",
+		  "crossDomain": false,
+		  "url": "https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patID+"&intent=order",
 		  "method": "GET",
 		  "headers": {
 		    "Cache-Control": "no-cache"
