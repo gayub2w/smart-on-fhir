@@ -228,8 +228,9 @@
 		function chart() {
     			var myWindow = window.open("", "MsgWindow", "width=1400,height=1200");
     			//myWindow.document.write("<head><title> Patient Reported Outcomes</title> </head>");
-    			//document.write("<div id = 'container' > </div>");
-			
+    			//myWindow.document.write("<div id = 'container' > </div>");
+			myWindow.document.body.style.height =100%;
+			myWindow.document.body.style.width =100%;
  //myWindow.document.getElementsByTagName('title').innerHTML = "PRO Graph";
 			console.log(Series1);
 Highcharts.chart(myWindow.document.body, {
