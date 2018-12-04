@@ -2,6 +2,7 @@
 <html lang="en" hidden>
   <head>
 	  <!-- <meta http-equiv='X-UA-Compatible' content='IE=edge' />-->
+	  <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1">
 	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	  	   <!-- Application-level javascript-->
 	<link rel="stylesheet" href="./src/css/SOFCSS.css">
@@ -470,6 +471,7 @@ function orderStatus() {
 		  "async": false,
 		  "crossDomain": true,
 		  "url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
+		  "cache" : false,
 		  "method": "GET",
 		  "headers": {
 			"Cache-Control": "no-cache"
@@ -511,7 +513,8 @@ function orderStatus() {
 		  "async": false,
 		  "crossDomain": true,
 		  "url": baseurl+"ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patID+"&intent=order",
-		  "method": "GET",
+		  "cache" : false,
+			"method": "GET",
 		  "headers": {
 		    "Cache-Control": "no-cache"
 		  }
@@ -530,7 +533,8 @@ function orderStatus() {
 							  "async": false,
 							  "crossDomain": true,
 							  "url": baseurl+"Observation?based-on=ProcedureRequest/"+item.resource.id,
-							  "method": "GET",
+							"cache" : false,  
+							"method": "GET",
 							  "headers": {
 								"Cache-Control": "no-cache"
 							  }
