@@ -469,7 +469,7 @@ function orderStatus() {
 	
   		var settings31 = {
 		  "async": false,
-		  "crossDomain": true,
+		  "crossDomain": false,
 		  "url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
 		  "cache" : false,
 		  "method": "GET",
@@ -511,7 +511,7 @@ function orderStatus() {
  
 		var settings32 = {
 		  "async": false,
-		  "crossDomain": true,
+		  "crossDomain": false,
 		  "url": baseurl+"ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patID+"&intent=order",
 		  "cache" : false,
 			"method": "GET",
@@ -531,7 +531,7 @@ function orderStatus() {
 						
 						var settings1 = {
 							  "async": false,
-							  "crossDomain": true,
+							  "crossDomain": false,
 							  "url": baseurl+"Observation?based-on=ProcedureRequest/"+item.resource.id,
 							"cache" : false,  
 							"method": "GET",
