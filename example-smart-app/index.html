@@ -222,7 +222,6 @@
 	<script>
 		var baseurl="https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/";
 		//https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/  
-		
 		//var baseurl ="http://hapi.fhir.org/baseDstu3/";
 		var taskId,proId,proName,patId,patName;	
 		var tscore;
@@ -330,8 +329,7 @@ Highcharts.chart(myWindow.document.body, {
 		
 				var form_oid=[];
 				var form_name=[];
-				//var Server = "https://www.assessmentcenter.net/ac_api";
-				var Server = "https://mss.fsm.northwestern.edu/AC_API";
+				var Server = "https://www.assessmentcenter.net/ac_api";
 				var FormOID = "96FE494D-F176-4EFB-A473-2AB406610626";  // Sample form -- replace with your FormOID
 				var promisUID="001";
 				
@@ -606,9 +604,7 @@ prorecommend();
 		
 		var global_asmtOID;
 		var datefin;
-		//var Server = "https://www.assessmentcenter.net/ac_api";
-		
-		var Server = "https://mss.fsm.northwestern.edu/AC_API";
+		var Server = "https://www.assessmentcenter.net/ac_api";
 		var ItemResponseOID = "";   
 		var Response = "";  
 		var assessmentOID;	
@@ -643,12 +639,12 @@ prorecommend();
 				}
 		
 		
-		// "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/"
+		
 		function startTask(taskId){
 		var settings = {
 				  "async": true,
 				  "crossDomain": true,
-				  "url": baseurl +taskId+"/start",
+				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/"+taskId+"/start",
 				  "method": "POST",
 				  "headers": {
 					"userId": patID,
@@ -761,7 +757,7 @@ prorecommend();
 								
 							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+pro_name+"</div>"
 							str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>"+date2+"</div>";
-							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\'  startTask(\""+task_id+"\"); assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); callasmt(\""+pro_id+"\"); writeProname(\""+pro_name+"\"); displayQ(); this.disabled=true; \'>Start</button></div></div>";
+							str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' startTask(\""+task_id+"\"); assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); callasmt(\""+pro_id+"\"); writeProname(\""+pro_name+"\"); displayQ(); this.disabled=true; \'>Start</button></div></div>";
 							}
 							
 							
@@ -862,8 +858,7 @@ prorecommend();
 	function displayScore(assessmentOID) {
 					//console.log(assessmentOID);
 					$.ajax({
-					url:  Server + "Results/" +  assessmentOID + ".json",
-						//"https://www.assessmentcenter.net/ac_api/2014-01/Results/" + assessmentOID + ".json",
+					url:  "https://www.assessmentcenter.net/ac_api/2014-01/Results/" + assessmentOID + ".json",
 					cache: false,
 					async:false,
 					type: "POST",
@@ -915,8 +910,7 @@ prorecommend();
 					
 					
 				$.ajax({
-					url: Server + "Participants/" + asmtOID + ".json",
-					//"https://www.assessmentcenter.net/ac_api/2014-01/Participants/"+asmtOID+".json",
+					url: "https://www.assessmentcenter.net/ac_api/2014-01/Participants/"+asmtOID+".json",
 					
 					cache: false,
 					type: "POST",
