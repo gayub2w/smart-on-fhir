@@ -222,6 +222,7 @@
 	<script>
 		var baseurl="https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/";
 		//https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/  
+		
 		//var baseurl ="http://hapi.fhir.org/baseDstu3/";
 		var taskId,proId,proName,patId,patName;	
 		var tscore;
@@ -639,12 +640,12 @@ prorecommend();
 				}
 		
 		
-		
+		// "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/"
 		function startTask(taskId){
 		var settings = {
 				  "async": true,
 				  "crossDomain": true,
-				  "url": "https://sapphire-demo.meliorix.com/dev/cds-hook-api/api/v1/cds-task/"+taskId+"/start",
+				  "url": baseurl +taskId+"/start",
 				  "method": "POST",
 				  "headers": {
 					"userId": patID,
