@@ -330,7 +330,8 @@ Highcharts.chart(myWindow.document.body, {
 		
 				var form_oid=[];
 				var form_name=[];
-				var Server = "https://www.assessmentcenter.net/ac_api";
+				//var Server = "https://www.assessmentcenter.net/ac_api";
+				var Server = "https://mss.fsm.northwestern.edu/AC_API";
 				var FormOID = "96FE494D-F176-4EFB-A473-2AB406610626";  // Sample form -- replace with your FormOID
 				var promisUID="001";
 				
@@ -605,7 +606,9 @@ prorecommend();
 		
 		var global_asmtOID;
 		var datefin;
-		var Server = "https://www.assessmentcenter.net/ac_api";
+		//var Server = "https://www.assessmentcenter.net/ac_api";
+		
+		var Server = "https://mss.fsm.northwestern.edu/AC_API";
 		var ItemResponseOID = "";   
 		var Response = "";  
 		var assessmentOID;	
@@ -859,7 +862,8 @@ prorecommend();
 	function displayScore(assessmentOID) {
 					//console.log(assessmentOID);
 					$.ajax({
-					url:  "https://www.assessmentcenter.net/ac_api/2014-01/Results/" + assessmentOID + ".json",
+					url:  Server + "Results/" +  assessmentOID + ".json",
+						//"https://www.assessmentcenter.net/ac_api/2014-01/Results/" + assessmentOID + ".json",
 					cache: false,
 					async:false,
 					type: "POST",
@@ -911,7 +915,8 @@ prorecommend();
 					
 					
 				$.ajax({
-					url: "https://www.assessmentcenter.net/ac_api/2014-01/Participants/"+asmtOID+".json",
+					url: Server + "Participants/" + asmtOID + ".json",
+					//"https://www.assessmentcenter.net/ac_api/2014-01/Participants/"+asmtOID+".json",
 					
 					cache: false,
 					type: "POST",
