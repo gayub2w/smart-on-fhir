@@ -230,67 +230,66 @@
 		
 		
 		
+// Provider App - chart function is to display the T-Score results in the graph format in a new window. Uses HighCharts Javascript Library. 
+// Series1 Variable is a list of lists which gets appended with the PRO name and T-scores whenever a PRO is completed
 		
-		function chart() {
+			function chart() {
     			var myWindow = window.open("", "MsgWindow", "width=1400,height=1200");
     			//myWindow.document.write("<head><title> Patient Reported Outcomes</title> </head>");
     			//myWindow.document.write("<div id = 'container' > </div>");
 			myWindow.document.body.style.height ="800px";
 			myWindow.document.body.style.width ="1200px";
 			
- //myWindow.document.getElementsByTagName('title').innerHTML = "PRO Graph";
+			
 			console.log(Series1);
-Highcharts.chart(myWindow.document.body, {
-    title: {
-        text: 'Patient Reported Outcomes'
-    },
-    subtitle: {
-        text: ''
-    },
-    yAxis: {
-	tickInterval: 10,
-        title: {
-            text:'<p style=\" font-sixe: 16px\;\"><b>t-score</b></p>'
-        },
-		min:0,
-		max:100
-    },
-    legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
-    },
-    plotOptions: {
-        series: {
-            label: {
-                connectorAllowed: false
-            },
-            pointStart: 2017
-        }
-    },
-    series: Series1,
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 800,
-		maxHeight: 900,    
-            },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
-                }
-            }
-        }]
-    }
-});
-			
-			
-			
+			Highcharts.chart(myWindow.document.body, {
+			    title: {
+				text: 'Patient Reported Outcomes'
+			    },
+			    subtitle: {
+				text: ''
+			    },
+			    yAxis: {
+				tickInterval: 10,
+				title: {
+				    text:'<p style=\" font-sixe: 16px\;\"><b>t-score</b></p>'
+				},
+					min:0,
+					max:100
+			    },
+			    legend: {
+				layout: 'vertical',
+				align: 'right',
+				verticalAlign: 'middle'
+			    },
+			    plotOptions: {
+				series: {
+				    label: {
+					connectorAllowed: false
+				    },
+				    pointStart: 2017
+				}
+			    },
+			    series: Series1,
+			    responsive: {
+				rules: [{
+				    condition: {
+					maxWidth: 800,
+					maxHeight: 900,    
+				    },
+				    chartOptions: {
+					legend: {
+					    layout: 'horizontal',
+					    align: 'center',
+					    verticalAlign: 'bottom'
+					}
+				    }
+				}]
+			    }
+			});
 			}
 		
-		
+// Provider App - order_func is to post the procedure request when a PRO is selected from the dropdown and the order button is clicked	
 			function order_func() {
 			
 			var e = document.getElementById("selectform");
@@ -336,7 +335,7 @@ Highcharts.chart(myWindow.document.body, {
 				function callback1(data){
 				//console.log(data);
 			
-					}
+//Provide App-listForms function is to fetch the list of available PROs from the assessment center API and display in a drop down					}
 				function listForms() {
 					$.ajax({
 						url: Server + "/2014-01/Forms/.json",
@@ -381,7 +380,8 @@ Highcharts.chart(myWindow.document.body, {
 						});
 				}	
 			
-				function formDetails(FormOID) {
+//Provider App - formDetails function is to display the details or items in the selected PRO. Function not used!
+					function formDetails(FormOID) {
 								$.ajax({
 									url: Server + "/2014-01/Forms/" + FormOID + ".json",
 									cache: false,
@@ -411,26 +411,26 @@ Highcharts.chart(myWindow.document.body, {
 		
 	
 		
-		
+//Provider APP - prorecommend function is to fetch  and display the recommended PRO for the particular patient		
 	function prorecommend() {	
 		patient_id="";
 		gender2="";
 		dobstr2="";
-	var recdata= "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/"+practitioner_id+"\",\n   \"patient\": \""+patient_id+"\",\n   \"context\" : {\n       \"patientId\" : \""+patient_id+"\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \""+gender2+"\",\n         \"birthDate\" : \""+dobstr2+"\",\n         \"id\" : \""+patient_id+"\",\n         \"active\" : true\n      }\n   }\n}";			
+		var recdata= "{\n   \"hook\" : \"patient-view\",\n   \"hookInstance\" : \"d1577c69-dfbe-44ad-ba6d-3e05e953b2ea\",\n   \"fhirServer\" : \"https://54.202.74.232:80/cip-fhir3/baseDstu3\",\n   \"user\" : \"Practitioner/"+practitioner_id+"\",\n   \"patient\": \""+patient_id+"\",\n   \"context\" : {\n       \"patientId\" : \""+patient_id+"\"\n   },\n   \"prefetch\" : {\n      \"patient\" : {\n         \"resourceType\" : \"Patient\",\n         \"gender\" : \""+gender2+"\",\n         \"birthDate\" : \""+dobstr2+"\",\n         \"id\" : \""+patient_id+"\",\n         \"active\" : true\n      }\n   }\n}";			
 		
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://sapphire-demo.meliorix.com/cds-hook-api/api/v1/cds-services/pro-recommend",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-    "Cache-Control": "no-cache",
-    "Postman-Token": "35410d6a-12f4-4145-9655-db99cdaa0e90"
-  },
-  "processData": false,
-  "data": recdata
-}
+		var settings = {
+		  "async": true,
+		  "crossDomain": true,
+		  "url": "https://sapphire-demo.meliorix.com/cds-hook-api/api/v1/cds-services/pro-recommend",
+		  "method": "POST",
+		  "headers": {
+		    "Content-Type": "application/json",
+		    "Cache-Control": "no-cache",
+		    "Postman-Token": "35410d6a-12f4-4145-9655-db99cdaa0e90"
+		  },
+		  "processData": false,
+		  "data": recdata
+		}
 			$.ajax(settings).done(function (response) {
 			  //console.log(response);
 			  
@@ -467,9 +467,13 @@ var settings = {
 	}
 	
 		
-var res_score1;	
-var res_score2;			
-function orderStatus() {
+		var res_score1;	
+		var res_score2;	
+//Provider App -orderStatus function is to display the status of the previously ordered PROs
+// We call the API to fetch the PROs ordered and available for the patient to complete and display.
+// We call the API to fetch the PROs ordered and completed by the patient and display. 
+// We call the API to get the TScore for each item in the completed PRO list and display					
+		function orderStatus() {
 		  // Pros to be completed
 	
   		var settings31 = {
@@ -488,7 +492,7 @@ function orderStatus() {
 			console.log(patID);
 		 var str="";
 			
-	str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
+		str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
            		
 		 
 		 
@@ -544,6 +548,8 @@ function orderStatus() {
 								"Cache-Control": "no-cache"
 							  }
 							}
+						// API to get the scores
+						
 							$.ajax(settings1).done(function (response) {
 							  //console.log(response);
 							    jQuery(response.entry).each(function(i, item){
@@ -597,9 +603,8 @@ listForms();
 formDetails(FormOID);
 prorecommend();
 		
-		
+
 // Flow for the patient app
-		
 		
 		
 		var global_asmtOID;
@@ -639,7 +644,7 @@ prorecommend();
 				}
 		
 		
-		
+// Patient App - Function not used		
 		function startTask(taskId){
 		var settings = {
 				  "async": true,
@@ -657,7 +662,8 @@ prorecommend();
 				  console.log("task started");
 				});		
 		}
-		
+
+//Patient App-completeProcess function is to call the complete process API and mark that a PRO is administered and answerd by the patient
 		function completeProcess(taskId,proId,proName,patId,patName){
 		
 		var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
@@ -678,7 +684,7 @@ prorecommend();
 						});
 		}
 		
-		
+//Patient App-postScore function is to post the T-score to the observation resource		
 		function postScore(taskId,proId,proName,patId,patName,tscore){
 			var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 			var settings = {
@@ -707,7 +713,7 @@ prorecommend();
 		  return result;
 		}	
 		
-		
+//Patient App - displayList function is to display the PROs availabke for the patients to be completed 		
 		function displayList(){
 		var settings3 = {
 		  "async": true,
@@ -897,7 +903,7 @@ prorecommend();
 				})
 		}
 								
-		//						
+//renderScreen function is to display the Questionnaire , one question at a time						
 		function renderScreen(asmtOID) { 
 			var tmp1 =null;
 					
@@ -1012,8 +1018,7 @@ prorecommend();
 								
 			
 										
-	//displayList();						
-	// APIs to administer the assessmentcenter forms
+	
 					
 		function callasmt(FormOID){
 									
