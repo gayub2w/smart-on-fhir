@@ -312,7 +312,8 @@ Highcharts.chart(myWindow.document.body, {
 					  "url": baseurl+"ProcedureRequest",
 					  "method": "POST",
 					  "headers": {
-					    "Content-Type": "application/json"
+					    "Content-Type": "application/json",
+				             "Cache-Control": "no-cache"
 					  },
 					  "processData": false,
 					  "data": prdata
@@ -424,6 +425,7 @@ var settings = {
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
+   "Cache-Control": "no-cache",
     "Postman-Token": "35410d6a-12f4-4145-9655-db99cdaa0e90"
   },
   "processData": false,
