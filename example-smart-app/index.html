@@ -6,21 +6,13 @@
 	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	  	   <!-- Application-level javascript-->
 	<link rel="stylesheet" href="./src/css/SOFCSS.css">
-	
-	<script src='./src/js/global.js'></script>
+
     	<script src='./src/js/example-smart-app.js'></script>
 	<script src='./src/js/highchart.js'></script>
 	<script src='./src/js/hc_exporting.js'></script>
 	<script src='./src/js/jquery_min.js'></script>
 	<script src='./src/js/bootstrap_min.js'></script>
-	<script> 
-			$(function(){
-						$("#includePatientView").load('./src/views/patientview.html');
-						$("#includeDoctorView").load('./src/views/doctorview.html'); 
-						$("#includeDoctorHeader").load('./src/views/doctor-header.html');  
-			});
-				</script> 
-	
+
 	  
 	  
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -50,20 +42,179 @@
   </head>
   <body>
 	
- 
+
 <header hidden id = "doctor-view-head">
-		<div id="includeDoctorHeader"></div>
+	<div class="row">
+  <div class="column" >
+    
+    	<h4 style="margin-left:1.5em;"><b><span id='lname'></span>, <span id='fname'></span></b></h4>
+	<h4 style="margin-left:1.5em;">LOC:USC-GI;200;Q </h4>
+	<h4 style="margin-left:1.5em;">Observation[Admit Dt:8/3/2018 6:07..</h4>
+  </div>
+  <div class="column" >
+    
+        <h4><span>Age: </span><span id='age'></h4>
+	<h4><b>D.O.B: </b><span id='birthdate'></span></h4>
+	<h4><span id='pract_name'></span></h4>
+
+  </div>
+  <div class="column" >
+
+	 <h4><span >Sex: </span><span id='gender'></span></h4>
+	  <h4><span>MyUSC Chart:Invite Sent</span></h4>
+	<h4>Blood Trans Acceptable to pt?Yes</h4>
+  </div>
+  <div class="column">
+    
+        <h4>**Allergies**</h4>
+	
+	
+	
+  </div>
+	
+	
 </header>
-
+		
  <section hidden id = "doctor-view">
-		<div id="includeDoctorView"></div>
-</section>
-
-<section hidden id = "patient-view">
-		<div id="includePatientView"></div>
-</section>
-
+  <nav>  
   
+<table id="t01"class="table">
+    
+ <div class="icon-bar01">
+			<span  style="margin-left:0.7em;" >Menu - All</span><i style=" font-size: 7px; left: 18em; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i>
+</div>
+    <tbody>
+		<tr>
+        <td>Ambulatory Summary</td>
+      </tr>
+      <tr>
+        <td>Inpatient Summaries</td>
+      </tr>
+      <tr>
+        <td>Operative Summaries</td>
+      </tr>
+      <tr>
+        <td>Demographics</td>
+      </tr>
+	  <tr>
+        <td>Results Review</td>
+      </tr>
+      <tr>
+        <td>Allergies</td>
+      </tr>
+      <tr>
+        <td>Orders</td>
+      </tr>
+	  <tr id="protab">
+        <td><b>Order PRO</b></td>
+      </tr>
+	  <tr>
+        <td>Medication List</td>
+      </tr>
+      <tr>
+        <td>Reports/Documents</td>
+      </tr>
+      <tr>
+        <td>MAR Summary</td>
+      </tr>
+	  <tr>
+        <td>Form Browser</td>
+      </tr>
+      <tr>
+        <td>Pending Studies</td>
+      </tr>
+      <tr>
+        <td>Problem And Diagnoses</td>
+      </tr>
+	  <tr>
+        <td>Immunizations</td>
+      </tr>
+      <tr>
+        <td>Reference Text</td>
+      </tr>
+      <tr>
+        <td>Patient Schedule</td>
+      </tr>
+	  <tr>
+        <td>Appointments</td>
+      </tr>
+      <tr>
+        <td>Access Center and Pre-Arrival</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  </nav>
+ 
+  <article id="docview-article">
+  <div class="icon-bar">
+			<span>&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-left"></i><span>&nbsp;&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-right "></i>&nbsp;&nbsp; <i style=" font-size: 7px; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i><span id="v1"></span>&nbsp;&nbsp; <i class="glyphicon glyphicon-home white"></i> <span style="margin-left:0.5em; font-color:#FFFFFF; font-size:20px;"> Order PRO</span><img border="0" style="margin-bottom:0.2em;margin-left:40em;" src="./src/images/pixel-full-screen.png"  />&nbsp;Fullscreen&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-print white"></i>&nbsp;  Print&nbsp; &nbsp; <i class="glyphicon glyphicon-refresh white"></i><span> &nbsp;2 minutes ago &nbsp; </span>
+			</div>
+  <h3 style="margin-left:0.5em;">Order a new PRO</h3>
+	
+
+	<div style="position:relative;width:200px;height:25px;border:0;padding:0;margin:0;">
+		<select id="selectform"  style="position:absolute;top:0px;left:0px;width:400px; height:25px;line-height:20px;margin-left:1em;padding:0;">
+		<option value="" disabled selected >Please choose an instrument...</option>
+		 
+
+		</select>
+		</br>
+		</br>
+		<button class="button button3" style="margin-left:1em;" type="button" onclick="order_func();">Order</button>
+	</div>
+    </br>
+	</br>
+    </br>
+
+<h3 style="margin-left:0.5em;">Previous Orders</h3>
+
+<table id="t02">
+  
+ 
+  </table>
+
+  </br>
+			
+
+	<h3 style="margin-left:0.5em;">Recommended PRO for <b> <span id='fname1'></span> <span id='lname1'></span></b></h3>
+	<div id="content">
+	  </div>  
+  </article>
+</section>
+
+<section hidden id="patient-view" >
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div id="pat-header" class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 " >
+			</br>
+			<P style="margin-left:1em; text-align: left; font-size: 28px;">Welcome <b> <span id='firstname'></span> <span id='lastname'></span></b>!</P></br></br>			
+			</div>
+		</div>	
+		<div id="list">
+				
+		</div>		
+	</div>
+
+	<div hidden id="Ques" class="container-fluid">
+		<div  class="row"  style="text-align: left; padding-top: 20px; font-size: 14px;">
+					<div id="header1"  class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					 <p style='margin-left:1em;'><b>Questionnaire for <span id='pro-name'></span></b></p>
+						</br>
+						</br>
+					</div>
+		</div>
+						
+		
+		<div id="Content"  class="row" >
+		</div>
+		
+	</div>
+	
+	
+</section>
+<script src='./src/js/global.js'></script>
     <!-- Required JS files to enable this page to embed within an MPage -->
     
     <script src='./src/js/polyfill.js'></script>
@@ -87,7 +238,7 @@
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
         function(p) {
-          drawVisualization(p);
+					drawVisualization(p);
         },
         //Display 'Failed to call FHIR Service' if extractData failed
         function() {
@@ -98,3 +249,4 @@
     </script>
   </body>
 </html>
+
