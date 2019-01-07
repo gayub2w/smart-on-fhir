@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" hidden>
+
+<head>
+  <!-- <meta http-equiv='X-UA-Compatible' content='IE=edge' />-->
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Application-level javascript-->
+  <link rel="stylesheet" href="../../../src/css/SOFCSS.css">
+
+  <script src='../../js/example-smart-app.js'></script>
+  <script src='../../js/highchart.js'></script>
+  <script src='../../js/hc_exporting.js'></script>
+  <script src='../../js/jquery_min.js'></script>
+  <script src='../../js/bootstrap_min.js'></script>
+
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!--
+	  <script src="https://code.highcharts.com/highcharts.js"></script>
+          <script src="https://code.highcharts.com/modules/exporting.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+	  -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SMART APP</title>
+  <link rel='stylesheet' type='text/css' href='../../css/example-smart-app.css'>
+
+  <link rel='stylesheet' type='text/css' href='../../../lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
+</head>
+
+<body>
+
+
+  <header hidden id="doctor-view-head">
+    <div class="row">
+      <div class="column">
+
+        <h4 style="margin-left:1.5em;"><b><span id='lname'></span>, <span id='fname'></span></b></h4>
+        <h4 style="margin-left:1.5em;">LOC:USC-GI;200;Q </h4>
+        <h4 style="margin-left:1.5em;">Observation[Admit Dt:8/3/2018 6:07..</h4>
+      </div>
+      <div class="column">
+
+        <h4><span>Age: </span><span id='age'></h4>
+        <h4><b>D.O.B: </b><span id='birthdate'></span></h4>
+        <h4><span id='pract_name'></span></h4>
+
+      </div>
+      <div class="column">
+
+        <h4><span>Sex: </span><span id='gender'></span></h4>
+        <h4><span>MyUSC Chart:Invite Sent</span></h4>
+        <h4>Blood Trans Acceptable to pt?Yes</h4>
+      </div>
+      <div class="column">
+
+        <h4>**Allergies**</h4>
+
+
+
+      </div>
+
+
+  </header>
+
+
+  <section hidden id="patient-view">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div id="pat-header" class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+          </br>
+          <P style="margin-left:1em; text-align: left; font-size: 28px;">Welcome <b> <span id='firstname'></span> <span
+                id='lastname'></span></b>!</P></br></br>
+        </div>
+      </div>
+      <div id="list">
+
+      </div>
+    </div>
+
+    <div hidden id="Ques" class="container-fluid">
+      <div class="row" style="text-align: left; padding-top: 20px; font-size: 14px;">
+        <div id="header1" class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <p style='margin-left:1em;'><b>Questionnaire for <span id='pro-name'></span></b></p>
+          </br>
+          </br>
+        </div>
+      </div>
+
+
+      <div id="Content" class="row">
+      </div>
+
+    </div>
+
+
+  </section>
+  <script>
+    var i;
+    var myNodelist = document.querySelectorAll('*[id]');
+    for (i = 0; i < myNodelist.length; i++) {
+      console.log(i + "    " + myNodelist[i].id);
+
+    }</script>
+  <script src='../../../src/js/global.js'></script>
+  <!-- Required JS files to enable this page to embed within an MPage -->
+
+  <script src='../../../src/js/polyfill.js'></script>
+  <script src='../../../lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
+
+ <!-- FHIR Client JS Library -->
+  <script src='../../../lib/js/fhir-client-v0.1.12.js'></script>
+
+  <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
+  <!-- https://github.com/cerner/fhir-client-cerner-additions -->
+  <script src='../../../lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
+
+  <script src='../../../src/js/ajax_jquery.js'></script>
+
+  <script src='../../../src/js/jQuery.XDomainRequest.js'></script>
+  <script src='../../../src/js/jquery.xdomainrequest.min.js'></script>
+  <script>
+    extractData().then(
+      //Display Patient Demographics and Observations if extractData was success
+      function (p) {
+        drawVisualization(p);
+      },
+      //Display 'Failed to call FHIR Service' if extractData failed
+      function () {
+        $('#loading').hide();
+        $('#errors').html('<p> Failed to call FHIR Service </p>');
+      }
+    );
+  </script>
+</body>
+
+</html>
