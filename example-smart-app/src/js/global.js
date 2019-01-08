@@ -26,9 +26,7 @@ function chart() {
     
 //myWindow.document.getElementsByTagName('title').innerHTML = "PRO Graph";
     console.log(Series1);
-
-    hiii    
-    
+    alert('working');
     
     }
 
