@@ -26,7 +26,53 @@ function chart() {
     
 //myWindow.document.getElementsByTagName('title').innerHTML = "PRO Graph";
     console.log(Series1);
-    alert('working');
+Highcharts.chart(myWindow.document.body, {
+title: {
+text: 'Patient Reported Outcomes'
+},
+subtitle: {
+text: ''
+},
+yAxis: {
+tickInterval: 10,
+title: {
+    text:'<p style=\" font-sixe: 16px\;\"><b>t-score</b></p>'
+},
+min:0,
+max:100
+},
+legend: {
+layout: 'vertical',
+align: 'right',
+verticalAlign: 'middle'
+},
+plotOptions: {
+series: {
+    label: {
+        connectorAllowed: false
+    },
+    pointStart: 2017
+}
+},
+series: Series1,
+responsive: {
+rules: [{
+    condition: {
+        maxWidth: 800,
+maxHeight: 900,    
+    },
+    chartOptions: {
+        legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom'
+        }
+    }
+}]
+}
+});
+    
+    
     
     }
 
