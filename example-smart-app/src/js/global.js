@@ -128,6 +128,7 @@ function order_func() {
 	$.ajax(settings).done(function (response) {
 		console.log("pro-test");
 		console.log(response);
+		orderStatus();
 	});
 
 }
@@ -210,7 +211,7 @@ function formDetails(FormOID) {
 		},
 
 		error: function(jqXHR, textStatus, errorThrown) {
-			alert(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+			console.log(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
 		}
 	})
 }
@@ -291,7 +292,7 @@ function orderStatus() {
 	}
 	$.ajax(settings31).done(function (response) {
 		console.log(response);
-
+		document.getElementById('t02').innerHTML="";
 		console.log(patID);
 		var str="";
 
@@ -700,7 +701,7 @@ function displayScore(assessmentOID) {
 		},
 
 		error: function(jqXHR, textStatus, errorThrown) {
-			alert('displayScore:' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+			console.log('displayScore:' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
 		}
 	})
 }
@@ -809,7 +810,7 @@ function renderScreen(asmtOID) {
 			document.getElementById("Content").innerHTML = screen;
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
-			alert('renderScreen: ' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+			console.log('renderScreen: ' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
 		}
 	})
 
