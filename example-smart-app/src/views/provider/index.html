@@ -22,7 +22,6 @@
 	<script src='../../js/nv.d3.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!-- <script src='../../js/jquery_min.js'></script> -->
-	<script src='../../js/highcharts-more.js'></script>
 	<script src='../../js/highcharts.js'></script>
 	<script src='../../js/hc_exporting.js'></script>
 	<script src='../../js/bootstrap_min.js'></script>
@@ -130,7 +129,7 @@
   		<svg style="height: 200px;"></svg>
 	</div> -->
 
-	<div id="chartmodal" class="modal">
+	<div id="chartmodal" class="modal" style="width: 80%;margin-left: 10%">
 
 		<div class="modal-content">
 			<span id="chartclose"class="close">&times;</span>
@@ -196,17 +195,6 @@
 	</div>
 	
 </section>
-	<script>
-		console.log("alllllllllllllll-------------------------"
-				+ document.querySelectorAll('*[id]'));
-
-		var i;
-		var myNodelist = document.querySelectorAll('*[id]');
-		for (i = 0; i < myNodelist.length; i++) {
-			console.log(i + "    " + myNodelist[i].id);
-
-		}
-	</script>
 	<script src='../../../src/js/global.js'></script>
     <!-- Required JS files to enable this page to embed within an MPage -->
     <script src='../../../src/js/polyfill.js'></script>
