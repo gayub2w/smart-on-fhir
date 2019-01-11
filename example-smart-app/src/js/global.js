@@ -136,7 +136,7 @@ function order_func() {
 
 var form_oid=[];
 var form_name=[];
-//var Server = "https://www.assessmentcenter.net/ac_api";
+
 var Server = "https://mss.fsm.northwestern.edu/AC_API";
 var FormOID = "96FE494D-F176-4EFB-A473-2AB406610626";  // Sample form -- replace with your FormOID
 var promisUID="001";
@@ -187,8 +187,7 @@ function listForms() {
 			document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
 		}
 	});
-}	
-
+}
 function formDetails(FormOID) {
 	$.ajax({
 		url: Server + "/2014-01/Forms/" + FormOID + ".json",
