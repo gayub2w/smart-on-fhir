@@ -146,34 +146,34 @@ function callback1(data){
 }
 function listForms() {
 	$.ajax({
-		url: Server + "/2014-01/Forms/.json",
+		//url: Server + "/2014-01/Forms/.json",
+		url: Server + "/2018-10/Questionnaire?_Summary",
 		cache: false,
-		type: "POST",
-		data: "",
+		type: "GET",
+		// data: "",
 		dataType: "json",
 		beforeSend: function(xhr) {
-			var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
-			var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
+			var username = "2F984419-5008-4E42-8210-68592B418233";
+			var pass = "21A673E8-9498-4DC2-AAB6-07395029A778";
+			//var Token = "MkY5ODQ0MTktNTAwOC00RTQyLTgyMTAtNjg1OTJCNDE4MjMzOjIxQTY3M0U4LTk0OTgtNERDMi1BQUI2LTA3Mzk1MDI5QTc3OA==";
 
-			var base64 = btoa(Reg + ":" + Token);
+			var base64 = btoa(username + ":" + pass);
 			xhr.setRequestHeader("Authorization", "Basic " + base64);
 		},
 		success: function(data) { 
 
 			console.log(data);
-			//callback1(data);
-			//console.log("am here");	
 			var container = document.getElementById("Content");
-			var forms = data.Form;
-
+			var forms = data.entry;
+			console.log(data.entry);
 			var select = document.getElementById("selectform"); 
 
 			//console.log("all forms"+forms);
 			for (var i=0; i < forms.length; i++) {
-				form_oid[i]=forms[i].OID;
-				form_name[i]=forms[i].Name;
-				var opt = forms[i].Name;
-				var val = forms[i].OID;
+				form_oid[i]=forms[i].resource.id;
+				form_name[i]=forms[i].resource.title;
+				var opt = forms[i].resource.title;
+				var val = forms[i].resource.id;
 				var el = document.createElement("option");
 				el.textContent = opt;
 				el.value = val;
@@ -186,8 +186,7 @@ function listForms() {
 			document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
 		}
 	});
-}	
-
+}
 function formDetails(FormOID) {
 	$.ajax({
 		url: Server + "/2014-01/Forms/" + FormOID + ".json",
