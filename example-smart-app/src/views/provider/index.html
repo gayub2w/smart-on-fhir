@@ -1,176 +1,172 @@
 <!DOCTYPE html>
 <html lang="en" hidden>
-  <head>
-	  
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+	<title>SMART APP</title> 
+	 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
-
-    <link rel="stylesheet" href="../../../src/css/SOFCSS.css">
-	  <link rel="stylesheet" href="../../../lib/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../lib/css/font-awesome.min.css">  
-    <link rel='stylesheet' type='text/css' href='../../../lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
-    <link rel='stylesheet' type='text/css' href='../../css/example-smart-app.css'>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    	   <!-- Application-level javascript-->
-    <script src='../../js/example-smart-app.js'></script>
-    <script src='../../js/highcharts-more.js'></script>
-    <script src='../../js/highcharts.js'></script>
-	  <script src='../../js/hc_exporting.js'></script>
-	  <script src='../../js/jquery_min.js'></script>
-    <script src='../../js/bootstrap_min.js'></script>
-
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
   	
-   <title>SMART APP</title> 
-	  
-  </head>
-  <body>
+	  	   <!-- Application-level javascript-->
+	<link rel="stylesheet" href="../../../src/css/SOFCSS.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel='stylesheet' type='text/css' href='../../css/example-smart-app.css'>
+	<link rel='stylesheet' type='text/css' href='../../../lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
+	<link rel="stylesheet" href="../../../src/css/nv.d3.css">
+	
+	<script src='../../js/example-smart-app.js'></script>
+	<script src='../../js/d3.v3.min.js'></script>
+	<script src='../../js/nv.d3.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script src='../../js/jquery_min.js'></script> -->
+	<script src='../../js/highcharts-more.js'></script>
+	<script src='../../js/highcharts.js'></script>
+	<script src='../../js/hc_exporting.js'></script>
+	<script src='../../js/bootstrap_min.js'></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	
+</head>
+<body>
 	
 
 <header hidden id = "doctor-view-head">
 	<div class="row">
-  <div class="column" >
-    
-    	<h4 style="margin-left:1.5em;"><b><span id='lname'></span>, <span id='fname'></span></b></h4>
-	<h4 style="margin-left:1.5em;">LOC:USC-GI;200;Q </h4>
-	<h4 style="margin-left:1.5em;">Observation[Admit Dt:8/3/2018 6:07..</h4>
-  </div>
-  <div class="column" >
-    
-        <h4><span>Age: </span><span id='age'></h4>
-	<h4><b>D.O.B: </b><span id='birthdate'></span></h4>
-	<h4><span id='pract_name'></span></h4>
-
-  </div>
-  <div class="column" >
-
-	 <h4><span >Sex: </span><span id='gender'></span></h4>
-	  <h4><span>MyUSC Chart:Invite Sent</span></h4>
-	<h4>Blood Trans Acceptable to pt?Yes</h4>
-  </div>
-  <div class="column">
-    
-        <h4>**Allergies**</h4>
-	
-	
-	
-  </div>
-	
-	
+		<div class="column" >
+	    	<h4 style="margin-left:1.5em;"><b><span id='lname'></span>, <span id='fname'></span></b></h4>
+			<h4 style="margin-left:1.5em;">LOC:USC-GI;200;Q </h4>
+			<h4 style="margin-left:1.5em;">Observation[Admit Dt:8/3/2018 6:07..</h4>
+	  	</div>
+	  	<div class="column" >
+			<h4><span>Age: </span><span id='age'></span></h4>
+			<h4><b>D.O.B: </b><span id='birthdate'></span></h4>
+			<h4><span id='pract_name'></span></h4>
+		</div>
+	  	<div class="column" >
+		 	<h4><span >Sex: </span><span id='gender'></span></h4>
+		  	<h4><span>MyUSC Chart:Invite Sent</span></h4>
+			<h4>Blood Trans Acceptable to pt?Yes</h4>
+	  	</div>
+	  	<div class="column">
+	        <h4>**Allergies**</h4>
+		</div>
+	</div>
 </header>
 
-
-
- <section hidden id = "doctor-view">
-  <nav>  
-  
-<table id="t01"class="table">
-    
- <div class="icon-bar01">
-			<span  style="margin-left:0.7em;" >Menu - All</span><i style=" font-size: 7px; left: 18em; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i>
-</div>
-    <tbody>
-		<tr>
-        <td>Ambulatory Summary</td>
-      </tr>
-      <tr>
-        <td>Inpatient Summaries</td>
-      </tr>
-      <tr>
-        <td>Operative Summaries</td>
-      </tr>
-      <tr>
-        <td>Demographics</td>
-      </tr>
-	  <tr>
-        <td>Results Review</td>
-      </tr>
-      <tr>
-        <td>Allergies</td>
-      </tr>
-      <tr>
-        <td>Orders</td>
-      </tr>
-	  <tr id="protab">
-        <td><b>Order PRO</b></td>
-      </tr>
-	  <tr>
-        <td>Medication List</td>
-      </tr>
-      <tr>
-        <td>Reports/Documents</td>
-      </tr>
-      <tr>
-        <td>MAR Summary</td>
-      </tr>
-	  <tr>
-        <td>Form Browser</td>
-      </tr>
-      <tr>
-        <td>Pending Studies</td>
-      </tr>
-      <tr>
-        <td>Problem And Diagnoses</td>
-      </tr>
-	  <tr>
-        <td>Immunizations</td>
-      </tr>
-      <tr>
-        <td>Reference Text</td>
-      </tr>
-      <tr>
-        <td>Patient Schedule</td>
-      </tr>
-	  <tr>
-        <td>Appointments</td>
-      </tr>
-      <tr>
-        <td>Access Center and Pre-Arrival</td>
-      </tr>
-      
-    </tbody>
-  </table>
-  </nav>
- 
-  <article id="docview-article">
-  <div class="icon-bar">
-			<span>&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-left"></i><span>&nbsp;&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-right "></i>&nbsp;&nbsp; <i style=" font-size: 7px; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i><span id="v1"></span>&nbsp;&nbsp; <i class="glyphicon glyphicon-home white"></i> <span style="margin-left:0.5em; font-color:#FFFFFF; font-size:20px;"> Order PRO</span><img border="0" style="margin-bottom:0.2em;margin-left:40em;" src="../../../src/images/pixel-full-screen.png"  />&nbsp;Fullscreen&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-print white"></i>&nbsp;  Print&nbsp; &nbsp; <i class="glyphicon glyphicon-refresh white"></i><span> &nbsp;2 minutes ago &nbsp; </span>
-			</div>
-  <h3 style="margin-left:0.5em;">Order a new PRO</h3>
-	
-
-	<div style="position:relative;width:200px;height:25px;border:0;padding:0;margin:0;">
-		<select id="selectform"  style="position:absolute;top:0px;left:0px;width:400px; height:25px;line-height:20px;margin-left:1em;padding:0;">
-		<option value="" disabled selected >Please choose an instrument...</option>
-		 
-
-		</select>
-		</br>
-		</br>
-		<button class="button button3" style="margin-left:1em;" type="button" onclick="order_func();">Order</button>
+<section hidden id = "doctor-view">
+	<nav>  
+	<div class="icon-bar01">
+		<span  style="margin-left:0.7em;" >Menu - All</span><i style=" font-size: 7px; left: 18em; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i>
 	</div>
-    </br>
-	</br>
-    </br>
+	<table id="t01" class="table">
+    
+		<tbody>
+			<tr>
+				<td>Ambulatory Summary</td>
+			</tr>
+			<tr>
+				<td>Inpatient Summaries</td>
+			</tr>
+			<tr>
+				<td>Operative Summaries</td>
+			</tr>
+			<tr>
+				<td>Demographics</td>
+			</tr>
+			<tr>
+				<td>Results Review</td>
+			</tr>
+			<tr>
+				<td>Allergies</td>
+			</tr>
+			<tr>
+				<td>Orders</td>
+			</tr>
+			<tr id="protab">
+				<td><b>Order PRO</b></td>
+			</tr>
+			<tr>
+				<td>Medication List</td>
+			</tr>
+			<tr>
+				<td>Reports/Documents</td>
+			</tr>
+			<tr>
+				<td>MAR Summary</td>
+			</tr>
+			<tr>
+				<td>Form Browser</td>
+			</tr>
+			<tr>
+				<td>Pending Studies</td>
+			</tr>
+			<tr>
+				<td>Problem And Diagnoses</td>
+			</tr>
+			<tr>
+				<td>Immunizations</td>
+			</tr>
+			<tr>
+				<td>Reference Text</td>
+			</tr>
+			<tr>
+				<td>Patient Schedule</td>
+			</tr>
+			<tr>
+				<td>Appointments</td>
+			</tr>
+			<tr>
+				<td>Access Center and Pre-Arrival</td>
+			</tr>
 
-<h3 style="margin-left:0.5em;">Previous Orders</h3>
-
-<table id="t02">
-  
+		</tbody>
+	</table>
+	</nav>
  
-  </table>
+ 	<!-- <div id="chart">
+  		<svg style="height: 200px;"></svg>
+	</div> -->
 
-  </br>
-			
+	<div id="chartmodal" class="modal">
 
-	<h3 style="margin-left:0.5em;">Recommended PRO for <b> <span id='fname1'></span> <span id='lname1'></span></b></h3>
-	<div id="content">
-	  </div>  
-  </article>
+		<div class="modal-content">
+			<span id="chartclose"class="close">&times;</span>
+			<div id="chart">
+				<svg style="height: 600px;"></svg>
+			</div>
+		</div>
+	</div>
+	  
+	<article id="docview-article">
+		<div class="icon-bar">
+			<span>&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-left"></i><span>&nbsp;&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-right "></i>&nbsp;&nbsp; <i style=" font-size: 7px; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i><span id="v1"></span>&nbsp;&nbsp; <i class="glyphicon glyphicon-home white"></i> <span style="margin-left:0.5em; font-color:#FFFFFF; font-size:20px;"> Order PRO</span><img border="0" style="margin-bottom:0.2em;margin-left:40em;" src="../../../src/images/pixel-full-screen.png"  />&nbsp;Fullscreen&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-print white"></i>&nbsp;  Print&nbsp; &nbsp; <i class="glyphicon glyphicon-refresh white"></i><span> &nbsp;2 minutes ago &nbsp; </span>
+		</div>
+  		<h3 style="margin-left:0.5em;">Order a new PRO</h3>
+	
+		<div style="position:relative;width:200px;height:25px;border:0;padding:0;margin:0;">
+			<select id="selectform"  style="position:absolute;top:0px;left:0px;width:400px; height:25px;line-height:20px;margin-left:1em;padding:0;">
+			<option value="" disabled selected >Please choose an instrument...</option>
+			 
+			</select>
+			<br/> <br/>
+			<button class="button button3" style="margin-left:1em;" type="button" onclick="order_func();">Order</button>
+		</div>
+	    <br/><br/><br/>
+
+		<h3 style="margin-left:0.5em;">Previous Orders</h3>
+
+		<table id="t02">
+ 
+  		</table>
+		<br/>
+
+		<h3 style="margin-left:0.5em;">Recommended PRO for <b> <span id='fname1'></span> <span id='lname1'></span></b></h3>
+		<div id="content">
+		</div>  
+	</article>
 </section>
 
 <section hidden id="patient-view" >
@@ -188,37 +184,33 @@
 	</div>
 
 	<div hidden id="Ques" class="container-fluid">
-		<div  class="row"  style="text-align: left; padding-top: 20px; font-size: 14px;">
-					<div id="header1"  class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					 <p style='margin-left:1em;'><b>Questionnaire for <span id='pro-name'></span></b></p>
-						</br>
-						</br>
-					</div>
+		<div class="row"  style="text-align: left; padding-top: 20px; font-size: 14px;">
+			<div id="header1"  class="col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			 <p style='margin-left:1em;'><b>Questionnaire for <span id='pro-name'></span></b></p>
+				</br> </br>
+			</div>
 		</div>
 						
-		
 		<div id="Content"  class="row" >
 		</div>
-		
 	</div>
 	
-	
 </section>
-	<script>	console.log("alllllllllllllll-------------------------"+document.querySelectorAll('*[id]'));
+	<script>
+		console.log("alllllllllllllll-------------------------"
+				+ document.querySelectorAll('*[id]'));
 
-var i;
-	var myNodelist = document.querySelectorAll('*[id]');
-for (i = 0; i < myNodelist.length; i++) {
- console.log(i+"    "+ myNodelist[i].id);
+		var i;
+		var myNodelist = document.querySelectorAll('*[id]');
+		for (i = 0; i < myNodelist.length; i++) {
+			console.log(i + "    " + myNodelist[i].id);
 
-}</script>
-<script src='../../../src/js/global.js'></script>
+		}
+	</script>
+	<script src='../../../src/js/global.js'></script>
     <!-- Required JS files to enable this page to embed within an MPage -->
-    
     <script src='../../../src/js/polyfill.js'></script>
     <script src='../../../lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
-
-   
 
     <!-- FHIR Client JS Library -->
     <script src='../../../lib/js/fhir-client-v0.1.12.js'></script>
@@ -226,24 +218,40 @@ for (i = 0; i < myNodelist.length; i++) {
     <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
     <!-- https://github.com/cerner/fhir-client-cerner-additions -->
     <script src='../../../lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
-    
 
 	<script src='../../../src/js/ajax_jquery.js'></script>
-
-  <script src='../../../src/js/jQuery.XDomainRequest.js'></script>
+  	<script src='../../../src/js/jQuery.XDomainRequest.js'></script>
 	<script src='../../../src/js/jquery.xdomainrequest.min.js'></script>
-    <script>
-      extractData().then(
-        //Display Patient Demographics and Observations if extractData was success
-        function(p) {
-					drawVisualization(p);
-        },
-        //Display 'Failed to call FHIR Service' if extractData failed
-        function() {
-          $('#loading').hide();
-          $('#errors').html('<p> Failed to call FHIR Service </p>');
-        }
-      );
-    </script>
-  </body>
+	<script>
+	//When the user clicks on <span> (x), close the modal
+	var btn = document.getElementById("myBtn");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+	var modal = document.getElementById('chartmodal');
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	}
+	</script>
+	<script>
+		extractData().then(
+		//Display Patient Demographics and Observations if extractData was success
+		function(p) {
+			drawVisualization(p);
+		},
+		//Display 'Failed to call FHIR Service' if extractData failed
+		function() {
+			$('#loading').hide();
+			$('#errors').html('<p> Failed to call FHIR Service </p>');
+		});
+	</script>
+</body>
 </html>
