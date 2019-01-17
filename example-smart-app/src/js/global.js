@@ -4,7 +4,22 @@ var pat_fname="";
 var pat_lname="";
 var gender2="";
 var dobstr2="";
-
+var proPostObject= {
+	"resourceType":"QuestionnaireResponse", 
+	"id":"test",
+	"meta": {"profile": ["http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"]},
+	 "extension": [                
+	{"url": "http://hl7.org/fhir/StructureDefinition/questionnaire-expirationTime", "valueDate": "2018-11-30T16:26:33"},
+	{"url": "http://hl7.org/fhir/StructureDefinition/questionnaire-finishedTime","valueDate": ""}
+	],
+	"contained": 
+	[],
+	"questionnaire": "http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaire-dynamic",
+	"status": "in-progress",
+	"subject": "TestPatient",
+	"authored": "2018-11-28T16:26:33",
+	"item":[]
+	};
 
 var baseurl="https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/";
 //https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/  
@@ -22,51 +37,51 @@ function chartOld() {
 
 //	myWindow.document.getElementsByTagName('title').innerHTML = "PRO Graph";
 	console.log(Series1);
-	Highcharts.chart(myWindow.document.body, {
-		title: {
-			text: 'Patient Reported Outcomes'
-		},
-		subtitle: {
-			text: ''
-		},
-		yAxis: {
-			tickInterval: 10,
-			title: {
-				text:'<p style=\" font-sixe: 16px\;\"><b>t-score</b></p>'
-			},
-			min:0,
-			max:100
-		},
-		legend: {
-			layout: 'vertical',
-			align: 'right',
-			verticalAlign: 'middle'
-		},
-		plotOptions: {
-			series: {
-				label: {
-					connectorAllowed: false
-				},
-				pointStart: 2017
-			}
-		},
-		series: Series1,
-		responsive: {
-			rules: [{
-				condition: {
-					maxWidth: 800,
-					maxHeight: 900,    
-				},
-				chartOptions: {
-					legend: {
-						layout: 'horizontal',
-						align: 'center',
-						verticalAlign: 'bottom'
-					}
-				}
-			}]
-		}
-	});
+	// Highcharts.chart(myWindow.document.body, {
+	// 	title: {
+	// 		text: 'Patient Reported Outcomes'
+	// 	},
+	// 	subtitle: {
+	// 		text: ''
+	// 	},
+	// 	yAxis: {
+	// 		tickInterval: 10,
+	// 		title: {
+	// 			text:'<p style=\" font-sixe: 16px\;\"><b>t-score</b></p>'
+	// 		},
+	// 		min:0,
+	// 		max:100
+	// 	},
+	// 	legend: {
+	// 		layout: 'vertical',
+	// 		align: 'right',
+	// 		verticalAlign: 'middle'
+	// 	},
+	// 	plotOptions: {
+	// 		series: {
+	// 			label: {
+	// 				connectorAllowed: false
+	// 			},
+	// 			pointStart: 2017
+	// 		}
+	// 	},
+	// 	series: Series1,
+	// 	responsive: {
+	// 		rules: [{
+	// 			condition: {
+	// 				maxWidth: 800,
+	// 				maxHeight: 900,    
+	// 			},
+	// 			chartOptions: {
+	// 				legend: {
+	// 					layout: 'horizontal',
+	// 					align: 'center',
+	// 					verticalAlign: 'bottom'
+	// 				}
+	// 			}
+	// 		}]
+	// 	}
+	// });
 }
 
 function chart() {
@@ -279,11 +294,11 @@ var res_score1;
 var res_score2;			
 function orderStatus() {
 	// Pros to be completed
-
+	
 	var settings31 = {
 			"async": false,
 			"crossDomain": false,
-			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
+			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&_count=100&intent=order&status=active",
 			"cache" : false,
 			"method": "GET",
 			"headers": {
@@ -325,7 +340,7 @@ function orderStatus() {
 	var settings32 = {
 			"async": false,
 			"crossDomain": false,
-			"url": baseurl+"ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patID+"&intent=order",
+			"url": baseurl+"ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patID+"&_count=1000&status=completed&intent=order",
 			"cache" : false,
 			"method": "GET",
 			"headers": {
@@ -521,6 +536,7 @@ function addDays(date, days) {
 
 
 function displayList(){
+	alert("inside orderstatus");
 	var settings3 = {
 			"async": true,
 			"crossDomain": true,
@@ -819,14 +835,92 @@ function renderScreen(asmtOID) {
 
 //displayList();						
 //APIs to administer the assessmentcenter forms
-
+var globalFormId;
 function callasmt(FormOID){
-
-
+	globalFormId=FormOID;
+	getformData(FormOID);
 	assessmentOID = startAssessment(FormOID);
 	datefin=renderScreen(assessmentOID);
 
 }
+
+
+
+///new funtions to call new api's
+
+
+function getformData(formID){
+	$.ajax({
+		url: "https://mss.fsm.northwestern.edu/AC_API/2018-10/Questionnaire/"+formID,
+
+		cache: false,
+		type: "GET",
+		async:false,
+		dataType: "json",
+
+		beforeSend: function (xhr) {
+			var username = "2F984419-5008-4E42-8210-68592B418233";
+			var pass = "21A673E8-9498-4DC2-AAB6-07395029A778";
+
+			var base64 = btoa(username + ":" + pass);
+			xhr.setRequestHeader("Authorization", "Basic " + base64);
+		},
+		success: function (data) {
+			proPostObject.id=data.id;
+			proPostObject.contained.push(createContainedObject(data));
+			proPostObject.date=proPostObject.contained[0].date;
+			console.log("proPostObject",proPostObject);
+			postformData();
+		}
+	})
+
+}
+
+
+function postformData(){
+	
+	$.ajax({
+		url: "https://mss.fsm.northwestern.edu/AC_API/2018-10/Questionnaire/"+globalFormId+"/next-q",
+
+		cache: false,
+		type: "POST",
+		async:false,
+		data: proPostObject,
+		dataType: "json",
+
+		beforeSend: function (xhr) {
+			var username = "2F984419-5008-4E42-8210-68592B418233";
+			var pass = "21A673E8-9498-4DC2-AAB6-07395029A778";
+			var base64 = btoa(username + ":" + pass);
+			xhr.setRequestHeader("Authorization", "Basic " + base64);
+		},
+		success: function (data) {
+			//tmp1=data.DateFinished;
+			tmp1=data;
+			console.log("postdata",tmp1);
+			//if data.status="completed" stop execution
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.log('postformData: ' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+		}
+	})
+
+}
+
+function createContainedObject(data){
+	let tempObj={};
+	tempObj.resourceType=data.resourceType;
+	tempObj.id=data.id;
+	tempObj.meta=data.meta;
+	tempObj.meta.profile=["http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"];
+	tempObj.url=data.url;
+	tempObj.title=data.title;
+	tempObj.status=data.status;
+	tempObj.date=data.date;
+	tempObj.subjectType=data.subjectType[0];
+return tempObj;
+}
+
 
 
 
