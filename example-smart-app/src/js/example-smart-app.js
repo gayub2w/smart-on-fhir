@@ -57,17 +57,10 @@
 			console.log("Logged in as : " + temp13.persona);
       persona = temp13.persona; 
 
-      function inIframe () {
-        try {
-            return window.self !== window.top;
-        } catch (e) {
-            return true;
-        }
-    }
     BrowserDetect.init();
-    alert("You are using " + BrowserDetect.browser + " with version " + BrowserDetect.version + "");
+    console.log("You are using " + BrowserDetect.browser + " with version " + BrowserDetect.version + "");
 
-      if (!inIframe()) {
+      if (BrowserDetect.browser.toString()!="Explorer") {
       //if (window.location == window.parent.location ) {
         // The page is in an iframe
         $('#istopFrame').show();
@@ -77,6 +70,7 @@
           $('article').width("100%");
           $("#docview-article").width("100%");
         }
+
       if(persona === 'provider') {
 	      orderStatus();
   $('#doctor-view').show();
