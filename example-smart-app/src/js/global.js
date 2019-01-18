@@ -819,10 +819,10 @@ function renderScreen(asmtOID) {
 //APIs to administer the assessmentcenter forms
 var globalFormId;
 function callasmt(FormOID){
-	globalFormId=FormOID;
-	getformData(FormOID);
-	//assessmentOID = startAssessment(FormOID);
-	//datefin=renderScreen(assessmentOID);
+	//globalFormId=FormOID;
+	//getformData(FormOID);
+	assessmentOID = startAssessment(FormOID);
+	datefin=renderScreen(assessmentOID);
 
 }
 
