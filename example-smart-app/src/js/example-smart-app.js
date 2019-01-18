@@ -56,7 +56,15 @@
 			var temp13=temp12.user;
 			console.log("Logged in as : " + temp13.persona);
       persona = temp13.persona; 
-      
+      if (window.location == window.parent.location ) {
+        // The page is in an iframe
+        $('#istopFrame').show();
+        } 
+        else{
+          $('#istopFrame').hide();
+          $('article').width("100%");
+          $("#docview-article").width("100%");
+        }
       if(persona === 'provider') {
 	      orderStatus();
   $('#doctor-view').show();
