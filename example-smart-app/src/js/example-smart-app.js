@@ -56,7 +56,15 @@
 			var temp13=temp12.user;
 			console.log("Logged in as : " + temp13.persona);
       persona = temp13.persona; 
-      if (window==window.top) {
+
+      function inIframe () {
+        try {
+            return window.self !== window.top;
+        } catch (e) {
+            return true;
+        }
+    }
+      if (!inIframe()) {
       //if (window.location == window.parent.location ) {
         // The page is in an iframe
         $('#istopFrame').show();
