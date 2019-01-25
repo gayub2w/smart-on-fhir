@@ -89,7 +89,6 @@ function chart() {
 
 		//TODO: Figure out a good way to do this automatically
 		nv.utils.windowResize(chart.update);
-
 		
 		return chart;
 	});
@@ -99,10 +98,17 @@ function chart() {
 function order_func() {
 
 	var e = document.getElementById("selectform");
-	var sformoid = e.options[e.selectedIndex].value;
-	var sformname = e.options[e.selectedIndex].text;
+	
+	
+	var idOfSelect = $("#selectinput").val();
+	var sformname = $('#selectform option[value="'+idOfSelect+'"]').text();
+	var sformoid = $('#selectform option[value="'+idOfSelect+'"]').attr("id")
+	//var sformoid = e.options[e.selectedIndex].value;
+	//var sformname = e.options[e.selectedIndex].text;
+
 	//alert("FormOID : " + sformoid);
 	//alert("FormName : " + sformname);	
+	
 	var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 	console.log(date1);
 	console.log("patid :  " + window.patient_id);
@@ -166,7 +172,7 @@ function listForms() {
 			var container = document.getElementById("Content");
 			var forms = data.entry;
 			console.log(data.entry);
-			var select = document.getElementById("selectform"); 
+			var datalist = document.getElementById("selectform"); 
 
 			//console.log("all forms"+forms);
 			for (var i=0; i < forms.length; i++) {
@@ -175,9 +181,13 @@ function listForms() {
 				var opt = forms[i].resource.title;
 				var val = forms[i].resource.id;
 				var el = document.createElement("option");
+
+				//Taken extra attribute to support datalist in IE7
 				el.textContent = opt;
-				el.value = val;
-				select.appendChild(el);
+				el.value = opt;
+				el.id = val;				
+				datalist.appendChild(el);	
+								
 			}
 
 		},
@@ -203,9 +213,6 @@ function formDetails(FormOID) {
 		},
 		success: function(data) {
 			//console.log(data);			
-
-
-
 		},
 
 		error: function(jqXHR, textStatus, errorThrown) {
