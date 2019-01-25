@@ -5,9 +5,7 @@
     var persona="";
     var patID="";
 
-   	
-   
-   
+  
  
 (function(window){
   window.extractData = function() {
@@ -21,14 +19,13 @@
 
     function onReady(smart)  {
       console.log(smart.tokenResponse);
-	if (smart.tokenResponse.patient!=null){
-      patID=smart.tokenResponse.patient;
+	  if (smart.tokenResponse.patient!=null){
+        patID=smart.tokenResponse.patient;
 		MyVars.patid= smart.tokenResponse.patient;
-		console.log(patID);
-		displayList();
-		
-		
-	    }
+	  	  console.log(patID);
+		    displayList();
+      }
+      
       practitioner_id = smart.tokenResponse.user;
       var token = smart.tokenResponse.id_token;
       var access_token= smart.tokenResponse.access_token;
@@ -38,7 +35,6 @@
      
      
       
-      
        var base64Url = token.split('.')[1];
        var base64 = base64Url.replace('-', '+').replace('_', '/');
        //console.log(JSON.parse(window.atob(base64)));
@@ -46,9 +42,9 @@
        //console.log(pract_name);
       document.getElementById("pract_name").innerHTML="Attending:"+pract_name;
       
-       var base64Url1 = access_token.split('.')[1];
-       var base641 = base64Url1.replace('-', '+').replace('_', '/');
-       console.log(JSON.parse(window.atob(base641)));    
+      var base64Url1 = access_token.split('.')[1];
+      var base641 = base64Url1.replace('-', '+').replace('_', '/');
+      console.log(JSON.parse(window.atob(base641)));    
 			var mytemp = JSON.parse(window.atob(base641));
 			var temp11="urn:cerner:authorization:claims:version:1";
 			var temp12=mytemp[temp11];
@@ -60,23 +56,22 @@
     BrowserDetect.init();
     console.log("You are using " + BrowserDetect.browser + " with version " + BrowserDetect.version + "");
 
-      if (BrowserDetect.browser.toString()!="Explorer") {
-      //if (window.location == window.parent.location ) {
-        // The page is in an iframe
-        $('#istopFrame').show();
-        } 
-        else{
-          $('#istopFrame').hide();
-          $('article').width("100%");
-          $("#docview-article").width("100%");
-        }
 
       if(persona === 'provider') {
 	      orderStatus();
-  $('#doctor-view').show();
- $('#doctor-view-head').show();
-	   
- 	      
+        $('#doctor-view').show();
+        if (BrowserDetect.browser.toString()!="Explorer") {
+          //if (window.location == window.parent.location ) {
+            // The page is in an iframe
+            $('#istopFrame').show();
+            $('#doctor-view-head').show();        
+            } 
+            else{
+              $('#istopFrame').hide();
+              $('#doctor-view-head').hide();
+              $('article').width("100%");
+              $("#docview-article").width("100%");
+            }     
 } else if(persona === 'patient') {
   $('#patient-view').show();
 
