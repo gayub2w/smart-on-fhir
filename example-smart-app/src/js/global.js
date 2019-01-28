@@ -316,12 +316,14 @@ function orderStatus() {
 
 
 			var proname1 = item.resource.code.text;
-			if (proname1.match(/Please/g)!="Please")
+			if(proname1){
+			if (proname1.match(/Please/g)!="Please" )
 			{
 				str = str +"<tr><td>" +date1+"</td>";
 				str = str +"<td>"+proname1 +"</td>";
 				str = str +"<td>Ordered</td><td> -- </td><td> -- </td> </tr>";	
 			}
+		}
 		});		
 		document.getElementById('t02').innerHTML += str;
 	});
@@ -564,7 +566,7 @@ function displayList(){
 
 			var temp = item.resource.subject.reference;
 			var pat_id= temp.substr(-7); 		
-
+			if(pro_name){
 			if (task_id!=null && pro_name.match(/Please/g)!="Please"){
 
 				str = str + "<div class=\'row\'  style=\'text-align: left; padding-top: 20px; font-size: 14px;\'>";
@@ -574,7 +576,7 @@ function displayList(){
 				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); callasmt(\""+pro_id+"\"); writeProname(\""+pro_name+"\"); displayQ(); this.disabled=true; \'>Start</button></div></div>";
 			}
 
-
+		}
 		});
 		document.getElementById("list").innerHTML = str;
 	});
