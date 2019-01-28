@@ -97,25 +97,36 @@ function chart() {
 
 function order_func() {
 
-	var e = document.getElementById("selectform");
-	
-	
+	var e = document.getElementById("selectform");		
 	var idOfSelect = $("#selectinput").val();
 	var sformname = $('#selectform option[value="'+idOfSelect+'"]').text();
 	var sformoid = $('#selectform option[value="'+idOfSelect+'"]').attr("id")
-	//var sformoid = e.options[e.selectedIndex].value;
-	//var sformname = e.options[e.selectedIndex].text;
+	var success_message = 'Order for '+sformname+' is placed.';
+	var error_message = 'Order is not valid, please select from the list.'
+	var data_inlist = document.getElementById('selectform');
+	var flag = 'unset';
+	var i;
 
-	//alert("FormOID : " + sformoid);
-	//alert("FormName : " + sformname);	
-	
+    for (i = 0; i < data_inlist.options.length; i++) {
+        if(data_inlist.options[i].value == idOfSelect){
+			flag = 'set';
+			break;
+		}
+	}
+
+	if(flag == 'unset'){
+	document.getElementById('order_successful').style.display = "none";
+	document.getElementById('order_unsuccessful').innerHTML = error_message;
+	document.getElementById('order_successful').style.display = "inline";
+	return;
+	}
+
 	var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 	console.log(date1);
 	console.log("patid :  " + window.patient_id);
 	console.log("fname : " + window.pat_fname);
 	console.log("lname : " + window.pat_lname);	
 	var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"intent\": \"order\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"display\": \""+pat_fname+" "+pat_lname+"\",\n        \"reference\": \"http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"\"\n\t}\n} \n"
-
 
 	var settings = {
 			"async": true,
@@ -133,6 +144,8 @@ function order_func() {
 		console.log("pro-test");
 		console.log(response);
 		orderStatus();
+		document.getElementById('order_unsuccessful').style.display = "none";
+		document.getElementById('order_successful').innerHTML = success_message;		
 	});
 
 }
@@ -297,11 +310,11 @@ function orderStatus() {
 	}
 	$.ajax(settings31).done(function (response) {
 		console.log(response);
-		document.getElementById('t02').innerHTML="";
+		document.getElementById('pending_PRO').innerHTML="";
 		console.log(patID);
 		var str="";
 
-		str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
+		str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th>";
 
 
 
@@ -321,11 +334,11 @@ function orderStatus() {
 			{
 				str = str +"<tr><td>" +date1+"</td>";
 				str = str +"<td>"+proname1 +"</td>";
-				str = str +"<td>Ordered</td><td> -- </td><td> -- </td> </tr>";	
+				str = str +"<td>Ordered</td>";	
 			}
 		}
 		});		
-		document.getElementById('t02').innerHTML += str;
+		document.getElementById('pending_PRO').innerHTML += str;
 	});
 //	Pros completed
 
@@ -343,6 +356,7 @@ function orderStatus() {
 		console.log("Completed");
 		console.log(response);
 		var str="";
+		str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
 
 		jQuery(response.entry).each(function(i, item){
 			console.log(item.resource.code.text);
