@@ -15,21 +15,20 @@
   	
 	  	   <!-- Application-level javascript-->
 	<link rel="stylesheet" href="../../../src/css/SOFCSS.css">
-	<link rel="stylesheet" href="../../css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel='stylesheet' type='text/css' href='../../css/example-smart-app.css'>
 	<link rel='stylesheet' type='text/css' href='../../../lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
 	<link rel="stylesheet" href="../../../src/css/nv.d3.css">
 	
-	<script src="../../js/jquery.min.js"></script>
 	<script src='../../js/example-smart-app.js'></script>
-	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<script src='../../js/d3.v3.min.js'></script>
-	<script src="https://d3js.org/d3-time.v1.min.js"></script>
-	<script src="https://d3js.org/d3-time-format.v2.min.js"></script>
 	<script src='../../js/nv.d3.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!-- <script src='../../js/jquery_min.js'></script> -->
-	<script src='../../js/bootstrap_min.js'></script>	
+	<script src='../../js/bootstrap_min.js'></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 	
 </head>
 <body>
@@ -149,7 +148,7 @@
   		<h3 style="margin-left:0.5em;">Order a new PRO</h3>
 	
 		<div style="position:relative;width:200px;height:25px;border:0;padding:0;margin:0;">
-		    	<input id="selectinput" type="text" list="selectform">
+		    	<input id="selectinput" type="text" list="selectform" onkeyup="manage(this)" style="width: 260%;">
   				<datalist id="selectform">
     			<option value=""  disabled selected ></option>
 				</datalist> 
@@ -158,17 +157,28 @@
 			<option value="" disabled selected >Please choose an instrument...</option></option>			 
 			</select>
 			<br/> <br/>  -->
-			<button class="button button3" style="margin-left:1em;" type="button" onclick="order_func();">Order</button>
+
+			<button id="submitButton" class="button button3"  type="button" onclick="order_func();" disabled>Order</button>
 		</div>
 	    <br/><br/><br/>
+		
+		<div id="order_successful" style="color: green;margin-top: -19px;">
+		</div>
+		<div id="order_unsuccessful" style="color: red;margin-top: -19px;">
+		</div>
 
-		<h3 style="margin-left:0.5em;">Previous Orders</h3>
-
-		<table id="t02">
- 
-  		</table>
+		<div>
+			<h3 style="text-align: center;background-color: #939CA6;">Completed PROs</h3>
+			<table id="t02">
+			</table>
+		</div>
+		<br>
+		<div>
+			<h3 style="text-align: center;background-color: #939CA6;"> Pending PROs</h3>
+			<table id="pending_PRO">
+			</table>
+		</div>
 		<br/>
-
 		<h3 style="margin-left:0.5em;">Recommended PRO for <b> <span id='fname1'></span> <span id='lname1'></span></b></h3>
 		<div id="content">
 		</div>  
@@ -248,6 +258,18 @@
 			$('#loading').hide();
 			$('#errors').html('<p> Failed to call FHIR Service </p>');
 		});
+	</script>
+	<script>
+	function manage(selectinput) {
+        var bt = document.getElementById('submitButton');
+        if (selectinput.value != '') {
+            bt.disabled = false;
+        }
+        else {
+            bt.disabled = true;
+        }
+    }    
+
 	</script>
 </body>
 </html>
