@@ -84,7 +84,7 @@ function chart() {
 
 		chart.xAxis     //Chart x-axis settings
 		.axisLabel('Date')
-		.tickFormat(function(d) { return d3.time.format('%b %d %H:%M:%S')(new Date(d)); })
+		.tickFormat(function(d) { return d3.time.format('%d/%m/%Y %H:%M:%S')(new Date(d)); })
 
 		d3.select('#chart svg')
 		.datum(chartdata)
