@@ -82,6 +82,9 @@ function chart() {
 		.color(d3.scale.category10().range())
 		.useInteractiveGuideline(true);
 
+		chart.xAxis     //Chart x-axis settings
+		.axisLabel('Date')
+		.tickFormat(function(d) { return d3.time.format('%b %d %H:%M:%S')(new Date(d)); })
 
 		d3.select('#chart svg')
 		.datum(chartdata)
@@ -385,14 +388,15 @@ function orderStatus() {
 			var msec = Date.parse(item.resource.occurrenceDateTime);
 			var d = new Date(msec);
 			var date1 = d.toLocaleString("en-US"); 
-
-
+			//var graphdate = date1.toString();
+			//var displaydate = graphdate.split(',')[0].toUTCString();			
+			
 			var proname1 = item.resource.code.text;
 			var score = parseFloat(res_score1);
 
 			var flag="";
 
-			var value = ["0",score];
+			var value = [msec,score];
 			
 			for(i=0;i<Series1.length;i++)
 			{
