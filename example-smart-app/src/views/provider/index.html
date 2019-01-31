@@ -20,7 +20,8 @@
 	<link rel='stylesheet' type='text/css' href='../../css/example-smart-app.css'>
 	<link rel='stylesheet' type='text/css' href='../../../lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
 	<link rel="stylesheet" href="../../../src/css/nv.d3.css">
-	
+	<link rel='stylesheet' type='text/css' href='../../css/tab.css'>
+
 	<script src='../../js/example-smart-app.js'></script>
 	<script src='../../js/d3.v3.min.js'></script>
 	<script src='../../js/nv.d3.js'></script>
@@ -132,7 +133,6 @@
 	</div> -->
 
 	<div id="chartmodal" class="modal" style="width: 80%;margin-left: 10%">
-
 		<div class="modal-content">
 			<span id="chartclose"class="close">&times;</span>
 			<div id="chart">
@@ -141,45 +141,59 @@
 		</div>
 	</div>
 	  
-	<article id="docview-article">
+	<article id="docview-article" style="background-color: aliceblue;">
 		<div class="icon-bar" hidden id="docview-article-div">
 			<span>&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-left"></i><span>&nbsp;&nbsp; </span><i style="color:#407798" class="glyphicon glyphicon-chevron-right "></i>&nbsp;&nbsp; <i style=" font-size: 7px; margin-bottom:0.2em;" class="glyphicon glyphicon-triangle-bottom white"></i><span id="v1"></span>&nbsp;&nbsp; <i class="glyphicon glyphicon-home white"></i> <span style="margin-left:0.5em; font-color:#FFFFFF; font-size:20px;"> Order PRO</span><img border="0" style="margin-bottom:0.2em;margin-left:40em;" src="../../../src/images/pixel-full-screen.png"  />&nbsp;Fullscreen&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-print white"></i>&nbsp;  Print&nbsp; &nbsp; <i class="glyphicon glyphicon-refresh white"></i><span> &nbsp;2 minutes ago &nbsp; </span>
 		</div>
-  		<h3 style="margin-left:0.5em;">Order a new PRO</h3>
-	
+	<div>
+		<h3>Order a new PRO</h3>
+		<!-- for creating combo-box with datalist.. -->
 		<div style="position:relative;width:200px;height:25px;border:0;padding:0;margin:0;">
 		    	<input id="selectinput" type="text" list="selectform" onkeyup="manage(this)" style="width: 260%;">
   				<datalist id="selectform">
     			<option value=""  disabled selected ></option>
 				</datalist> 
-
-			<!-- <select id="selectform"  style="position:absolute;top:0px;left:0px;width:400px; height:25px;line-height:20px;margin-left:1em;padding:0;">
-			<option value="" disabled selected >Please choose an instrument...</option></option>			 
-			</select>
-			<br/> <br/>  -->
-
 			<button id="submitButton" class="button button3"  type="button" onclick="order_func();" disabled>Order</button>
 		</div>
+		<!-- End of creation combo-box with datalist.. -->
+
 	    <br/><br/><br/>
 		
+		<!-- for error message and order sucessful message.. -->
 		<div id="order_successful" style="color: green;margin-top: -19px;">
 		</div>
 		<div id="order_unsuccessful" style="color: red;margin-top: -19px;">
 		</div>
+	</div>
+		<hr style="border-top-color: lightgrey;">
+		
+		<!-- for creating tab.. -->
+		<div class="tabs">
+			
+			<ul class="tab-links"  style="padding-left: 0px;">
+				<li class="active"><a href="#tab1">Completed PRO</a></li>
+				<li><a href="#tab2">Pending PRO</a></li>
+				<li><a href="#tab3">Recommended PRO</a></li>
+			</ul>
+			
+			<div class="tab-content">
+				<div id="tab1" class="tab active">
+					<table id="t02">
+					</table>
+				</div>
+		
+				<div id="tab2" class="tab">
+					<table id="pending_PRO">
+					</table>	
+				</div>
+		
+				<div id="tab3" class="tab">
+					Recommended PRO
+				</div>
+			</div>
+		</div>
+		<!--End of tab creation div.. -->
 
-		<div>
-			<h3 style="text-align: center;background-color: #939CA6;">Completed PROs</h3>
-			<table id="t02">
-			</table>
-		</div>
-		<br>
-		<div>
-			<h3 style="text-align: center;background-color: #939CA6;"> Pending PROs</h3>
-			<table id="pending_PRO">
-			</table>
-		</div>
-		<br/>
-		<h3 style="margin-left:0.5em;">Recommended PRO for <b> <span id='fname1'></span> <span id='lname1'></span></b></h3>
 		<div id="content">
 		</div>  
 	</article>
@@ -269,7 +283,24 @@
             bt.disabled = true;
         }
     }    
-
 	</script>
+
+	<!-- jquery for tab selction and animation -->
+	<script>
+	jQuery(document).ready(function() {
+		jQuery('.tabs .tab-links a').on('click', function(e) {
+			var currentAttrValue = jQuery(this).attr('href');
+
+			// Show/Hide Tabs
+			jQuery('.tabs ' + currentAttrValue).fadeIn(350).siblings().hide();
+
+			// Change/remove current tab to active
+			jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+
+			e.preventDefault();
+		});
+	});
+	</script>
+
 </body>
 </html>

@@ -139,6 +139,26 @@ table#t02 td,th {
 	margin-left:0.5em;
 }
 
+table#pending_PRO {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table#pending_PRO th {
+    background-color: #939CA6;
+	margin-left:0.5em;
+}
+
+table#pending_PRO td,th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+	background-color: white;
+	margin-left:0.5em;
+}
+
+
 #v1 {
     border-left: 1px solid black;
     height: 100%;

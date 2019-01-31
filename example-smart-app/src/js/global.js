@@ -79,12 +79,19 @@ function chart() {
 		var chart = nv.models.lineChart()
 		.x(function(d) { return d[0] })
 		.y(function(d) { return d[1] }) 
+		.margin({right: 90})
+		.margin({left: 90}) 
+		.margin({bottom: 100}) 
 		.color(d3.scale.category10().range())
 		.useInteractiveGuideline(true);
 
 		chart.xAxis     //Chart x-axis settings
 		.axisLabel('Date')
-		.tickFormat(function(d) { return d3.time.format('%m/%d/%Y %H:%M:%S')(new Date(d)); });
+		.rotateLabels(-25)
+		.tickFormat(function(d) { return d3.time.format('%m/%d/%Y %H:%M')(new Date(d)); });
+
+		chart.yAxis     //Chart y-axis settings
+		.axisLabel('Scores');
 
 		d3.select('#chart svg')
 		.datum(chartdata)
