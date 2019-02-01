@@ -288,7 +288,7 @@ function prorecommend() {
 
 				})
 
-				$("#docview-article").append("<div class='panel panel-default'>	<div id='rec' class='panel-body'><b style='color:#0079BE;font-size: 16px;'>"+$t1 + "</b></br>"+ "<I style='font-size: 12px;'>Source: <span style='color:blue;font-size: 12px;'>"+$t3 + "</span></I></br></br>"+$t2+"</br><button class='button button4' type='button' onclick='alert('Test!')'>"+ $t4+"</button></br><a href='"+$t6+"'>"+$t5+"</a></div> </div>")
+				$("#tab3").append("<div class='panel panel-default'>	<div id='rec' class='panel-body'><b style='color:#0079BE;font-size: 16px;'>"+$t1 + "</b></br>"+ "<I style='font-size: 12px;'>Source: <span style='color:blue;font-size: 12px;'>"+$t3 + "</span></I></br></br>"+$t2+"</br><button class='button button4' type='button' onclick='alert('Test!')'>"+ $t4+"</button></br><a href='"+$t6+"'>"+$t5+"</a></div> </div>")
 
 				$("rec").append("<b>"+$t1+"</b>");
 				$("rec").append("</br>");$("rec").append("</br>");
