@@ -446,16 +446,44 @@ prorecommend();
 
 
 
-var global_asmtOID;
-var datefin;
-var Server = "https://www.assessmentcenter.net/ac_api";
-var ItemResponseOID = "";   
-var Response = "";  
-var assessmentOID;	
-var FormOID;		
+//var global_asmtOID;
+//var datefin;
+//var Server = "https://www.assessmentcenter.net/ac_api";
+//var ItemResponseOID = "";   
+//var Response = "";  
+//var assessmentOID;	
+//var FormOID;		
 //var FormOID ="80C5D4A3-FC1F-4C1B-B07E-10B796CF8105";
 
+var Server = "https://mss.fsm.northwestern.edu/AC_API";
+var formOID;
+var formName;
+var answer_item =[];
+var counter= 1;
+var tmpjson;
+var QRjson;
 
+
+function displayQ(){
+
+	$('#Ques').show();
+	window.location.hash = '#Ques'; 
+
+	document.getElementById('list').style.display = 'none';
+//	document.getElementById('fav').style.display = 'none';
+}
+
+
+//Just to hide the PRO list when the Questionnaire is displayed
+function displist()
+{
+	//completeProcess();
+	window.location.reload(false);
+	//displayList();
+	document.getElementById('Content').style.display = 'none';
+	document.getElementById('header1').style.display = 'none';
+	document.getElementById('list').style.display = 'block';
+}
 
 function assignValues(task_Id,pro_Id,pro_Name,pat_Name)
 {
@@ -484,6 +512,155 @@ function writeProname(proname)
 
 
 
+
+
+
+
+
+
+function nextQuestion(linkId,valueString,system,code,display,text)
+	{
+	 
+	 console.log(QRjson.status);
+	 //console.log("here");
+	
+	if (QRjson.status != "completed") {
+	
+	var ansItem1 =  {"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/questionnaire-displayOrder","valueInteger":counter}],
+	"linkId":linkId,
+	"answer":[{"valueInteger":valueString,"valueCoding":{"system":system,"code":code,"display":text}}]};
+	
+	answer_item.push(ansItem1);
+	//console.log(JSON.stringify(answer_item));
+	QRjson["item"]=answer_item;
+	QRjson.contained[0].subjectType = "Patient";	
+	displayQuestionnaire(QRjson,formOID);
+	counter = counter + 1 ;
+	//console.log(counter);
+	}
+	else {
+	console.log(JSON.stringify(QRjson));
+	console.log(QRjson.extension[2].extension[0].valueDecimal);
+	var theta = QRjson.extension[2].extension[0].valueDecimal;
+	var tscore = (theta * 10) + 50;
+	console.log (tscore);
+	document.getElementById("Content").innerHTML = "Thank you for completing the Questionnaire";
+	}
+	
+	
+	}
+	
+
+
+function displayQuestionnaire(QR, formOID){
+
+	var temp =null;
+	$.ajax({
+		
+		url: "https://mss.fsm.northwestern.edu/AC_API/2018-10/Questionnaire/"+formOID+"/next-q",
+		cache: false,
+		async:false,
+		type: "POST",
+		// data: "",
+		data : JSON.stringify(QR) ,
+		dataType: "json",
+		beforeSend: function(xhr) {
+			var username = "2F984419-5008-4E42-8210-68592B418233";
+			var pass = "21A673E8-9498-4DC2-AAB6-07395029A778";
+			//var Token = "MkY5ODQ0MTktNTAwOC00RTQyLTgyMTAtNjg1OTJCNDE4MjMzOjIxQTY3M0U4LTk0OTgtNERDMi1BQUI2LTA3Mzk1MDI5QTc3OA==";
+
+			var base64 = btoa(username + ":" + pass);
+			xhr.setRequestHeader("Authorization", "Basic " + base64);
+		},
+		success: function(data) { 
+			var screen=""
+			//console.log(data);
+			
+			QRjson = data;
+			var tmp = JSON.stringify(data);
+			//console.log(data.contained[0].item[0].item[0].text);
+			//console.log(data.contained[0].item[0].item[1].text);
+			//console.log("disp question ID");
+			//console.log(data.contained[0].item[0].linkId);
+			var linkId = data.contained[0].item[0].linkId;
+			
+			screen += "<div style=\'height: 50px; font-style: italic; font-size: 24px; margin-left:3em;\'>" + data.contained[0].item[0].item[0].text + " "+ data.contained[0].item[0].item[1].text+"</div>";
+			
+			jQuery(data.contained[0].item[0].item[1].answerOption).each(function(i, item){
+			//console.log(item.modifierExtension[0].valueString);
+			//console.log(item.text);
+			//console.log(item.valueCoding.code);
+			//console.log(item.valueCoding.display);
+			//console.log(item.valueCoding.system);
+			
+			var valueString = item.modifierExtension[0].valueString;
+			var text = item.text;
+			
+			var code = item.valueCoding.code;
+			var display = item.valueCoding.display;
+			var system = item.valueCoding.system;
+			
+			
+			var temp2 = JSON.parse(tmp);
+					
+					screen += "<div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + item.modifierExtension[0].valueString + "\' name=\'" + item.text + "\' value=\'" + item.text + "\' onclick= \'nextQuestion( \"" +linkId+ "\",\"" +valueString+ "\",\"" +system+ "\",\"" +code+ "\", \"" +display+ "\",\"" +text+ "\");  \' />" + "</div>";
+				
+			});
+			document.getElementById("Content").innerHTML = screen;
+			//console.log(data.contained[0].item[0].item[1].answerOption);
+			
+			
+		},
+
+		error: function(jqXHR, textStatus, errorThrown) {
+			document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+		}
+	});
+	
+}	
+
+
+
+function setVariables(formOID,formName,date) {
+
+
+var initialQR = {
+"resourceType":"QuestionnaireResponse", 
+"id":"test",
+"meta": {"profile": ["http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse-adapt"]},
+ "extension": [                
+{"url": "http://hl7.org/fhir/StructureDefinition/questionnaire-expirationTime", "valueDate": date},
+{"url": "http://hl7.org/fhir/StructureDefinition/questionnaire-finishedTime","valueDate": ""}
+],
+"contained": 
+[
+{
+"resourceType": "Questionnaire",
+"id": formOID, 
+"meta": {"versionId": "1","lastUpdated": "2014-11-14T10:03:25","profile": ["http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-adapt"]},
+"url":"https://mss.fsm.northwestern.edu/ac_api/2018-10/Questionnaire/"+formOID,
+"title":formName,
+"status": "active",
+"date": date,
+"subjectType": "Patient"
+}
+],
+"questionnaire": "http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaire-dynamic",
+"status": "in-progress",
+"subject": "TestPatient",
+"authored": date
+};
+
+displayQuestionnaire (initialQR,formOID);
+};
+	
+	
+//setVariables(formOID,formName,date1);
+
+
+//old code
+
+/*
 function startTask(taskId){
 	var settings = {
 			"async": true,
@@ -500,7 +677,7 @@ function startTask(taskId){
 		console.log(response);
 		console.log("task started");
 	});		
-}
+} */
 
 function completeProcess(taskId,proId,proName,patId,patName){
 
@@ -588,7 +765,7 @@ function displayList(){
 			//console.log(date1);
 			var date2=((date1.getMonth() + 1) + '/' + date1.getDate() + '/' +  date1.getFullYear());
 			//console.log(date2);
-
+			var date =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 			var temp = item.resource.subject.reference;
 			var pat_id= temp.substr(-7); 		
 			if(pro_name){
@@ -598,7 +775,7 @@ function displayList(){
 
 				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+pro_name+"</div>"
 				str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>"+date2+"</div>";
-				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); callasmt(\""+pro_id+"\"); writeProname(\""+pro_name+"\"); displayQ(); this.disabled=true; \'>Start</button></div></div>";
+				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); setVariables(\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +date+ "\"); writeProname(\""+pro_name+"\"); displayQ(); this.disabled=true; \'>Start</button></div></div>";
 			}
 
 		}
@@ -611,254 +788,11 @@ function displayList(){
 
 
 
-function displayQ(){
 
-	$('#Ques').show();
-	window.location.hash = '#Ques'; 
-
-	document.getElementById('list').style.display = 'none';
-//	document.getElementById('fav').style.display = 'none';
-}
 
 //Important small functions
-
-
-
 //Everytime the user selects an answer for a question from the options, we call getResponse function to store the response 
 //Call rec function repeatedly which in turn calls the renderscreen funtion with stored response parameters , until the datefinished variable is not null
-function getResponse(res1,res2)
-{
-//	console.log(res1);
-//	console.log(res2);
-	ItemResponseOID = res2;   
-	Response = res1;   
-	rec();
-}
-
-
-function rec(){
-	if (datefin== '') 
-	{
-		renderScreen(assessmentOID);
-	}
-}	
-
-
-//Just to hide the PRO list when the Questionnaire is displayed
-function displist()
-{
-	//completeProcess();
-	window.location.reload(false);
-	//displayList();
-	document.getElementById('Content').style.display = 'none';
-	document.getElementById('header1').style.display = 'none';
-	document.getElementById('list').style.display = 'block';
-}
-
-
-
-
-
-
-
-//Function to call the assessmentcenter starting an Assessement API to get the assessmentOID
-function startAssessment(FormOID) {
-	var tmp =null;
-	$.ajax({
-		url: Server + "/2014-01/Assessments/" + FormOID + ".json",
-		cache: false,
-		async: false,
-		type: "POST",
-		data: "UID=01" ,
-		dataType: "json",
-		beforeSend: function(xhr) {
-			var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
-			var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
-
-			var base64 = btoa(Reg + ":" + Token);
-			xhr.setRequestHeader("Authorization", "Basic " + base64);
-		},
-
-		success: function(data) {
-
-			global_asmtOID=data.OID;
-			tmp = data.OID;
-
-		},
-
-		error: function(jqXHR, textStatus, errorThrown) {
-			document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
-		}
-	})
-	return tmp;
-}
-
-
-
-//Function to call the assessmentcenter scoring API to return the theta(T-score) json
-function displayScore(assessmentOID) {
-	//console.log(assessmentOID);
-	$.ajax({
-		url:  "https://www.assessmentcenter.net/ac_api/2014-01/Results/" + assessmentOID + ".json",
-		cache: false,
-		async:false,
-		type: "POST",
-		data: "",
-		dataType: "json",
-		beforeSend: function(xhr) {
-			var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
-			var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
-
-			var base64 = btoa(Reg + ":" + Token);
-			xhr.setRequestHeader("Authorization", "Basic " + base64);
-		},
-		success: function(data) { 
-			console.log(data);
-			var data1=data.Items;
-			var data2=data1[0];
-
-			var key;
-			for (key in data2) {
-				if (data2.hasOwnProperty(key)) {
-					console.log(key + " = " + data2[key]);
-				}
-			}  
-
-
-			console.log(data.Theta);
-			var T_Score = data.Theta * 10 + 50.0;
-			console.log("T-Score : " + T_Score);
-			tscore=T_Score;
-			postScore(taskId,proId,proName,patId,patName,tscore);
-		},
-
-		error: function(jqXHR, textStatus, errorThrown) {
-			console.log('displayScore:' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
-		}
-	})
-}
-
-
-function renderScreen(asmtOID) { 
-	var tmp1 =null;
-
-	var postedData ="";
-
-	if (ItemResponseOID != "") {
-		postedData ="ItemResponseOID=" + ItemResponseOID + "&Response=" + Response ;
-	}		
-
-
-
-	$.ajax({
-		url: "https://www.assessmentcenter.net/ac_api/2014-01/Participants/"+asmtOID+".json",
-
-		cache: false,
-		type: "POST",
-		async:false,
-		data: postedData,
-		dataType: "json",
-
-		beforeSend: function (xhr) {
-			var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
-			var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
-
-			var base64 = btoa(Reg + ":" + Token);
-			xhr.setRequestHeader("Authorization", "Basic " + base64);
-		},
-		success: function (data) {
-			tmp1=data.DateFinished;
-			if (data.DateFinished != '') {
-				completeProcess(taskId,proId,proName,patId,patName);	
-				displayScore(assessmentOID);
-				document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
-				return
-			}
-			var screen = "";
-			var HasBitWiseValues = false;
-			var HasMultipleItems = false;
-			if (data.Items.length > 1) {
-				HasMultipleItems = true;
-			}
-
-
-			if (!HasMultipleItems) {
-				for (var i = 0; i < data.Items.length; i++) {
-					for (var j = 0; j < data.Items[i].Elements.length; j++) {
-						if (typeof (data.Items[i].Elements[j].Map) == 'undefined') {
-							screen = screen + "<div class='row'><div id='question' class='col-12 col-lg-12 col-md-12 col-sm-12 col-xs-12' style=\'height: 30px\' >" + data.Items[i].Elements[j].Description + "</br></div></div></br></br>"
-						} else {
-							for (var k = 0; k < data.Items[i].Elements[j].Map.length; k++) {
-								switch (data.Items[i].Elements[j].Map[k].Description) {
-								case "INFORMATIONAL":
-									screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + "Save" + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'"+data.Items[i].Elements[j].Map[k].ItemResponseOID +"') />" + "</div>";
-									break;
-								case "TEXT":
-									screen = screen + "<div style=\'height: 50px\' ><input type=\'text\'  id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Description + "\' />" + "</div>";
-									screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + "btnSave" + "\' name=\'" + "btnSave" + "\' value=\'" + "Save" + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'" + data.Items[i].Elements[j].Map[k].ItemResponseOID+"') />" + "</div>";
-									break;
-								default:
-									ItemResponseOID = data.Items[i].Elements[j].Map[k].ItemResponseOID;
-								Response = data.Items[i].Elements[j].Map[k].Value;
-								if (data.Items[i].Elements[j].Map[k].DataType == "bitwise") {
-									HasBitWiseValues = true;
-									screen = screen + "<div style=\'height: 20px\' ><input type=\'checkbox\' id=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' name=\'" + data.Items[i].FormItemOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Value + "\' onclick=addResponse(this) />" + data.Items[i].Elements[j].Map[k].Description + "</div>";
-								} else {
-									screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + data.Items[i].Elements[j].Map[k].Value + "\' name=\'" + data.Items[i].Elements[j].Map[k].ItemResponseOID + "\' value=\'" + data.Items[i].Elements[j].Map[k].Description + "\' onclick=getResponse('" + data.Items[i].Elements[j].Map[k].Value+"'\,'"+data.Items[i].Elements[j].Map[k].ItemResponseOID+"') />" + "</div>";
-								}
-								}
-							}
-							//screen = screen + "<div style=\'height: 50px\' ><input type=\'button\' class='btn-submit' id=\'" + '00000000-0000-0000-0000-000000000000' + "\' name=\'" + '00000000-0000-0000-0000-000000000000' + "\' value=\'" + 'SKIP' + "\' onclick=getResponse('" + '00000000-0000-0000-0000-000000000000+","+00000000-0000-0000-0000-000000000000' + "') />" + "</div>";
-						}
-					}
-					if (HasBitWiseValues) {
-						screen = screen + "<div class='row'><div style=\'height: 50px\' ><input type=\'text\'  id=\'" + data.Items[i].FormItemOID + "\' name=\'" + data.Items[i].FormItemOID + "\' value=\'0\' />" + "</div></div>";
-					}
-				}
-			} else {
-				/* Stem (e.g., "Thinking about how your illness...") */
-				screen += "<div style=\'height: 50px; text-align: bottom\'>" + data.Items[0].Elements[0].Description + "</div>";
-				/* Question */
-				screen += "<div style=\'height: 40px; font-style: italic\'>" + data.Items[0].Elements[1].Description + "</div>";
-				screen += "<table>";
-				/* "How true was this before/since your illness?" */
-				screen += "<tr>";
-				screen += "<td width=\'50%\'><div style=\'height: 20px\'>" + data.Items[1].Elements[1].Description + "</div></td>";
-				screen += "<td width=\'10px\'></td>";
-				screen += "<td><div style=\'height: 20px\'>" + data.Items[2].Elements[1].Description + "</div></td>";
-				screen += "</tr>";
-				/* Answers */
-				theQuestion = data.Items[0].FormItemOID;
-				for (var i = 0; i < 5; i++) {
-					screen += "<tr>";
-					screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[1].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[1].Elements[2].Map[i].Value + "\' value=\'" + data.Items[1].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</div>";
-					screen += "<td width=\'10px\'></td>";
-					screen += "<td><div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + data.Items[2].Elements[2].Map[i].FormItemOID + "\' name=\'" + data.Items[2].Elements[2].Map[i].Value + "\' value=\'" + data.Items[2].Elements[2].Map[i].Description + "\' onclick=getResponseMultiple(this) />" + "</div>";
-					screen += "</tr>"
-				}
-				screen += "<tr><td colspan=\'3\' style=\'height: 70px; text-align: center; vertical-align: bottom\'><div><input type=\'button\' class='btn-submit' id=\'btnSave\' name=\'btnSave\' value=\'Save\' onclick=getResponseSave()></div></td></tr>";
-				screen += "</table>";
-			}
-			document.getElementById("Content").innerHTML = screen;
-		},
-		error: function (jqXHR, textStatus, errorThrown) {
-			console.log('renderScreen: ' + jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
-		}
-	})
-
-	return tmp1;
-}							
-
-//displayList();						
-//APIs to administer the assessmentcenter forms
-var globalFormId;
-function callasmt(FormOID){
-	//globalFormId=FormOID;
-	//getformData(FormOID);
-	assessmentOID = startAssessment(FormOID);
-	datefin=renderScreen(assessmentOID);
-
-}
 
 
 
