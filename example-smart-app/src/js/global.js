@@ -220,8 +220,6 @@ function listForms() {
 		}
 	});
 }
-
-/*
 function formDetails(FormOID) {
 	$.ajax({
 		url: Server + "/2014-01/Forms/" + FormOID + ".json",
@@ -245,7 +243,7 @@ function formDetails(FormOID) {
 		}
 	})
 }
-*/
+
 
 
 
@@ -489,7 +487,6 @@ function displist()
 
 function assignValues(task_Id,pro_Id,pro_Name,pat_Name)
 {
-	console.log("test28f");
 	console.log(task_Id);
 	console.log(pro_Id);
 	console.log(pro_Name);
@@ -590,9 +587,6 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 	var theta = QRjson.extension[2].extension[0].valueDecimal;
 	var tscore = (theta * 10) + 50;
 	console.log (tscore);		
-		
-		
-		
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 	}
 	
@@ -839,7 +833,7 @@ function displayList(){
 
 				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+pro_name+"</div>"
 				str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>"+date2+"</div>";
-				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); writeProname(\""+pro_name+"\"); setVariables(\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +date3+ "\");  displayQ(); this.disabled=true;  \'>Start</button></div></div>";
+				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); writeProname(\""+pro_name+"\"); setVariables(\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +date3+ "\");  displayQ(); this.disabled=true; \'>Start</button></div></div>";
 			}
 
 		}
@@ -848,7 +842,6 @@ function displayList(){
 	});
 
 }
-
 
 
 
