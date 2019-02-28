@@ -779,7 +779,7 @@ function addDays(date, days) {
 
 function displayList(){
 	var settings3 = {
-			"async": true,
+			"async": false,
 			"crossDomain": true,
 			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&intent=order&status=active",
 			"method": "GET"
@@ -847,10 +847,6 @@ function displayList(){
 
 
 
-
-//Important small functions
-//Everytime the user selects an answer for a question from the options, we call getResponse function to store the response 
-//Call rec function repeatedly which in turn calls the renderscreen funtion with stored response parameters , until the datefinished variable is not null
 
 
 
