@@ -546,7 +546,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 	var theta = QRjson.extension[2].extension[0].valueDecimal;
 	var tscore = (theta * 10) + 50;
 	console.log (tscore);
-	document.getElementById("Content").innerHTML = "Thank you for completing the Questionnaire";
+	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 	}
 	
 	
