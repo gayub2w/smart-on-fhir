@@ -586,15 +586,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 	console.log(QRjson.extension[2].extension[0].valueDecimal);
 	var theta = QRjson.extension[2].extension[0].valueDecimal;
 	var tscore = (theta * 10) + 50;
-	console.log (tscore);
-	console.log(task_Id);
-	console.log(pro_Id);
-	console.log(pro_Name);
-	console.log(pat_Name);
-	console.log(patID);	
-		
-		
-		
+	console.log (tscore);		
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 	}
 	
@@ -628,6 +620,8 @@ function displayQuestionnaire(QR, formOID){
 			console.log(data);
 			var tempOID = data.id;
 			QRjson = data;
+			
+			
 			var tmp = JSON.stringify(data);
 			//console.log(tmp);
 			
