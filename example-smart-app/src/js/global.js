@@ -759,24 +759,24 @@ function displayList(){
 			var pat_name= item.resource.subject.display;						
 			
 			
-			console.log(date);
-			console.log(pro_id);
-			console.log(pro_name);
-			console.log(task_id);
-			console.log(pat_name);
+			//console.log(date);
+			//console.log(pro_id);
+			//console.log(pro_name);
+			//console.log(task_id);
+			//console.log(pat_name);
 						
 
 			var date1 = addDays(date, 3);
-			console.log(date1);
+			//console.log(date1);
 			var date2=((date1.getMonth() + 1) + '/' + date1.getDate() + '/' +  date1.getFullYear());
-			console.log(date2);
+			//console.log(date2);
 			var date3 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
-			console.log(date3);
+			//console.log(date3);
 			var temp = item.resource.subject.reference;
 			var pat_id= temp.substr(-7); 
 			
 			
-			console.log(pat_id);
+			//console.log(pat_id);
 			
 			if(pro_name){
 			if (task_id!=null && pro_name.match(/Please/g)!="Please"){
@@ -785,7 +785,7 @@ function displayList(){
 
 				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+pro_name+"</div>"
 				str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>"+date2+"</div>";
-				//str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); setVariables(\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +date3+ "\"); writeProname(\""+pro_name+"\"); displayQ(); this.disabled=true; \'>Start</button></div></div>";
+				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); writeProname(\""+pro_name+"\"); setVariables(\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +date3+ "\");  displayQ(); this.disabled=true; \'>Start</button></div></div>";
 			}
 
 		}
