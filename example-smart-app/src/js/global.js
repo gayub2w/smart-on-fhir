@@ -533,7 +533,9 @@ function nextQuestion(linkId,valueString,system,code,display,text)
 	answer_item.push(ansItem1);
 	//console.log(JSON.stringify(answer_item));
 	QRjson["item"]=answer_item;
-	QRjson.contained[0].subjectType = "Patient";	
+	QRjson.contained[0].subjectType = "Patient";
+	console.log(formOID);
+	console.log("new test");	
 	displayQuestionnaire(QRjson,formOID);
 	counter = counter + 1 ;
 	//console.log(counter);
