@@ -220,6 +220,8 @@ function listForms() {
 		}
 	});
 }
+
+/*
 function formDetails(FormOID) {
 	$.ajax({
 		url: Server + "/2014-01/Forms/" + FormOID + ".json",
@@ -243,7 +245,7 @@ function formDetails(FormOID) {
 		}
 	})
 }
-
+*/
 
 
 
