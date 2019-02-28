@@ -518,7 +518,7 @@ function writeProname(proname)
 
 
 
-function nextQuestion(linkId,valueString,system,code,display,text)
+function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 	{
 	 
 	 console.log(QRjson.status);
@@ -534,9 +534,9 @@ function nextQuestion(linkId,valueString,system,code,display,text)
 	//console.log(JSON.stringify(answer_item));
 	QRjson["item"]=answer_item;
 	QRjson.contained[0].subjectType = "Patient";
-	console.log(formOID);
+	console.log(tempOID);
 	console.log("new test");	
-	displayQuestionnaire(QRjson,formOID);
+	displayQuestionnaire(QRjson,tempOID);
 	counter = counter + 1 ;
 	//console.log(counter);
 	}
@@ -577,7 +577,7 @@ function displayQuestionnaire(QR, formOID){
 		success: function(data) { 
 			var screen=""
 			console.log(data);
-			
+			var tempOID = data.id;
 			QRjson = data;
 			var tmp = JSON.stringify(data);
 			//console.log(tmp);
@@ -610,7 +610,7 @@ function displayQuestionnaire(QR, formOID){
 			
 			var temp2 = JSON.parse(tmp);
 					
-					screen += "<div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + item.modifierExtension[0].valueString + "\' name=\'" + item.text + "\' value=\'" + item.text + "\' onclick= \'nextQuestion( \"" +linkId+ "\",\"" +valueString+ "\",\"" +system+ "\",\"" +code+ "\", \"" +display+ "\",\"" +text+ "\");  \' />" + "</div>";
+					screen += "<div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + item.modifierExtension[0].valueString + "\' name=\'" + item.text + "\' value=\'" + item.text + "\' onclick= \'nextQuestion( \"" +linkId+ "\",\"" +valueString+ "\",\"" +system+ "\",\"" +code+ "\", \"" +display+ "\",\"" +text+ "\",\"" +tempOID+ "\");  \' />" + "</div>";
 				
 			});
 			document.getElementById("Content").innerHTML = screen;
@@ -650,7 +650,7 @@ function displayQuestionnaire(QR, formOID){
 			
 			var temp2 = JSON.parse(tmp);
 					
-					screen += "<div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + item.modifierExtension[0].valueString + "\' name=\'" + item.text + "\' value=\'" + item.text + "\' onclick= \'nextQuestion( \"" +linkId+ "\",\"" +valueString+ "\",\"" +system+ "\",\"" +code+ "\", \"" +display+ "\",\"" +text+ "\");  \' />" + "</div>";
+					screen += "<div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + item.modifierExtension[0].valueString + "\' name=\'" + item.text + "\' value=\'" + item.text + "\' onclick= \'nextQuestion( \"" +linkId+ "\",\"" +valueString+ "\",\"" +system+ "\",\"" +code+ "\", \"" +display+ "\",\"" +text+ "\",\"" +tempOID+ "\");  \' />" + "</div>";
 				
 			});
 			document.getElementById("Content").innerHTML = screen;
