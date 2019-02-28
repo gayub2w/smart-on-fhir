@@ -487,6 +487,7 @@ function displist()
 
 function assignValues(task_Id,pro_Id,pro_Name,pat_Name)
 {
+	console.log("test28f");
 	console.log(task_Id);
 	console.log(pro_Id);
 	console.log(pro_Name);
