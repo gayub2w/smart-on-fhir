@@ -574,24 +574,29 @@ function displayQuestionnaire(QR, formOID){
 		},
 		success: function(data) { 
 			var screen=""
-			//console.log(data);
+			console.log(data);
 			
 			QRjson = data;
 			var tmp = JSON.stringify(data);
+			//console.log(tmp);
+			
+			var temp = data.contained[0].item[0].item;
+			console.log(temp.length);
+			
+			
 			console.log(data.contained[0].item[0].item[0].text);
-			console.log(data.contained[0].item[0].item[1].text);
-			console.log("disp question ID");
-			console.log(data.contained[0].item[0].linkId);
+			
+			if (temp.length==1){
 			var linkId = data.contained[0].item[0].linkId;
 			
-			screen += "<div style=\'height: 50px; font-style: italic; font-size: 24px; margin-left:3em;\'>" + data.contained[0].item[0].item[0].text + " "+ data.contained[0].item[0].item[1].text+"</div>";
+			screen += "<div style=\'height: 50px; font-style: italic; font-size: 24px; margin-left:3em;\'>" + data.contained[0].item[0].item[0].text+ "</div>";
 			
-			jQuery(data.contained[0].item[0].item[1].answerOption).each(function(i, item){
-			console.log(item.modifierExtension[0].valueString);
-			console.log(item.text);
-			console.log(item.valueCoding.code);
-			console.log(item.valueCoding.display);
-			console.log(item.valueCoding.system);
+			jQuery(data.contained[0].item[0].item[0].answerOption).each(function(i, item){
+			//console.log(item.modifierExtension[0].valueString);
+			//console.log(item.text);
+			//console.log(item.valueCoding.code);
+			//console.log(item.valueCoding.display);
+			//console.log(item.valueCoding.system);
 			
 			var valueString = item.modifierExtension[0].valueString;
 			var text = item.text;
@@ -603,13 +608,53 @@ function displayQuestionnaire(QR, formOID){
 			
 			var temp2 = JSON.parse(tmp);
 					
-					screen += "<div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + item.modifierExtension[0].valueString + "\' name=\'" + item.text + "\' value=\'" + item.text + "\' onclick= \'nextQuestion( \"" +linkId+ "\",\"" +valueString+ "\",\"" +system+ "\",\"" +code+ "\", \"" +display+ "\",\"" +text+ "\");  \' />" + "</div>";
+					screen += "<div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + item.modifierExtension[0].valueString + "\' name=\'" + item.text + "\' value=\'" + item.text + "\' onclick= \'func( \"" +linkId+ "\",\"" +valueString+ "\",\"" +system+ "\",\"" +code+ "\", \"" +display+ "\",\"" +text+ "\");  \' />" + "</div>";
 				
 			});
 			document.getElementById("Content").innerHTML = screen;
 			//console.log(data.contained[0].item[0].item[1].answerOption);
 			
+			}
+			//var temp1 = JSON.parse(tmp);
+			//var temp = JSON.parse(JSON.stringify(data)); 
+			//var temp = data.toString();
 			
+			//console.log("work");
+			//console.log(temp);
+			//console.log(data.contained[0].item[0].item[0].text);
+			//console.log(data.contained[0].item[0].item[1].text);
+			//console.log("disp question ID");
+			//console.log(data.contained[0].item[0].linkId);
+			
+			else {
+			var linkId = data.contained[0].item[0].linkId;
+			
+			screen += "<div style=\'height: 50px; font-style: italic; font-size: 24px; margin-left:3em;\'>" + data.contained[0].item[0].item[0].text + " "+ data.contained[0].item[0].item[1].text+"</div>";
+			
+			jQuery(data.contained[0].item[0].item[1].answerOption).each(function(i, item){
+			//console.log(item.modifierExtension[0].valueString);
+			//console.log(item.text);
+			//console.log(item.valueCoding.code);
+			//console.log(item.valueCoding.display);
+			//console.log(item.valueCoding.system);
+			
+			var valueString = item.modifierExtension[0].valueString;
+			var text = item.text;
+			
+			var code = item.valueCoding.code;
+			var display = item.valueCoding.display;
+			var system = item.valueCoding.system;
+			
+			
+			var temp2 = JSON.parse(tmp);
+					
+					screen += "<div style=\'height: 50px\'><input type=\'button\' class=\'btn-submit\' id=\'" + item.modifierExtension[0].valueString + "\' name=\'" + item.text + "\' value=\'" + item.text + "\' onclick= \'func( \"" +linkId+ "\",\"" +valueString+ "\",\"" +system+ "\",\"" +code+ "\", \"" +display+ "\",\"" +text+ "\");  \' />" + "</div>";
+				
+			});
+			document.getElementById("Content").innerHTML = screen;
+			//console.log(data.contained[0].item[0].item[1].answerOption);
+			
+			}
 		},
 
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -617,8 +662,7 @@ function displayQuestionnaire(QR, formOID){
 		}
 	});
 	
-}	
-
+}
 
 
 function setVariables(formOID,formName,date) {
