@@ -578,20 +578,20 @@ function displayQuestionnaire(QR, formOID){
 			
 			QRjson = data;
 			var tmp = JSON.stringify(data);
-			//console.log(data.contained[0].item[0].item[0].text);
-			//console.log(data.contained[0].item[0].item[1].text);
-			//console.log("disp question ID");
-			//console.log(data.contained[0].item[0].linkId);
+			console.log(data.contained[0].item[0].item[0].text);
+			console.log(data.contained[0].item[0].item[1].text);
+			console.log("disp question ID");
+			console.log(data.contained[0].item[0].linkId);
 			var linkId = data.contained[0].item[0].linkId;
 			
 			screen += "<div style=\'height: 50px; font-style: italic; font-size: 24px; margin-left:3em;\'>" + data.contained[0].item[0].item[0].text + " "+ data.contained[0].item[0].item[1].text+"</div>";
 			
 			jQuery(data.contained[0].item[0].item[1].answerOption).each(function(i, item){
-			//console.log(item.modifierExtension[0].valueString);
-			//console.log(item.text);
-			//console.log(item.valueCoding.code);
-			//console.log(item.valueCoding.display);
-			//console.log(item.valueCoding.system);
+			console.log(item.modifierExtension[0].valueString);
+			console.log(item.text);
+			console.log(item.valueCoding.code);
+			console.log(item.valueCoding.display);
+			console.log(item.valueCoding.system);
 			
 			var valueString = item.modifierExtension[0].valueString;
 			var text = item.text;
@@ -765,7 +765,7 @@ function displayList(){
 			//console.log(date1);
 			var date2=((date1.getMonth() + 1) + '/' + date1.getDate() + '/' +  date1.getFullYear());
 			//console.log(date2);
-			var date =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
+			var date3 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 			var temp = item.resource.subject.reference;
 			var pat_id= temp.substr(-7); 		
 			if(pro_name){
@@ -775,7 +775,7 @@ function displayList(){
 
 				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+pro_name+"</div>"
 				str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>"+date2+"</div>";
-				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); setVariables(\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +date+ "\"); writeProname(\""+pro_name+"\"); displayQ(); this.disabled=true; \'>Start</button></div></div>";
+				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); setVariables(\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +date3+ "\"); writeProname(\""+pro_name+"\"); displayQ(); this.disabled=true; \'>Start</button></div></div>";
 			}
 
 		}
