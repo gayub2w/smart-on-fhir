@@ -590,7 +590,18 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 	
 	var ansItem1 =  {"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/questionnaire-displayOrder","valueInteger":counter}],
 	"linkId":linkId,
-	"answer":[{"valueInteger":valueString,"valueCoding":{"system":system,"code":code,"display":text}}]};
+			 "answer": [
+                {
+                    "valueString": valueString,
+                    "valueCoding": {
+                        "system": system ,
+                        "code": code,
+                        "display": display,
+                    },
+                    "text": text
+                }
+            ]
+	};
 	
 	answer_item.push(ansItem1);
 	//console.log(JSON.stringify(answer_item));
