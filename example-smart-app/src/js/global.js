@@ -595,7 +595,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 	answer_item.push(ansItem1);
 	//console.log(JSON.stringify(answer_item));
 	QRjson["item"]=answer_item;
-	QRjson.contained[0].subjectType = "Patient";
+	//QRjson.contained[0].subjectType = "Patient";
 	console.log(tempOID);
 	console.log("new test");	
 	displayQuestionnaire(QRjson,tempOID);
@@ -752,7 +752,7 @@ var initialQR = {
 "title":formName,
 "status": "active",
 "date": date,
-"subjectType": "Patient"
+"subjectType": ["Patient"]
 }
 ],
 "questionnaire": "http://hl7.org/fhir/us/sdc/StructureDefinition/sdc-questionnaire-dynamic",
