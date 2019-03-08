@@ -19,7 +19,7 @@ function chartOld() {
 	myWindow.document.body.style.width ="1200px";
 
 //	myWindow.document.getElementsByTagName('title').innerHTML = "PRO Graph";
-	console.log(Series1);
+	//console.log(Series1);
 	// Highcharts.chart(myWindow.document.body, {
 	// 	title: {
 	// 		text: 'Patient Reported Outcomes'
@@ -75,7 +75,7 @@ function chart() {
 		var modal = document.getElementById('chartmodal');
 		modal.style.display = "block";
 		
-		console.log("chartdata ========1==>>",chartdata);
+		//console.log("chartdata ========1==>>",chartdata);
 		var chart = nv.models.lineChart()
 		.x(function(d) { return d[0] })
 		.y(function(d) { return d[1] }) 
@@ -132,10 +132,10 @@ function order_func() {
 	}
 
 	var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
-	console.log(date1);
-	console.log("patid :  " + window.patient_id);
-	console.log("fname : " + window.pat_fname);
-	console.log("lname : " + window.pat_lname);	
+	//console.log(date1);
+	//console.log("patid :  " + window.patient_id);
+	//console.log("fname : " + window.pat_fname);
+	//console.log("lname : " + window.pat_lname);	
 	var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"intent\": \"order\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"display\": \""+pat_fname+" "+pat_lname+"\",\n        \"reference\": \"http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"\"\n\t}\n} \n"
 
 	var settings = {
@@ -151,8 +151,8 @@ function order_func() {
 			"data": prdata
 	}
 	$.ajax(settings).done(function (response) {
-		console.log("pro-test");
-		console.log(response);
+		//console.log("pro-test");
+		//console.log(response);
 		orderStatus();
 		document.getElementById('order_unsuccessful').style.display = "none";
 		document.getElementById('order_successful').innerHTML = success_message;		
@@ -191,10 +191,10 @@ function listForms() {
 		},
 		success: function(data) { 
 
-			console.log(data);
+			//console.log(data);
 			var container = document.getElementById("Content");
 			var forms = data.entry;
-			console.log(data.entry);
+			//console.log(data.entry);
 			var datalist = document.getElementById("selectform"); 
 
 			//console.log("all forms"+forms);
@@ -219,29 +219,6 @@ function listForms() {
 			document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
 		}
 	});
-}
-function formDetails(FormOID) {
-	$.ajax({
-		url: Server + "/2014-01/Forms/" + FormOID + ".json",
-		cache: false,
-		type: "POST",
-		data: "",
-		dataType: "json",
-		beforeSend: function(xhr) {
-			var Reg = "2807BB48-28D3-4FFA-823A-F5E7EBF7E52D";
-			var Token = "A0159F7B-E971-46E6-B62D-7A6085F53F19";
-
-			var base64 = btoa(Reg + ":" + Token);
-			xhr.setRequestHeader("Authorization", "Basic " + base64);
-		},
-		success: function(data) {
-			//console.log(data);			
-		},
-
-		error: function(jqXHR, textStatus, errorThrown) {
-			console.log(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
-		}
-	})
 }
 
 
@@ -272,7 +249,7 @@ function prorecommend() {
 
 		jQuery(response).each(function(i, item){
 
-			console.log(item.cards)
+			//console.log(item.cards)
 			jQuery(item.cards).each(function(j, item){
 				var $t1 = item.summary;
 				var $t2 = item.detail;
@@ -319,9 +296,9 @@ function orderStatus() {
 			}
 	}
 	$.ajax(settings31).done(function (response) {
-		console.log(response);
+		//console.log(response);
 		document.getElementById('pending_PRO').innerHTML="";
-		console.log(patID);
+		//console.log(patID);
 		var str="";
 
 		str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th>";
@@ -329,9 +306,9 @@ function orderStatus() {
 
 
 		jQuery(response.entry).each(function(i, item){
-			console.log(item.resource.code.text);
-			console.log(item.resource.id);
-			console.log(item.resource.occurrenceDateTime);
+			//console.log(item.resource.code.text);
+			//console.log(item.resource.id);
+			//console.log(item.resource.occurrenceDateTime);
 
 			var msec = Date.parse(item.resource.occurrenceDateTime);
 			var d = new Date(msec);
@@ -363,15 +340,15 @@ function orderStatus() {
 			}
 	}
 	$.ajax(settings32).done(function (response) {
-		console.log("Completed");
-		console.log(response);
+		//console.log("Completed");
+		//console.log(response);
 		var str="";
 		str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
 
 		jQuery(response.entry).each(function(i, item){
-			console.log(item.resource.code.text);
-			console.log(item.resource.id);
-			console.log(item.resource.occurrenceDateTime);
+			//console.log(item.resource.code.text);
+			//console.log(item.resource.id);
+			//console.log(item.resource.occurrenceDateTime);
 
 			var settings1 = {
 					"async": false,
@@ -386,7 +363,7 @@ function orderStatus() {
 			$.ajax(settings1).done(function (response) {
 				//console.log(response);
 				jQuery(response.entry).each(function(i, item){
-					console.log(item.resource.valueQuantity.value);
+					//console.log(item.resource.valueQuantity.value);
 					res_score2 = item.resource.valueQuantity.value;
 					res_score1= res_score2.toPrecision(3);
 				});
@@ -438,7 +415,7 @@ function orderStatus() {
 
 
 listForms();
-formDetails(FormOID);
+//formDetails(FormOID);
 prorecommend();
 
 
@@ -465,26 +442,71 @@ var QRjson;
 
 
 
-var settings201 = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/token",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "Authorization": "Basic MmZmOTQ0ZWMtNGJjNy00MTc3LWEwYTMtZDJiNTAyNDM1ZWExOnpFdjZ0cGNmZXNza1p2QmZybE9vb2E4U1hicVVPNHdD",
-    "cache-control": "no-cache"
-  },
-  "data": {
+	$.ajax({
+		
+		url: "https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/token",
+		cache: false,
+		type: "POST",
+		data: {
     "grant_type": "client_credentials",
-    "scope": "system/Patient.read system/DocumentReference.read system/DocumentReference.write"
-  }
-}
+    "scope": "system/Patient.read system/DocumentReference.read system/DocumentReference.write"},
+		dataType: "json",
+		beforeSend: function(xhr) {
+			//var username = "2F984419-5008-4E42-8210-68592B418233";
+			//var pass = "21A673E8-9498-4DC2-AAB6-07395029A778";
+			//var Token = "MkY5ODQ0MTktNTAwOC00RTQyLTgyMTAtNjg1OTJCNDE4MjMzOjIxQTY3M0U4LTk0OTgtNERDMi1BQUI2LTA3Mzk1MDI5QTc3OA==";
 
-$.ajax(settings201).done(function (response) {
-  console.log(response);
-	Console.log("dr test bearer token");
-});
+			//var base64 = btoa(username + ":" + pass);
+			xhr.setRequestHeader("Authorization", "Basic MmZmOTQ0ZWMtNGJjNy00MTc3LWEwYTMtZDJiNTAyNDM1ZWExOnpFdjZ0cGNmZXNza1p2QmZybE9vb2E4U1hicVVPNHdD");
+		},
+		success: function(data) { 
+
+			console.log(data);
+			console.log("dr test");
+			var token = data.access_token;
+			console.log(data.access_token);
+			
+						$.ajax({
+		
+								url: "https://fhir-myrecord.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference",
+								cache: false,
+								type: "POST",
+								data: "\t\t\t\t\t\t\t\t\t\t\t\t\t\t{\n  \"resourceType\": \"DocumentReference\",\n  \"subject\": {\n    \"reference\": \"Patient/4342008\"\n  },\n  \"type\": {\n    \"coding\": [\n      {\n        \"system\": \"http://loinc.org\",\n        \"code\": \"34133-9\"\n      }\n    ]\n  },\n  \"author\": [\n    {\n      \"reference\": \"Practitioner/605926\"\n    }\n  ],\n  \"indexed\": \"2019-03-09T18:00:00Z\",\n  \"status\": \"current\",\n  \"docStatus\": {\n    \"coding\": [\n      {\n        \"system\": \"http://hl7.org/fhir/composition-status\",\n        \"code\": \"final\"\n      }\n    ]\n  },\n  \"description\": \"This is a note description\",\n  \"content\": [\n    {\n      \"attachment\": {\n        \"contentType\": \"application/xhtml+xml;charset=utf-8\",\n        \"data\": \"PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFsLy9FTiIKImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25hbC5kdGQiPgoKPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPgoKPGhlYWQ+CiAgPHRpdGxlPlRpdGxlIG9mIGRvY3VtZW50PC90aXRsZT4KPC9oZWFkPgoKPGJvZHk+CiAgc29tZSBjb250ZW50IAo8L2JvZHk+Cgo8L2h0bWw+\"\n      }\n    }\n  ],\n  \"context\": {\n    \"encounter\": {\n      \"reference\": \"Encounter/4269906\"\n    },\n    \"period\": {\n      \"end\": \"2019-03-08T09:10:14Z\"\n    }\n  }\n}",
+								dataType: "application/json+fhir",
+								beforeSend: function(xhr) {
+									//var username = "2F984419-5008-4E42-8210-68592B418233";
+									//var pass = "21A673E8-9498-4DC2-AAB6-07395029A778";
+									//var Token = "MkY5ODQ0MTktNTAwOC00RTQyLTgyMTAtNjg1OTJCNDE4MjMzOjIxQTY3M0U4LTk0OTgtNERDMi1BQUI2LTA3Mzk1MDI5QTc3OA==";
+
+									//var base64 = btoa(username + ":" + pass);
+									xhr.setRequestHeader("Authorization", "Bearer " + token);
+									xhr.setRequestHeader("Accept", "application/json+fhir");
+									xhr.setRequestHeader("Content-Type", "application/json+fhir");
+									
+								},
+								success: function(data) { 
+
+									console.log(data);
+									
+								},
+
+								error: function(jqXHR, textStatus, errorThrown) {
+									//document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+										//console.log(jqXHR.responseText);
+								}
+							});
+			
+			
+			
+			
+
+		},
+
+		error: function(jqXHR, textStatus, errorThrown) {
+			document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+				//console.log(jqXHR.responseText);
+		}
+	});
 
 
 function displayQ(){
@@ -510,11 +532,11 @@ function displist()
 
 function assignValues(task_Id,pro_Id,pro_Name,pat_Name)
 {
-	console.log(task_Id);
-	console.log(pro_Id);
-	console.log(pro_Name);
-	console.log(pat_Name);
-	console.log(patID);					
+	//console.log(task_Id);
+	//console.log(pro_Id);
+	//console.log(pro_Name);
+	//console.log(pat_Name);
+	//console.log(patID);					
 
 	taskId = task_Id;
 	proId = pro_Id;
@@ -585,7 +607,7 @@ function postScore(taskId,proId,proName,patId,patName,tscore){
 function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 	{
 	 
-	 console.log(QRjson.status);
+	 //console.log(QRjson.status);
 	 //console.log("here");
 	
 	if (QRjson.status != "completed") {
@@ -609,18 +631,18 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 	//console.log(JSON.stringify(answer_item));
 	QRjson["item"]=answer_item;
 	//QRjson.contained[0].subjectType = "Patient";
-	console.log(tempOID);
-	console.log("new test");	
+	//console.log(tempOID);
+	//console.log("new test");	
 	displayQuestionnaire(QRjson,tempOID);
 	counter = counter + 1 ;
 	//console.log(counter);
 	}
 	else {
-	console.log(JSON.stringify(QRjson));
-	console.log(QRjson.extension[2].extension[0].valueDecimal);
+	//console.log(JSON.stringify(QRjson));
+	//console.log(QRjson.extension[2].extension[0].valueDecimal);
 	var theta = QRjson.extension[2].extension[0].valueDecimal;
 	var tscore = (theta * 10) + 50;
-	console.log (tscore);		
+	//console.log (tscore);		
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 	}
 	
@@ -651,7 +673,7 @@ function displayQuestionnaire(QR, formOID){
 		},
 		success: function(data) { 
 			var screen=""
-			console.log(data);
+			//console.log(data);
 			var tempOID = data.id;
 			QRjson = data;
 			
@@ -660,10 +682,10 @@ function displayQuestionnaire(QR, formOID){
 			//console.log(tmp);
 			
 			var temp = data.contained[0].item[0].item;
-			console.log(temp.length);
+			//console.log(temp.length);
 			
 			
-			console.log(data.contained[0].item[0].item[0].text);
+			//console.log(data.contained[0].item[0].item[0].text);
 			
 			if (temp.length==1){
 			var linkId = data.contained[0].item[0].linkId;
