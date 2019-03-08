@@ -471,7 +471,7 @@ var settings201 = {
   "url": "https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/token",
   "method": "POST",
   "headers": {
-    "Content-Type": "application/x-www-form-urlencoded",
+    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     "Authorization": "Basic MmZmOTQ0ZWMtNGJjNy00MTc3LWEwYTMtZDJiNTAyNDM1ZWExOnpFdjZ0cGNmZXNza1p2QmZybE9vb2E4U1hicVVPNHdD",
     "cache-control": "no-cache"
   },
