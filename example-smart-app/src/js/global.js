@@ -465,24 +465,26 @@ var QRjson;
 
 
 
-var settings1011 = {
+var settings201 = {
   "async": true,
   "crossDomain": true,
-  "url": "https://fhir-ehr.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference",
+  "url": "https://authorization.sandboxcerner.com/tenants/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/protocols/oauth2/profiles/smart-v1/token",
   "method": "POST",
   "headers": {
-    "Content-Type": "application/json",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Authorization": "Basic MmZmOTQ0ZWMtNGJjNy00MTc3LWEwYTMtZDJiNTAyNDM1ZWExOnpFdjZ0cGNmZXNza1p2QmZybE9vb2E4U1hicVVPNHdD",
     "cache-control": "no-cache"
   },
-  "processData": false,
-  "data": "{\n    \"resourceType\": \"DocumentReference\",\n    \"subject\": {\n        \"reference\": \"Patient/https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/4342008\"\n    },\n    \"type\": {\n        \"coding\": [\n            {\n                \"system\": \"http://loinc.org\",\n                \"code\": \"34133-9\"\n            }\n        ]\n    },\n    \"author\": [\n        {\n            \"reference\": \"Practitioner/https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Practitioner/2044020\"\n        }\n    ],\n    \"indexed\": \"2019-03-04T18:00:00Z\",\n    \"status\": \"current\",\n    \"docStatus\": {\n        \"coding\": [\n            {\n                \"system\": \"http://hl7.org/fhir/composition-status\",\n                \"code\": \"final\"\n            }\n        ]\n    },\n    \"description\": \"PROMIS SF v1.0-Sleep Disturbance 8a\",\n    \"content\": [\n        {\n            \"attachment\": {\n                \"contentType\": \"application/xhtml+xml;charset=utf-8\",\n                \"data\": \"PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFsLy9FTiIKImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25hbC5kdGQiPgo8aHRtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+CjxoZWFkPgogIDx0aXRsZT5Eb2N1bWVudCBSZWZlcmVuY2U8L3RpdGxlPgo8L2hlYWQ+Cjxib2R5PgogIHlvdSd2ZSBnb3QgYSBQUk8KPC9ib2R5Pgo8L2h0bWw+\"\n            }\n        }\n    ],\n    \"context\": {\n        \"encounter\": {\n            \"reference\": \"\"\n        }\n    }\n}"
+  "data": {
+    "grant_type": "client_credentials",
+    "scope": "system/Patient.read system/DocumentReference.read system/DocumentReference.write"
+  }
 }
 
-$.ajax(settings1011).done(function (response) {
+$.ajax(settings201).done(function (response) {
   console.log(response);
-	console.log("Doc Ref");
+	Console.log("dr test bearer token");
 });
-
 
 
 function displayQ(){
