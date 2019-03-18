@@ -638,7 +638,8 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 	//console.log(counter);
 	}
 	else {
-	//console.log(JSON.stringify(QRjson));
+	console.log(QRjson);
+	console.log(JSON.stringify(QRjson));
 	//console.log(QRjson.extension[2].extension[0].valueDecimal);
 	var theta = QRjson.extension[2].extension[0].valueDecimal;
 	var tscore = (theta * 10) + 50;
