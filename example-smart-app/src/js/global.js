@@ -152,7 +152,7 @@ function order_func() {
 	}
 	$.ajax(settings).done(function (response) {
 		//console.log("pro-test");
-		//console.log(response);
+		console.log(response);
 		orderStatus();
 		document.getElementById('order_unsuccessful').style.display = "none";
 		document.getElementById('order_successful').innerHTML = success_message;		
