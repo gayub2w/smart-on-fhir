@@ -106,7 +106,19 @@ function chart() {
 }
 
 function order_func() {
-
+	
+	
+	  var e = document.getElementById("selectform");
+    	var sformoid = e.options[e.selectedIndex].value;
+    var sformname = e.options[e.selectedIndex].text;
+    alert("FormOID : " + sformoid);
+    alert("FormName : " + sformname);	
+            var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
+                    console.log(date1);
+                    console.log("patid :  " + window.patient_id);
+                    console.log("fname : " + window.pat_fname);
+                                console.log("lname : " + window.pat_lname);
+/*
 	var e = document.getElementById("selectform");		
 	var idOfSelect = $("#selectinput").val();
 	var sformname = $('#selectform option[value="'+idOfSelect+'"]').text();
@@ -130,8 +142,9 @@ function order_func() {
 	document.getElementById('order_successful').style.display = "inline";
 	return;
 	}
+	*/
 
-	var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
+	//var date1 =new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 	//console.log(date1);
 	//console.log("patid :  " + window.patient_id);
 	//console.log("fname : " + window.pat_fname);
