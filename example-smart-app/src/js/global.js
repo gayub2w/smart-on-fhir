@@ -106,8 +106,10 @@ function chart() {
 }
 
 
-	
-	document.getElementById("myBtn").addEventListener("click", function(){
+	var el = document.getElementById("myBtn");
+
+if(el){
+  el.addEventListener("click", function(){
 	 
 
 	var e = document.getElementById("selectform");		
@@ -163,7 +165,7 @@ function chart() {
 	});
 
 });
-
+}
 
 
 var form_oid=[];
