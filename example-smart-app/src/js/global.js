@@ -612,7 +612,7 @@ function postScore(taskId,proId,proName,patId,patName,tscore){
 
 function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 	{
-	 
+	 console.log(QRjson);
 	 //console.log(QRjson.status);
 	 //console.log("here");
 	
