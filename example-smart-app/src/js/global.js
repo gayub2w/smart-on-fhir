@@ -302,7 +302,7 @@ function orderStatus() {
 			}
 	}
 	$.ajax(settings31).done(function (response) {
-		//console.log(response);
+		console.log(response);
 		document.getElementById('pending_PRO').innerHTML="";
 		//console.log(patID);
 		var str="";
