@@ -478,7 +478,7 @@ function postDocRef(desc){
 								url: "https://fhir-myrecord.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference",
 								cache: false,
 								type: "POST",
-								data: "\t\t\t\t\t\t\t\t\t\t\t\t\t\t{\n  \"resourceType\": \"DocumentReference\",\n  \"subject\": {\n    \"reference\": \"Patient/"+patID+"\"\n  },\n  \"type\": {\n    \"coding\": [\n      {\n        \"system\": \"http://loinc.org\",\n        \"code\": \"34133-9\"\n      }\n    ]\n  },\n  \"author\": [\n    {\n      \"reference\": \"Practitioner/605926\"\n    }\n  ],\n  \"indexed\": \"2019-03-09T18:00:00Z\",\n  \"status\": \"current\",\n  \"docStatus\": {\n    \"coding\": [\n      {\n        \"system\": \"http://hl7.org/fhir/composition-status\",\n        \"code\": \"final\"\n      }\n    ]\n  },\n  \"description\": \""+desc+"\",\n  \"content\": [\n    {\n      \"attachment\": {\n        \"contentType\": \"application/xhtml+xml;charset=utf-8\",\n        \"data\": \"PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFsLy9FTiIKImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25hbC5kdGQiPgoKPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPgoKPGhlYWQ+CiAgPHRpdGxlPlRpdGxlIG9mIGRvY3VtZW50PC90aXRsZT4KPC9oZWFkPgoKPGJvZHk+CiAgc29tZSBjb250ZW50IAo8L2JvZHk+Cgo8L2h0bWw+\"\n      }\n    }\n  ],\n  \"context\": {\n    \"encounter\": {\n      \"reference\": \"Encounter/4269906\"\n    },\n    \"period\": {\n      \"end\": \"2019-03-09T18:00:00Z\"\n    }\n  }\n}",
+								data: "\t\t\t\t\t\t\t\t\t\t\t\t\t\t{\n  \"resourceType\": \"DocumentReference\",\n  \"subject\": {\n    \"reference\": \"Patient/"+patID+"\"\n  },\n  \"type\": {\n    \"coding\": [\n      {\n        \"system\": \"http://loinc.org\",\n        \"code\": \"34133-9\"\n      }\n    ]\n  },\n  \"author\": [\n    {\n      \"reference\": \"Practitioner/605926\"\n    }\n  ],\n  \"indexed\": \"2019-03-26T18:00:00Z\",\n  \"status\": \"current\",\n  \"docStatus\": {\n    \"coding\": [\n      {\n        \"system\": \"http://hl7.org/fhir/composition-status\",\n        \"code\": \"final\"\n      }\n    ]\n  },\n  \"description\": \""+desc+"\",\n  \"content\": [\n    {\n      \"attachment\": {\n        \"contentType\": \"application/xhtml+xml;charset=utf-8\",\n        \"data\": \"PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFsLy9FTiIKImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25hbC5kdGQiPgoKPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPgoKPGhlYWQ+CiAgPHRpdGxlPlRpdGxlIG9mIGRvY3VtZW50PC90aXRsZT4KPC9oZWFkPgoKPGJvZHk+CiAgc29tZSBjb250ZW50IAo8L2JvZHk+Cgo8L2h0bWw+\"\n      }\n    }\n  ],\n  \"context\": {\n    \"encounter\": {\n      \"reference\": \"Encounter/4269906\"\n    },\n    \"period\": {\n      \"end\": \"2019-03-26T18:00:00Z\"\n    }\n  }\n}",
 								dataType: "application/json+fhir",
 								beforeSend: function(xhr) {
 									//var username = "2F984419-5008-4E42-8210-68592B418233";
@@ -653,7 +653,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 	//console.log (tscore);	
 	console.log(QRjson.contained[0].title);
 	console.log(QRjson.extension[1].valueDate);
-		var desc = QRjson.contained[0].title + " "+ tscore;
+		var desc = QRjson.contained[0].title + ", t-score :"+ tscore;
 		var date01 = QRjson.extension[1].valueDate;
 		
 		
