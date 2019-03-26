@@ -294,7 +294,7 @@ function orderStatus() {
 	var settings31 = {
 			"async": false,
 			"crossDomain": false,
-			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&_count=100&intent=order&status=active",
+			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&_count=150&intent=order&status=active",
 			"cache" : false,
 			"method": "GET",
 			"headers": {
@@ -844,7 +844,7 @@ function displayList(){
 	var settings3 = {
 			"async": false,
 			"crossDomain": true,
-			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&_count=100&intent=order&status=active",
+			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&_count=150&intent=order&status=active",
 		
 			"method": "GET"
 	}
