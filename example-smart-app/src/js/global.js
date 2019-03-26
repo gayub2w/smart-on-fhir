@@ -854,7 +854,9 @@ function displayList(){
 			"crossDomain": true,
 			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&_count=200&intent=order&status=active",
 		
-			"method": "GET"
+			"method": "GET",
+		"limit": "10",
+    "offset": "50"
 	}
 	$.ajax(settings3).done(function (response) {
 		console.log(response);
