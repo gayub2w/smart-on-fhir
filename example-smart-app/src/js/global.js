@@ -845,7 +845,7 @@ function displayList(){
 	var settings3 = {
 			"async": false,
 			"crossDomain": true,
-			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&_count=20&intent=order&status=active",
+			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&_count=200&intent=order&status=active",
 		
 			"method": "GET"
 	}
