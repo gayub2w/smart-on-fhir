@@ -294,6 +294,35 @@ var res_score1;
 var res_score2;			
 function orderStatus() {
 	// Pros to be completed
+		$.ajax({
+		
+								url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-03-26",
+								cache: false,
+								type: "GET",
+								beforeSend: function(xhr) {
+									
+									xhr.setRequestHeader("Authorization", "Bearer eyJraWQiOiIyMDE5LTAzLTEyVDE3OjUyOjI3LjkzOC5lYyIsInR5cCI6IkpXVCIsImFsZyI6IkVTMjU2In0.eyJpc3MiOiJodHRwczpcL1wvYXV0aG9yaXphdGlvbi5zYW5kYm94Y2VybmVyLmNvbVwvIiwiZXhwIjoxNTUyNDE0MDAzLCJpYXQiOjE1NTI0MTM0MDMsImp0aSI6Ijk5ZTgyZGI3LWIyYjAtNGNlMy04NDZhLTBjYWEzNWM4ZTdlMiIsInVybjpjZXJuZXI6YXV0aG9yaXphdGlvbjpjbGFpbXM6dmVyc2lvbjoxIjp7InZlciI6IjEuMCIsInByb2ZpbGVzIjp7InNtYXJ0LXYxIjp7ImF6cyI6InN5c3RlbVwvUGF0aWVudC5yZWFkIHN5c3RlbVwvRG9jdW1lbnRSZWZlcmVuY2UucmVhZCBzeXN0ZW1cL0RvY3VtZW50UmVmZXJlbmNlLndyaXRlIn19LCJjbGllbnQiOnsibmFtZSI6InN5c190ZXN0IiwiaWQiOiIyZmY5NDRlYy00YmM3LTQxNzctYTBhMy1kMmI1MDI0MzVlYTEifSwidGVuYW50IjoiMGI4YTAxMTEtZThlNi00YzI2LWE5MWMtNTA2OWNiYzZiMWNhIn19.SXCjS3_g-O9BbI33TEVi7mJyVfjUBg6Whre1zDjDITNbgst3vyMlWwJno8yaGQygqhEMhs_gD0FKX5I44BjVog");
+									xhr.setRequestHeader("Accept", "application/json+fhir");
+									xhr.setRequestHeader("Content-Type", "application/json+fhir");
+									
+								},
+								success: function(data) { 
+									console.log("Read Doc Refs");
+
+									console.log(data);
+									
+								},
+
+								error: function(jqXHR, textStatus, errorThrown) {
+									//document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+										//console.log(jqXHR.responseText);
+								}
+							});
+			
+	
+	
+	
+	
 	
 	var settings31 = {
 			"async": false,
