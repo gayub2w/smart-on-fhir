@@ -295,7 +295,7 @@ var res_score2;
 function orderStatus() {
 	// Pros to be completed
 		
-	var str="";
+	
 	
 	
 	
