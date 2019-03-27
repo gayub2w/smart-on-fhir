@@ -455,14 +455,14 @@ function orderStatus() {
 
 			jQuery(data.entry).each(function(i, item){
 
-			var str = item.resource.description;
-			if (str.includes("t-score")) {
+			var str3 = item.resource.description;
+			if (str3.includes("t-score")) {
 
 						console.log(item.resource.created);
 						console.log(item.resource.description);
-						var str = item.resource.description;
+						var str2 = item.resource.description;
 
-						var scoretext = str.substring(str.length - 2, str.length);
+						var scoretext = str2.substring(str2.length - 2, str2.length);
 						var score = parseFloat(scoretext);
 
 						var str1= item.resource.description;
