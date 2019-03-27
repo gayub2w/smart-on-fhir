@@ -399,7 +399,7 @@ function orderStatus() {
 				}
 			}
 
-			if (flag !="Y")
+			if (flag !="Y" && (proname1== "TBI-QOL Bank v1.0 - Anxiety" || proname1== "PROMIS SF v1.0-Sleep Disturbance 8a"))
 			{
 				let temp ={
 						key  : proname1,
