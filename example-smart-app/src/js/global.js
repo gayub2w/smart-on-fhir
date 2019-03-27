@@ -664,6 +664,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var desc = QRjson.contained[0].title + ", t-score :"+ tscore;
 		var date01 = QRjson.extension[1].valueDate;
 		
+		$('#t02').append('<td><a href ="#" onclick="chart();return false;"> 50 </a></td><td> 1 - 100</td> </tr>');
 		
 		postDocRef(desc);
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
