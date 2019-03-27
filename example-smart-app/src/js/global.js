@@ -460,7 +460,7 @@ function orderStatus() {
 			var str3 = item.resource.description;
 			if (str3.includes("t-score")) {
 
-						console.log(item.resource.created);
+						console.log(item.resource.meta.lastUpdated);
 						console.log(item.resource.description);
 						var str2 = item.resource.description;
 
@@ -472,7 +472,7 @@ function orderStatus() {
 
 						console.log(score);
 						console.log(proname);
-						var msec = Date.parse(item.resource.created);
+						var msec = Date.parse(item.resource.meta.lastUpdated);
 						var d = new Date(msec);
 						var date1 = d.toLocaleString("en-US");
 						console.log(msec);
