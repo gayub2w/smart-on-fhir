@@ -294,31 +294,7 @@ var res_score1;
 var res_score2;			
 function orderStatus() {
 	// Pros to be completed
-		$.ajax({
 		
-								url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-03-26",
-								cache: false,
-								type: "GET",
-								beforeSend: function(xhr) {
-									
-									xhr.setRequestHeader("Authorization", "Bearer eyJraWQiOiIyMDE5LTAzLTEyVDE3OjUyOjI3LjkzOC5lYyIsInR5cCI6IkpXVCIsImFsZyI6IkVTMjU2In0.eyJpc3MiOiJodHRwczpcL1wvYXV0aG9yaXphdGlvbi5zYW5kYm94Y2VybmVyLmNvbVwvIiwiZXhwIjoxNTUyNDE0MDAzLCJpYXQiOjE1NTI0MTM0MDMsImp0aSI6Ijk5ZTgyZGI3LWIyYjAtNGNlMy04NDZhLTBjYWEzNWM4ZTdlMiIsInVybjpjZXJuZXI6YXV0aG9yaXphdGlvbjpjbGFpbXM6dmVyc2lvbjoxIjp7InZlciI6IjEuMCIsInByb2ZpbGVzIjp7InNtYXJ0LXYxIjp7ImF6cyI6InN5c3RlbVwvUGF0aWVudC5yZWFkIHN5c3RlbVwvRG9jdW1lbnRSZWZlcmVuY2UucmVhZCBzeXN0ZW1cL0RvY3VtZW50UmVmZXJlbmNlLndyaXRlIn19LCJjbGllbnQiOnsibmFtZSI6InN5c190ZXN0IiwiaWQiOiIyZmY5NDRlYy00YmM3LTQxNzctYTBhMy1kMmI1MDI0MzVlYTEifSwidGVuYW50IjoiMGI4YTAxMTEtZThlNi00YzI2LWE5MWMtNTA2OWNiYzZiMWNhIn19.SXCjS3_g-O9BbI33TEVi7mJyVfjUBg6Whre1zDjDITNbgst3vyMlWwJno8yaGQygqhEMhs_gD0FKX5I44BjVog");
-									xhr.setRequestHeader("Accept", "application/json+fhir");
-									xhr.setRequestHeader("Content-Type", "application/json+fhir");
-									
-								},
-								success: function(data) { 
-									console.log("Read Doc Refs");
-
-									console.log(data);
-									
-								},
-
-								error: function(jqXHR, textStatus, errorThrown) {
-									//document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
-										//console.log(jqXHR.responseText);
-								}
-							});
-			
 	
 	
 	
@@ -368,7 +344,7 @@ function orderStatus() {
 		document.getElementById('pending_PRO').innerHTML += str;
 	});
 //	Pros completed
-
+/*
 	var settings32 = {
 			"async": false,
 			"crossDomain": false,
@@ -453,6 +429,100 @@ function orderStatus() {
 
 		document.getElementById('t02').innerHTML += str;
 	});
+	
+	
+	
+	*/
+	$.ajax({
+		
+		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-03-28",
+		cache: false,
+		type: "GET",
+		beforeSend: function(xhr) {
+
+			xhr.setRequestHeader("Authorization", "Bearer eyJraWQiOiIyMDE5LTAzLTEyVDE3OjUyOjI3LjkzOC5lYyIsInR5cCI6IkpXVCIsImFsZyI6IkVTMjU2In0.eyJpc3MiOiJodHRwczpcL1wvYXV0aG9yaXphdGlvbi5zYW5kYm94Y2VybmVyLmNvbVwvIiwiZXhwIjoxNTUyNDE0MDAzLCJpYXQiOjE1NTI0MTM0MDMsImp0aSI6Ijk5ZTgyZGI3LWIyYjAtNGNlMy04NDZhLTBjYWEzNWM4ZTdlMiIsInVybjpjZXJuZXI6YXV0aG9yaXphdGlvbjpjbGFpbXM6dmVyc2lvbjoxIjp7InZlciI6IjEuMCIsInByb2ZpbGVzIjp7InNtYXJ0LXYxIjp7ImF6cyI6InN5c3RlbVwvUGF0aWVudC5yZWFkIHN5c3RlbVwvRG9jdW1lbnRSZWZlcmVuY2UucmVhZCBzeXN0ZW1cL0RvY3VtZW50UmVmZXJlbmNlLndyaXRlIn19LCJjbGllbnQiOnsibmFtZSI6InN5c190ZXN0IiwiaWQiOiIyZmY5NDRlYy00YmM3LTQxNzctYTBhMy1kMmI1MDI0MzVlYTEifSwidGVuYW50IjoiMGI4YTAxMTEtZThlNi00YzI2LWE5MWMtNTA2OWNiYzZiMWNhIn19.SXCjS3_g-O9BbI33TEVi7mJyVfjUBg6Whre1zDjDITNbgst3vyMlWwJno8yaGQygqhEMhs_gD0FKX5I44BjVog");
+			xhr.setRequestHeader("Accept", "application/json+fhir");
+			xhr.setRequestHeader("Content-Type", "application/json+fhir");
+
+		},
+		success: function(data) { 
+
+			console.log(data);
+
+
+			var str="";
+			str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
+
+			jQuery(data.entry).each(function(i, item){
+
+			var str = item.resource.description;
+			if (str.includes("t-score")) {
+
+						console.log(item.resource.created);
+						console.log(item.resource.description);
+						var str = item.resource.description;
+
+						var scoretext = str.substring(str.length - 2, str.length);
+						var score = parseFloat(scoretext);
+
+						var str1= item.resource.description;
+						var proname = str1.slice(0,(str1.length-13));
+
+						console.log(score);
+						console.log(proname);
+						var msec = Date.parse(item.resource.created);
+						var d = new Date(msec);
+						var date1 = d.toLocaleString("en-US");
+						console.log(msec);
+						console.log(date1);	
+				var flag="";
+
+			var value = [msec,score];
+			
+			for(i=0;i<Series1.length;i++)
+			{
+				if (proname == Series1[i].key){
+					
+					Series1[i].values.push(value);
+					
+					flag="Y";	
+				}
+			}
+
+			if (flag !="Y" )
+			{
+				let temp ={
+						key  : proname,
+						values : [value] };
+
+				Series1.push(temp);
+			}
+			
+		
+			flag="";   
+
+			str = str +"<tr><td>" +date1+"</td>";
+			str = str +"<td>"+proname +"</td>";
+			str = str +"<td>Completed</td>";
+			str = str +"<td><a href =\'#\' onclick=\'chart();return false;'>"+score+"</a></td><td> 1 - 100</td> </tr>";
+
+
+						}
+				document.getElementById('t02').innerHTML += str;
+
+					});
+
+
+
+		},
+
+		error: function(jqXHR, textStatus, errorThrown) {
+			//document.write(jqXHR.responseText + ':' + textStatus + ':' + errorThrown);
+				//console.log(jqXHR.responseText);
+		}
+	});
+
+	
 }
 
 
