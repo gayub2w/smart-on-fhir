@@ -13,6 +13,12 @@ var tscore;
 var Series1 = [];
 
 
+Series1.push("TBI-QOL Bank v1.0 - Anxiety": 42);
+
+Series1.push("TBI-QOL Bank v1.0 - Anxiety": 76);
+
+
+
 function chartOld() {
 	var myWindow = window.open("", "MsgWindow", "width=1400,height=1200");
 	myWindow.document.body.style.height ="800px";
@@ -339,7 +345,7 @@ function orderStatus() {
 	var settings32 = {
 			"async": false,
 			"crossDomain": false,
-			"url": baseurl+"ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patID+"&_count=1000&status=completed&intent=order",
+			"url": baseurl+"ProcedureRequest?subject=https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/"+patID+"&_count=100&status=completed&intent=order",
 			"cache" : false,
 			"method": "GET",
 			"headers": {
@@ -399,7 +405,7 @@ function orderStatus() {
 				}
 			}
 
-			if (flag !="Y" && (proname1== "TBI-QOL Bank v1.0 - Anxiety" || proname1== "PROMIS SF v1.0-Sleep Disturbance 8a"))
+			if (flag !="Y" && proname1== "TBI-QOL Bank v1.0 - Anxiety")
 			{
 				let temp ={
 						key  : proname1,
