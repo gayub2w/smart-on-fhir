@@ -13,9 +13,6 @@ var tscore;
 var Series1 = [];
 
 
-Series1.push("TBI-QOL Bank v1.0 - Anxiety": 42);
-
-Series1.push("TBI-QOL Bank v1.0 - Anxiety": 76);
 
 
 
