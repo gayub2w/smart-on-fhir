@@ -388,7 +388,7 @@ function orderStatus() {
 			var flag="";
 
 			var value = [msec,score];
-			if (proname1 == "PROMIS Bank v1.0 - Pain Behaviour") {
+			
 			for(i=0;i<Series1.length;i++)
 			{
 				if (proname1 == Series1[i].key){
@@ -399,7 +399,7 @@ function orderStatus() {
 				}
 			}
 
-			if (flag !="Y")
+			if (flag !="Y" && proname1=="TBI-QOL Bank v1.0 - Anxiety")
 			{
 				let temp ={
 						key  : proname1,
@@ -408,7 +408,7 @@ function orderStatus() {
 				Series1.push(temp);
 			}
 			
-		}
+		
 			flag="";   
 
 			str = str +"<tr><td>" +date1+"</td>";
