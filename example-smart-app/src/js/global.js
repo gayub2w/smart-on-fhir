@@ -399,7 +399,7 @@ function orderStatus() {
 				}
 			}
 
-			if (flag !="Y" && proname1=="TBI-QOL Bank v1.0 - Anxiety")
+			if (flag !="Y")
 			{
 				let temp ={
 						key  : proname1,
