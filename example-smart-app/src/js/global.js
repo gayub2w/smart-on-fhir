@@ -294,7 +294,7 @@ function orderStatus() {
 	var settings31 = {
 			"async": false,
 			"crossDomain": false,
-			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&_count=20&intent=order&status=active",
+			"url": baseurl+"ProcedureRequest?subject=http://hl7.org/fhir/sid/us-ssn/Patient/"+patID+"&_count=20&intent=order&status=active&_sort:desc=_lastUpdated",
 			"cache" : false,
 			"method": "GET",
 			"headers": {
@@ -388,7 +388,7 @@ function orderStatus() {
 			var flag="";
 
 			var value = [msec,score];
-			
+			if (proname1 == "PROMIS Bank v1.0 - Pain Behaviour") {
 			for(i=0;i<Series1.length;i++)
 			{
 				if (proname1 == Series1[i].key){
@@ -407,6 +407,8 @@ function orderStatus() {
 
 				Series1.push(temp);
 			}
+			
+		}
 			flag="";   
 
 			str = str +"<tr><td>" +date1+"</td>";
