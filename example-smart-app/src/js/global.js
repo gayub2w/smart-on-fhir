@@ -433,6 +433,10 @@ function orderStatus() {
 	
 	
 	*/
+	
+	var str="";
+	str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
+
 	$.ajax({
 		
 		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-03-28",
@@ -450,9 +454,7 @@ function orderStatus() {
 			console.log(data);
 
 
-			var str="";
-			str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
-
+			
 			jQuery(data.entry).each(function(i, item){
 
 			var str3 = item.resource.description;
@@ -508,11 +510,11 @@ function orderStatus() {
 
 
 						}
-				document.getElementById('t02').innerHTML += str;
+				
 
 					});
 
-
+			document.getElementById('t02').innerHTML += str;
 
 		},
 
