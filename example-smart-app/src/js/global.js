@@ -456,9 +456,10 @@ function orderStatus() {
 
 			
 			jQuery(data.entry).each(function(i, item){
-
+				console.log(item);
 			var str3 = item.resource.description;
-			if (str3.includes("t-score")) {
+					if (str3.includes("t-score")) {
+						
 
 						console.log(item.resource.meta.lastUpdated);
 						console.log(item.resource.description);
