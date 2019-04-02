@@ -731,7 +731,32 @@ function postScore(taskId,proId,proName,patId,patName,tscore){
 
 }
 
+function getxhtml(QRjson) {
+	
+	var temp;
+	var myJSONString = JSON.stringify(QRjson);
+var settings = {
+		  "async": true,
+		  "crossDomain": true,
+		  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/services/cds-services/questionnaire-resp-2-xhtml",
+		  "method": "POST",
+		  "headers": {
+		    "Content-Type": "application/json",
+		    "cache-control": "no-cache"
+		  },
+		  "data": myJSONString 
+		  }
 
+		$.ajax(settings).done(function (response) {
+		  console.log(response);
+			var b64xhtml = btoa(response);
+			  console.log(b64xhtml);
+		  console.log("testtt");
+			temp = b64xhtml
+
+		});	
+	return temp;
+}
 
 
 
@@ -784,35 +809,14 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var date01 = QRjson.extension[1].valueDate;
 		
 		//$('#t02').append('<td><a href ="#" onclick="chart();return false;"> 50 </a></td><td> 1 - 100</td> </tr>');
-		var myJSONString = JSON.stringify(QRjson);
-		
-		var b64xhtml;
-		
-		var settings = {
-		  "async": false,
-		  "crossDomain": true,
-		  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/services/cds-services/questionnaire-resp-2-xhtml",
-		  "method": "POST",
-		  "headers": {
-		    "Content-Type": "application/json",
-		    "cache-control": "no-cache"
-		  },
-		  "data": myJSONString 
-		  }
-
-		$.ajax(settings).done(function (response) {
-		  console.log(response);
-			b64xhtml = btoa(response);
-			  console.log(xhtml);
-		  console.log("testtt");
-
-		});
 		
 		
+		var b64xhtml1 = "PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFsLy9FTiIKImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25hbC5kdGQiPgo8aHRtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+CjxoZWFkPgogIDx0aXRsZT5Eb2N1bWVudCBSZWZlcmVuY2U8L3RpdGxlPgo8L2hlYWQ+Cjxib2R5PgogIHlvdSd2ZSBnb3QgYSBQUk8KPC9ib2R5Pgo8L2h0bWw+";
 		
+			
+		postDocRef(desc,b64xhtml1);
 		
-		
-		postDocRef(desc,b64xhtml);
+		getxhtml(QRjson);
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 	}
 	
