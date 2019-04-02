@@ -749,7 +749,8 @@ var settings = {
 
 		$.ajax(settings).done(function (response) {
 		  console.log(response);
-			var b64xhtml = btoa(response);
+			var temp1 =String(response);
+			var b64xhtml = btoa(temp1);
 			  console.log(b64xhtml);
 		  console.log("testtt");
 			temp = b64xhtml
