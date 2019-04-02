@@ -814,7 +814,10 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var b64xhtml1 = "PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgVHJhbnNpdGlvbmFsLy9FTiIKImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXRyYW5zaXRpb25hbC5kdGQiPgo8aHRtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+CjxoZWFkPgogIDx0aXRsZT5Eb2N1bWVudCBSZWZlcmVuY2U8L3RpdGxlPgo8L2hlYWQ+Cjxib2R5PgogIHlvdSd2ZSBnb3QgYSBQUk8KPC9ib2R5Pgo8L2h0bWw+";
 		
 		var b64xhtml= getxhtml(QRjson);	
-		postDocRef(desc,b64xhtml);
+		
+		console.log(b64xhtml);
+		console.log("work");
+		postDocRef(desc,b64xhtml1);
 		
 		
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
