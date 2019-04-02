@@ -749,7 +749,9 @@ var settings = {
 
 		$.ajax(settings).done(function (response) {
 		  console.log(response);
-			var temp1 =String(response);
+			//var temp1 =String(response);
+			//string s = '<div id="myDiv"></div>'
+			var temp1 = $(response); // jquery call
 			console.log(temp1);
 			var b64xhtml = btoa(temp1);
 			console.log(b64xhtml);
