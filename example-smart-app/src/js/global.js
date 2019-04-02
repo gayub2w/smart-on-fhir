@@ -570,7 +570,7 @@ function ISODateString(d) {
 
 
 
-function postDocRef(desc,xhtml){
+function postDocRef(desc,b64xhtml){
 	
 	
 	var d = new Date();
@@ -605,7 +605,7 @@ function postDocRef(desc,xhtml){
 								url: "https://fhir-myrecord.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference",
 								cache: false,
 								type: "POST",
-								data: "\t\t\t\t\t\t\t\t\t\t\t\t\t\t{\n  \"resourceType\": \"DocumentReference\",\n  \"subject\": {\n    \"reference\": \"Patient/"+patID+"\"\n  },\n  \"type\": {\n    \"coding\": [\n      {\n        \"system\": \"http://loinc.org\",\n        \"code\": \"34133-9\"\n      }\n    ]\n  },\n  \"author\": [\n    {\n      \"reference\": \"Practitioner/605926\"\n    }\n  ],\n  \"indexed\": \""+date1+"\",\n  \"status\": \"current\",\n  \"docStatus\": {\n    \"coding\": [\n      {\n        \"system\": \"http://hl7.org/fhir/composition-status\",\n        \"code\": \"final\"\n      }\n    ]\n  },\n  \"description\": \""+desc+"\",\n  \"content\": [\n    {\n      \"attachment\": {\n        \"contentType\": \"application/xhtml+xml;charset=utf-8\",\n        \"data\": \""+xhtml+"\"\n      }\n    }\n  ],\n  \"context\": {\n    \"encounter\": {\n      \"reference\": \"Encounter/4269906\"\n    },\n    \"period\": {\n      \"end\": \""+date1+"\"\n    }\n  }\n}",
+								data: "\t\t\t\t\t\t\t\t\t\t\t\t\t\t{\n  \"resourceType\": \"DocumentReference\",\n  \"subject\": {\n    \"reference\": \"Patient/"+patID+"\"\n  },\n  \"type\": {\n    \"coding\": [\n      {\n        \"system\": \"http://loinc.org\",\n        \"code\": \"34133-9\"\n      }\n    ]\n  },\n  \"author\": [\n    {\n      \"reference\": \"Practitioner/605926\"\n    }\n  ],\n  \"indexed\": \""+date1+"\",\n  \"status\": \"current\",\n  \"docStatus\": {\n    \"coding\": [\n      {\n        \"system\": \"http://hl7.org/fhir/composition-status\",\n        \"code\": \"final\"\n      }\n    ]\n  },\n  \"description\": \""+desc+"\",\n  \"content\": [\n    {\n      \"attachment\": {\n        \"contentType\": \"application/xhtml+xml;charset=utf-8\",\n        \"data\": \""+b64xhtml+"\"\n      }\n    }\n  ],\n  \"context\": {\n    \"encounter\": {\n      \"reference\": \"Encounter/4269906\"\n    },\n    \"period\": {\n      \"end\": \""+date1+"\"\n    }\n  }\n}",
 								dataType: "application/json+fhir",
 								beforeSend: function(xhr) {
 									//var username = "2F984419-5008-4E42-8210-68592B418233";
@@ -786,7 +786,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		//$('#t02').append('<td><a href ="#" onclick="chart();return false;"> 50 </a></td><td> 1 - 100</td> </tr>');
 		var myJSONString = JSON.stringify(QRjson);
 		
-		var xhtml;
+		var b64xhtml;
 		
 		var settings = {
 		  "async": true,
@@ -802,7 +802,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 
 		$.ajax(settings).done(function (response) {
 		  console.log(response);
-			var xhtml = btoa(response);
+			b64xhtml = btoa(response);
 			  console.log(xhtml);
 		  console.log("testtt");
 
@@ -812,7 +812,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		
 		
 		
-		postDocRef(desc,xhtml);
+		postDocRef(desc,b64xhtml);
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 	}
 	
