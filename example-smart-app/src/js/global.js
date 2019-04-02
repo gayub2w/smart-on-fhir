@@ -753,7 +753,7 @@ var settings = {
 			  console.log(b64xhtml);
 		  console.log("testtt");
 			temp = b64xhtml
-			console.log("testtt");
+			console.log("testtt12121");
 			console.log(temp);
 
 		});	
@@ -818,8 +818,8 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var b64xhtml= getxhtml(QRjson);	
 		
 		console.log(b64xhtml);
-		console.log("work");
-		postDocRef(desc,b64xhtml1);
+		
+		postDocRef(desc,b64xhtml);
 		
 		
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
