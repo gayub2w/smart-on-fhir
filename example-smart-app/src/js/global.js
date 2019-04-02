@@ -736,7 +736,7 @@ function getxhtml(QRjson) {
 	var temp;
 	var myJSONString = JSON.stringify(QRjson);
 var settings = {
-		  "async": true,
+		  "async": false,
 		  "crossDomain": true,
 		  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/services/cds-services/questionnaire-resp-2-xhtml",
 		  "method": "POST",
@@ -753,6 +753,8 @@ var settings = {
 			  console.log(b64xhtml);
 		  console.log("testtt");
 			temp = b64xhtml
+			console.log("testtt");
+			console.log(temp);
 
 		});	
 	return temp;
