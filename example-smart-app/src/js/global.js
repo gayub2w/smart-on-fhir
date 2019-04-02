@@ -789,7 +789,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var b64xhtml;
 		
 		var settings = {
-		  "async": true,
+		  "async": false,
 		  "crossDomain": true,
 		  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/services/cds-services/questionnaire-resp-2-xhtml",
 		  "method": "POST",
