@@ -750,9 +750,10 @@ var settings = {
 		$.ajax(settings).done(function (response) {
 		  console.log(response);
 			var temp1 =String(response);
+			console.log(temp1);
 			var b64xhtml = btoa(temp1);
-			  console.log(b64xhtml);
-		  console.log("testtt");
+			console.log(b64xhtml);
+		  	console.log("testtt");
 			temp = b64xhtml
 			console.log("testtt12121");
 			console.log(temp);
@@ -820,7 +821,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		
 		console.log(b64xhtml);
 		
-		postDocRef(desc,b64xhtml);
+		postDocRef(desc,b64xhtml1);
 		
 		
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
