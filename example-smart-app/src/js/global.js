@@ -766,6 +766,30 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var date01 = QRjson.extension[1].valueDate;
 		
 		//$('#t02').append('<td><a href ="#" onclick="chart();return false;"> 50 </a></td><td> 1 - 100</td> </tr>');
+		var myJSONString = JSON.stringify(QRjson);
+		var settings = {
+		  "async": true,
+		  "crossDomain": true,
+		  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/services/cds-services/questionnaire-resp-2-xhtml",
+		  "method": "POST",
+		  "headers": {
+		    "Content-Type": "application/json",
+		    "cache-control": "no-cache"
+		  },
+		  "data": myJSONString 
+		  }
+
+		$.ajax(settings).done(function (response) {
+		  console.log(response);
+			var temp = btoa(response);
+			  console.log(temp);
+		  console.log("test	");
+
+		});
+		
+		
+		
+		
 		
 		postDocRef(desc);
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
