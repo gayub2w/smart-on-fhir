@@ -824,7 +824,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		
 		console.log(b64xhtml);
 		
-		postDocRef(desc,b64xhtml2);
+		postDocRef(desc,b64xhtml1);
 		
 		
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
