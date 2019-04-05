@@ -439,7 +439,7 @@ function orderStatus() {
 
 	$.ajax({
 		
-		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-04-04",
+		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-04-06",
 		cache: false,
 		type: "GET",
 		beforeSend: function(xhr) {
@@ -738,7 +738,7 @@ function getxhtml(QRjson) {
 var settings = {
 		  "async": false,
 		  "crossDomain": true,
-		  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/services/cds-services/questionnaire-resp-2-xhtml",
+		  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/cds-services/questionnaire-resp-2-xhtml",
 		  "method": "POST",
 		  "headers": {
 		    "Content-Type": "application/json",
@@ -824,7 +824,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		
 		console.log(b64xhtml);
 		
-		postDocRef(desc,b64xhtml1);
+		postDocRef(desc,b64xhtml);
 		
 		
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
