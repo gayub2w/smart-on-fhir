@@ -828,7 +828,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		 
      
 	jQuery(QRjson.contained[0].item).each(function(i, item){
-		console.log(item.item[1]);
+		console.log(item);
 		if  (item.item[1].text != ""){
 		questions[i] = item.item[0].text + ", "+ item.item[1].text;
 		linkIds[i] = item.linkId;	
