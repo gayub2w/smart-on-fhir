@@ -814,7 +814,8 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var desc = QRjson.contained[0].title + ", t-score :"+ tscore;
 		var date01 = QRjson.extension[1].valueDate;
 		
-		var d = new Date(date01);
+		var d =new Date(date01.toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
+		console.log(d);
 		
 		var questions=[];
 		var answers_temp=[];
@@ -858,7 +859,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var d_temp1 ="finishedTime : " + d;
 		var temp1= xhtml_temp1.replace("t-score",ts_temp1);
 		var temp2= temp1.replace("<table></table>", str);
-		var temp3= temp1.replace("finishedTime", d_temp1);
+		var temp3= temp2.replace("finishedTime", d_temp1);
 		var b64xhtml = btoa(temp3);
 				
 		console.log(b64xhtml);
