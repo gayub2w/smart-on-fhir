@@ -814,6 +814,8 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var desc = QRjson.contained[0].title + ", t-score :"+ tscore;
 		var date01 = QRjson.extension[1].valueDate;
 		
+		var d = new Date(QRjson.extension[1].valueDate);
+		
 		var questions=[];
 		var answers_temp=[];
 		var linkIds=[];
@@ -837,6 +839,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		console.log(questions);
 		console.log(answers);
 		console.log(linkIds);
+		
 
     		str='';
 		str +='<table><tr> <th>Question</th> <th style="visibility:hidden;"> space</th>  <th>Answer</th>  </tr>';
@@ -851,11 +854,12 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		
 		
 		var xhtml_temp1= getxhtml(QRjson);	
-		var ts_temp1 = "t-score :"+ tscore;
+		var ts_temp1 = "t-score : "+ tscore;
+		var d_temp1 ="finishedTime : " + d;
 		var temp1= xhtml_temp1.replace("t-score",ts_temp1);
 		var temp2= temp1.replace("<table></table>", str);
-		
-		var b64xhtml = btoa(temp2);
+		var temp3= temp1.replace("finishedTime", d_temp1);
+		var b64xhtml = btoa(temp3);
 				
 		console.log(b64xhtml);
 		
