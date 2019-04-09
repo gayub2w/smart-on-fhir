@@ -844,7 +844,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var i;
 		for (i = 0; i < questions.length; i++) { 
 			
-		  str += '<tr> <td>' + questions[i] + '</td> <td style="visibility:hidden;"> space</td> <td>'+ answers[i] '</td></tr>';
+		  str += '<tr> <td>' + questions[i] + '</td> <td style="visibility:hidden;"> space</td> <td>'+ answers[i] +'</td></tr>';
 		}
 		
 		str +='</table>';
