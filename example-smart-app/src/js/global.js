@@ -814,7 +814,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var desc = QRjson.contained[0].title + ", t-score :"+ tscore;
 		var date01 = QRjson.extension[1].valueDate;
 		
-		var d = new Date(QRjson.extension[1].valueDate);
+		var d = new Date(date01);
 		
 		var questions=[];
 		var answers_temp=[];
