@@ -815,8 +815,9 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var date01 = QRjson.extension[1].valueDate;
 		
 		var questions=[];
-		var answers=[];
+		var answers_temp=[];
 		var linkIds=[];
+		var answers=[];
 		
 		 
      
@@ -828,22 +829,33 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		
 	jQuery(QRjson.item).each(function(i, item){
 		
-		answers[i] = item.answer[0].text;
+		answers_temp[i] = item.answer[0].text;
 		
 	});
 		
+		answers = answers_temp.reverse();
 		console.log(questions);
 		console.log(answers);
 		console.log(linkIds);
 
-    
+    		str='';
+		str +='<table><tr> <th>Question</th> <th style="visibility:hidden;"> space</th>  <th>Answer</th>  </tr>';
+		
+		var i;
+		for (i = 0; i < questions.length; i++) { 
+			
+		  str += '<tr> <td>' + questions[i] + '</td> <td style="visibility:hidden;"> space</td> <td>'+ answers[i] '</td></tr>';
+		}
+		
+		str +='</table>';
 		
 		
 		var xhtml_temp1= getxhtml(QRjson);	
 		var ts_temp1 = "t-score :"+ tscore;
 		var temp1= xhtml_temp1.replace("t-score",ts_temp1);
+		var temp2= temp1.replace("<table></table>", str);
 		
-		var b64xhtml = btoa(temp1);
+		var b64xhtml = btoa(temp2);
 				
 		console.log(b64xhtml);
 		
