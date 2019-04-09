@@ -829,8 +829,16 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
      
 	jQuery(QRjson.contained[0].item).each(function(i, item){
 		
+		if  (item.item[1].text != ""){
 		questions[i] = item.item[0].text + ", "+ item.item[1].text;
-		linkIds[i] = item.linkId;
+		linkIds[i] = item.linkId;	
+		}
+		else {
+			questions[i] = item.item[0].text;
+			linkIds[i] = item.linkId;
+		}
+		
+		
 	});
 		
 	jQuery(QRjson.item).each(function(i, item){
@@ -859,10 +867,10 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		
 		var xhtml_temp1= getxhtml(QRjson);	
 		var ts_temp1 = "t-score : "+ tscore;
-		var d_temp1 ="finishedTime : " + date1;
+		var d_temp1 ="finishedTime </b> : " + date1 ;
 		var temp1= xhtml_temp1.replace("t-score",ts_temp1);
 		var temp2= temp1.replace("<table></table>", str);
-		var temp3= temp2.replace("finishedTime", d_temp1);
+		var temp3= temp2.replace("finishedTime</b>", d_temp1);
 		var b64xhtml = btoa(temp3);
 				
 		console.log(b64xhtml);
