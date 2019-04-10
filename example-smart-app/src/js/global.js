@@ -815,7 +815,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var date01 = QRjson.extension[1].valueDate;
 		
 		var msec = Date.parse(QRjson.extension[1].valueDate);
-		var d = new Date(msec);
+		var d = new Date();
 		var date1 = d.toLocaleString("en-US");
 		console.log(msec);
 		console.log(date1);
