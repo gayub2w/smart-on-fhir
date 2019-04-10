@@ -868,7 +868,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		
 		var xhtml_temp1= getxhtml(QRjson);	
 		var ts_temp1 = "t-score : "+ tscore;
-		var d_temp1 ="finishedTime </b> : " + d ;
+		var d_temp1 ="finishedTime </b> : " + date1 ;
 		var temp1= xhtml_temp1.replace("t-score",ts_temp1);
 		var temp2= temp1.replace("<table></table>", str);
 		var temp3= temp2.replace("finishedTime</b>", d_temp1);
