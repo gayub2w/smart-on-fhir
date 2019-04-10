@@ -439,7 +439,7 @@ function orderStatus() {
 
 	$.ajax({
 		
-		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-04-10",
+		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-04-11",
 		cache: false,
 		type: "GET",
 		beforeSend: function(xhr) {
@@ -868,7 +868,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		
 		var xhtml_temp1= getxhtml(QRjson);	
 		var ts_temp1 = "t-score : "+ tscore;
-		var d_temp1 ="finishedTime </b> : " + date1 ;
+		var d_temp1 ="finishedTime </b> : " + d ;
 		var temp1= xhtml_temp1.replace("t-score",ts_temp1);
 		var temp2= temp1.replace("<table></table>", str);
 		var temp3= temp2.replace("finishedTime</b>", d_temp1);
