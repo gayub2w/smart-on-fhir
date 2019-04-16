@@ -856,7 +856,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 
     		var html01 ='';
 		    
-		html01 + ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">';
+		html01 + ='<html>';
 		html01 + = '<head><title>QuestionnaireResponse</title></head>';
 		html01 + = '<body><h2>PRO Result Complete</h2><p><b>Patient Name: Wilma Smart </b> </p>';
                 html01 + = '<p><b>PRO Name</b>:'+ QRjson.contained[0].title +'</p>';
