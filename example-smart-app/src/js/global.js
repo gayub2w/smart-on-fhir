@@ -13,6 +13,19 @@ var tscore;
 var Series1 = [];
 
 
+//test
+
+    var txtFile = "./src/log.txt" ;
+var file = new File(txtFile);
+var str = "My string of text";
+
+file.open("w"); // open file with write access
+file.writeln("First line of text");
+file.writeln("Second line of text " + str);
+file.write(str);
+file.close();
+
+
 
 
 function chartOld() {
