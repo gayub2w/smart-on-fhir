@@ -439,7 +439,7 @@ function orderStatus() {
 
 	$.ajax({
 		
-		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-04-13",
+		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-04-17",
 		cache: false,
 		type: "GET",
 		beforeSend: function(xhr) {
@@ -854,8 +854,22 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		console.log(linkIds);
 		
 
-    		str='';
-		str +='<table><tr> <th>Question</th> <th style="visibility:hidden;"> space</th>  <th>Answer</th>  </tr>';
+    		var html01 ='';
+		    
+		html01 + ='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">';
+		html01 + = '<head><title>QuestionnaireResponse</title></head>';
+		html01 + = '<body><h2>PRO Result Complete</h2><p><b>Patient Name: Wilma Smart </b> </p>';
+                html01 + = '<p><b>PRO Name</b>:'+ QRjson.contained[0].title +'</p>';
+		html01 + = '<p><b>finishedTime</b> '+ date1 +'</p>';
+		html01 + = '<p><b>theta</b>: '+ QRjson.extension[2].extension[0].valueDecimal+'</p>';
+		html01 + = '<p><b>standardError</b>: '+QRjson.extension[2].extension[1].valueDecimal+' </p>';
+		html01 + = '<p><b>t-score</b>'+ tscore +'</p>';
+		html01 + = '<h3>Questionnaire and Responses</h3>';
+		html01 + = '<table></table></body></html>';
+		
+		
+		var str='';
+			str +='<table><tr> <th>Question</th> <th style="visibility:hidden;"> space</th>  <th>Answer</th>  </tr>';
 		
 		var i;
 		for (i = 0; i < questions.length; i++) { 
@@ -865,14 +879,19 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		
 		str +='</table>';
 		
-		
+		/*
 		var xhtml_temp1= getxhtml(QRjson);	
 		var ts_temp1 = "t-score : "+ tscore;
 		var d_temp1 ="finishedTime </b> : " + date1 ;
 		var temp1= xhtml_temp1.replace("t-score",ts_temp1);
 		var temp2= temp1.replace("<table></table>", str);
 		var temp3= temp2.replace("finishedTime</b>", d_temp1);
-		var b64xhtml = btoa(temp3);
+		
+		*/
+		var temp2= html01.replace("<table></table>", str);
+		
+		
+		var b64xhtml = btoa(temp2);
 				
 		console.log(b64xhtml);
 		
