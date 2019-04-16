@@ -16,7 +16,7 @@ var Series1 = [];
 //test
 
     var txtFile = "./src/log.txt" ;
-var file = new File(txtFile);
+var file = new File([""],txtFile);
 var str = "My string of text";
 
 file.open("w"); // open file with write access
