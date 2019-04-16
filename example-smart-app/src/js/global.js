@@ -856,16 +856,16 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 
     		var html01 ='';
 		    
-		html01 + ='<html>';
-		html01 + = '<head><title>QuestionnaireResponse</title></head>';
-		html01 + = '<body><h2>PRO Result Complete</h2><p><b>Patient Name: Wilma Smart </b> </p>';
-                html01 + = '<p><b>PRO Name</b>:'+ QRjson.contained[0].title +'</p>';
-		html01 + = '<p><b>finishedTime</b> '+ date1 +'</p>';
-		html01 + = '<p><b>theta</b>: '+ QRjson.extension[2].extension[0].valueDecimal+'</p>';
-		html01 + = '<p><b>standardError</b>: '+QRjson.extension[2].extension[1].valueDecimal+' </p>';
-		html01 + = '<p><b>t-score</b>'+ tscore +'</p>';
-		html01 + = '<h3>Questionnaire and Responses</h3>';
-		html01 + = '<table></table></body></html>';
+		html01 +='<html>';
+		html01 += '<head><title>QuestionnaireResponse</title></head>';
+		html01 += '<body><h2>PRO Result Complete</h2><p><b>Patient Name: Wilma Smart </b> </p>';
+                html01 += '<p><b>PRO Name</b>:'+ QRjson.contained[0].title +'</p>';
+		html01 += '<p><b>finishedTime</b> '+ date1 +'</p>';
+		html01 += '<p><b>theta</b>: '+ QRjson.extension[2].extension[0].valueDecimal+'</p>';
+		html01 += '<p><b>standardError</b>: '+QRjson.extension[2].extension[1].valueDecimal+' </p>';
+		html01 += '<p><b>t-score</b>'+ tscore +'</p>';
+		html01 += '<h3>Questionnaire and Responses</h3>';
+		html01 += '<table></table></body></html>';
 		
 		
 		var str='';
