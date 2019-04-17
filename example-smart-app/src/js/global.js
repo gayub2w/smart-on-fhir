@@ -852,6 +852,10 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		console.log(answers);
 		console.log(linkIds);
 		
+		console.log(pat_fname);
+		console.log(pat_lname);
+		console.log(patName);
+		
 
     		var html01 ='';
 		    
