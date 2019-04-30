@@ -12,7 +12,17 @@ var tscore;
 
 var Series1 = [];
 
+var todayDate = new Date().toISOString().slice(0,10);
 
+var date = new Date()
+
+// Add a day
+var nextDate = date.setDate(date.getDate() + 1)
+var DocRef_Date = nextDate.toISOString().slice(0,10);
+
+console.log(date);
+console.log(nextDate);
+console.log(DocRef_Date);
 
 function chartOld() {
 	var myWindow = window.open("", "MsgWindow", "width=1400,height=1200");
