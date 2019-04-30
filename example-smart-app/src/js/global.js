@@ -12,16 +12,6 @@ var tscore;
 
 var Series1 = [];
 
-var todayDate = new Date().toISOString().slice(0,10);
-
-var date_01 = new Date()
-
-// Add a day
-var nextDate = (date_01.setDate(date_01.getDate() + 1)).toISOString().slice(0,10);
-
-
-console.log(date);
-console.log(nextDate);
 
 
 function chartOld() {
