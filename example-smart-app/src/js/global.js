@@ -438,7 +438,7 @@ function orderStatus() {
 
 	$.ajax({
 		
-		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-05-01",
+		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-05-02",
 		cache: false,
 		type: "GET",
 		beforeSend: function(xhr) {
