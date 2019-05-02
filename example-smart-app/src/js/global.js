@@ -433,12 +433,19 @@ function orderStatus() {
 	
 	*/
 	
+	var datatoday = new Date();
+	var datatodays = datatoday.setDate(new Date(datatoday).getDate() + 1);
+	var todate = new Date(datatodays);
+	console.log(todate);
+	var todayDate = todate.toISOString().slice(0,10);
+	console.log(todayDate);
+	
 	var str="";
 	str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
 
 	$.ajax({
 		
-		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le2019-05-02",
+		url: "https://fhir-open.sandboxcerner.com/dstu2/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/DocumentReference?patient=4342008&created=ge2019-03-03&created=le"+ todayDate,
 		cache: false,
 		type: "GET",
 		beforeSend: function(xhr) {
