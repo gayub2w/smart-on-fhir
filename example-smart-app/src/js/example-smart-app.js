@@ -4,6 +4,7 @@
     var pract_name="";
     var persona="";
     var patID="";
+    var encounter_id="";
 
   
  
@@ -27,6 +28,10 @@
       }
       
       practitioner_id = smart.tokenResponse.user;
+      encounter_id= smart.tokenResponse.encounter;
+	console.log("inside smart app js ");    
+	console.log(practitioner_id);  
+	console.log(encounter_id);  
       var token = smart.tokenResponse.id_token;
       var access_token= smart.tokenResponse.access_token;
       console.log(patID);
