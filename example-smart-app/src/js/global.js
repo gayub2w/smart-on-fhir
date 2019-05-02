@@ -440,6 +440,8 @@ function orderStatus() {
 	var todayDate = todate.toISOString().slice(0,10);
 	console.log(todayDate);
 	
+	console.log(patID +"test");
+	document.getElementById('t02').innerHTML="";
 	var str="";
 	str = str +"<tr><th>Event Date Time</th><th>PROs Ordered</th><th>Status</th> <th>Results</th> <th>Ref Range</th> </tr>";
 
