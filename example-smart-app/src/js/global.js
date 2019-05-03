@@ -589,11 +589,7 @@ function patientPostDR (QRjson,desc,patID){
   "headers": {
     "Content-Type": "text/plain",
     "Accept": "*/*",
-    "Cache-Control": "no-cache",
- "Host": "omnibus-dev.elimuinformatics.com",
-    "accept-encoding": "gzip, deflate",
-  "Connection": "keep-alive",
-    "cache-control": "no-cache"
+    "Cache-Control": "no-cache"
   },
   "data": QRjson
 	}
