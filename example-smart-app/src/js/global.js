@@ -579,7 +579,34 @@ function ISODateString(d) {
          + pad(d.getUTCSeconds())+'Z'
 }
 
+function patientPostDR (QRjson,desc,patID){
+	
+	var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/cds-services/questionnaire-resp-2-xhtml?patientId=4342008&docRefDescription=This+is+a%20note+description2",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "text/plain",
+    "Accept": "*/*",
+    "Cache-Control": "no-cache",
+ "Host": "omnibus-dev.elimuinformatics.com",
+    "accept-encoding": "gzip, deflate",
+  "Connection": "keep-alive",
+    "cache-control": "no-cache"
+  },
+  "data": QRjson
+	}
 
+$.ajax(settings).done(function (response) {
+  Console.log("New A2D2 service");
+	console.log(response);
+	
+	
+});
+	
+	
+}
 
 function postDocRef(desc,b64xhtml){
 	
@@ -912,7 +939,7 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		
 		postDocRef(desc,b64xhtml);
 		
-		
+		 patientPostDR (QRjson,desc,patID)
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 	}
 	
