@@ -595,7 +595,7 @@ function patientPostDR (QRjson,desc,patID){
 	}
 
 $.ajax(settings).done(function (response) {
-  Console.log("New A2D2 service");
+  console.log("New A2D2 service");
 	console.log(response);
 	
 	
