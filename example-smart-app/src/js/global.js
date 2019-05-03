@@ -584,7 +584,7 @@ function patientPostDR (QRjson,desc,patID){
 	var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/cds-services/questionnaire-resp-2-xhtml?patientId=4342008&docRefDescription=This+is+a%20note+description2",
+  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/cds-services/questionnaire-resp-2-xhtml?patientId=4342008&docRefDescription="+ desc,
   "method": "POST",
   "headers": {
     "Content-Type": "text/plain",
