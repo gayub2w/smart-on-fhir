@@ -579,12 +579,12 @@ function ISODateString(d) {
          + pad(d.getUTCSeconds())+'Z'
 }
 
-function patientPostDR (QRjson,desc,patID){
+function patientPostDR (QRjson,desc){
 	
 	var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/cds-services/questionnaire-resp-2-xhtml?patientId=4342008&docRefDescription="+ desc,
+  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/cds-services/questionnaire-resp-2-xhtml?patientId="+patID+"&docRefDescription="+ desc,
   "method": "POST",
   "headers": {
     "Content-Type": "text/plain",
@@ -765,41 +765,6 @@ function postScore(taskId,proId,proName,patId,patName,tscore){
 
 }
 
-function getxhtml(QRjson) {
-	
-	var temp;
-	var myJSONString = JSON.stringify(QRjson);
-var settings = {
-		  "async": false,
-		  "crossDomain": true,
-		  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/cds-services/questionnaire-resp-2-xhtml",
-		  "method": "POST",
-		  "headers": {
-		    "Content-Type": "application/json",
-		    "cache-control": "no-cache"
-		  },
-		  "data": myJSONString 
-		  }
-
-		$.ajax(settings).done(function (response) {
-		  console.log(response);
-			//var temp1 =String(response);
-			//string s = '<div id="myDiv"></div>'
-			//var temp1 = $(response); // jquery call
-			//console.log(temp1);
-			//var b64xhtml = btoa(response);
-			//console.log(b64xhtml);
-		  	//console.log("testtt");
-			temp = response;
-			//console.log("testtt12121");
-			console.log(temp);
-
-		});	
-	return temp;
-}
-
-
-
 
 
 
@@ -929,13 +894,13 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		var temp2= html01.replace("<table></table>", str);
 		
 		
-		var b64xhtml = btoa(temp2);
+		//var b64xhtml = btoa(temp2);
 				
-		console.log(b64xhtml);
+		//console.log(b64xhtml);
 		var myJSON_01 = JSON.stringify(QRjson);
-		postDocRef(desc,b64xhtml);
+		//postDocRef(desc,b64xhtml);
 		
-		 patientPostDR (myJSON_01,desc,patID)
+		 patientPostDR (myJSON_01,desc)
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 	}
 	
