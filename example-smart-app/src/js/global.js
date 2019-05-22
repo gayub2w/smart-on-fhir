@@ -149,7 +149,7 @@ if(el){
 	console.log(practitioner_id);  
 	console.log(encounter_id)
 	var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"intent\": \"order\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"display\": \""+pat_fname+" "+pat_lname+"\",\n        \"reference\": \"http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"\"\n\t}\n} \n"
-	//var prdata ="{\r\n\t\"resourceType\": \"ProcedureRequest\",\r\n\t\"status\": \"active\",\r\n\t\"intent\": \"order\",\r\n\t\"category\": [{\r\n\t\t\"coding\": [{\r\n\t\t\t\"system\": \"http:\/\/snomed.info\/sct\",\r\n\t\t\t\"code\": \"386053000\",\r\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\r\n\t\t}],\r\n\t\t\"text\": \"Evaluation\"\r\n\t}],\r\n\t\"code\": {\r\n\t\t\"coding\": [{\r\n\t\t\t\"system\": \"http:\/\/loinc.org\",\r\n\t\t\t\"code\": \"\"+sformoid+\"\",\r\n\t\t\t\"display\": \"\"+sformname+\"\"\r\n\t\t}],\r\n\t\t\"text\": \"\"+sformname+\"\"\r\n\t},\r\n\t\"occurrenceDateTime\": \"\"+date1+\"\",\r\n\t\"subject\": {\r\n\t\t\"display\": \"\"+pat_fname+\" \"+pat_lname+\"\",\r\n        \"reference\": \"http:\/\/hl7.org\/fhir\/sid\/us-ssn\/Patient\/\"+patient_id+\"\"\r\n\t},\r\n\t\"encounter\": {\r\n    \"reference\": \"Encounter\/4269906\"\r\n  },\r\n\t \"orderer\": {\r\n      \"reference\": \"Practitioner\/4464007\"\r\n  }\r\n} \r\n";
+	var prdata1 ="{\r\n\t\"resourceType\": \"ProcedureRequest\",\r\n\t\"status\": \"active\",\r\n\t\"intent\": \"order\",\r\n\t\"category\": [{\r\n\t\t\"coding\": [{\r\n\t\t\t\"system\": \"http:\/\/snomed.info\/sct\",\r\n\t\t\t\"code\": \"386053000\",\r\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\r\n\t\t}],\r\n\t\t\"text\": \"Evaluation\"\r\n\t}],\r\n\t\"code\": {\r\n\t\t\"coding\": [{\r\n\t\t\t\"system\": \"http:\/\/loinc.org\",\r\n\t\t\t\"code\": \"\"+sformoid+\"\",\r\n\t\t\t\"display\": \"\"+sformname+\"\"\r\n\t\t}],\r\n\t\t\"text\": \"\"+sformname+\"\"\r\n\t},\r\n\t\"occurrenceDateTime\": \"\"+date1+\"\",\r\n\t\"subject\": {\n\t\t\"display\": \""+pat_fname+" "+pat_lname+"\",\n        \"reference\": \"http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+\"\"\r\n\t},\r\n\t\"encounter\": {\r\n    \"reference\": \"Encounter\/4269906\"\r\n  },\r\n\t \"orderer\": {\r\n      \"reference\": \"Practitioner\/4464007\"\r\n  }\r\n} \r\n";
 	
 	var settings301 = {
   "async": true,
@@ -162,7 +162,7 @@ if(el){
     "Cache-Control": "no-cache"
   },
   "processData": false,
-  "data": prdata
+  "data": prdata1
 	}
 
 $.ajax(settings301).done(function (response) {
