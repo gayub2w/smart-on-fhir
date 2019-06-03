@@ -191,12 +191,13 @@ $.ajax(settings301).done(function (response) {
 	$.ajax(settings).done(function (response) {
 		//console.log("pro-test");
 		console.log(response);
+		console.log("Posted Procedure Request");
 		orderStatus();
 		document.getElementById('order_unsuccessful').style.display = "none";
 		document.getElementById('order_successful').innerHTML = success_message;		
 	});
 	  
-	  
+	  /*
 	  var settings134 = {
   "async": true,
   "crossDomain": true,
@@ -204,7 +205,7 @@ $.ajax(settings301).done(function (response) {
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
-    "Accept": "*/*",
+    "Accept": "**",
     "Cache-Control": "no-cache"
   },
   "processData": false,
@@ -214,7 +215,7 @@ $.ajax(settings301).done(function (response) {
 $.ajax(settings134).done(function (response) {
   console.log(response);
 	  console.log("Subscription to trigger posting doc ref");
-});
+}); */
 
 });
 }
