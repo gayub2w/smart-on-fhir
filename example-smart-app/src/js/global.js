@@ -154,7 +154,7 @@ if(el){
 	var settings301 = {
   "async": true,
   "crossDomain": true,
-  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/cds-services/patient-doc-for-new-pro",
+  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/fhir-resource-post/patient-doc-for-new-pro",
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
