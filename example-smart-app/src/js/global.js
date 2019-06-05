@@ -153,7 +153,7 @@ if(el){
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 	//var prdata1 ="{\r\n\t\"resourceType\": \"ProcedureRequest\",\r\n\t\"status\": \"active\",\r\n\t\"intent\": \"order\",\r\n\t\"category\": [{\r\n\t\t\"coding\": [{\r\n\t\t\t\"system\": \"http:\/\/snomed.info\/sct\",\r\n\t\t\t\"code\": \"386053000\",\r\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\r\n\t\t}],\r\n\t\t\"text\": \"Evaluation\"\r\n\t}],\r\n\t\"code\": {\r\n\t\t\"coding\": [{\r\n\t\t\t\"system\": \"http:\/\/loinc.org\",\r\n\t\t\t\"code\": \"\"+sformoid+\"\",\r\n\t\t\t\"display\": \"\"+sformname+\"\"\r\n\t\t}],\r\n\t\t\"text\": \"\"+sformname+\"\"\r\n\t},\r\n\t\"occurrenceDateTime\": \"\"+date1+\"\",\r\n\t\"subject\": {\n\t\t\"display\": \""+pat_fname+" "+pat_lname+"\",\n        \"reference\": \"http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+\"\"\r\n\t},\r\n\t\"encounter\": {\r\n    \"reference\": \"Encounter\/4269906\"\r\n  },\r\n\t \"orderer\": {\r\n      \"reference\": \"Practitioner\/4464007\"\r\n  }\r\n} \r\n";
 	
-	/*
+	
 	
 	var settings301 = {
   "async": true,
@@ -162,7 +162,7 @@ if(el){
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
-    "Accept": "**",
+    "Accept": "*/*",
     "Cache-Control": "no-cache"
   },
   "processData": false,
@@ -174,7 +174,7 @@ $.ajax(settings301).done(function (response) {
 	console.log("Posted Doc Ref from Procedure Request");
 });
 	
-*/
+
 	
 	
 	
