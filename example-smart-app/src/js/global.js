@@ -1145,16 +1145,20 @@ function displayList(){
 		str = str+"<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'>Status</div></div>";	
 
 		jQuery(response.entry).each(function(i, item){
+			
 
 			var date = new Date(item.resource.occurrenceDateTime);
 			var pro_id= item.resource.code.coding[0].code;
 			var pro_name= item.resource.code.coding[0].display;
 			var task_id= item.resource.id;
-			var pat_name= item.resource.subject.display;						
+			var pat_name= item.resource.subject.display;	
+			
+			var encounterId = item.resource.context.reference;
+			var practitionerId = item.resource.requester.agent.reference;
 			
 			
-			//console.log(date);
-			//console.log(pro_id);
+			console.log(encounterId);
+			console.log(practitionerId);
 			//console.log(pro_name);
 			//console.log(task_id);
 			//console.log(pat_name);
