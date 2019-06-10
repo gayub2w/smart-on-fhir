@@ -928,7 +928,8 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		//console.log(b64xhtml);
 		var myJSON_01 = JSON.stringify(QRjson);
 		//postDocRef(desc,b64xhtml);
-		
+		console.log("Encounter" + encounter_id);
+		console.log("Practitioner"+ practitioner_id);
 		 patientPostDR (myJSON_01,desc)
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
 	}
