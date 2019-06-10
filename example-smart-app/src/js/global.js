@@ -161,7 +161,7 @@ if(el){
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
-    "Accept": "*/*",
+    "Accept": "**",
     "Cache-Control": "no-cache"
   },
   "processData": false,
