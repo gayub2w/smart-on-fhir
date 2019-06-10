@@ -148,12 +148,11 @@ if(el){
 	  console.log("inside prdata ");    
 	console.log(practitioner_id);  
 	console.log(encounter_id)
-	var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"intent\": \"order\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"display\": \""+pat_fname+" "+pat_lname+"\",\n        \"reference\": \"http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"\"\n\t},\r\n\t\"encounter\": {\r\n   \"reference\": \"4269906\"\r\n },\r\n     \"orderer\": {\r\n     \"reference\": \"4464007\"\r\n }\r\n} \r\n"
+	//var prdata = "{\n\t\"resourceType\": \"ProcedureRequest\",\n\t\"status\": \"active\",\n\t\"intent\": \"order\",\n\t\"category\": [{\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://snomed.info/sct\",\n\t\t\t\"code\": \"386053000\",\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\n\t\t}],\n\t\t\"text\": \"Evaluation\"\n\t}],\n\t\"code\": {\n\t\t\"coding\": [{\n\t\t\t\"system\": \"http://loinc.org\",\n\t\t\t\"code\": \""+sformoid+"\",\n\t\t\t\"display\": \""+sformname+"\"\n\t\t}],\n\t\t\"text\": \""+sformname+"\"\n\t},\n\t\"occurrenceDateTime\": \""+date1+"\",\n\t\"subject\": {\n\t\t\"display\": \""+pat_fname+" "+pat_lname+"\",\n        \"reference\": \"http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"\"\n\t},\r\n\t\"encounter\": {\r\n   \"reference\": \"4269906\"\r\n },\r\n     \"orderer\": {\r\n     \"reference\": \"4464007\"\r\n }\r\n} \r\n"
 	
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-	//var prdata1 ="{\r\n\t\"resourceType\": \"ProcedureRequest\",\r\n\t\"status\": \"active\",\r\n\t\"intent\": \"order\",\r\n\t\"category\": [{\r\n\t\t\"coding\": [{\r\n\t\t\t\"system\": \"http:\/\/snomed.info\/sct\",\r\n\t\t\t\"code\": \"386053000\",\r\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\r\n\t\t}],\r\n\t\t\"text\": \"Evaluation\"\r\n\t}],\r\n\t\"code\": {\r\n\t\t\"coding\": [{\r\n\t\t\t\"system\": \"http:\/\/loinc.org\",\r\n\t\t\t\"code\": \"\"+sformoid+\"\",\r\n\t\t\t\"display\": \"\"+sformname+\"\"\r\n\t\t}],\r\n\t\t\"text\": \"\"+sformname+\"\"\r\n\t},\r\n\t\"occurrenceDateTime\": \"\"+date1+\"\",\r\n\t\"subject\": {\n\t\t\"display\": \""+pat_fname+" "+pat_lname+"\",\n        \"reference\": \"http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+\"\"\r\n\t},\r\n\t\"encounter\": {\r\n    \"reference\": \"Encounter\/4269906\"\r\n  },\r\n\t \"orderer\": {\r\n      \"reference\": \"Practitioner\/4464007\"\r\n  }\r\n} \r\n";
-	
-	
+	var prdata = "{\r\n\t\"resourceType\": \"ProcedureRequest\",\r\n\t\"status\": \"active\",\r\n\t\"intent\": \"order\",\r\n\t\"category\": [{\r\n\t\t\"coding\": [{\r\n\t\t\t\"system\": \"http://snomed.info/sct\",\r\n\t\t\t\"code\": \"386053000\",\r\n\t\t\t\"display\": \"Evaluation procedure (procedure)\"\r\n\t\t}],\r\n\t\t\"text\": \"Evaluation\"\r\n\t}],\r\n\t\"code\": {\r\n\t\t\"coding\": [{\r\n\t\t\t\"system\": \"http://loinc.org\",\r\n\t\t\t\"code\":  \""+sformoid+"\",\r\n\t\t\t\"display\":\""+sformname+"\"\r\n\t\t}],\r\n\t\t\"text\": \""+sformname+"\"\r\n\t},\r\n\t\"occurrenceDateTime\": \""+date1+"\",\r\n\t\"subject\": {\r\n\t\t\"display\": \""+pat_fname+" "+pat_lname+"\",\r\n        \"reference\": \"http://hl7.org/fhir/sid/us-ssn/Patient/"+patient_id+"\"\r\n\t},\r\n\t\"context\": {\r\n    \"reference\": \"http://usc.edu/Encounter/"+encounter_id+"\" \r\n  },\r\n\t\"requester\": {\r\n    \"agent\": {\r\n      \"reference\": \"http://usc.edu/Practitioner/"+practitioner_id+"\"\r\n    }\r\n\t}\r\n};                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+	console.log("print procedure request input" + prdata);
+	/*
 	
 	var settings301 = {
   "async": true,
@@ -173,7 +172,7 @@ $.ajax(settings301).done(function (response) {
   console.log(response);
 	console.log("Posted Doc Ref from Procedure Request");
 });
-	
+	*/
 
 	
 	
@@ -198,28 +197,7 @@ $.ajax(settings301).done(function (response) {
 		document.getElementById('order_unsuccessful').style.display = "none";
 		document.getElementById('order_successful').innerHTML = success_message;		
 	});
-	  
-	  /*
-	  var settings134 = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/Subscription",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-    "Accept": "**",
-    "Cache-Control": "no-cache"
-  },
-  "processData": false,
-  "data": "{\r\n        \"resourceType\": \"Subscription\",\r\n        \"status\": \"requested\",\r\n        \"end\": \"2025-09-22T13:27:56.202+05:30\",\r\n        \"reason\": \"Trigger posting Doc Ref to Cerner\",\r\n        \"criteria\": \"ProcedureRequest?status=active&intent=order\",\r\n        \"channel\": {\r\n          \"type\": \"rest-hook\",\r\n          \"endpoint\": \"https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/fhir-resource-post/patient-doc-for-new-pro?\",\r\n          \"payload\": \"application/fhir+json\"\r\n        }\r\n}"
-}
-
-$.ajax(settings134).done(function (response) {
-  console.log(response);
-	  console.log("Subscription to trigger posting doc ref");
-}); */
-
-});
+	  });
 }
 
 
@@ -726,6 +704,8 @@ function postDocRef(desc,b64xhtml){
 	});
 
 }
+
+
 function displayQ(){
 
 	$('#Ques').show();
