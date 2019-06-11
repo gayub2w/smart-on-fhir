@@ -8,6 +8,8 @@ var baseurl="https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/";
 //https://sapphire-demo.meliorix.com/cipfhir3/baseDstu3/  
 //var baseurl ="http://hapi.fhir.org/baseDstu3/";
 var taskId,proId,proName,patId,patName;	
+
+var patEncounterId, patPractitionerId;
 var tscore;
 
 var Series1 = [];
@@ -611,7 +613,7 @@ function patientPostDR (QRjson,desc){
 	var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/cds-services/questionnaire-resp-2-xhtml?patientId="+patID+"&docRefDescription="+desc+"&encounterId="+encounter_id+"&practitionerId="+practitioner_id,
+  "url": "https://omnibus-dev.elimuinformatics.com/omnibus-api/api/v2/elimu/sapphire/cds-services/questionnaire-resp-2-xhtml?patientId="+patID+"&docRefDescription="+desc+"&encounterId="+patEncounterId+"&practitionerId="+patPractitionerId,
   "method": "POST",
   "headers": {
     "Content-Type": "application/json",
@@ -727,7 +729,7 @@ function displist()
 	document.getElementById('list').style.display = 'block';
 }
 
-function assignValues(task_Id,pro_Id,pro_Name,pat_Name)
+function assignValues(task_Id,pro_Id,pro_Name,pat_Name,encounterId,practitionerId)
 {
 	//console.log(task_Id);
 	//console.log(pro_Id);
@@ -740,6 +742,9 @@ function assignValues(task_Id,pro_Id,pro_Name,pat_Name)
 	proName = pro_Name;
 	patId = patID;					
 	patName = pat_Name;
+	
+	patEncounterId =encounterId ;
+	patPractitionerId = practitionerId;
 }
 
 
@@ -928,10 +933,11 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 		//console.log(b64xhtml);
 		var myJSON_01 = JSON.stringify(QRjson);
 		//postDocRef(desc,b64xhtml);
-		console.log("Encounter" + encounter_id);
-		console.log("Practitioner"+ practitioner_id);
+		console.log("Encounter" + patEncounterId);
+		console.log("Practitioner"+ patPractitionerId);
 		 patientPostDR (myJSON_01,desc)
 	document.getElementById("Content").innerHTML = "You have finished the assessment.<br /> Thank you ! <div style=\'height: 50px\' ><button type=\'button\' class='button button6'  onclick=displist() > Back </button></div>";
+	completeProcess(taskId,proId,proName,patId,patName);
 	}
 	
 	
@@ -1189,7 +1195,7 @@ function displayList(){
 
 				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-sm-offset-1 col-xs-4\' style=\'text-align: left; font-size: 18px;\'>"+pro_name+"</div>"
 				str = str + "<div class=\'col-2 col-lg-2 col-md-2 col-sm-2 col-sm-offset-1 col-xs-4\'>"+date2+"</div>";
-				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\"); writeProname(\""+pro_name+"\"); setVariables(\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +date3+ "\");  displayQ(); this.disabled=true; \'>Start</button></div></div>";
+				str = str + "<div class=\'col-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 \'><button id=\""+task_id+"\" class=\'button button6\' type=\'button\' onclick=\' assignValues(\"" +task_id+ "\",\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +pat_name+ "\",\"" +encounterId+ "\",\"" +practitionerId+ "\"); writeProname(\""+pro_name+"\"); setVariables(\"" +pro_id+ "\",\"" +pro_name+ "\", \"" +date3+ "\");  displayQ(); this.disabled=true; \'>Start</button></div></div>";
 			//writeProname(\""+pro_name+"\");
 			}
 
