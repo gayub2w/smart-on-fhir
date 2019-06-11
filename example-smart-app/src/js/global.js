@@ -502,8 +502,10 @@ function orderStatus() {
 					//console.log("completed pro list" + item);
 				
 				console.log (item.resource.type.text);
+				var temp = item.resource.type.text;
 			var str3 = item.resource.description;
 				console.log(str3);
+				if (temp == "PROMIS Patient Response"){
 					if (str3.includes("t-score")) {
 						
 
@@ -556,8 +558,8 @@ function orderStatus() {
 			str = str +"<td><a href =\'#\' onclick=\'chart();return false;'>"+score+"</a></td><td> 1 - 100</td> </tr>";
 
 
-						}
-				
+		}
+				}
 
 					});
 
