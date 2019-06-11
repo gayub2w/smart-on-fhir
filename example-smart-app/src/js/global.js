@@ -499,9 +499,9 @@ function orderStatus() {
 				console.log(item);
 				
 				
-					console.log("completed pro list" + item);
+					//console.log("completed pro list" + item);
 			var str3 = item.resource.description;
-				
+				console.log(str3);
 					if (str3.includes("t-score")) {
 						
 
