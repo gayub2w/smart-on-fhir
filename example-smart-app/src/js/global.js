@@ -497,8 +497,11 @@ function orderStatus() {
 			
 			jQuery(data.entry).each(function(i, item){
 				console.log(item);
+				
+				
+					console.log("completed pro list" + item);
 			var str3 = item.resource.description;
-				if (str3 != null) {
+				
 					if (str3.includes("t-score")) {
 						
 
@@ -558,7 +561,7 @@ function orderStatus() {
 
 			document.getElementById('t02').innerHTML += str;
 
-		}
+		
 	},
 
 		error: function(jqXHR, textStatus, errorThrown) {
