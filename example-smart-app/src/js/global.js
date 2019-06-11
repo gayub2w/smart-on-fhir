@@ -501,7 +501,7 @@ function orderStatus() {
 				
 					//console.log("completed pro list" + item);
 				
-				console.log (item.response.type.text);
+				console.log (item.resource.type.text);
 			var str3 = item.resource.description;
 				console.log(str3);
 					if (str3.includes("t-score")) {
