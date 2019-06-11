@@ -1159,8 +1159,9 @@ function displayList(){
 			var pat_name= item.resource.subject.display;	
 			
 			var encounterId = item.resource.context.reference;
+			encounterId = encounterId.substring(encounterId.lastIndexOf("/") + 1);
 			var practitionerId = item.resource.requester.agent.reference;
-			
+			practitionerId = practitionerId.substring(practitionerId.lastIndexOf("/") + 1);
 			
 			console.log(encounterId);
 			console.log(practitionerId);
