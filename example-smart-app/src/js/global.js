@@ -1146,6 +1146,11 @@ function displayList(){
 
 		jQuery(response.entry).each(function(i, item){
 			
+			var check = item.resource;
+			
+			if(check.hasOwnProperty('context')){
+
+
 
 			var date = new Date(item.resource.occurrenceDateTime);
 			var pro_id= item.resource.code.coding[0].code;
@@ -1188,6 +1193,8 @@ function displayList(){
 			}
 
 		}
+				
+			}
 		});
 		document.getElementById("list").innerHTML = str;
 	});
