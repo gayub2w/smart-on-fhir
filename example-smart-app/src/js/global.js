@@ -360,8 +360,8 @@ function orderStatus() {
 			var msec = Date.parse(item.resource.occurrenceDateTime);
 			var d = new Date(msec);
 			var date1 = d.toLocaleString("en-US"); 
-			Console.log("pending list");
-			Console.log(date1);
+			console.log("pending list");
+			console.log(date1);
 
 			var proname1 = item.resource.code.text;
 			if(proname1){
