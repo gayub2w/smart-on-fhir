@@ -1203,7 +1203,7 @@ function displayList(){
 			//console.log(pat_id);
 			
 			if(pro_name){
-			if (task_id!=null && pro_name.match(/Please/g)!="Please"){
+			if (task_id!=null && pro_name.match(/Please/g)!="Please" && date2 >= "06/15/2019"){
 
 				str = str + "<div class=\'row\'  style=\'text-align: left; padding-top: 20px; font-size: 14px;\'>";
 
