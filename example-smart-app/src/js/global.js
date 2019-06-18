@@ -1185,7 +1185,7 @@ function displayList(){
 			//console.log(task_id);
 			//console.log(pat_name);
 						
-			var date4 = ((date.getMonth() + 1) + '/' + date1.getDate() + '/' +  date1.getFullYear())
+			//var date4 = ((date.getMonth() + 1) + '/' + date1.getDate() + '/' +  date1.getFullYear())
 			var date1 = addDays(date, 3);
 			//console.log(date1);
 			var date2=((date1.getMonth() + 1) + '/' + date1.getDate() + '/' +  date1.getFullYear());
@@ -1197,7 +1197,7 @@ function displayList(){
 			
 				
 			Console.log("pending list");
-			Console.log(date4);
+			Console.log(date2);
 			
 			//console.log(pat_id);
 			
