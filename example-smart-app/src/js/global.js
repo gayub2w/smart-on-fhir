@@ -1196,8 +1196,8 @@ function displayList(){
 			var pat_id= temp.substr(-7); 
 			
 				
-			Console.log("pending list");
-			Console.log(date2);
+			console.log("pending list");
+			console.log(date2);
 			
 			//console.log(pat_id);
 			
