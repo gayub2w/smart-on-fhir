@@ -360,7 +360,8 @@ function orderStatus() {
 			var msec = Date.parse(item.resource.occurrenceDateTime);
 			var d = new Date(msec);
 			var date1 = d.toLocaleString("en-US"); 
-
+			Console.log("pending list");
+			Console.log(date1);
 
 			var proname1 = item.resource.code.text;
 			if(proname1){
@@ -1184,7 +1185,7 @@ function displayList(){
 			//console.log(task_id);
 			//console.log(pat_name);
 						
-
+			var date4 = ((date.getMonth() + 1) + '/' + date1.getDate() + '/' +  date1.getFullYear())
 			var date1 = addDays(date, 3);
 			//console.log(date1);
 			var date2=((date1.getMonth() + 1) + '/' + date1.getDate() + '/' +  date1.getFullYear());
@@ -1194,6 +1195,9 @@ function displayList(){
 			var temp = item.resource.subject.reference;
 			var pat_id= temp.substr(-7); 
 			
+				
+			Console.log("pending list");
+			Console.log(date4);
 			
 			//console.log(pat_id);
 			
