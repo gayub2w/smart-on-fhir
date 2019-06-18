@@ -1198,7 +1198,7 @@ function displayList(){
 			
 				
 			console.log("pending list");
-			console.log(date2);
+			console.log(date);
 			
 			//console.log(pat_id);
 			
