@@ -1205,7 +1205,7 @@ function displayList(){
 			var temp2 = date1.getDate();	
 			var temp3 = date1.getFullYear();
 			if(pro_name){
-			if (task_id!=null && pro_name.match(/Please/g)!="Please" && temp1){
+			if (task_id!=null && pro_name.match(/Please/g)!="Please" && date2 >= "6/15/2019"){
 
 				str = str + "<div class=\'row\'  style=\'text-align: left; padding-top: 20px; font-size: 14px;\'>";
 
