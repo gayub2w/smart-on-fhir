@@ -1202,7 +1202,7 @@ function displayList(){
 			
 			
 			if(pro_name){
-			if (task_id!=null && pro_name.match(/Please/g)!="Please" &&){
+			if (task_id!=null && pro_name.match(/Please/g)!="Please"){
 
 				str = str + "<div class=\'row\'  style=\'text-align: left; padding-top: 20px; font-size: 14px;\'>";
 
