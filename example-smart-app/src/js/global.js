@@ -363,10 +363,12 @@ function orderStatus() {
 			var date1 = d.toLocaleString("en-US"); 
 			console.log("pending list");
 			console.log(date1);
+			
+			var task_id= item.resource.id;
 
 			var proname1 = item.resource.code.text;
 			if(proname1){
-			if (proname1.match(/Please/g)!="Please" )
+			if (proname1.match(/Please/g)!="Please" && task_id >= "1122" )
 			{
 				str = str +"<tr><td>" +date1+"</td>";
 				str = str +"<td>"+proname1 +"</td>";
