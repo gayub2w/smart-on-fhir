@@ -959,6 +959,8 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 
 
 function displayQuestionnaire(QR, formOID){
+	
+	console.log(QR);
 
 	var temp =null;
 	$.ajax({
