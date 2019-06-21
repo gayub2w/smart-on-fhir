@@ -961,6 +961,11 @@ function nextQuestion(linkId,valueString,system,code,display,text,tempOID)
 function displayQuestionnaire(QR, formOID){
 	
 	console.log(QR);
+	var myjson01 = JSON.stringify(QR);
+	
+	console.log(myjson01);
+	
+	
 
 	var temp =null;
 	$.ajax({
