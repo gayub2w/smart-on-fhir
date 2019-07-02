@@ -74,7 +74,7 @@ function postformData(){
 		},
 		success: function (data) {
 			//tmp1=data.DateFinished;
-			tmp1=data;
+			var tmp1=data;
             console.log("postdata",tmp1);
             showQuestions(data);
 			//if data.status="completed" stop execution
@@ -103,7 +103,7 @@ return tempObj;
 
 function showQuestions(data){
     currentData=data;
-	temp=data.contained[0];
+	var temp=data.contained[0];
 	if(temp.item[0].item.length>1){
 		j=1;
 	}
@@ -114,7 +114,7 @@ function showQuestions(data){
     questionDataDisplay += "<div style=\'height: 40px; font-style: italic\'>" + temp.item[0].item[j].text + "</div>";
     questionDataDisplay += "<table>";
         /* Answers */
-    theQuestionID = temp.item[0].item[0].linkId;
+    var theQuestionID = temp.item[0].item[0].linkId;
 
 	
     for (var i = 0; i < temp.item[0].item[j].answerOption.length ; i++) {
