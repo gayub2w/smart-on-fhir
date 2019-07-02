@@ -279,8 +279,7 @@ function prorecommend() {
 			"method": "POST",
 			"headers": {
 				"Content-Type": "application/json",
-				"Cache-Control": "no-cache",
-				"Postman-Token": "35410d6a-12f4-4145-9655-db99cdaa0e90"
+				"Cache-Control": "no-cache"
 			},
 			"processData": false,
 			"data": recdata
@@ -984,6 +983,10 @@ function displayQuestionnaire(QR, formOID){
 
 			var base64 = btoa(username + ":" + pass);
 			xhr.setRequestHeader("Authorization", "Basic " + base64);
+			
+			//xhr.setRequestHeader("Accept", "application/json+fhir");
+			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			
 		},
 		success: function(data) { 
 			var screen=""
